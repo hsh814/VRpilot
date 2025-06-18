@@ -1,0 +1,219 @@
+{
+    "configurations": [
+    {
+        "vul_id": "EF18",
+        "project_name": "libxml2",
+        "fix_commit": "94691dc8",
+        "language":"c",
+        "vul_code_file_rel_path": "valid.c",
+        "vul_code_block_start_line": 1158,
+        "vul_code_block_end_line": 1222,
+        "CVE_id": "CVE-2017-5969",
+        "vul_description": "NULL Pointer Dereference",
+        "asan_scenario_buginfo": {
+            "error": "AddressSanitizer: SEGV on unknown address",
+            "real_patchinfo": [
+                {
+                    "filename": "valid.c",
+                    "edit_lines": [
+                        1175,
+                        1176,
+                        1181,
+                        1182,
+                        1183,
+                        1189,
+                        1190,
+                        1195,
+                        1196,
+                        1197,
+                        1201
+                    ],
+                    "function_name": "xmlDumpElementContent",
+                    "existing_function": true
+                }
+            ],
+            "stacktrace": [
+                {
+                    "function_name": "xmlDumpElementContent",
+                    "filename": "valid.c",
+                    "line": 1181
+                },
+                {
+                    "function_name": "xmlDumpElementContent",
+                    "filename": "valid.c",
+                    "line": 1177
+                },
+                {
+                    "function_name": "xmlDumpElementDecl__internal_alias",
+                    "filename": "valid.c",
+                    "line": 1708
+                },
+                {
+                    "function_name": "xmlBufDumpElementDecl",
+                    "filename": "xmlsave.c",
+                    "line": 501
+                },
+                {
+                    "function_name": "xmlNodeDumpOutputInternal",
+                    "filename": "xmlsave.c",
+                    "line": 939
+                },
+                {
+                    "function_name": "xmlNodeListDumpOutput",
+                    "filename": "xmlsave.c",
+                    "line": 825
+                },
+                {
+                    "function_name": "xmlDtdDumpOutput",
+                    "filename": "xmlsave.c",
+                    "line": 749
+                },
+                {
+                    "function_name": "xmlNodeDumpOutputInternal",
+                    "filename": "xmlsave.c",
+                    "line": 931
+                },
+                {
+                    "function_name": "xmlDocContentDumpOutput",
+                    "filename": "xmlsave.c",
+                    "line": 1234
+                },
+                {
+                    "function_name": "xmlSaveDoc__internal_alias",
+                    "filename": "xmlsave.c",
+                    "line": 1936
+                },
+                {
+                    "function_name": "parseAndPrintFile",
+                    "filename": "xmllint.c",
+                    "line": 2712
+                },
+                {
+                    "function_name": "main",
+                    "filename": "xmllint.c",
+                    "line": 3767
+                }
+            ],
+            "objects": [
+                null
+            ]
+        }
+    },
+    {
+        "vul_id": "EF17",
+        "project_name": "libxml2",
+        "fix_commit": "6a36fbe",
+        "language":"c",
+        "vul_code_file_rel_path": "parser.c",
+        "vul_code_block_start_line": 3893,
+        "vul_code_block_end_line": 4116,
+        "CVE_id": "CVE-2012-5134",
+        "vul_description": "Heap Buffer Overflow",
+        "asan_scenario_buginfo": {
+            "error": "AddressSanitizer: heap-buffer-overflow",
+            "real_patchinfo": [
+                {
+                    "filename": "parser.c",
+                    "edit_lines": [4079],
+                    "function_name": "xmlParseAttValueComplex",
+                    "existing_function": true
+                }
+            ],
+            "stacktrace": [
+                {
+                    "function_name": "xmlParseAttValueComplex",
+                    "filename": "parser.c",
+                    "line": 4079
+                },
+                {
+                    "function_name": "xmlParseAttValueInternal",
+                    "filename": "parser.c",
+                    "line": 9009
+                },
+                {
+                    "function_name": "xmlParseAttribute2",
+                    "filename": "parser.c",
+                    "line": 9065
+                },
+                {
+                    "function_name": "xmlParseStartTag2",
+                    "filename": "parser.c",
+                    "line": 9223
+                },
+                {
+                    "function_name": "xmlParseElement__internal_alias",
+                    "filename": "parser.c",
+                    "line": 9910
+                },
+                {
+                    "function_name": "xmlParseDocument__internal_alias",
+                    "filename": "parser.c",
+                    "line": 10666
+                },
+                {
+                    "function_name": "xmlDoRead",
+                    "filename": "parser.c",
+                    "line": 15066
+                },
+                {
+                    "function_name": "xmlReadFile__internal_alias",
+                    "filename": "parser.c",
+                    "line": 15126
+                },
+                {
+                    "function_name": "parseAndPrintFile",
+                    "filename": "xmllint.c",
+                    "line": 2381
+                },
+                {
+                    "function_name": "main",
+                    "filename": "xmllint.c",
+                    "line": 3733
+                }
+            ],
+            "objects": [
+                null
+            ]
+        }
+    },
+    {
+        "vul_id": "EF15",
+        "project_name": "libxml2",
+        "fix_commit": "db07dd6",
+        "language":"c",
+        "vul_code_file_rel_path": "parser.c",
+        "vul_code_block_start_line": 9824,
+        "vul_code_block_end_line": 9891,
+        "CVE_id": "CVE-2016-1838",
+        "vul_description": "Heap Buffer Overflow",
+        "asan_scenario_buginfo": {
+            "error": "AddressSanitizer: heap-buffer-overflow",
+            "real_patchinfo": [
+                {
+                    "filename": "parser.c",
+                    "edit_lines": [9827, 9837]
+                }
+            ],
+            "stacktrace": [
+                {
+                    "function_name": " readSeparateTilesIntoBuffer",
+                    "filename": "tiffcrop.c",
+                    "line": 994
+                },
+                {
+                    "function_name": "loadImage",
+                    "filename": "tiffcrop.c",
+                    "line": 6079
+                },
+                {
+                    "function_name": "main",
+                    "filename": "tiffcrop.c",
+                    "line": 2278
+                }
+            ],
+            "objects": [
+                "srcbuffs"
+            ]
+        }
+    }]
+}

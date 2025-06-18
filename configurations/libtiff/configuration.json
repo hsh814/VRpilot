@@ -1,0 +1,278 @@
+{
+    "configurations": [
+    {
+        "vul_id": "EF01",
+        "project_name": "libtiff",
+        "fix_commit": "d9783e4",
+        "language":"c",
+        "vul_code_file_rel_path": "tools/tiffcrop.c",
+        "vul_code_block_start_line": 951,
+        "vul_code_block_end_line": 1096,
+        "begining_window": "for (col = 0; col < imagewidth; col += tw)",
+        "end_window": 993,
+        "CVE_id": "CVE-2016-5321",
+        "vul_description": "Stack Buffer Overflow",
+        "asan_scenario_buginfo": {
+            "error": "AddressSanitizer: stack-buffer-overflow",
+            "real_patchinfo": [
+                {
+                    "filename": "tiffcrop.c",
+                    "edit_lines": [992],
+                    "function_name": "readSeparateTilesIntoBuffer"
+                }
+            ],
+            "stacktrace": [
+                {
+                    "function_name": " readSeparateTilesIntoBuffer",
+                    "filename": "tiffcrop.c",
+                    "line": 994
+                },
+                {
+                    "function_name": "loadImage",
+                    "filename": "tiffcrop.c",
+                    "line": 6079
+                },
+                {
+                    "function_name": "main",
+                    "filename": "tiffcrop.c",
+                    "line": 2278
+                }
+            ],
+            "objects": [
+                "srcbuffs"
+            ]
+        }
+    },
+    {
+        "vul_id": "EF02_01",
+        "project_name": "libtiff",
+        "fix_commit": "3206e0c",
+        "language":"c",
+        "vul_code_file_rel_path": "tools/thumbnail.c",
+        "vul_code_block_start_line": 551,
+        "vul_code_block_end_line": 576,
+        "begining_window": "sy++;",
+        "CVE_id": "CVE-2014-8128",
+        "vul_description": "Stack Buffer Overflow",
+        "asan_scenario_buginfo": {
+            "error": "AddressSanitizer: stack-buffer-overflow",
+            "real_patchinfo": [
+                {
+                    "filename": "thumbnail.c",
+                    "edit_lines": [571],
+                    "function_name": "setImage1",
+                    "existing_function": true
+                }
+            ],
+            "stacktrace": [
+                {
+                    "function_name": " setImage1",
+                    "filename": "thumbnail.c",
+                    "line": 552
+                },
+                {
+                    "function_name": " setImage",
+                    "filename": "thumbnail.c",
+                    "line": 564
+                },
+                {
+                    "function_name": " generateThumbnail",
+                    "filename": "thumbnail.c",
+                    "line": 606
+                },
+                {
+                    "function_name": " main",
+                    "filename": "thumbnail.c",
+                    "line": 120
+                }
+            ],
+            "objects": [
+                "rows"
+            ]
+        }
+
+    },
+    {
+        "vul_id": "EF02_02",
+        "project_name": "libtiff",
+        "fix_commit": "cd82b52",
+        "language":"c",
+        "vul_code_file_rel_path": "libtiff/tif_next.c",
+        "vul_code_block_start_line": 144,
+        "vul_code_block_end_line": 152,
+        "begining_window": "TIFFInitNeXT(TIFF* tif, int scheme)",
+        "CVE_id": "CVE-2014-8129",
+        "vul_description": "heap-buffer-overflow",
+        "asan_scenario_buginfo": {
+            "error": "AddressSanitizer: heap-buffer-overflow",
+            "real_patchinfo": [
+                {
+                    "filename": "tif_next.c",
+                    "edit_lines": [143],
+                    "function_name": "static int NeXTPreDecode",
+                    "existing_function": false
+                }
+            ],
+            "stacktrace": [
+                {
+                    "function_name": " NeXTDecode",
+                    "filename": "tif_next.c",
+                    "line": 124
+                },
+                {
+                    "function_name": " TIFFReadEncodedStrip",
+                    "filename": "tif_read.c",
+                    "line": 357
+                },
+                {
+                    "function_name": " t2p_readwrite_pdf_image",
+                    "filename": "tiff2pdf.c",
+                    "line": 2407
+                },
+                {
+                    "function_name": " t2p_write_pdf",
+                    "filename": "tiff2pdf.c",
+                    "line": 5408
+                },
+                {
+                    "function_name": " main",
+                    "filename": "tiff2pdf.c",
+                    "line": 794
+                }
+            ],
+            "objects": [
+                "rows"
+            ] 
+        }
+
+    },
+    {
+        "vul_id": "EF07",
+        "project_name": "libtiff",
+        "fix_commit": "c715336",
+        "language":"c",
+        "vul_code_file_rel_path": "tools/tiff2pdf.c",
+        "vul_code_block_start_line": 2761,
+        "vul_code_block_end_line": 3204,
+        "begining_window": "if(TIFFGetField(input, TIFFTAG_JPEGTABLES, &count, &jpt) != 0) {",
+        "end_window": "int retTIFFReadRawTile;",
+        "CVE_id": "CVE-2016-10094",
+        "vul_description": "Heap Buffer Overflow",
+        "asan_scenario_buginfo": {
+            "error": " AddressSanitizer: heap-buffer-overflow",
+            "real_patchinfo": [
+                {
+                    "filename": "tiff2pdf.c",
+                    "edit_lines": [2898],
+                    "function_name": "t2p_readwrite_pdf_image_tile",
+                    "existing_function": true
+                }
+            ],
+            "stacktrace": [
+                {
+                    "function_name": " _TIFFmalloc",
+                    "filename": "tif_unix.c",
+                    "line": 316
+                },
+                {
+                    "function_name": "t2p_readwrite_pdf_image_tile",
+                    "filename": "tiff2pdf.c",
+                    "line": 2887
+                },
+                {
+                    "function_name": "t2p_write_pdf",
+                    "filename": "tiff2pdf.c",
+                    "line": 5535
+                },
+                {
+                    "function_name": "main",
+                    "filename": "tiff2pdf.c",
+                    "line": 808
+                }
+            ],
+            "objects": [
+                null
+            ]
+        } 
+    },
+    {
+        "vul_id": "EF08",
+        "project_name": "libtiff",
+        "fix_commit": "0a76a8",
+        "language":"c",
+        "vul_code_file_rel_path": "libtiff/tif_jpeg.c",
+        "vul_code_block_start_line": 1576,
+        "vul_code_block_end_line": 1738,
+        "CVE_id": "CVE-2017-7601",
+        "vul_description": "shift exponent too large for 64-bit type long",
+        "asan_scenario_buginfo": {
+            "error": "runtime error: shift exponent 136 is too large for 64-bit type 'long int'",
+            "real_patchinfo": [
+                {
+                    "filename": "tif_jpeg.c",
+                    "edit_lines": [1646],
+                    "function_name": "JPEGSetupEncode",
+                    "existing_function": true,
+                    "addition_only": true
+                }
+            ],
+            "stacktrace": null,
+            "objects": [
+                null
+            ]
+        }
+    },
+    {
+        "vul_id": "EF09",
+        "project_name": "libtiff",
+        "fix_commit": "bd024f0",
+        "language":"c",
+        "vul_code_file_rel_path": "tools/rgb2ycbcr.c",
+        "vul_code_block_start_line": 70,
+        "vul_code_block_end_line": 138,
+        "CVE_id": "CVE-2016-3623",
+        "vul_description": "division by zero",
+        "asan_scenario_buginfo": {
+            "error": "runtime error: division by zero",
+            "real_patchinfo": [
+                {
+                    "filename": "rgb2ycbcr.c",
+                    "edit_lines": [96,97,98,99,100,101],
+                    "function_name": "main",
+                    "existing_function": true
+                }
+            ],
+            "stacktrace": null,
+            "objects": [
+                null
+            ]
+        }
+    },
+    {
+        "vul_id": "EF10",
+        "project_name": "libtiff",
+        "fix_commit": "47f2fb6",
+        "language":"c",
+        "vul_code_file_rel_path": "libtiff/tif_jpeg.c",
+        "vul_code_block_start_line": 1576,
+        "vul_code_block_end_line": 1731,
+        "CVE_id": "CVE-2017-7595",
+        "vul_description": "division by zero",
+        "asan_scenario_buginfo": {
+            "error": "runtime error: division by zero",
+            "real_patchinfo": [
+                {
+                    "filename": "libtiff/tif_jpeg.c",
+                    "edit_lines": [1629],
+                    "function_name": "JPEGSetupEncode",
+                    "existing_function": true,
+                    "addition_only": true
+                }
+            ],
+            "stacktrace": null,
+            "objects": [
+                null
+            ]
+        }
+    }]
+}

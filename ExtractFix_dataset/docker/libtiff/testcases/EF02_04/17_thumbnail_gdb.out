@@ -1,0 +1,319 @@
+GNU gdb (Ubuntu 7.7.1-0ubuntu5~14.04.2) 7.7.1
+Copyright (C) 2014 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from /home/wil/soft/tiffcvs/bin/thumbnail...done.
+TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorted in ascending order.
+TIFFReadDirectory: Warning, Unknown field with tag 328 (0x148) encountered.
+rastersize=1
+TIFFFillStrip: Read error on strip 0; got 18446744073709551603 bytes, expected 1.
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff7b5b871 in _TIFFVGetField (tif=0x605930, tag=328, ap=0x7fffffffe358) at tif_dir.c:1056
+1056							*va_arg(ap, void **) = tv->value;
+#0  0x00007ffff7b5b871 in _TIFFVGetField (tif=0x605930, tag=328, ap=0x7fffffffe358) at tif_dir.c:1056
+#1  0x00007ffff7b5bf87 in TIFFVGetField (tif=0x605930, tag=328, ap=0x7fffffffe358) at tif_dir.c:1174
+#2  0x00007ffff7b5bee4 in TIFFGetField (tif=0x605930, tag=328) at tif_dir.c:1158
+#3  0x000000000040162f in cpTag (in=0x605930, out=0x605010, tag=328, count=1, type=TIFF_LONG) at thumbnail.c:165
+#4  0x0000000000401971 in cpTags (in=0x605930, out=0x605010) at thumbnail.c:295
+#5  0x0000000000401cb1 in cpIFD (in=0x605930, out=0x605010) at thumbnail.c:371
+#6  0x000000000040142e in main (argc=3, argv=0x7fffffffe608) at thumbnail.c:122
+1051						if (fip->field_passcount) {
+1052							if (fip->field_readcount == TIFF_VARIABLE2)
+1053								*va_arg(ap, uint32*) = (uint32)tv->count;
+1054							else  /* Assume TIFF_VARIABLE */
+1055								*va_arg(ap, uint16*) = (uint16)tv->count;
+1056							*va_arg(ap, void **) = tv->value;
+1057							ret_val = 1;
+1058						} else if (fip->field_tag == TIFFTAG_DOTRANGE
+1059							   && strcmp(fip->field_name,"DotRange") == 0) {
+1060							/* TODO: This is an evil exception and should not have been
+A debugging session is active.
+
+	Inferior 1 [process 28988] will be killed.
+
+Quit anyway? (y or n) [answered Y; input not from terminal]

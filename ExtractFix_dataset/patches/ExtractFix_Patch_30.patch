@@ -1,0 +1,28 @@
+commit 279420b5a63b3f254e4932a4afb91759fb50186a
+Author: Michael Niedermayer <michael@niedermayer.cc>
+Date:   Mon May 8 11:55:27 2017 +0200
+
+    avcodec/cavsdec: Check sym_factor
+    
+    Fixes: runtime error: signed integer overflow: 25984 * 130560 cannot be represented in type 'int'
+    
+    Fixes: 1404/clusterfuzz-testcase-minimized-5000441286885376
+    
+    Found-by: continuous fuzzing process https://github.com/google/oss-fuzz/tree/master/targets/ffmpeg
+    Signed-off-by: Michael Niedermayer <michael@niedermayer.cc>
+
+diff --git a/libavcodec/cavsdec.c b/libavcodec/cavsdec.c
+index 4d3d2d7c65..eb2464f36d 100644
+--- a/libavcodec/cavsdec.c
++++ b/libavcodec/cavsdec.c
+@@ -1031,6 +1031,10 @@ static int decode_pic(AVSContext *h)
+     h->scale_den[1] = h->dist[1] ? 512/h->dist[1] : 0;
+     if (h->cur.f->pict_type == AV_PICTURE_TYPE_B) {
+         h->sym_factor = h->dist[0] * h->scale_den[1];
++        if (FFABS(h->sym_factor) > 32768) {
++            av_log(h->avctx, AV_LOG_ERROR, "sym_factor %d too large\n", h->sym_factor);
++            return AVERROR_INVALIDDATA;
++        }
+     } else {
+         h->direct_den[0] = h->dist[0] ? 16384 / h->dist[0] : 0;
+         h->direct_den[1] = h->dist[1] ? 16384 / h->dist[1] : 0;

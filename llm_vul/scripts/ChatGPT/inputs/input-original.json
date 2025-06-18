@@ -1,0 +1,467 @@
+{
+  "config": "WITH_COMMENT",
+  "data": {
+    "Netty-1": {
+      "input": "1 private void splitHeader(AppendableCharSequence sb) {\n2     final int length = sb.length();\n3     int nameStart;\n4     int nameEnd;\n5     int colonEnd;\n6     int valueStart;\n7     int valueEnd;\n8     nameStart = findNonWhitespace(sb, 0);\n9     for (nameEnd = nameStart; nameEnd < length; nameEnd ++) {\n10         char ch = sb.charAtUnsafe(nameEnd);\n11         if (ch == ':' || Character.isWhitespace(ch)) {\n12             break;\n13         }\n14     }\n15     for (colonEnd = nameEnd; colonEnd < length; colonEnd ++) {\n16         if (sb.charAtUnsafe(colonEnd) == ':') {\n17             colonEnd ++;\n18             break;\n19         }\n20     }\n21     name = sb.subStringUnsafe(nameStart, nameEnd);\n22     valueStart = findNonWhitespace(sb, colonEnd);\n23     if (valueStart == length) {\n24         value = EMPTY_VALUE;\n25     } else {\n26         valueEnd = findEndOfString(sb);\n27         value = sb.subStringUnsafe(valueStart, valueEnd);\n28     }\n29 }\n",
+      "buggy_line": [
+        11
+      ],
+      "initial_code": "private void splitHeader(AppendableCharSequence sb) {\n    final int length = sb.length();\n",
+      "match_line": "int nameStart;"
+    },
+    "Netty-2": {
+      "input": "1 private void splitHeader(AppendableCharSequence sb) {\n2     final int length = sb.length();\n3     int nameStart;\n4     int nameEnd;\n5     int colonEnd;\n6     int valueStart;\n7     int valueEnd;\n8     nameStart = findNonWhitespace(sb, 0);\n9     for (nameEnd = nameStart; nameEnd < length; nameEnd ++) {\n10         char ch = sb.charAtUnsafe(nameEnd);\n11         if (ch == ':' ||\n12                 (!isDecodingRequest() && Character.isWhitespace(ch))) {\n13             break;\n14         }\n15     }\n16     for (colonEnd = nameEnd; colonEnd < length; colonEnd ++) {\n17         if (sb.charAtUnsafe(colonEnd) == ':') {\n18             colonEnd ++;\n19             break;\n20         }\n21     }\n22     name = sb.subStringUnsafe(nameStart, nameEnd);\n23     valueStart = findNonWhitespace(sb, colonEnd);\n24     if (valueStart == length) {\n25         value = EMPTY_VALUE;\n26     } else {\n27         valueEnd = findEndOfString(sb);\n28         value = sb.subStringUnsafe(valueStart, valueEnd);\n29     }\n30 }\n",
+      "buggy_line": [
+        16
+      ],
+      "initial_code": "private void splitHeader(AppendableCharSequence sb) {\n    final int length = sb.length();\n",
+      "match_line": "int nameStart;"
+    },
+    "Jenkins-1": {
+      "input": "1 @Exported(inline=true)\n2 public Map<String,Object> getMonitorData() {\n3     Map<String,Object> r = new HashMap<String, Object>();\n4     for (NodeMonitor monitor : NodeMonitor.getAll())\n5         r.put(monitor.getClass().getName(),monitor.data(this));\n6     return r;\n7 }\n",
+      "buggy_line": [
+        4,
+        5
+      ],
+      "initial_code": "@Exported(inline=true)\npublic Map<String,Object> getMonitorData() {\n",
+      "match_line": "Map<String,Object> r = new HashMap<String, Object>();"
+    },
+    "Jenkins-2": {
+      "input": "1 @Exported(name=\"jobs\")\n2 public List<TopLevelItem> getItems() {\n3     if (authorizationStrategy instanceof AuthorizationStrategy.Unsecured ||\n4         authorizationStrategy instanceof FullControlOnceLoggedInAuthorizationStrategy) {\n5         return new ArrayList(items.values());\n6     }\n7 \n8     List<TopLevelItem> viewableItems = new ArrayList<TopLevelItem>();\n9     for (TopLevelItem item : items.values()) {\n10         if (item.hasPermission(Item.READ))\n11             viewableItems.add(item);\n12     }\n13     return viewableItems;\n14 }\n",
+      "buggy_line": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "initial_code": "@Exported(name=\"jobs\")\n",
+      "match_line": "public List<TopLevelItem> getItems() {"
+    },
+    "Jenkins-3": {
+      "input": "1     @Override\n2     public SearchIndexBuilder makeSearchIndex() {\n3         return super.makeSearchIndex()\n4             .add(\"configure\", \"config\",\"configure\")\n5             .add(\"manage\")\n6             .add(\"log\")\n7             .add(new CollectionSearchIndex<TopLevelItem>() {\n8                 protected SearchItem get(String key) { return getItemByFullName(key, TopLevelItem.class); }\n9                 protected Collection<TopLevelItem> all() { return getAllItems(TopLevelItem.class); }\n10             })\n11             .add(getPrimaryView().makeSearchIndex())\n12             .add(new CollectionSearchIndex() {\n13                 protected Computer get(String key) { return getComputer(key); }\n14                 protected Collection<Computer> all() { return computers.values(); }\n15             })\n16             .add(new CollectionSearchIndex() {\n17                 protected User get(String key) { return User.get(key,false); }\n18                 protected Collection<User> all() { return User.getAll(); }\n19             })\n20             .add(new CollectionSearchIndex() {\n21                 protected View get(String key) { return getView(key); }\n22                 protected Collection<View> all() { return views; }\n23             });\n24     }\n",
+      "buggy_line": [
+        22
+      ],
+      "initial_code": "    @Override\n    public SearchIndexBuilder makeSearchIndex() {\n",
+      "match_line": "return super.makeSearchIndex()"
+    },
+    "Jinjava-1": {
+      "input": "1   private static final Set<String> RESTRICTED_METHODS = ImmutableSet.<String> builder()\n2       .add(\"clone\")\n3       .add(\"hashCode\")\n4       .add(\"notify\")\n5       .add(\"notifyAll\")\n6       .add(\"wait\")\n7       .build();",
+      "buggy_line": [
+        4
+      ],
+      "initial_code": "  private static final Set<String> RESTRICTED_METHODS =",
+      "match_line": "ImmutableSet.<String> builder()"
+    },
+    "Halo-1": {
+      "input": "1 public static void checkDirectoryTraversal(@NonNull Path parentPath, @NonNull Path pathToCheck) {\n2     Assert.notNull(parentPath, \"Parent path must not be null\");\n3     Assert.notNull(pathToCheck, \"Path to check must not be null\");\n4     if (pathToCheck.startsWith(parentPath.normalize())) {\n5         return;\n6     }\n7     throw new ForbiddenException(\"You do not have permission to access \" + pathToCheck).setErrorData(pathToCheck);\n8 }\n",
+      "buggy_line": [
+        4
+      ],
+      "initial_code": "public static void checkDirectoryTraversal(@NonNull Path parentPath, @NonNull Path pathToCheck) {\n    Assert.notNull(parentPath, \"Parent path must not be null\");\n",
+      "match_line": "Assert.notNull(pathToCheck, \"Path to check must not be null\");"
+    },
+    "Retrofit-1": {
+      "input": "1 JaxbResponseConverter(JAXBContext context, Class<T> type) {\n2   this.context = context;\n3   this.type = type;\n4 }\n",
+      "buggy_line": [
+        3
+      ],
+      "initial_code": "JaxbResponseConverter(JAXBContext context, Class<T> type) {\n",
+      "match_line": "this.context = context;"
+    },
+    "Quartz-1": {
+      "input": "1 protected void initDocumentParser() throws ParserConfigurationException  {\n2     DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();\n3     docBuilderFactory.setNamespaceAware(true);\n4     docBuilderFactory.setValidating(true);\n5     docBuilderFactory.setAttribute(\"http://java.sun.com/xml/jaxp/properties/schemaLanguage\", \"http://www.w3.org/2001/XMLSchema\");\n6     docBuilderFactory.setAttribute(\"http://java.sun.com/xml/jaxp/properties/schemaSource\", resolveSchemaSource());\n7     docBuilder = docBuilderFactory.newDocumentBuilder();\n8     \n9     docBuilder.setErrorHandler(this);\n10     NamespaceContext nsContext = new NamespaceContext()\n11     {\n12       public String getNamespaceURI(String prefix)\n13       {\n14           if (prefix == null)\n15               throw new IllegalArgumentException(\"Null prefix\");\n16           if (XMLConstants.XML_NS_PREFIX.equals(prefix))\n17               return XMLConstants.XML_NS_URI;\n18           if (XMLConstants.XMLNS_ATTRIBUTE.equals(prefix))\n19               return XMLConstants.XMLNS_ATTRIBUTE_NS_URI;\n20           if (\"q\".equals(prefix))\n21               return QUARTZ_NS;\n22           return XMLConstants.NULL_NS_URI;\n23       }\n24       public Iterator<?> getPrefixes(String namespaceURI)\n25       {\n26           throw new UnsupportedOperationException();\n27       }\n28       public String getPrefix(String namespaceURI)\n29       {\n30           throw new UnsupportedOperationException();\n31       }\n32     }; \n33     xpath = XPathFactory.newInstance().newXPath();\n34     xpath.setNamespaceContext(nsContext);\n35 }\n",
+      "buggy_line": [
+        7
+      ],
+      "initial_code": "protected void initDocumentParser() throws ParserConfigurationException  {\n    DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();\n",
+      "match_line": "docBuilderFactory.setNamespaceAware(true);"
+    },
+    "Flow-1": {
+      "input": "1 public boolean serveDevModeRequest(HttpServletRequest request,\n2         HttpServletResponse response) throws IOException {\n3     if (isDevServerFailedToStart.get() || !devServerStartFuture.isDone()) {\n4         return false;\n5     }\n6     String requestFilename = request.getPathInfo();\n7     if (HandlerHelper.isPathUnsafe(requestFilename)) {\n8         getLogger().info(HandlerHelper.UNSAFE_PATH_ERROR_MESSAGE_PATTERN,\n9                 requestFilename);\n10         response.setStatus(HttpServletResponse.SC_FORBIDDEN);\n11         return true;\n12     }\n13     if(APP_THEME_PATTERN.matcher(requestFilename).find()) {\n14         requestFilename = \"/VAADIN/static\" + requestFilename;\n15     }\n16     HttpURLConnection connection = prepareConnection(requestFilename,\n17             request.getMethod());\n18     Enumeration<String> headerNames = request.getHeaderNames();\n19     while (headerNames.hasMoreElements()) {\n20         String header = headerNames.nextElement();\n21         connection.setRequestProperty(header,\n22                 \"Connect\".equals(header) ? \"close\"\n23                         : request.getHeader(header));\n24     }\n25     getLogger().debug(\"Requesting resource to webpack {}\",\n26             connection.getURL());\n27     int responseCode = connection.getResponseCode();\n28     if (responseCode == HTTP_NOT_FOUND) {\n29         getLogger().debug(\"Resource not served by webpack {}\",\n30                 requestFilename);\n31         return false;\n32     }\n33     getLogger().debug(\"Served resource by webpack: {} {}\", responseCode,\n34             requestFilename);\n35     connection.getHeaderFields().forEach((header, values) -> {\n36         if (header != null) {\n37             response.addHeader(header, values.get(0));\n38         }\n39     });\n40     if (responseCode == HTTP_OK) {\n41         writeStream(response.getOutputStream(),\n42                 connection.getInputStream());\n43     } else if (responseCode < 400) {\n44         response.setStatus(responseCode);\n45     } else {\n46         response.sendError(responseCode);\n47     }\n48     response.getOutputStream().close();\n49     return true;\n50 }\n",
+      "buggy_line": [
+        7,
+        8
+      ],
+      "initial_code": "public boolean serveDevModeRequest(HttpServletRequest request,\n        HttpServletResponse response) throws IOException {\n",
+      "match_line": "if (isDevServerFailedToStart.get() || !devServerStartFuture.isDone()) {"
+    },
+    "Flow-2": {
+      "input": "1 @Override\n2 public int setErrorParameter(BeforeEnterEvent event,\n3         ErrorParameter<NotFoundException> parameter) {\n4     String path = event.getLocation().getPath();\n5     String additionalInfo = \"\";\n6     if (parameter.hasCustomMessage()) {\n7         additionalInfo = \"Reason: \" + parameter.getCustomMessage();\n8     }\n9     path = Jsoup.clean(path, Whitelist.none());\n10     additionalInfo = Jsoup.clean(additionalInfo, Whitelist.none());\n11     boolean productionMode = event.getUI().getSession().getConfiguration()\n12             .isProductionMode();\n13     String template = getErrorHtml(productionMode);\n14     template = template.replace(\"{{path}}\", path);\n15     template = template.replace(\"{{additionalInfo}}\", additionalInfo);\n16     if (template.contains(\"{{routes}}\")) {\n17         template = template.replace(\"{{routes}}\", getRoutes(event));\n18     }\n19 \n20     getElement().appendChild(new Html(template).getElement());\n21     return HttpServletResponse.SC_NOT_FOUND;\n22 }\n",
+      "buggy_line": [
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "initial_code": "@Override\npublic int setErrorParameter(BeforeEnterEvent event,\n",
+      "match_line": "ErrorParameter<NotFoundException> parameter) {"
+    },
+    "BC-Java-1": {
+      "input": "1 private BigInteger[] derDecode(\n2     byte[]  encoding)\n3     throws IOException\n4 {\n5     ASN1Sequence s = (ASN1Sequence)ASN1Primitive.fromByteArray(encoding);\n6     return new BigInteger[]{\n7         ((ASN1Integer)s.getObjectAt(0)).getValue(),\n8         ((ASN1Integer)s.getObjectAt(1)).getValue()\n9     };\n10 }\n",
+      "buggy_line": [
+        6
+      ],
+      "initial_code": "private BigInteger[] derDecode(\n    byte[]  encoding)\n",
+      "match_line": "throws IOException"
+    },
+    "Json-sanitizer-1": {
+      "input": "1 private void sanitizeString(int start, int end) {\n2   boolean closed = false;\n3   for (int i = start; i < end; ++i) {\n4     char ch = jsonish.charAt(i);\n5     switch (ch) {\n6       case '\\n': replace(i, i + 1, \"\\\\n\"); break;\n7       case '\\r': replace(i, i + 1, \"\\\\r\"); break;\n8       case '\\u2028': replace(i, i + 1, \"\\\\u2028\"); break;\n9       case '\\u2029': replace(i, i + 1, \"\\\\u2029\"); break;\n10       case '\"': case '\\'':\n11         if (i == start) {\n12           if (ch == '\\'') { replace(i, i + 1, '\"'); }\n13         } else {\n14           if (i + 1 == end) {\n15             char startDelim = jsonish.charAt(start);\n16             if (startDelim != '\\'') {\n17               startDelim = '\"';\n18             }\n19             closed = startDelim == ch;\n20           }\n21           if (closed) {\n22             if (ch == '\\'') { replace(i, i + 1, '\"'); }\n23           } else if (ch == '\"') {\n24             insert(i, '\\\\');\n25           }\n26         }\n27         break;\n28       case '/':\n29         if (i > start && i + 2 < end && '<' == jsonish.charAt(i - 1)\n30             && 's' == (jsonish.charAt(i + 1) | 32)\n31             && 'c' == (jsonish.charAt(i + 2) | 32)) {\n32           insert(i, '\\\\');\n33         }\n34         break;\n35       case ']':\n36         if (i + 2 < end && ']' == jsonish.charAt(i + 1)\n37             && '>' == jsonish.charAt(i + 2)) {\n38           replace(i, i + 1, \"\\\\u005d\");\n39         }\n40         break;\n41       case '\\\\':\n42         if (i + 1 == end) {\n43           elide(i, i + 1);\n44           break;\n45         }\n46         char sch = jsonish.charAt(i + 1);\n47         switch (sch) {\n48           case 'b': case 'f': case 'n': case 'r': case 't': case '\\\\':\n49           case '/': case '\"':\n50             ++i;\n51             break;\n52           case 'v':  \n53             replace(i, i + 2, \"\\\\u0008\");\n54             ++i;\n55             break;\n56           case 'x':\n57             if (i + 4 < end && isHexAt(i+2) && isHexAt(i+3)) {\n58               replace(i, i + 2, \"\\\\u00\");  \n59               i += 3;\n60               break;\n61             }\n62             elide(i, i + 1);\n63             break;\n64           case 'u':\n65             if (i + 6 < end && isHexAt(i + 2) && isHexAt(i + 3)\n66                 && isHexAt(i + 4) && isHexAt(i + 5)) {\n67               i += 5;\n68               break;\n69             }\n70             elide(i, i + 1);\n71             break;\n72           case '0': case '1': case '2': case '3':\n73           case '4': case '5': case '6': case '7':\n74             int octalEnd = i + 1;\n75             if (octalEnd + 1 < end && isOctAt(octalEnd + 1)) {\n76               ++octalEnd;\n77               if (ch <= '3' && octalEnd + 1 < end && isOctAt(octalEnd + 1)) {\n78                 ++octalEnd;\n79               }\n80               int value = 0;\n81               for (int j = i; j < octalEnd; ++j) {\n82                 value = (value << 3) | (jsonish.charAt(j) - '0');\n83               }\n84               replace(i + 1, octalEnd, \"u00\");\n85               appendHex(value, 2);\n86             }\n87             i = octalEnd - 1;\n88             break;\n89           default:\n90             elide(i, i + 1);\n91             break;\n92         }\n93         break;\n94       default:\n95         if (ch < 0x20) {\n96           if (ch == 9 || ch == 0xa || ch == 0xd) { continue; }\n97         } else if (ch < 0xd800) {  \n98           continue;\n99         } else if (ch < 0xe000) {  \n100           if (Character.isHighSurrogate(ch) && i+1 < end\n101               && Character.isLowSurrogate(jsonish.charAt(i+1))) {\n102             ++i;  \n103             continue;\n104           }\n105         } else if (ch <= 0xfffd) {  \n106           continue;\n107         }\n108         replace(i, i + 1, \"\\\\u\");\n109         for (int j = 4; --j >= 0;) {\n110           sanitizedJson.append(HEX_DIGITS[(ch >>> (j << 2)) & 0xf]);\n111         }\n112         break;\n113     }\n114   }\n115   if (!closed) { insert(end, '\"'); }\n116 }\n",
+      "buggy_line": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ],
+      "initial_code": "private void sanitizeString(int start, int end) {\n  boolean closed = false;\n",
+      "match_line": "for (int i = start; i < end; ++i) {"
+    },
+    "Ratpack-1": {
+      "input": "1 private void newRequest(ChannelHandlerContext ctx, HttpRequest nettyRequest) throws Exception {\n2   if (!nettyRequest.decoderResult().isSuccess()) {\n3     LOGGER.debug(\"Failed to decode HTTP request.\", nettyRequest.decoderResult().cause());\n4     sendError(ctx, HttpResponseStatus.BAD_REQUEST);\n5     return;\n6   }\n7   Headers requestHeaders = new NettyHeadersBackedHeaders(nettyRequest.headers());\n8   Long contentLength = HttpUtil.getContentLength(nettyRequest, -1L);\n9   String transferEncoding = requestHeaders.get(HttpHeaderNames.TRANSFER_ENCODING);\n10   boolean hasBody = (contentLength > 0) || (transferEncoding != null);\n11   RequestBody requestBody = hasBody ? new RequestBody(contentLength, nettyRequest, ctx) : null;\n12   Channel channel = ctx.channel();\n13   if (requestBody != null) {\n14     channel.attr(BODY_ACCUMULATOR_KEY).set(requestBody);\n15   }\n16   InetSocketAddress remoteAddress = (InetSocketAddress) channel.remoteAddress();\n17   InetSocketAddress socketAddress = (InetSocketAddress) channel.localAddress();\n18   ConnectionIdleTimeout connectionIdleTimeout = ConnectionIdleTimeout.of(channel);\n19   DefaultRequest request = new DefaultRequest(\n20     clock.instant(),\n21     requestHeaders,\n22     nettyRequest.method(),\n23     nettyRequest.protocolVersion(),\n24     nettyRequest.uri(),\n25     remoteAddress,\n26     socketAddress,\n27     serverRegistry.get(ServerConfig.class),\n28     requestBody,\n29     connectionIdleTimeout,\n30     channel.attr(CLIENT_CERT_KEY).get()\n31   );\n32   HttpHeaders nettyHeaders = new DefaultHttpHeaders(false);\n33   MutableHeaders responseHeaders = new NettyHeadersBackedMutableHeaders(nettyHeaders);\n34   AtomicBoolean transmitted = new AtomicBoolean(false);\n35   DefaultResponseTransmitter responseTransmitter = new DefaultResponseTransmitter(transmitted, channel, clock, nettyRequest, request, nettyHeaders, requestBody);\n36   ctx.channel().attr(DefaultResponseTransmitter.ATTRIBUTE_KEY).set(responseTransmitter);\n37   Action<Action<Object>> subscribeHandler = thing -> {\n38     transmitted.set(true);\n39     ctx.channel().attr(CHANNEL_SUBSCRIBER_ATTRIBUTE_KEY).set(thing);\n40   };\n41   DefaultContext.RequestConstants requestConstants = new DefaultContext.RequestConstants(\n42     applicationConstants,\n43     request,\n44     channel,\n45     responseTransmitter,\n46     subscribeHandler\n47   );\n48   Response response = new DefaultResponse(responseHeaders, ctx.alloc(), responseTransmitter);\n49   requestConstants.response = response;\n50   DefaultContext.start(channel.eventLoop(), requestConstants, serverRegistry, handlers, execution -> {\n51     if (!transmitted.get()) {\n52       Handler lastHandler = requestConstants.handler;\n53       StringBuilder description = new StringBuilder();\n54       description\n55         .append(\"No response sent for \")\n56         .append(request.getMethod().getName())\n57         .append(\" request to \")\n58         .append(request.getUri());\n59       if (lastHandler != null) {\n60         description.append(\" (last handler: \");\n61         if (lastHandler instanceof DescribingHandler) {\n62           ((DescribingHandler) lastHandler).describeTo(description);\n63         } else {\n64           DescribingHandlers.describeTo(lastHandler, description);\n65         }\n66         description.append(\")\");\n67       }\n68       String message = description.toString();\n69       LOGGER.warn(message);\n70       response.getHeaders().clear();\n71       ByteBuf body;\n72       if (development) {\n73         CharBuffer charBuffer = CharBuffer.wrap(message);\n74         body = ByteBufUtil.encodeString(ctx.alloc(), charBuffer, CharsetUtil.UTF_8);\n75         response.contentType(HttpHeaderConstants.PLAIN_TEXT_UTF8);\n76       } else {\n77         body = Unpooled.EMPTY_BUFFER;\n78       }\n79       response.getHeaders().set(HttpHeaderConstants.CONTENT_LENGTH, body.readableBytes());\n80       responseTransmitter.transmit(HttpResponseStatus.INTERNAL_SERVER_ERROR, body);\n81     }\n82   });\n83 }\n",
+      "buggy_line": [
+        32
+      ],
+      "initial_code": "private void newRequest(ChannelHandlerContext ctx, HttpRequest nettyRequest) throws Exception {\n  if (!nettyRequest.decoderResult().isSuccess()) {\n",
+      "match_line": "LOGGER.debug(\"Failed to decode HTTP request.\", nettyRequest.decoderResult().cause());"
+    },
+    "Pulsar-1": {
+      "input": "1 protected void internalGetMessageById(AsyncResponse asyncResponse, long ledgerId, long entryId,\n2                                           boolean authoritative) {\n3     try {\n4         validateTopicOwnership(topicName, authoritative);\n5         validateTopicOperation(topicName, TopicOperation.PEEK_MESSAGES);\n6         if (topicName.isGlobal()) {\n7             validateGlobalNamespaceOwnership(namespaceName);\n8         }\n9         PersistentTopic topic = (PersistentTopic) getTopicReference(topicName);\n10         ManagedLedgerImpl ledger = (ManagedLedgerImpl) topic.getManagedLedger();\n11         ledger.asyncReadEntry(new PositionImpl(ledgerId, entryId), new AsyncCallbacks.ReadEntryCallback() {\n12             @Override\n13             public void readEntryFailed(ManagedLedgerException exception, Object ctx) {\n14                 asyncResponse.resume(new RestException(exception));\n15             }\n16             @Override\n17             public void readEntryComplete(Entry entry, Object ctx) {\n18                 try {\n19                     asyncResponse.resume(generateResponseWithEntry(entry));\n20                 } catch (IOException exception) {\n21                     asyncResponse.resume(new RestException(exception));\n22                 } finally {\n23                     if (entry != null) {\n24                         entry.release();\n25                     }\n26                 }\n27             }\n28         }, null);\n29     } catch (NullPointerException npe) {\n30         asyncResponse.resume(new RestException(Status.NOT_FOUND, \"Message not found\"));\n31     } catch (Exception exception) {\n32         log.error(\"[{}] Failed to get message with ledgerId {} entryId {} from {}\",\n33                 clientAppId(), ledgerId, entryId, topicName, exception);\n34         asyncResponse.resume(new RestException(exception));\n35     }\n36 }\n",
+      "buggy_line": [
+        11
+      ],
+      "initial_code": "protected void internalGetMessageById(AsyncResponse asyncResponse, long ledgerId, long entryId,\n                                          boolean authoritative) {\n",
+      "match_line": "try {"
+    },
+    "VUL4J-1": {
+      "input": "1 @SuppressWarnings({ \"unchecked\", \"rawtypes\" })\n2 public <T> T deserialze(DefaultJSONParser parser, Type type, Object fieldName) {\n3     final JSONLexer lexer = parser.lexer;\n4     if (lexer.token() == JSONToken.NULL) {\n5         lexer.nextToken(JSONToken.COMMA);\n6         return null;\n7     }\n8     if (lexer.token() == JSONToken.LITERAL_STRING) {\n9         byte[] bytes = lexer.bytesValue();\n10         lexer.nextToken(JSONToken.COMMA);\n11         return (T) bytes;\n12     }\n13     Class componentClass;\n14     Type componentType;\n15     if (type instanceof GenericArrayType) {\n16         GenericArrayType clazz = (GenericArrayType) type;\n17         componentType = clazz.getGenericComponentType();\n18         if (componentType instanceof TypeVariable) {\n19             TypeVariable typeVar = (TypeVariable) componentType;\n20             Type objType = parser.getContext().type;\n21             if (objType instanceof ParameterizedType) {\n22                 ParameterizedType objParamType = (ParameterizedType) objType;\n23                 Type objRawType = objParamType.getRawType();\n24                 Type actualType = null;\n25                 if (objRawType instanceof Class) {\n26                     TypeVariable[] objTypeParams = ((Class) objRawType).getTypeParameters();\n27                     for (int i = 0; i < objTypeParams.length; ++i) {\n28                         if (objTypeParams[i].getName().equals(typeVar.getName())) {\n29                             actualType = objParamType.getActualTypeArguments()[i];\n30                         }\n31                     }\n32                 }\n33                 if (actualType instanceof Class) {\n34                     componentClass = (Class) actualType;\n35                 } else {\n36                     componentClass = Object.class;\n37                 }\n38             } else {\n39                 componentClass = TypeUtils.getClass(typeVar.getBounds()[0]);\n40             }\n41         } else {\n42             componentClass = TypeUtils.getClass(componentType);\n43         }\n44     } else {\n45         Class clazz = (Class) type;\n46         componentType = componentClass = clazz.getComponentType();\n47     }\n48     JSONArray array = new JSONArray();\n49     parser.parseArray(componentClass, array, fieldName);\n50 \n51     return (T) toObjectArray(parser, componentClass, array);\n52 }\n",
+      "buggy_line": [
+        49
+      ],
+      "initial_code": "@SuppressWarnings({ \"unchecked\", \"rawtypes\" })\npublic <T> T deserialze(DefaultJSONParser parser, Type type, Object fieldName) {\n",
+      "match_line": "final JSONLexer lexer = parser.lexer;"
+    },
+    "VUL4J-3": {
+      "input": "1 @Converter\n2 public SAXSource toSAXSourceFromStream(StreamSource source, Exchange exchange) throws SAXException {\n3     InputSource inputSource;\n4     if (source.getReader() != null) {\n5         inputSource = new InputSource(source.getReader());\n6     } else {\n7         inputSource = new InputSource(source.getInputStream());\n8     }\n9     inputSource.setSystemId(source.getSystemId());\n10     inputSource.setPublicId(source.getPublicId());\n11     XMLReader xmlReader = null;\n12     SAXParserFactory sfactory = null;\n13     try {\n14         if (exchange != null) {\n15             sfactory = exchange.getProperty(Exchange.SAXPARSER_FACTORY, SAXParserFactory.class);\n16         }\n17         if (sfactory == null) {\n18             sfactory = SAXParserFactory.newInstance();\n19             try {\n20                 sfactory.setFeature(javax.xml.XMLConstants.FEATURE_SECURE_PROCESSING, true);\n21             } catch (Exception e) {\n22                 LOG.warn(\"SAXParser doesn't support the feature {} with value {}, due to {}.\", new Object[]{javax.xml.XMLConstants.FEATURE_SECURE_PROCESSING, \"true\", e});\n23             }\n24         }\n25         sfactory.setNamespaceAware(true);\n26         SAXParser parser = sfactory.newSAXParser();\n27         xmlReader = parser.getXMLReader();\n28     } catch (Exception ex) {\n29         LOG.warn(\"Cannot create the SAXParser XMLReader, due to {}\", ex);\n30     }\n31     return new SAXSource(xmlReader, inputSource);\n32 }\n",
+      "buggy_line": [
+        24
+      ],
+      "initial_code": "@Converter\npublic SAXSource toSAXSourceFromStream(StreamSource source, Exchange exchange) throws SAXException {\n",
+      "match_line": "InputSource inputSource;"
+    },
+    "VUL4J-4": {
+      "input": "1 protected Object doGetDocument(Exchange exchange, Object body) throws Exception {\n2     if (body == null) {\n3         return null;\n4     }\n5     Object answer = null;\n6     Class<?> type = getDocumentType();\n7     Exception cause = null;\n8     if (type != null) {\n9         try {\n10             answer = exchange.getContext().getTypeConverter().convertTo(type, exchange, body);\n11         } catch (Exception e) {\n12             cause = e;\n13         }\n14     }\n15     \n16     if (answer == null) {\n17         if (body instanceof WrappedFile) {\n18             InputStream is = exchange.getContext().getTypeConverter().convertTo(InputStream.class, exchange, body);\n19             answer = new InputSource(is);\n20         } else if (body instanceof BeanInvocation) {\n21             BeanInvocation bi = exchange.getContext().getTypeConverter().convertTo(BeanInvocation.class, exchange, body);\n22             if (bi.getArgs() != null && bi.getArgs().length == 1 && bi.getArgs()[0] == null) {\n23                 answer = null;\n24             }\n25         } else if (body instanceof String) {\n26             answer = new InputSource(new StringReader((String) body));\n27         }\n28     }\n29     if (type == null && answer == null) {\n30         answer = body;\n31     } else if (answer == null) {\n32         if (cause != null) {\n33             throw cause;\n34         } else {\n35             throw new NoTypeConversionAvailableException(body, type);\n36         }\n37     }\n38     return answer;\n39 }\n",
+      "buggy_line": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "initial_code": "protected Object doGetDocument(Exchange exchange, Object body) throws Exception {\n    if (body == null) {\n",
+      "match_line": "return null;"
+    },
+    "VUL4J-5": {
+      "input": "1 private void expand(ArchiveEntrySupplier supplier, EntryWriter writer, File targetDirectory)\n2     throws IOException {\n3     String targetDirPath = targetDirectory.getCanonicalPath();\n4     ArchiveEntry nextEntry = supplier.getNextReadableEntry();\n5     while (nextEntry != null) {\n6         File f = new File(targetDirectory, nextEntry.getName());\n7         if (!f.getCanonicalPath().startsWith(targetDirPath)) {\n8             throw new IOException(\"expanding \" + nextEntry.getName()\n9                 + \" would create file outside of \" + targetDirectory);\n10         }\n11         if (nextEntry.isDirectory()) {\n12             if (!f.isDirectory() && !f.mkdirs()) {\n13                 throw new IOException(\"failed to create directory \" + f);\n14             }\n15         } else {\n16             File parent = f.getParentFile();\n17             if (!parent.isDirectory() && !parent.mkdirs()) {\n18                 throw new IOException(\"failed to create directory \" + parent);\n19             }\n20             try (OutputStream o = Files.newOutputStream(f.toPath())) {\n21                 writer.writeEntryDataTo(nextEntry, o);\n22             }\n23         }\n24         nextEntry = supplier.getNextReadableEntry();\n25     }\n26 }\n",
+      "buggy_line": [
+        3
+      ],
+      "initial_code": "private void expand(ArchiveEntrySupplier supplier, EntryWriter writer, File targetDirectory)\n    throws IOException {\n",
+      "match_line": "String targetDirPath = targetDirectory.getCanonicalPath();"
+    },
+    "VUL4J-6": {
+      "input": "1 public void parseCentralDirectoryFormat(final byte[] data, final int offset, final int length) {\n2     this.format = ZipShort.getValue(data, offset);\n3     this.algId = EncryptionAlgorithm.getAlgorithmByCode(ZipShort.getValue(data, offset + 2));\n4     this.bitlen = ZipShort.getValue(data, offset + 4);\n5     this.flags = ZipShort.getValue(data, offset + 6);\n6     this.rcount = ZipLong.getValue(data, offset + 8);\n7     if (rcount > 0) {\n8         this.hashAlg = HashAlgorithm.getAlgorithmByCode(ZipShort.getValue(data, offset + 12));\n9         this.hashSize = ZipShort.getValue(data, offset + 14);\n10         for (int i = 0; i < this.rcount; i++) {\n11             for (int j = 0; j < this.hashSize; j++) {\n12             }\n13         }\n14     }\n15 }\n",
+      "buggy_line": [
+        10
+      ],
+      "initial_code": "public void parseCentralDirectoryFormat(final byte[] data, final int offset, final int length) {\n    this.format = ZipShort.getValue(data, offset);\n",
+      "match_line": "this.algId = EncryptionAlgorithm.getAlgorithmByCode(ZipShort.getValue(data, offset + 2));"
+    },
+    "VUL4J-7": {
+      "input": "1 private int readStored(final byte[] buffer, final int offset, final int length) throws IOException {\n2     if (current.hasDataDescriptor) {\n3         if (lastStoredEntry == null) {\n4             readStoredEntry();\n5         }\n6         return lastStoredEntry.read(buffer, offset, length);\n7     }\n8     final long csize = current.entry.getSize();\n9     if (current.bytesRead >= csize) {\n10         return -1;\n11     }\n12     if (buf.position() >= buf.limit()) {\n13         buf.position(0);\n14         final int l = in.read(buf.array());\n15         if (l == -1) {\n16             return -1;\n17         }\n18         buf.limit(l);\n19         count(l);\n20         current.bytesReadFromStream += l;\n21     }\n22     int toRead = Math.min(buf.remaining(), length);\n23     if ((csize - current.bytesRead) < toRead) {\n24         toRead = (int) (csize - current.bytesRead);\n25     }\n26     buf.get(buffer, offset, toRead);\n27     current.bytesRead += toRead;\n28     return toRead;\n29 }\n",
+      "buggy_line": [
+        16
+      ],
+      "initial_code": "private int readStored(final byte[] buffer, final int offset, final int length) throws IOException {\n    if (current.hasDataDescriptor) {\n",
+      "match_line": "if (lastStoredEntry == null) {"
+    },
+    "VUL4J-8": {
+      "input": "1 @Override\n2 public ByteBuffer encode(final String name) {\n3     final CharsetEncoder enc = newEncoder();\n4     final CharBuffer cb = CharBuffer.wrap(name);\n5     CharBuffer tmp = null;\n6     ByteBuffer out = ByteBuffer.allocate(estimateInitialBufferSize(enc, cb.remaining()));\n7     while (cb.remaining() > 0) {\n8         final CoderResult res = enc.encode(cb, out, false);\n9         if (res.isUnmappable() || res.isMalformed()) {\n10             int spaceForSurrogate = estimateIncrementalEncodingSize(enc, 6 * res.length());\n11             if (spaceForSurrogate > out.remaining()) {\n12                 int charCount = 0;\n13                 for (int i = cb.position() ; i < cb.limit(); i++) {\n14                     charCount += !enc.canEncode(cb.get(i)) ? 6 : 1;\n15                 }\n16                 int totalExtraSpace = estimateIncrementalEncodingSize(enc, charCount);\n17                 out = ZipEncodingHelper.growBufferBy(out, totalExtraSpace - out.remaining());\n18             }\n19             if (tmp == null) {\n20                 tmp = CharBuffer.allocate(6);\n21             }\n22             for (int i = 0; i < res.length(); ++i) {\n23                 out = encodeFully(enc, encodeSurrogate(tmp, cb.get()), out);\n24             }\n25         } else if (res.isOverflow()) {\n26             int increment = estimateIncrementalEncodingSize(enc, cb.remaining());\n27             out = ZipEncodingHelper.growBufferBy(out, increment);\n28         }\n29     }\n30     enc.encode(cb, out, true);\n31     out.limit(out.position());\n32     out.rewind();\n33     return out;\n34 }\n",
+      "buggy_line": [
+        27
+      ],
+      "initial_code": "@Override\npublic ByteBuffer encode(final String name) {\n",
+      "match_line": "final CharsetEncoder enc = newEncoder();"
+    },
+    "VUL4J-10": {
+      "input": "1 private void readObject(ObjectInputStream in)\n2         throws IOException, ClassNotFoundException {\n3     in.defaultReadObject();\n4     OutputStream output = getOutputStream();\n5     if (cachedContent != null) {\n6         output.write(cachedContent);\n7     } else {\n8         FileInputStream input = new FileInputStream(dfosFile);\n9         IOUtils.copy(input, output);\n10         dfosFile.delete();\n11         dfosFile = null;\n12     }\n13     output.close();\n14     cachedContent = null;\n15 }\n",
+      "buggy_line": [
+        4
+      ],
+      "initial_code": "private void readObject(ObjectInputStream in)\n        throws IOException, ClassNotFoundException {\n",
+      "match_line": "in.defaultReadObject();"
+    },
+    "VUL4J-12": {
+      "input": "1 private int extend(int v, final int t) {\n2     int vt = (1 << (t - 1));\n3     while (v < vt) {\n4         vt = (-1 << t) + 1;\n5         v += vt;\n6     }\n7     return v;\n8 }\n",
+      "buggy_line": [
+        3
+      ],
+      "initial_code": "private int extend(int v, final int t) {\n    int vt = (1 << (t - 1));\n",
+      "match_line": "while (v < vt) {"
+    },
+    "VUL4J-18": {
+      "input": "1 public String getForwardPage( HttpServletRequest request )\n2 {\n3     return request.getPathInfo();\n4 }\n",
+      "buggy_line": [
+        3
+      ],
+      "initial_code": "public String getForwardPage( HttpServletRequest request )\n{\n",
+      "match_line": "return request.getPathInfo();"
+    },
+    "VUL4J-19": {
+      "input": "1 @Override\n2 public void prepareForDecryption(PDEncryption encryption, COSArray documentIDArray,\n3                                  DecryptionMaterial decryptionMaterial)\n4                                  throws IOException\n5 {\n6     if(!(decryptionMaterial instanceof StandardDecryptionMaterial))\n7     {\n8         throw new IOException(\"Decryption material is not compatible with the document\");\n9     }\n10     setDecryptMetadata(encryption.isEncryptMetaData());\n11     StandardDecryptionMaterial material = (StandardDecryptionMaterial)decryptionMaterial;\n12     String password = material.getPassword();\n13     if(password == null)\n14     {\n15         password = \"\";\n16     }\n17     int dicPermissions = encryption.getPermissions();\n18     int dicRevision = encryption.getRevision();\n19     int dicLength = encryption.getVersion() == 1 ? 5 : encryption.getLength() / 8;\n20     byte[] documentIDBytes = getDocumentIDBytes(documentIDArray);\n21     boolean encryptMetadata = encryption.isEncryptMetaData();\n22     byte[] userKey = encryption.getUserKey();\n23     byte[] ownerKey = encryption.getOwnerKey();\n24     byte[] ue = null, oe = null;\n25     Charset passwordCharset = Charsets.ISO_8859_1;\n26     if (dicRevision == 6 || dicRevision == 5)\n27     {\n28         passwordCharset = Charsets.UTF_8;\n29         ue = encryption.getUserEncryptionKey();\n30         oe = encryption.getOwnerEncryptionKey();\n31     }\n32     AccessPermission currentAccessPermission;\n33     if( isOwnerPassword(password.getBytes(passwordCharset), userKey, ownerKey,\n34                              dicPermissions, documentIDBytes, dicRevision,\n35                              dicLength, encryptMetadata) )\n36     {\n37         currentAccessPermission = AccessPermission.getOwnerAccessPermission();\n38         setCurrentAccessPermission(currentAccessPermission);\n39         byte[] computedPassword;\n40         if (dicRevision == 6 || dicRevision == 5)\n41         {\n42             computedPassword = password.getBytes(passwordCharset);\n43         }\n44         else\n45         {\n46             computedPassword = getUserPassword(password.getBytes(passwordCharset),\n47                     ownerKey, dicRevision, dicLength );\n48         }\n49         encryptionKey =\n50             computeEncryptedKey(\n51                 computedPassword,\n52                 ownerKey, userKey, oe, ue,\n53                 dicPermissions,\n54                 documentIDBytes,\n55                 dicRevision,\n56                 dicLength,\n57                 encryptMetadata, true );\n58     }\n59     else if( isUserPassword(password.getBytes(passwordCharset), userKey, ownerKey,\n60                        dicPermissions, documentIDBytes, dicRevision,\n61                        dicLength, encryptMetadata) )\n62     {\n63         currentAccessPermission = new AccessPermission(dicPermissions);\n64         setCurrentAccessPermission(currentAccessPermission);\n65         \n66         encryptionKey =\n67             computeEncryptedKey(\n68                 password.getBytes(passwordCharset),\n69                 ownerKey, userKey, oe, ue,\n70                 dicPermissions,\n71                 documentIDBytes,\n72                 dicRevision,\n73                 dicLength,\n74                 encryptMetadata, false );\n75     }\n76     else\n77     {\n78         throw new InvalidPasswordException(\"Cannot decrypt PDF, the password is incorrect\");\n79     }\n80     if (dicRevision == 6 || dicRevision == 5)\n81     {\n82         validatePerms(encryption, dicPermissions, encryptMetadata);\n83     }\n84     if (encryption.getVersion() == 4 || encryption.getVersion() == 5)\n85     {\n86         PDCryptFilterDictionary stdCryptFilterDictionary = encryption.getStdCryptFilterDictionary();\n87         if (stdCryptFilterDictionary != null)\n88         {\n89             COSName cryptFilterMethod = stdCryptFilterDictionary.getCryptFilterMethod();\n90             setAES(COSName.AESV2.equals(cryptFilterMethod) || \n91                    COSName.AESV3.equals(cryptFilterMethod));\n92         }\n93     }\n94 }\n",
+      "buggy_line": [
+        64
+      ],
+      "initial_code": "@Override\npublic void prepareForDecryption(PDEncryption encryption, COSArray documentIDArray,\n",
+      "match_line": "DecryptionMaterial decryptionMaterial)"
+    },
+    "VUL4J-20": {
+      "input": "1 public float[] toFloatArray()\n2 {\n3     float[] retval = new float[size()];\n4     for (int i = 0; i < size(); i++)\n5     {\n6         retval[i] = ((COSNumber)getObject( i )).floatValue();\n7     }\n8     return retval;\n9 }\n",
+      "buggy_line": [
+        6
+      ],
+      "initial_code": "public float[] toFloatArray()\n{\n",
+      "match_line": "float[] retval = new float[size()];"
+    },
+    "VUL4J-22": {
+      "input": "1 public static String getContextPath(HttpServletRequest request) {\n2     String contextPath = (String) request.getAttribute(INCLUDE_CONTEXT_PATH_ATTRIBUTE);\n3     if (contextPath == null) {\n4         contextPath = request.getContextPath();\n5     }\n6     if (\"/\".equals(contextPath)) {\n7         \n8         contextPath = \"\";\n9     }\n10     return decodeRequestString(request, contextPath);\n11 }\n",
+      "buggy_line": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "initial_code": "public static String getContextPath(HttpServletRequest request) {\n    String contextPath = (String) request.getAttribute(INCLUDE_CONTEXT_PATH_ATTRIBUTE);\n",
+      "match_line": "if (contextPath == null) {"
+    },
+    "VUL4J-23": {
+      "input": "1 @Override\n2 public String encodeForJSString(String source) {\n3     return source == null ? null : Encode.forJavaScriptSource(source);\n4 }\n",
+      "buggy_line": [
+        3
+      ],
+      "initial_code": "@Override\npublic String encodeForJSString(String source) {\n",
+      "match_line": "return source == null ? null : Encode.forJavaScriptSource(source);"
+    },
+    "VUL4J-25": {
+      "input": "1  @Override\n2     @Nonnull\n3     public String getValidHref(final String url) {\n4         if (StringUtils.isNotEmpty(url)) {\n5             try {\n6                 String unescapedURL = URLDecoder.decode(url, StandardCharsets.UTF_8.name());\n7                 unescapedURL = StringEscapeUtils.unescapeXml(unescapedURL);\n8                 String encodedUrl = unescapedURL.replaceAll(\"\\\"\", \"%22\")\n9                         .replaceAll(\"'\", \"%27\")\n10                         .replaceAll(\">\", \"%3E\")\n11                         .replaceAll(\"<\", \"%3C\")\n12                         .replaceAll(\"`\", \"%60\")\n13                         .replaceAll(\" \", \"%20\");\n14                 int qMarkIx = encodedUrl.indexOf('?');\n15                 if (qMarkIx > 0) {\n16                     encodedUrl = encodedUrl.substring(0, qMarkIx) + encodedUrl.substring(qMarkIx).replaceAll(\":\", \"%3A\");\n17                 }\n18 \n19                 encodedUrl = mangleNamespaces(encodedUrl);\n20                 if (xssFilter.isValidHref(encodedUrl)) {\n21                     return encodedUrl;\n22                 }\n23             } catch (UnsupportedEncodingException e) {\n24                 LOGGER.error(\"Unable to decode url: {}.\", url);\n25             }\n26         }\n27         return \"\";\n28     }",
+      "buggy_line": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "initial_code": " @Override\n    @Nonnull\n",
+      "match_line": "public String getValidHref(final String url) {"
+    },
+    "VUL4J-26": {
+      "input": "1 public String getUrlRegex() {\n2     if (StringUtils.isNotEmpty(urlRegexExpression)) {\n3         return (String) parse(urlRegexExpression, String.class);\n4     } else if (StringUtils.isNotEmpty(urlRegex)) {\n5         return urlRegex;\n6     } else {\n7         return \"^(https?|ftp):\\\\/\\\\/\" +\n8                 \"(([a-z0-9$_\\\\.\\\\+!\\\\*\\\\'\\\\(\\\\),;\\\\?&=-]|%[0-9a-f]{2})+\" +\n9                 \"(:([a-z0-9$_\\\\.\\\\+!\\\\*\\\\'\\\\(\\\\),;\\\\?&=-]|%[0-9a-f]{2})+)?\" +\n10                 \"@)?(#?\" +\n11                 \")((([a-z0-9]\\\\.|[a-z0-9][a-z0-9-]*[a-z0-9]\\\\.)*\" +\n12                 \"[a-z][a-z0-9-]*[a-z0-9]\" +\n13                 \"|((\\\\d|[1-9]\\\\d|1\\\\d{2}|2[0-4][0-9]|25[0-5])\\\\.){3}\" +\n14                 \"(\\\\d|[1-9]\\\\d|1\\\\d{2}|2[0-4][0-9]|25[0-5])\" +\n15                 \")(:\\\\d+)?\" +\n16                 \")(((\\\\/+([a-z0-9$_\\\\.\\\\+!\\\\*\\\\'\\\\(\\\\),;:@&=-]|%[0-9a-f]{2})*)*\" +\n17                 \"(\\\\?([a-z0-9$_\\\\.\\\\+!\\\\*\\\\'\\\\(\\\\),;:@&=-]|%[0-9a-f]{2})*)\" +\n18                 \"?)?)?\" +\n19                 \"(#([a-z0-9$_\\\\.\\\\+!\\\\*\\\\'\\\\(\\\\),;:@&=-]|%[0-9a-f]{2})*)?\" +\n20                 \"$\";\n21     }\n22 }\n",
+      "buggy_line": [
+        16
+      ],
+      "initial_code": "public String getUrlRegex() {\n    if (StringUtils.isNotEmpty(urlRegexExpression)) {\n",
+      "match_line": "return (String) parse(urlRegexExpression, String.class);"
+    },
+    "VUL4J-30": {
+      "input": "1 public void validate(Object object) throws ValidationException {\n2     String fieldName = getFieldName();\n3     Object value = this.getFieldValue(fieldName, object);\n4     if (value == null || value.toString().length() == 0) {\n5         return;\n6     }\n7     if (!(value.getClass().equals(String.class)) || !Pattern.compile(getUrlRegex(), Pattern.CASE_INSENSITIVE).matcher(String.valueOf(value)).matches()) {\n8         addFieldError(fieldName, object);\n9     }\n10 }\n",
+      "buggy_line": [
+        7
+      ],
+      "initial_code": "public void validate(Object object) throws ValidationException {\n    String fieldName = getFieldName();\n",
+      "match_line": "Object value = this.getFieldValue(fieldName, object);"
+    },
+    "VUL4J-39": {
+      "input": "1 @Override\n2 public String toString() {\n3     StringBuilder sb = new StringBuilder();\n4     if (origin != null) {\n5         sb.append(\"remoteAddress=\").append(origin);\n6     }\n7     if (clientId != null) {\n8         if (sb.length() > 0) {\n9             sb.append(\", \");\n10         }\n11         sb.append(\"clientId=\").append(clientId);\n12     }\n13     if (sessionId != null) {\n14         if (sb.length() > 0) {\n15             sb.append(\", \");\n16         }\n17         sb.append(\"sessionId=\").append(sessionId);\n18     }\n19     return sb.toString();\n20 }\n",
+      "buggy_line": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "initial_code": "@Override\npublic String toString() {\n",
+      "match_line": "StringBuilder sb = new StringBuilder();"
+    },
+    "VUL4J-40": {
+      "input": "1 public boolean isAllowed(HttpServletRequest request) throws IOException {\n2     String requestBody = IOUtils.toString(request.getReader());\n3     ScimUser scimUserFromRequest = JsonUtils.readValue(requestBody, ScimUser.class);\n4     String id = UaaUrlUtils.extractPathVariableFromUrl(USER_ID_PATH_PARAMETER_INDEX, UaaUrlUtils.getRequestPath(request));\n5     String zoneId = IdentityZoneHolder.get().getId();\n6     ScimUser scimUserFromDb;\n7     try {\n8         scimUserFromDb = scimUserProvisioning.retrieve(id, zoneId);\n9     } catch (ScimResourceNotFoundException e) {\n10         return true;\n11     }\n12     if (!scimUserFromDb.getPrimaryEmail().equals(scimUserFromRequest.getPrimaryEmail())) {\n13         return false;\n14     }\n15     if (!scimUserFromDb.getUserName().equals(scimUserFromRequest.getUserName())) {\n16         return false;\n17     }\n18     if (scimUserFromDb.isVerified() != scimUserFromRequest.isVerified()) {\n19         return false;\n20     }\n21     if (scimUserFromDb.isActive() != (scimUserFromRequest.isActive())) {\n22         return false;\n23     }\n24     if (!scimUserFromDb.getOrigin().equals(scimUserFromRequest.getOrigin())) {\n25         return false;\n26     }\n27     return true;\n28 }\n",
+      "buggy_line": [
+        15
+      ],
+      "initial_code": "public boolean isAllowed(HttpServletRequest request) throws IOException {\n    String requestBody = IOUtils.toString(request.getReader());\n",
+      "match_line": "ScimUser scimUserFromRequest = JsonUtils.readValue(requestBody, ScimUser.class);"
+    },
+    "VUL4J-41": {
+      "input": "1 protected void extractFile( final File srcF, final File dir, final InputStream compressedInputStream,\n2                             final String entryName, final Date entryDate, final boolean isDirectory,\n3                             final Integer mode, String symlinkDestination )\n4     throws IOException, ArchiverException\n5 {\n6     final File f = FileUtils.resolveFile( dir, entryName );\n7     try\n8     {\n9         if ( !isOverwrite() && f.exists() && ( f.lastModified() >= entryDate.getTime() ) )\n10         {\n11             return;\n12         }\n13         final File dirF = f.getParentFile();\n14         if ( dirF != null )\n15         {\n16             dirF.mkdirs();\n17         }\n18         if ( !StringUtils.isEmpty( symlinkDestination ) )\n19         {\n20             SymlinkUtils.createSymbolicLink( f, new File( symlinkDestination ) );\n21         }\n22         else if ( isDirectory )\n23         {\n24             f.mkdirs();\n25         }\n26         else\n27         {\n28             OutputStream out = null;\n29             try\n30             {\n31                 out = new FileOutputStream( f );\n32                 IOUtil.copy( compressedInputStream, out );\n33                 out.close();\n34                 out = null;\n35             }\n36             finally\n37             {\n38                 IOUtil.close( out );\n39             }\n40         }\n41         f.setLastModified( entryDate.getTime() );\n42         if ( !isIgnorePermissions() && mode != null && !isDirectory )\n43         {\n44             ArchiveEntryUtils.chmod( f, mode );\n45         }\n46     }\n47     catch ( final FileNotFoundException ex )\n48     {\n49         getLogger().warn( \"Unable to expand to file \" + f.getPath() );\n50     }\n51 }\n",
+      "buggy_line": [
+        7
+      ],
+      "initial_code": "protected void extractFile( final File srcF, final File dir, final InputStream compressedInputStream,\n                            final String entryName, final Date entryDate, final boolean isDirectory,\n",
+      "match_line": "final Integer mode, String symlinkDestination )"
+    },
+    "VUL4J-43": {
+      "input": "1 public static void writeEntry(ZipFile zipFile, ZipEntry entry, File destDir)\n2 \tthrows IOException\n3 {\n4 \tFile outFile = new File(destDir, entry.getName());\n5 \tif (entry.isDirectory()) {\n6 \t\toutFile.mkdirs();\n7 \t}\n8 \telse {\n9 \t\toutFile.getParentFile().mkdirs();\n10 \t\ttry (InputStream in = zipFile.getInputStream(entry)) {\n11 \t\t\tIOUtil.writeStream(in, outFile);\n12 \t\t}\n13 \t}\n14 }\n",
+      "buggy_line": [
+        5
+      ],
+      "initial_code": "public static void writeEntry(ZipFile zipFile, ZipEntry entry, File destDir)\n\tthrows IOException\n",
+      "match_line": "{"
+    },
+    "VUL4J-44": {
+      "input": "1 public String encodeCharacter( char[] immune, Character c )\n2 {\n3 \tString cStr = String.valueOf(c.charValue());\n4 \tbyte[] bytes;\n5 \tStringBuilder sb;\n6 \tif(UNENCODED_SET.contains(c))\n7 \t\treturn cStr;\n8 \tbytes = toUtf8Bytes(cStr);\n9 \tsb = new StringBuilder(bytes.length * 3);\n10 \tfor(byte b : bytes)\n11 \t\tappendTwoUpperHex(sb.append('%'), b);\n12 \treturn sb.toString();\n13 }\n",
+      "buggy_line": [
+        6
+      ],
+      "initial_code": "public String encodeCharacter( char[] immune, Character c )\n{\n",
+      "match_line": "String cStr = String.valueOf(c.charValue());"
+    },
+    "VUL4J-46": {
+      "input": "1 protected XmlFactory(ObjectCodec oc, int xpFeatures, int xgFeatures,\n2         XMLInputFactory xmlIn, XMLOutputFactory xmlOut,\n3         String nameForTextElem)\n4 {\n5     super(oc);\n6     _xmlParserFeatures = xpFeatures;\n7     _xmlGeneratorFeatures = xgFeatures;\n8     _cfgNameForTextElement = nameForTextElem;\n9     if (xmlIn == null) {\n10         xmlIn = XMLInputFactory.newInstance();\n11     }\n12     if (xmlOut == null) {\n13         xmlOut = XMLOutputFactory.newInstance();\n14     }\n15     _initFactories(xmlIn, xmlOut);\n16     _xmlInputFactory = xmlIn;\n17     _xmlOutputFactory = xmlOut;\n18 }\n",
+      "buggy_line": [
+        10
+      ],
+      "initial_code": "protected XmlFactory(ObjectCodec oc, int xpFeatures, int xgFeatures,\n        XMLInputFactory xmlIn, XMLOutputFactory xmlOut,\n",
+      "match_line": "String nameForTextElem)"
+    },
+    "VUL4J-47": {
+      "input": "1 protected XmlFactory(ObjectCodec oc, int xpFeatures, int xgFeatures,\n2         XMLInputFactory xmlIn, XMLOutputFactory xmlOut,\n3         String nameForTextElem)\n4 {\n5     super(oc);\n6     _xmlParserFeatures = xpFeatures;\n7     _xmlGeneratorFeatures = xgFeatures;\n8     _cfgNameForTextElement = nameForTextElem;\n9     if (xmlIn == null) {\n10         xmlIn = XMLInputFactory.newInstance();\n11         xmlIn.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, Boolean.FALSE);\n12     }\n13     if (xmlOut == null) {\n14         xmlOut = XMLOutputFactory.newInstance();\n15     }\n16     _initFactories(xmlIn, xmlOut);\n17     _xmlInputFactory = xmlIn;\n18     _xmlOutputFactory = xmlOut;\n19 }\n",
+      "buggy_line": [
+        11
+      ],
+      "initial_code": "protected XmlFactory(ObjectCodec oc, int xpFeatures, int xgFeatures,\n        XMLInputFactory xmlIn, XMLOutputFactory xmlOut,\n",
+      "match_line": "String nameForTextElem)"
+    },
+    "VUL4J-50": {
+      "input": "1 private void writeSession(SessionInformations session, boolean displayUser) throws IOException {\n2 \tfinal String nextColumnAlignRight = \"</td><td align='right'>\";\n3 \tfinal String nextColumnAlignCenter = \"</td><td align='center'>\";\n4 \twrite(\"<td><a href='?part=sessions&amp;sessionId=\");\n5 \twrite(htmlEncodeButNotSpace(session.getId()));\n6 \twrite(\"'>\");\n7 \twrite(htmlEncodeButNotSpace(session.getId()));\n8 \twrite(\"</a>\");\n9 \twrite(nextColumnAlignRight);\n10 \twrite(durationFormat.format(session.getLastAccess()));\n11 \twrite(nextColumnAlignRight);\n12 \twrite(durationFormat.format(session.getAge()));\n13 \twrite(nextColumnAlignRight);\n14 \twrite(expiryFormat.format(session.getExpirationDate()));\n15 \twrite(nextColumnAlignRight);\n16 \twrite(integerFormat.format(session.getAttributeCount()));\n17 \twrite(nextColumnAlignCenter);\n18 \tif (session.isSerializable()) {\n19 \t\twrite(\"#oui#\");\n20 \t} else {\n21 \t\twrite(\"<span class='severe'>#non#</span>\");\n22 \t}\n23 \twrite(nextColumnAlignRight);\n24 \twrite(integerFormat.format(session.getSerializedSize()));\n25 \tfinal String nextColumn = \"</td><td>\";\n26 \twrite(nextColumn);\n27 \tfinal String remoteAddr = session.getRemoteAddr();\n28 \tif (remoteAddr == null) {\n29 \t\twrite(\"&nbsp;\");\n30 \t} else {\n31 \t\twrite(remoteAddr);\n32 \t}\n33 \twrite(nextColumnAlignCenter);\n34 \twriteCountry(session);\n35 \tif (displayUser) {\n36 \t\twrite(nextColumn);\n37 \t\tfinal String remoteUser = session.getRemoteUser();\n38 \t\tif (remoteUser == null) {\n39 \t\t\twrite(\"&nbsp;\");\n40 \t\t} else {\n41 \t\t\twriteDirectly(htmlEncodeButNotSpace(remoteUser));\n42 \t\t}\n43 \t}\n44 \twrite(\"</td><td align='center' class='noPrint'>\");\n45 \twrite(A_HREF_PART_SESSIONS);\n46 \twrite(\"&amp;action=invalidate_session&amp;sessionId=\");\n47 \twrite(urlEncode(session.getId()));\n48 \twrite(\"' onclick=\\\"javascript:return confirm('\"\n49 \t\t\t+ getStringForJavascript(\"confirm_invalidate_session\") + \"');\\\">\");\n50 \twrite(\"<img width='16' height='16' src='?resource=user-trash.png' alt='#invalidate_session#' title='#invalidate_session#' />\");\n51 \twrite(\"</a>\");\n52 \twrite(\"</td>\");\n53 }\n",
+      "buggy_line": [
+        31
+      ],
+      "initial_code": "private void writeSession(SessionInformations session, boolean displayUser) throws IOException {\n\tfinal String nextColumnAlignRight = \"</td><td align='right'>\";\n",
+      "match_line": "final String nextColumnAlignCenter = \"</td><td align='center'>\";"
+    },
+    "VUL4J-53": {
+      "input": "1 void setTo(Calendar c, int i) {\n2     c.set(field,i-offset);\n3 }\n",
+      "buggy_line": [
+        2
+      ],
+      "initial_code": "void setTo(Calendar c, int i) {\n    c.set(field,i-offset);\n",
+      "match_line": "}"
+    },
+    "VUL4J-55": {
+      "input": "1 public Calendar ceil(Calendar cal) {\n2     Calendar twoYearsFuture = (Calendar) cal.clone();\n3     twoYearsFuture.add(Calendar.YEAR, 2);\n4     OUTER:\n5     while (true) {\n6         if (cal.compareTo(twoYearsFuture) > 0) {\n7             throw new RareOrImpossibleDateException();\n8         }\n9         for (CalendarField f : CalendarField.ADJUST_ORDER) {\n10             int cur = f.valueOf(cal);\n11             int next = f.ceil(this,cur);\n12             if (cur==next)  continue;   \n13             for (CalendarField l=f.lowerField; l!=null; l=l.lowerField)\n14                 l.clear(cal);\n15             if (next<0) {\n16                 f.rollUp(cal, 1);\n17                 f.setTo(cal,f.first(this));\n18                 continue OUTER;\n19             } else {\n20                 f.setTo(cal,next);\n21                 if (f.redoAdjustmentIfModified)\n22                     continue OUTER; \n23             }\n24         }\n25         return cal; \n26     }\n27 }\n",
+      "buggy_line": [
+        21
+      ],
+      "initial_code": "public Calendar ceil(Calendar cal) {\n    Calendar twoYearsFuture = (Calendar) cal.clone();\n",
+      "match_line": "twoYearsFuture.add(Calendar.YEAR, 2);"
+    },
+    "VUL4J-57": {
+      "input": "1 @SuppressWarnings({\"unchecked\", \"rawtypes\"}) \n2 @Override\n3 public boolean start() throws Exception {\n4     String job = step.getJob();\n5     Item item = Jenkins.getActiveInstance().getItem(job, invokingRun.getParent(), Item.class);\n6     if (item == null) {\n7         throw new AbortException(\"No item named \" + job + \" found\");\n8     }\n9     if (step.getWait() && !(item instanceof Job)) {\n10         \n11         throw new AbortException(\"Waiting for non-job items is not supported\");\n12     }\n13     if (item instanceof ParameterizedJobMixIn.ParameterizedJob) {\n14         final ParameterizedJobMixIn.ParameterizedJob project = (ParameterizedJobMixIn.ParameterizedJob) item;\n15         listener.getLogger().println(\"Scheduling project: \" + ModelHyperlinkNote.encodeTo(project));\n16         node.addAction(new LabelAction(Messages.BuildTriggerStepExecution_building_(project.getFullDisplayName())));\n17         List<Action> actions = new ArrayList<>();\n18         if (step.getWait()) {\n19             StepContext context = getContext();\n20             actions.add(new BuildTriggerAction(context, step.isPropagate()));\n21             LOGGER.log(Level.FINER, \"scheduling a build of {0} from {1}\", new Object[]{project, context});\n22         }\n23         actions.add(new CauseAction(new Cause.UpstreamCause(invokingRun)));\n24         List<ParameterValue> parameters = step.getParameters();\n25         if (parameters != null) {\n26             parameters = completeDefaultParameters(parameters, (Job) project);\n27             actions.add(new ParametersAction(parameters));\n28         }\n29         Integer quietPeriod = step.getQuietPeriod();\n30         if (quietPeriod == null) {\n31             quietPeriod = project.getQuietPeriod();\n32         }\n33         QueueTaskFuture<?> f = new ParameterizedJobMixIn() {\n34             @Override\n35             protected Job asJob() {\n36                 return (Job) project;\n37             }\n38         }.scheduleBuild2(quietPeriod, actions.toArray(new Action[actions.size()]));\n39         if (f == null) {\n40             throw new AbortException(\"Failed to trigger build of \" + project.getFullName());\n41         }\n42     } else if (item instanceof Queue.Task){\n43         if (step.getParameters() != null && !step.getParameters().isEmpty()) {\n44             throw new AbortException(\"Item type does not support parameters\");\n45         }\n46         Queue.Task task = (Queue.Task) item;\n47         listener.getLogger().println(\"Scheduling item: \" + ModelHyperlinkNote.encodeTo(item));\n48         node.addAction(new LabelAction(Messages.BuildTriggerStepExecution_building_(task.getFullDisplayName())));\n49         List<Action> actions = new ArrayList<>();\n50         if (step.getWait()) {\n51             StepContext context = getContext();\n52             actions.add(new BuildTriggerAction(context, step.isPropagate()));\n53             LOGGER.log(Level.FINER, \"scheduling a build of {0} from {1}\", new Object[]{task, context});\n54         }\n55         actions.add(new CauseAction(new Cause.UpstreamCause(invokingRun)));\n56         Integer quietPeriod = step.getQuietPeriod();\n57         if (quietPeriod == null) {\n58             try {\n59                 Method getQuietPeriod = task.getClass().getMethod(\"getQuietPeriod\");\n60                 if (getQuietPeriod.getReturnType().equals(int.class)) {\n61                     quietPeriod = (Integer) getQuietPeriod.invoke(task);\n62                 }\n63             } catch (NoSuchMethodException e) {\n64             } catch (IllegalAccessError | IllegalArgumentException | InvocationTargetException e) {\n65                 LOGGER.log(Level.WARNING, \"Could not determine quiet period of \" + item.getFullName(), e);\n66             }\n67         }\n68         if (quietPeriod == null) {\n69             quietPeriod = Jenkins.getActiveInstance().getQuietPeriod();\n70         }\n71         ScheduleResult scheduleResult = Jenkins.getActiveInstance().getQueue().schedule2(task, quietPeriod,actions);\n72         if (scheduleResult.isRefused()) {\n73             throw new AbortException(\"Failed to trigger build of \" + item.getFullName());\n74         }\n75     } else {\n76         throw new AbortException(\"The item named \" + job + \" is a \"\n77                 + (item instanceof Describable\n78                 ? ((Describable) item).getDescriptor().getDisplayName()\n79                 : item.getClass().getName())\n80                 + \" which is not something that can be built\");\n81     }\n82     if (step.getWait()) {\n83         return false;\n84     } else {\n85         getContext().onSuccess(null);\n86         return true;\n87     }\n88 }\n",
+      "buggy_line": [
+        9
+      ],
+      "initial_code": "@SuppressWarnings({\"unchecked\", \"rawtypes\"}) \n@Override\n",
+      "match_line": "public boolean start() throws Exception {"
+    },
+    "VUL4J-59": {
+      "input": "1 void read(Tokeniser t, CharacterReader r) {\n2     char c = r.consume();\n3     switch (c) {\n4         case '\\t':\n5         case '\\n':\n6         case '\\r':\n7         case '\\f':\n8         case ' ':\n9             break;\n10         case '\"':\n11             t.transition(AttributeValue_doubleQuoted);\n12             break;\n13         case '&':\n14             r.unconsume();\n15             t.transition(AttributeValue_unquoted);\n16             break;\n17         case '\\'':\n18             t.transition(AttributeValue_singleQuoted);\n19             break;\n20         case nullChar:\n21             t.error(this);\n22             t.tagPending.appendAttributeValue(replacementChar);\n23             t.transition(AttributeValue_unquoted);\n24             break;\n25         case eof:\n26             t.eofError(this);\n27             t.transition(Data);\n28             break;\n29         case '>':\n30             t.error(this);\n31             t.emitTagPending();\n32             t.transition(Data);\n33             break;\n34         case '<':\n35         case '=':\n36         case '`':\n37             t.error(this);\n38             t.tagPending.appendAttributeValue(c);\n39             t.transition(AttributeValue_unquoted);\n40             break;\n41         default:\n42             r.unconsume();\n43             t.transition(AttributeValue_unquoted);\n44     }\n45 }\n",
+      "buggy_line": [
+        27
+      ],
+      "initial_code": "void read(Tokeniser t, CharacterReader r) {\n    char c = r.consume();\n",
+      "match_line": "switch (c) {"
+    },
+    "VUL4J-61": {
+      "input": "1 private Stream<MapResult> xmlXpathToMapResult(@Name(\"url\") String url, boolean simpleMode, String path, Map<String, Object> config) throws Exception {\n2     if (config == null) config = Collections.emptyMap();\n3     boolean failOnError = (boolean) config.getOrDefault(\"failOnError\", true);\n4     List<MapResult> result = new ArrayList<>();\n5     try {\n6         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();\n7         documentBuilderFactory.setNamespaceAware(true);\n8         documentBuilderFactory.setIgnoringElementContentWhitespace(true);\n9         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();\n10 \n11         FileUtils.checkReadAllowed(url);\n12         Map<String, Object> headers = (Map) config.getOrDefault( \"headers\", Collections.emptyMap() );\n13         Document doc = documentBuilder.parse(Util.openInputStream(url, headers, null));\n14         XPathFactory xPathFactory = XPathFactory.newInstance();\n15         XPath xPath = xPathFactory.newXPath();\n16         path = StringUtils.isEmpty(path) ? \"/\" : path;\n17         XPathExpression xPathExpression = xPath.compile(path);\n18         NodeList nodeList = (NodeList) xPathExpression.evaluate(doc, XPathConstants.NODESET);\n19         for (int i = 0; i < nodeList.getLength(); i++) {\n20             final Deque<Map<String, Object>> stack = new LinkedList<>();\n21             handleNode(stack, nodeList.item(i), simpleMode);\n22             for (int index = 0; index < stack.size(); index++) {\n23                 result.add(new MapResult(stack.pollFirst()));\n24             }\n25         }\n26     }\n27     catch (FileNotFoundException e){\n28         if(!failOnError)\n29             return Stream.of(new MapResult(Collections.emptyMap()));\n30         else\n31             throw new FileNotFoundException(e.getMessage());\n32     }\n33     catch (Exception e){\n34         if(!failOnError)\n35             return Stream.of(new MapResult(Collections.emptyMap()));\n36         else\n37             throw new Exception(e);\n38     }\n39     return result.stream();\n40 }\n",
+      "buggy_line": [
+        9
+      ],
+      "initial_code": "private Stream<MapResult> xmlXpathToMapResult(@Name(\"url\") String url, boolean simpleMode, String path, Map<String, Object> config) throws Exception {\n    if (config == null) config = Collections.emptyMap();\n",
+      "match_line": "boolean failOnError = (boolean) config.getOrDefault(\"failOnError\", true);"
+    },
+    "VUL4J-64": {
+      "input": "1 final static private XMLStreamReader createXMLStreamReader(InputStream inputStream) throws XMLStreamException, IOException {\n2     XMLInputFactory factory = XMLInputFactory.newInstance();\n3     factory.setProperty(XMLInputFactory.IS_COALESCING, true);\n4     factory.setProperty(XMLInputFactory.IS_REPLACING_ENTITY_REFERENCES, true);\n5     return factory.createXMLStreamReader(wrapPrefixRemovingInputStream(inputStream));\n6 }\n",
+      "buggy_line": [
+        5
+      ],
+      "initial_code": "final static private XMLStreamReader createXMLStreamReader(InputStream inputStream) throws XMLStreamException, IOException {\n    XMLInputFactory factory = XMLInputFactory.newInstance();\n",
+      "match_line": "factory.setProperty(XMLInputFactory.IS_COALESCING, true);"
+    },
+    "VUL4J-65": {
+      "input": "1 static public File allocateFile(File dir, String name) {\n2     int q = name.indexOf('?');\n3     if (q > 0) {\n4         name = name.substring(0, q);\n5     }\n6     File file = new File(dir, name);\n7     int dot = name.indexOf('.');\n8     String prefix = dot < 0 ? name : name.substring(0, dot);\n9     String suffix = dot < 0 ? \"\" : name.substring(dot);\n10     int index = 2;\n11     while (file.exists()) {\n12         file = new File(dir, prefix + \"-\" + index++ + suffix);\n13     }\n14     file.getParentFile().mkdirs();\n15     return file;\n16 }\n",
+      "buggy_line": [
+        7
+      ],
+      "initial_code": "static public File allocateFile(File dir, String name) {\n    int q = name.indexOf('?');\n",
+      "match_line": "if (q > 0) {"
+    },
+    "VUL4J-66": {
+      "input": "1 protected static boolean isValid(String str)\n2 {\n3    if (str == null || str.length() == 0) return false;\n4    for (int i = 0; i < str.length(); i++) {\n5       switch (str.charAt(i))\n6       {\n7          case '/':\n8          case '\\\\':\n9          case '?':\n10          case ':':\n11          case '<':\n12          case '>':\n13          case ';':\n14          case '(':\n15          case ')':\n16          case '@':\n17          case ',':\n18          case '[':\n19          case ']':\n20          case '=':\n21             return false;\n22          default:\n23             break;\n24       }\n25    }\n26    return true;\n27 }\n",
+      "buggy_line": [
+        21
+      ],
+      "initial_code": "protected static boolean isValid(String str)\n{\n",
+      "match_line": "if (str == null || str.length() == 0) return false;"
+    },
+    "VUL4J-73": {
+      "input": "1 public boolean isPasswordValid(String encPass, String rawPass, Object salt) {\n2 \tString pass1 = encPass + \"\";\n3 \n4 \tString pass2 = mergePasswordAndSalt(rawPass, salt, false);\n5 \tif (ignorePasswordCase) {\n6 \t\tpass1 = pass1.toLowerCase(Locale.ENGLISH);\n7 \t\tpass2 = pass2.toLowerCase(Locale.ENGLISH);\n8 \t}\n9 \treturn PasswordEncoderUtils.equals(pass1, pass2);\n10 }\n",
+      "buggy_line": [
+        2
+      ],
+      "initial_code": "public boolean isPasswordValid(String encPass, String rawPass, Object salt) {\n\tString pass1 = encPass + \"\";\n",
+      "match_line": ""
+    },
+    "VUL4J-74": {
+      "input": "1 public SecureRandom getObject() throws Exception {\n2 \tSecureRandom rnd = SecureRandom.getInstance(algorithm);\n3 \tif (seed != null) {\n4 \t\tbyte[] seedBytes = FileCopyUtils.copyToByteArray(seed.getInputStream());\n5 \t\trnd.setSeed(seedBytes);\n6 \t}\n7 \telse {\n8 \t\trnd.nextBytes(new byte[1]);\n9 \t}\n10 \n11 \treturn rnd;\n12 }\n",
+      "buggy_line": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "initial_code": "public SecureRandom getObject() throws Exception {\n\tSecureRandom rnd = SecureRandom.getInstance(algorithm);\n",
+      "match_line": "if (seed != null) {"
+    }
+  }
+}

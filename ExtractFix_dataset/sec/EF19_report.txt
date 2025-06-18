@@ -1,0 +1,43 @@
+=================================================================
+==7==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60d00000d080 at pc 0x000000409700 bp 0x7fffd46abf90 sp 0x7fffd46abf80
+READ of size 1 at 0x60d00000d080 thread T0
+    #0 0x4096ff in get_8bit_row /dataset/repos/libjpeg-turbo_EF19/rdbmp.c:145
+    #1 0x40a61d in preload_image /dataset/repos/libjpeg-turbo_EF19/rdbmp.c:270
+    #2 0x403a62 in main /dataset/repos/libjpeg-turbo_EF19/cjpeg.c:616
+    #3 0x7f4fc11eb83f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+    #4 0x401688 in _start (/root/build_EF19/.libs/lt-cjpeg+0x401688)
+
+AddressSanitizer can not describe address in more detail (wild memory access suspected).
+SUMMARY: AddressSanitizer: heap-buffer-overflow /dataset/repos/libjpeg-turbo_EF19/rdbmp.c:145 get_8bit_row
+Shadow bytes around the buggy address:
+  0x0c1a7fff99c0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c1a7fff99d0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c1a7fff99e0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa 00 00
+  0x0c1a7fff99f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 07 fa
+  0x0c1a7fff9a00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x0c1a7fff9a10:[fa]fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c1a7fff9a20: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c1a7fff9a30: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c1a7fff9a40: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c1a7fff9a50: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c1a7fff9a60: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+==7==ABORTING

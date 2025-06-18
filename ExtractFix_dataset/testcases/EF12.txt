@@ -1,0 +1,3 @@
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=23064
+
+readelf -w EF12/bug3

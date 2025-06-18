@@ -1,0 +1,17 @@
+=================================================================
+==820753==ERROR: AddressSanitizer: negative-size-param: (size=-6)
+    #0 0x7f68a6e0405d in __asan_memmove (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x8d05d)
+    #1 0x405b5d in bytes_chunk_extract /dataset/repos/coreutils/src/split.c:987
+    #2 0x40894d in main /dataset/repos/coreutils/src/split.c:1625
+    #3 0x7f68a69cd83f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+    #4 0x4023e8 in _start (/home/extractfix/build/src/split+0x4023e8)
+
+0x7f68a7e9f006 is located 2054 bytes inside of 135168-byte region [0x7f68a7e9e800,0x7f68a7ebf800)
+allocated by thread T0 here:
+    #0 0x7f68a6e0f602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x40eb4f in xmalloc /dataset/repos/coreutils/lib/xmalloc.c:41
+    #2 0x40863f in main /dataset/repos/coreutils/src/split.c:1568
+    #3 0x7f68a69cd83f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+
+SUMMARY: AddressSanitizer: negative-size-param ??:0 __asan_memmove
+==820753==ABORTING

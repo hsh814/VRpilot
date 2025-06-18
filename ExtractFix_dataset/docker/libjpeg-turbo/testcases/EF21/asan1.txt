@@ -1,0 +1,17 @@
+Corrupt JPEG data: 94 extraneous bytes before marker 0xdd
+ASAN:SIGSEGV
+=================================================================
+==44812==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000001 (pc 0x7f1aa1b5fb85 bp 0x7ffedd50b330 sp 0x7ffedd50aab8 T0)
+    #0 0x7f1aa1b5fb84  (/lib/x86_64-linux-gnu/libc.so.6+0x172b84)
+    #1 0x7f1aa2152b1e in __asan_memset (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x8cb1e)
+    #2 0x7f1aa1e67921 in quantize_ord_dither /dataset/repos/libjpeg-turbo/jquant1.c:536
+    #3 0x7f1aa1e4d796 in post_process_1pass /dataset/repos/libjpeg-turbo/jdpostct.c:145
+    #4 0x7f1aa1e2a9bb in process_data_simple_main /dataset/repos/libjpeg-turbo/jdmainct.c:311
+    #5 0x7f1aa1e0f8fb in jpeg_read_scanlines /dataset/repos/libjpeg-turbo/jdapistd.c:282
+    #6 0x402a48 in main /dataset/repos/libjpeg-turbo/djpeg.c:745
+    #7 0x7f1aa1a0d83f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+    #8 0x402d28 in _start (/root/build/djpeg+0x402d28)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV ??:0 ??
+==44812==ABORTING

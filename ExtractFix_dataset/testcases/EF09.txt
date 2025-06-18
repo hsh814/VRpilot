@@ -1,0 +1,6 @@
+Bug: http://bugzilla.maptools.org/show_bug.cgi?id=2569
+
+tools/rgb2ycbcr -c zip  -r 0  -h 2  -v 0 EF09/autumn.tif 1.tif
+
+Note: UBSAN
+Note: the file doesn't really matter; root cause is -v or -h set to 0

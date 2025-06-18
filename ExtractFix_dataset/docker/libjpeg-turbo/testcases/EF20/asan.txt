@@ -1,0 +1,48 @@
+Corrupt JPEG data: 117 extraneous bytes before marker 0xdb
+=================================================================
+==46969==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x610000007ff7 at pc 0x00000040ca25 bp 0x7ffeb52783e0 sp 0x7ffeb52783d0
+READ of size 1 at 0x610000007ff7 thread T0
+    #0 0x40ca24 in put_pixel_rows /dataset/repos/libjpeg-turbo/wrbmp.c:145
+    #1 0x4028b2 in main /dataset/repos/libjpeg-turbo/djpeg.c:762
+    #2 0x7f183be4083f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+    #3 0x402da8 in _start (/root/build/djpeg+0x402da8)
+
+0x610000007ff7 is located 0 bytes to the right of 183-byte region [0x610000007f40,0x610000007ff7)
+allocated by thread T0 here:
+    #0 0x7f183c5a4602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x7f183c2a5d78 in alloc_large /dataset/repos/libjpeg-turbo/jmemmgr.c:391
+    #2 0x7f183c2a5d78 in alloc_sarray /dataset/repos/libjpeg-turbo/jmemmgr.c:475
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /dataset/repos/libjpeg-turbo/wrbmp.c:145 put_pixel_rows
+Shadow bytes around the buggy address:
+  0x0c207fff8fa0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c207fff8fb0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c207fff8fc0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c207fff8fd0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c207fff8fe0: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+=>0x0c207fff8ff0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00[07]fa
+  0x0c207fff9000: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c207fff9010: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c207fff9020: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c207fff9030: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c207fff9040: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+==46969==ABORTING

@@ -1,0 +1,153 @@
+TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorted in ascending order.
+TIFFReadDirectory: Warning, Unknown field with tag 45058 (0xb002) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 22 (0x16) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 23 (0x17) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 28 (0x1c) encountered.
+TIFFFetchNormalTag: Incorrect count for "YResolution"; tag ignored.
+TIFFReadDirectory: Warning, TIFF directory is missing required "StripByteCounts" field, calculating from imagelength.
+TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorted in ascending order.
+TIFFReadDirectory: Warning, Unknown field with tag 45058 (0xb002) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 22 (0x16) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 23 (0x17) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 28 (0x1c) encountered.
+TIFFFetchNormalTag: Incorrect count for "YResolution"; tag ignored.
+TIFFReadDirectory: Warning, TIFF directory is missing required "StripByteCounts" field, calculating from imagelength.
+TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorted in ascending order.
+TIFFReadDirectory: Warning, Unknown field with tag 45058 (0xb002) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 22 (0x16) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 23 (0x17) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 28 (0x1c) encountered.
+TIFFFetchNormalTag: Incorrect count for "YResolution"; tag ignored.
+TIFFReadDirectory: Warning, TIFF directory is missing required "StripByteCounts" field, calculating from imagelength.
+==10020== Invalid write of size 1
+==10020==    at 0x4E7B269: NeXTDecode (tif_next.c:122)
+==10020==    by 0x4E8DAF8: TIFFReadEncodedStrip (tif_read.c:357)
+==10020==    by 0x10EF2F: t2p_readwrite_pdf_image (tiff2pdf.c:2348)
+==10020==    by 0x11AAC5: t2p_write_pdf (tiff2pdf.c:5349)
+==10020==    by 0x10AF63: main (tiff2pdf.c:794)
+==10020==  Address 0x62442d1 is 0 bytes after a block of size 97 alloc'd
+==10020==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10020==    by 0x4E9471E: _TIFFmalloc (tif_unix.c:260)
+==10020==    by 0x10EE4E: t2p_readwrite_pdf_image (tiff2pdf.c:2335)
+==10020==    by 0x11AAC5: t2p_write_pdf (tiff2pdf.c:5349)
+==10020==    by 0x10AF63: main (tiff2pdf.c:794)
+==10020== 
+==10020== Invalid read of size 1
+==10020==    at 0x4E7B271: NeXTDecode (tif_next.c:122)
+==10020==    by 0x4E8DAF8: TIFFReadEncodedStrip (tif_read.c:357)
+==10020==    by 0x10EF2F: t2p_readwrite_pdf_image (tiff2pdf.c:2348)
+==10020==    by 0x11AAC5: t2p_write_pdf (tiff2pdf.c:5349)
+==10020==    by 0x10AF63: main (tiff2pdf.c:794)
+==10020==  Address 0x62442d1 is 0 bytes after a block of size 97 alloc'd
+==10020==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10020==    by 0x4E9471E: _TIFFmalloc (tif_unix.c:260)
+==10020==    by 0x10EE4E: t2p_readwrite_pdf_image (tiff2pdf.c:2335)
+==10020==    by 0x11AAC5: t2p_write_pdf (tiff2pdf.c:5349)
+==10020==    by 0x10AF63: main (tiff2pdf.c:794)
+==10020== 
+==10020== Invalid write of size 1
+==10020==    at 0x4E7B280: NeXTDecode (tif_next.c:122)
+==10020==    by 0x4E8DAF8: TIFFReadEncodedStrip (tif_read.c:357)
+==10020==    by 0x10EF2F: t2p_readwrite_pdf_image (tiff2pdf.c:2348)
+==10020==    by 0x11AAC5: t2p_write_pdf (tiff2pdf.c:5349)
+==10020==    by 0x10AF63: main (tiff2pdf.c:794)
+==10020==  Address 0x62442d1 is 0 bytes after a block of size 97 alloc'd
+==10020==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10020==    by 0x4E9471E: _TIFFmalloc (tif_unix.c:260)
+==10020==    by 0x10EE4E: t2p_readwrite_pdf_image (tiff2pdf.c:2335)
+==10020==    by 0x11AAC5: t2p_write_pdf (tiff2pdf.c:5349)
+==10020==    by 0x10AF63: main (tiff2pdf.c:794)
+==10020== 
+==10020== Invalid read of size 1
+==10020==    at 0x4E7B288: NeXTDecode (tif_next.c:122)
+==10020==    by 0x4E8DAF8: TIFFReadEncodedStrip (tif_read.c:357)
+==10020==    by 0x10EF2F: t2p_readwrite_pdf_image (tiff2pdf.c:2348)
+==10020==    by 0x11AAC5: t2p_write_pdf (tiff2pdf.c:5349)
+==10020==    by 0x10AF63: main (tiff2pdf.c:794)
+==10020==  Address 0x62442d1 is 0 bytes after a block of size 97 alloc'd
+==10020==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10020==    by 0x4E9471E: _TIFFmalloc (tif_unix.c:260)
+==10020==    by 0x10EE4E: t2p_readwrite_pdf_image (tiff2pdf.c:2335)
+==10020==    by 0x11AAC5: t2p_write_pdf (tiff2pdf.c:5349)
+==10020==    by 0x10AF63: main (tiff2pdf.c:794)
+==10020== 
+==10020== Invalid write of size 1
+==10020==    at 0x4E7B297: NeXTDecode (tif_next.c:122)
+==10020==    by 0x4E8DAF8: TIFFReadEncodedStrip (tif_read.c:357)
+==10020==    by 0x10EF2F: t2p_readwrite_pdf_image (tiff2pdf.c:2348)
+==10020==    by 0x11AAC5: t2p_write_pdf (tiff2pdf.c:5349)
+==10020==    by 0x10AF63: main (tiff2pdf.c:794)
+==10020==  Address 0x62442d1 is 0 bytes after a block of size 97 alloc'd
+==10020==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10020==    by 0x4E9471E: _TIFFmalloc (tif_unix.c:260)
+==10020==    by 0x10EE4E: t2p_readwrite_pdf_image (tiff2pdf.c:2335)
+==10020==    by 0x11AAC5: t2p_write_pdf (tiff2pdf.c:5349)
+==10020==    by 0x10AF63: main (tiff2pdf.c:794)
+==10020== 
+==10020== Invalid read of size 1
+==10020==    at 0x4E7B2A7: NeXTDecode (tif_next.c:122)
+==10020==    by 0x4E8DAF8: TIFFReadEncodedStrip (tif_read.c:357)
+==10020==    by 0x10EF2F: t2p_readwrite_pdf_image (tiff2pdf.c:2348)
+==10020==    by 0x11AAC5: t2p_write_pdf (tiff2pdf.c:5349)
+==10020==    by 0x10AF63: main (tiff2pdf.c:794)
+==10020==  Address 0x62442d1 is 0 bytes after a block of size 97 alloc'd
+==10020==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10020==    by 0x4E9471E: _TIFFmalloc (tif_unix.c:260)
+==10020==    by 0x10EE4E: t2p_readwrite_pdf_image (tiff2pdf.c:2335)
+==10020==    by 0x11AAC5: t2p_write_pdf (tiff2pdf.c:5349)
+==10020==    by 0x10AF63: main (tiff2pdf.c:794)
+==10020== 
+==10020== Invalid write of size 1
+==10020==    at 0x4E7B2AF: NeXTDecode (tif_next.c:122)
+==10020==    by 0x4E8DAF8: TIFFReadEncodedStrip (tif_read.c:357)
+==10020==    by 0x10EF2F: t2p_readwrite_pdf_image (tiff2pdf.c:2348)
+==10020==    by 0x11AAC5: t2p_write_pdf (tiff2pdf.c:5349)
+==10020==    by 0x10AF63: main (tiff2pdf.c:794)
+==10020==  Address 0x62442d1 is 0 bytes after a block of size 97 alloc'd
+==10020==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10020==    by 0x4E9471E: _TIFFmalloc (tif_unix.c:260)
+==10020==    by 0x10EE4E: t2p_readwrite_pdf_image (tiff2pdf.c:2335)
+==10020==    by 0x11AAC5: t2p_write_pdf (tiff2pdf.c:5349)
+==10020==    by 0x10AF63: main (tiff2pdf.c:794)
+==10020== 
+--10020-- VALGRIND INTERNAL ERROR: Valgrind received a signal 11 (SIGSEGV) - exiting
+--10020-- si_code=80;  Faulting address: 0x0;  sp: 0x802c7dde0
+
+valgrind: the 'impossible' happened:
+   Killed by fatal signal
+==10020==    at 0x3805CF06: ??? (in /usr/lib/valgrind/memcheck-amd64-linux)
+==10020==    by 0x38021B95: ??? (in /usr/lib/valgrind/memcheck-amd64-linux)
+==10020==    by 0x3809D99A: ??? (in /usr/lib/valgrind/memcheck-amd64-linux)
+==10020==    by 0x380AC87C: ??? (in /usr/lib/valgrind/memcheck-amd64-linux)
+
+sched status:
+  running_tid=1
+
+Thread 1: status = VgTs_Runnable
+==10020==    at 0x4C2CE8E: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10020==    by 0x4E9475D: _TIFFrealloc (tif_unix.c:272)
+==10020==    by 0x4E3E259: _TIFFCheckRealloc (tif_aux.c:73)
+==10020==    by 0x4E4802C: _TIFFMergeFields (tif_dirinfo.c:372)
+==10020==    by 0x4E60E30: InitCCITTFax3 (tif_fax3.c:1289)
+==10020==    by 0x4E62427: TIFFInitCCITTFax4 (tif_fax3.c:1470)
+==10020==    by 0x4E40F4B: TIFFSetCompressionScheme (tif_compress.c:172)
+==10020==    by 0x4E41EC1: _TIFFVSetField (tif_dir.c:227)
+==10020==    by 0x4E449C2: TIFFVSetField (tif_dir.c:802)
+==10020==    by 0x4E4479A: TIFFSetField (tif_dir.c:746)
+==10020==    by 0x10F8C1: t2p_readwrite_pdf_image (tiff2pdf.c:2544)
+==10020==    by 0x11AAC5: t2p_write_pdf (tiff2pdf.c:5349)
+==10020==    by 0x10AF63: main (tiff2pdf.c:794)
+
+
+Note: see also the FAQ in the source distribution.
+It contains workarounds to several common problems.
+In particular, if Valgrind aborted or crashed after
+identifying problems in your program, there's a good chance
+that fixing those problems will prevent Valgrind aborting or
+crashing, especially if it happened in m_mallocfree.c.
+
+If that doesn't help, please report this bug to: www.valgrind.org
+
+In the bug report, send all the above text, the valgrind
+version, and what OS and version you are using.  Thanks.
+

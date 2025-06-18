@@ -1,0 +1,6 @@
+Bug: http://bugzilla.maptools.org/show_bug.cgi?id=2487
+Patch: libtiff/tif_next.c: check that BitsPerSample = 2
+Rev: cd82b5267ad4c10eb91e4ee8a716a81362cf851c
+
+tiff2pdf EF02/05_tiff2pdf.tiff
+

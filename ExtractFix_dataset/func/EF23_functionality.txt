@@ -1,0 +1,811 @@
+  GEN      public-submodule-commit
+make  check-recursive
+make[1]: Entering directory '/home/extractfix/build_testsuite_EF23'
+Making check in .
+make[2]: Entering directory '/home/extractfix/build_testsuite_EF23'
+make  check-TESTS check-local
+make[3]: Entering directory '/home/extractfix/build_testsuite_EF23'
+  GEN      check-README
+  GEN      check-duplicate-no-install
+  GEN      sc-avoid-builtin
+  GEN      sc-avoid-non-zero
+  GEN      sc-avoid-io
+  GEN      sc-avoid-path
+  GEN      sc-avoid-timezone
+  GEN      sc-avoid-zeroes
+  GEN      sc-exponent-grouping
+  GEN      sc-lower-case-var
+  GEN      check-texinfo
+make[4]: Entering directory '/home/extractfix/build_testsuite_EF23'
+tty-eof.pl: this script requires Perl's Expect package >=1.11
+SKIP: tests/misc/tty-eof.pl
+ext3-perf.sh: skipped test: very expensive: disabled by default
+link-heap.sh: skipped test: expensive: disabled by default
+inotify-race.sh: skipped test: can't run gdb
+SKIP: tests/cp/link-heap.sh
+SKIP: tests/rm/ext3-perf.sh
+deep-2.sh: skipped test: does not work in docker
+SKIP: tests/tail-2/inotify-race.sh
+inotify-dir-recreate.sh: skipped test: does not work in docker
+basic.sh: skipped test: requires membership in two groups
+SKIP: tests/rm/deep-2.sh
+inotify-race2.sh: skipped test: can't run gdb
+PASS: tests/rm/d-1.sh
+SKIP: tests/tail-2/inotify-dir-recreate.sh
+inotify-rotate-resources.sh: skipped test: no strace program
+SKIP: tests/chgrp/basic.sh
+PASS: tests/rm/cycle.sh
+PASS: tests/rm/dot-rel.sh
+SKIP: tests/tail-2/inotify-race2.sh
+PASS: tests/rm/d-3.sh
+PASS: tests/rm/d-2.sh
+PASS: tests/rm/dir-nonrecur.sh
+SKIP: tests/tail-2/inotify-rotate-resources.sh
+PASS: tests/rm/dir-no-w.sh
+PASS: tests/rm/empty-inacc.sh
+no-ctx.sh: skipped test: this system lacks SELinux support
+SKIP: tests/cp/no-ctx.sh
+PASS: tests/chmod/no-x.sh
+PASS: tests/rm/empty-name.pl
+PASS: tests/rm/deep-1.sh
+fail-eperm.xpl: couldn't find a file not owned by you
+ in any of the following directories:
+  /tmp /var/tmp /usr/tmp
+...so, skipping this test
+SKIP: tests/rm/fail-eperm.xpl
+PASS: tests/rm/f-1.sh
+hash.sh: skipped test: expensive: disabled by default
+SKIP: tests/rm/hash.sh
+PASS: tests/rm/i-no-r.sh
+PASS: tests/rm/ignorable.sh
+PASS: tests/rm/i-1.sh
+PASS: tests/rm/one-file-system2.sh
+PASS: tests/rm/i-never.sh
+PASS: tests/rm/fail-eacces.sh
+PASS: tests/rm/r-1.sh
+PASS: tests/rm/ir-1.sh
+PASS: tests/rm/inaccessible.sh
+PASS: tests/rm/interactive-always.sh
+PASS: tests/rm/r-2.sh
+PASS: tests/rm/interactive-once.sh
+PASS: tests/rm/r-4.sh
+r-root.sh: skipped test: can't run gdb
+SKIP: tests/rm/r-root.sh
+PASS: tests/rm/rm1.sh
+PASS: tests/rm/dangling-symlink.sh
+PASS: tests/rm/r-3.sh
+PASS: tests/rm/rm4.sh
+PASS: tests/rm/unreadable.pl
+PASS: tests/rm/sunos-1.sh
+PASS: tests/rm/rm2.sh
+PASS: tests/rm/unread2.sh
+many-dir-entries-vs-OOM.sh: skipped test: expensive: disabled by default
+PASS: tests/rm/unread3.sh
+SKIP: tests/rm/many-dir-entries-vs-OOM.sh
+PASS: tests/rm/rm5.sh
+PASS: tests/rm/v-slash.sh
+PASS: tests/rm/rm3.sh
+default-no-deref.sh: skipped test: requires membership in two groups
+deref.sh: skipped test: requires membership in two groups
+SKIP: tests/chgrp/default-no-deref.sh
+SKIP: tests/chgrp/deref.sh
+no-x.sh: skipped test: requires membership in two groups
+SKIP: tests/chgrp/no-x.sh
+posix-H.sh: skipped test: requires membership in two groups
+recurse.sh: skipped test: requires membership in two groups
+SKIP: tests/chgrp/posix-H.sh
+SKIP: tests/chgrp/recurse.sh
+PASS: tests/fmt/long-line.sh
+PASS: tests/fmt/base.pl
+PASS: tests/fmt/goal-option.sh
+PASS: tests/misc/seq-io-errors.sh
+PASS: tests/misc/seq-epipe.sh
+PASS: tests/misc/seq-long-double.sh
+PASS: tests/rm/rm-readdir-fail.sh
+PASS: tests/misc/ptx.pl
+PASS: tests/misc/head-elide-tail.pl
+PASS: tests/misc/date-next-dow.pl
+PASS: tests/misc/xstrtol.pl
+PASS: tests/tail-2/F-vs-missing.sh
+PASS: tests/tail-2/descriptor-vs-rename.sh
+PASS: tests/misc/ptx-overrun.sh
+PASS: tests/misc/od.pl
+arch.sh: skipped test: required program(s) not built
+SKIP: tests/misc/arch.sh
+PASS: tests/misc/od-float.sh
+PASS: tests/misc/env.sh
+coreutils.sh: skipped test: required program(s) not built
+PASS: tests/misc/chcon-fail.sh
+SKIP: tests/misc/coreutils.sh
+PASS: tests/misc/pwd-option.sh
+PASS: tests/misc/mktemp.pl
+PASS: tests/misc/head.pl
+PASS: tests/misc/cut-huge-range.sh
+PASS: tests/misc/seq.pl
+PASS: tests/misc/wc.pl
+PASS: tests/misc/wc-files0-from.pl
+PASS: tests/misc/wc-files0.sh
+PASS: tests/misc/wc-proc.sh
+PASS: tests/misc/cat-self.sh
+PASS: tests/misc/cat-proc.sh
+PASS: tests/misc/invalid-opt.pl
+PASS: tests/misc/chroot-fail.sh
+PASS: tests/misc/close-stdout.sh
+PASS: tests/tail-2/overlay-headers.sh
+PASS: tests/misc/join.pl
+PASS: tests/tail-2/inotify-hash-abuse.sh
+PASS: tests/misc/basename.pl
+PASS: tests/rm/readdir-bug.sh
+PASS: tests/misc/od-endian.sh
+PASS: tests/misc/cat-buf.sh
+PASS: tests/misc/ls-misc.pl
+PASS: tests/misc/csplit.sh
+PASS: tests/misc/date-sec.sh
+PASS: tests/misc/wc-parallel.sh
+date-debug.sh: skipped test: Timezones database not found
+SKIP: tests/misc/date-debug.sh
+PASS: tests/misc/comm.pl
+PASS: tests/misc/csplit-1000.sh
+PASS: tests/misc/dircolors.pl
+PASS: tests/misc/csplit-suppress-matched.pl
+PASS: tests/misc/env-null.sh
+PASS: tests/misc/dirname.pl
+PASS: tests/misc/csplit-io-err.sh
+PASS: tests/misc/fold.pl
+PASS: tests/misc/false-status.sh
+PASS: tests/misc/groups-dash.sh
+PASS: tests/misc/groups-version.sh
+PASS: tests/misc/head-pos.sh
+PASS: tests/misc/head-c.sh
+PASS: tests/misc/md5sum-newline.pl
+PASS: tests/misc/b2sum.sh
+PASS: tests/misc/head-write-error.sh
+PASS: tests/misc/factor.pl
+PASS: tests/misc/kill.sh
+PASS: tests/misc/mknod.sh
+PASS: tests/misc/md5sum-bsd.sh
+PASS: tests/misc/expand.pl
+PASS: tests/misc/nice-fail.sh
+PASS: tests/misc/md5sum-parallel.sh
+PASS: tests/misc/md5sum.pl
+PASS: tests/misc/nl.sh
+PASS: tests/misc/nproc-avail.sh
+PASS: tests/misc/nohup.sh
+PASS: tests/misc/od-N.sh
+PASS: tests/misc/nproc-positive.sh
+PASS: tests/misc/nproc-override.sh
+PASS: tests/misc/expr.pl
+PASS: tests/misc/od-x8.sh
+PASS: tests/misc/pathchk1.sh
+PASS: tests/misc/od-j.sh
+PASS: tests/misc/csplit-heap.sh
+PASS: tests/misc/paste.pl
+PASS: tests/misc/nice.sh
+PASS: tests/misc/printf-hex.sh
+PASS: tests/misc/seq-precision.sh
+PASS: tests/misc/printenv.sh
+PASS: tests/misc/printf-surprise.sh
+PASS: tests/misc/printf-quote.sh
+PASS: tests/misc/printf.sh
+pwd-long.sh: skipping this test; cannot create long directory name at depth 254: File name too long
+PASS: tests/misc/runcon-no-reorder.sh
+PASS: tests/misc/readlink-fp-loop.sh
+PASS: tests/misc/sha224sum.pl
+PASS: tests/misc/sha256sum.pl
+PASS: tests/misc/readlink-root.sh
+PASS: tests/misc/sha384sum.pl
+PASS: tests/misc/realpath.sh
+PASS: tests/misc/sha1sum.pl
+PASS: tests/misc/factor-parallel.sh
+PASS: tests/misc/printf-cov.pl
+shuf-reservoir.sh: skipped test: expensive: disabled by default
+SKIP: tests/misc/shuf-reservoir.sh
+SKIP: tests/misc/pwd-long.sh
+PASS: tests/tail-2/inotify-hash-abuse2.sh
+sort-benchmark-random.sh: skipped test: very expensive: disabled by default
+SKIP: tests/misc/sort-benchmark-random.sh
+PASS: tests/misc/sha512sum.pl
+PASS: tests/tail-2/F-vs-rename.sh
+sort-compress-hang.sh: skipped test: very expensive: disabled by default
+SKIP: tests/misc/sort-compress-hang.sh
+sort-compress-proc.sh: skipped test: expensive: disabled by default
+SKIP: tests/misc/sort-compress-proc.sh
+PASS: tests/tail-2/assert.sh
+sort-h-thousands-sep.sh: skipped test: The Swedish locale with blank thousands separator is unavailable.
+SKIP: tests/misc/sort-h-thousands-sep.sh
+PASS: tests/rm/isatty.sh
+PASS: tests/misc/sort-files0-from.pl
+PASS: tests/misc/sort-continue.sh
+PASS: tests/misc/sort-float.sh
+PASS: tests/misc/sort-merge.pl
+PASS: tests/misc/shuf.sh
+PASS: tests/misc/test.pl
+PASS: tests/misc/sort-debug-warn.sh
+sort-spinlock-abuse.sh: skipped test: very expensive: disabled by default
+sort-stale-thread-mem.sh: skipped test: very expensive: disabled by default
+SKIP: tests/misc/sort-spinlock-abuse.sh
+SKIP: tests/misc/sort-stale-thread-mem.sh
+PASS: tests/misc/sort-merge-fdlimit.sh
+PASS: tests/misc/sort-exit-early.sh
+PASS: tests/misc/sort-unique.sh
+PASS: tests/misc/sort-rand.sh
+PASS: tests/misc/sort-month.sh
+PASS: tests/misc/cut.pl
+PASS: tests/misc/sort-unique-segv.sh
+sort-u-FMR.sh: skipped test: requires a working valgrind
+SKIP: tests/misc/sort-u-FMR.sh
+PASS: tests/misc/sort-NaN-infloop.sh
+PASS: tests/misc/sleep.sh
+PASS: tests/split/fail.sh
+PASS: tests/misc/sort-version.sh
+PASS: tests/split/lines.sh
+PASS: tests/split/additional-suffix.sh
+PASS: tests/misc/sort-debug-keys.sh
+PASS: tests/misc/sort-discrim.sh
+PASS: tests/split/b-chunk.sh
+PASS: tests/split/guard-input.sh
+PASS: tests/misc/stat-hyphen.sh
+PASS: tests/tail-2/F-headers.sh
+PASS: tests/split/suffix-length.sh
+PASS: tests/misc/stat-mount.sh
+PASS: tests/split/r-chunk.sh
+PASS: tests/misc/stat-nanoseconds.sh
+PASS: tests/misc/stat-slash.sh
+PASS: tests/misc/base64.pl
+PASS: tests/misc/stat-printf.pl
+stty.sh: skipped test: requires controlling input terminal
+SKIP: tests/misc/stty.sh
+PASS: tests/misc/stat-fmt.sh
+stty-invalid.sh: skipped test: requires controlling input terminal
+SKIP: tests/misc/stty-invalid.sh
+stty-pairs.sh: skipped test: expensive: disabled by default
+SKIP: tests/misc/stty-pairs.sh
+stty-row-col.sh: skipped test: requires controlling input terminal
+SKIP: tests/misc/stty-row-col.sh
+tac-continue.sh: skipped test: FULL_PARTITION_TMPDIR not defined
+SKIP: tests/misc/tac-continue.sh
+PASS: tests/misc/sum-sysv.sh
+PASS: tests/split/numeric.sh
+PASS: tests/misc/test-diag.pl
+PASS: tests/misc/stat-birthtime.sh
+PASS: tests/tail-2/tail-n0f.sh
+PASS: tests/misc/tac-2-nonseekable.sh
+PASS: tests/misc/stdbuf.sh
+PASS: tests/misc/timeout-parameters.sh
+PASS: tests/misc/sync.sh
+PASS: tests/misc/tac.pl
+PASS: tests/misc/time-style.sh
+PASS: tests/misc/timeout-blocked.pl
+PASS: tests/misc/truncate-dangling-symlink.sh
+PASS: tests/misc/truncate-dir-fail.sh
+PASS: tests/misc/truncate-fail-diag.sh
+PASS: tests/misc/truncate-fifo.sh
+PASS: tests/misc/truncate-no-create-missing.sh
+PASS: tests/misc/truncate-overflow.sh
+PASS: tests/misc/timeout-group.sh
+PASS: tests/misc/truncate-relative.sh
+PASS: tests/misc/tail.pl
+PASS: tests/misc/truncate-parameters.sh
+PASS: tests/misc/shred-size.sh
+PASS: tests/misc/tty.sh
+PASS: tests/split/suffix-auto-length.sh
+PASS: tests/misc/tsort.pl
+PASS: tests/misc/uniq-perf.sh
+xattr.sh: skipped test: failed to get xattr of file
+SKIP: tests/misc/xattr.sh
+PASS: tests/misc/numfmt.pl
+PASS: tests/misc/tr-case-class.sh
+PASS: tests/chmod/c-option.sh
+PASS: tests/misc/sort-compress.sh
+PASS: tests/chmod/equal-x.sh
+PASS: tests/misc/unexpand.pl
+PASS: tests/misc/tr.pl
+PASS: tests/chmod/inaccessible.sh
+PASS: tests/tail-2/tail-c.sh
+PASS: tests/misc/sum.pl
+PASS: tests/chmod/octal.sh
+PASS: tests/chmod/equals.sh
+PASS: tests/chmod/thru-dangling.sh
+PASS: tests/chmod/silent.sh
+PASS: tests/chmod/umask-x.sh
+PASS: tests/chmod/setgid.sh
+PASS: tests/chown/deref.sh
+PASS: tests/pr/pr-tests.pl
+PASS: tests/chown/preserve-root.sh
+PASS: tests/misc/tee.sh
+acl.sh: skipped test: This test requires getfacl and setfacl.
+SKIP: tests/cp/acl.sh
+PASS: tests/cp/attr-existing.sh
+PASS: tests/chown/separator.sh
+PASS: tests/cp/backup-dir.sh
+PASS: tests/cp/backup-is-src.sh
+PASS: tests/tail-2/pid.sh
+PASS: tests/cp/cp-HL.sh
+PASS: tests/misc/sort.pl
+PASS: tests/cp/backup-1.sh
+PASS: tests/cp/abuse.sh
+PASS: tests/cp/cp-deref.sh
+PASS: tests/cp/cp-i.sh
+PASS: tests/cp/deref-slink.sh
+PASS: tests/cp/dir-rm-dest.sh
+PASS: tests/cp/dir-slash.sh
+existing-perm-race.sh: skipped test: requires membership in two groups
+SKIP: tests/cp/existing-perm-race.sh
+PASS: tests/cp/existing-perm-dir.sh
+PASS: tests/cp/dir-vs-file.sh
+PASS: tests/cp/cp-parents.sh
+fiemap-FMR.sh: skipped test: requires a working valgrind
+PASS: tests/chmod/usage.sh
+fiemap_capable_: python missing: assuming not fiemap capable
+SKIP: tests/cp/fiemap-FMR.sh
+fiemap-extents.sh: skipped test: this file system lacks FIEMAP support
+fiemap_capable_: python missing: assuming not fiemap capable
+fiemap-perf.sh: skipped test: this file system lacks FIEMAP support
+SKIP: tests/cp/fiemap-extents.sh
+SKIP: tests/cp/fiemap-perf.sh
+fiemap_capable_: python missing: assuming not fiemap capable
+fiemap-2.sh: skipped test: this file system lacks FIEMAP support
+SKIP: tests/cp/fiemap-2.sh
+PASS: tests/cp/file-perm-race.sh
+PASS: tests/cp/link.sh
+PASS: tests/misc/yes.sh
+PASS: tests/cp/into-self.sh
+PASS: tests/cp/link-no-deref.sh
+PASS: tests/cp/link-symlink.sh
+PASS: tests/cp/no-deref-link1.sh
+PASS: tests/cp/no-deref-link2.sh
+PASS: tests/cp/no-deref-link3.sh
+PASS: tests/cp/fail-perm.sh
+perm.sh: skipped test: very expensive: disabled by default
+PASS: tests/cp/parent-perm-race.sh
+SKIP: tests/cp/perm.sh
+PASS: tests/cp/parent-perm.sh
+PASS: tests/cp/link-preserve.sh
+PASS: tests/cp/preserve-2.sh
+PASS: tests/cp/preserve-mode.sh
+PASS: tests/cp/r-vs-symlink.sh
+PASS: tests/cp/preserve-link.sh
+PASS: tests/cp/reflink-perm.sh
+PASS: tests/cp/proc-zero-len.sh
+PASS: tests/tail-2/truncate.sh
+PASS: tests/cp/slink-2-slink.sh
+PASS: tests/cp/reflink-auto.sh
+PASS: tests/cp/nfs-removal-race.sh
+PASS: tests/cp/sparse-to-pipe.sh
+PASS: tests/cp/special-f.sh
+PASS: tests/cp/src-base-dot.sh
+PASS: tests/cp/preserve-slink-time.sh
+PASS: tests/cp/symlink-slash.sh
+PASS: tests/cp/link-deref.sh
+PASS: tests/df/header.sh
+PASS: tests/cp/thru-dangling.sh
+df-symlink.sh: skipped test: cannot get info for overlay
+PASS: tests/df/df-P.sh
+SKIP: tests/df/df-symlink.sh
+PASS: tests/cp/cp-mv-backup.sh
+PASS: tests/df/unreadable.sh
+PASS: tests/misc/help-version.sh
+skip-rootfs.sh: skipped test: no rootfs in mtab
+SKIP: tests/df/skip-rootfs.sh
+PASS: tests/dd/ascii.sh
+PASS: tests/dd/not-rewound.sh
+PASS: tests/df/total-unprocessed.sh
+PASS: tests/dd/skip-seek.pl
+PASS: tests/dd/no-allocate.sh
+PASS: tests/tail-2/symlink.sh
+PASS: tests/tail-2/wait.sh
+PASS: tests/cp/proc-short-read.sh
+PASS: tests/misc/date.pl
+PASS: tests/dd/skip-seek2.sh
+PASS: tests/dd/stderr.sh
+PASS: tests/dd/bytes.sh
+PASS: tests/split/record-sep.sh
+PASS: tests/dd/skip-seek-past-file.sh
+PASS: tests/df/no-mtab-status.sh
+PASS: tests/dd/unblock-sync.sh
+PASS: tests/dd/unblock.pl
+PASS: tests/df/df-output.sh
+PASS: tests/df/skip-duplicates.sh
+2g.sh: skipped test: very expensive: disabled by default
+SKIP: tests/du/2g.sh
+PASS: tests/df/total-verify.sh
+PASS: tests/du/8gb.sh
+bigtime.sh: skipped test: file system or localtime mishandles big timestamps: -rw-r--r-- 1 extractfix extractfix 0 May 10  2446 future
+SKIP: tests/du/bigtime.sh
+PASS: tests/du/deref.sh
+PASS: tests/du/deref-args.sh
+fd-leak.sh: skipped test: expensive: disabled by default
+SKIP: tests/du/fd-leak.sh
+PASS: tests/du/exclude.sh
+PASS: tests/du/basic.sh
+PASS: tests/du/files0-from.pl
+PASS: tests/du/files0-from-dir.sh
+PASS: tests/dd/reblock.sh
+PASS: tests/du/hard-link.sh
+PASS: tests/du/inaccessible-cwd.sh
+PASS: tests/du/inacc-dir.sh
+PASS: tests/du/inacc-dest.sh
+long-from-unreadable.sh: skipped test: does not work in docker
+SKIP: tests/du/long-from-unreadable.sh
+move-dir-while-traversing.sh: skipped test: python inotify package not installed
+SKIP: tests/du/move-dir-while-traversing.sh
+PASS: tests/du/restore-wd.sh
+PASS: tests/du/no-deref.sh
+PASS: tests/du/slash.sh
+PASS: tests/du/trailing-slash.sh
+PASS: tests/split/filter.sh
+PASS: tests/du/two-args.sh
+gnu-zero-uids.sh: skipped test: not running on GNU/Hurd
+no-context.sh: skipped test: this system lacks SELinux support
+SKIP: tests/id/gnu-zero-uids.sh
+context.sh: skipped test: this system lacks SELinux support
+SKIP: tests/id/no-context.sh
+SKIP: tests/id/context.sh
+PASS: tests/du/max-depth.sh
+PASS: tests/du/one-file-system.sh
+PASS: tests/du/no-x.sh
+PASS: tests/id/uid.sh
+smack.sh: skipped test: this system lacks SMACK support
+SKIP: tests/id/smack.sh
+PASS: tests/install/d-slashdot.sh
+PASS: tests/install/create-leading.sh
+install-C-selinux.sh: skipped test: this system lacks SELinux support
+install-Z-selinux.sh: skipped test: this system lacks SELinux support
+SKIP: tests/install/install-C-selinux.sh
+SKIP: tests/install/install-Z-selinux.sh
+PASS: tests/du/inodes.sh
+PASS: tests/misc/uniq.pl
+PASS: tests/ln/backup-1.sh
+PASS: tests/misc/timeout.sh
+PASS: tests/ln/hard-backup.sh
+PASS: tests/ln/relative.sh
+PASS: tests/ln/sf-1.sh
+PASS: tests/ln/target-1.sh
+PASS: tests/ln/slash-decorated-nonexistent-dest.sh
+PASS: tests/install/strip-program.sh
+PASS: tests/ln/hard-to-sym.sh
+PASS: tests/split/l-chunk.sh
+PASS: tests/ln/misc.sh
+PASS: tests/install/trap.sh
+PASS: tests/ls/dired.sh
+PASS: tests/ls/dangle.sh
+PASS: tests/ls/color-clear-to-eol.sh
+PASS: tests/ls/color-term.sh
+PASS: tests/ls/color-norm.sh
+PASS: tests/ls/file-type.sh
+PASS: tests/install/install-C.sh
+PASS: tests/ls/follow-slink.sh
+PASS: tests/ls/block-size.sh
+PASS: tests/ls/hex-option.sh
+PASS: tests/ls/infloop.sh
+PASS: tests/ls/m-option.sh
+PASS: tests/ls/inode.sh
+PASS: tests/ls/color-dtype-dir.sh
+PASS: tests/ls/w-option.sh
+PASS: tests/install/basic-1.sh
+no-cap.sh: skipped test: no strace program
+SKIP: tests/ls/no-cap.sh
+PASS: tests/ls/no-arg.sh
+PASS: tests/ls/multihardlink.sh
+PASS: tests/ls/proc-selinux-segfault.sh
+PASS: tests/misc/sha1sum-vec.pl
+PASS: tests/ls/getxattr-speedup.sh
+slink-acl.sh: skipped test: setfacl does not work on the current file system
+PASS: tests/ls/recursive.sh
+SKIP: tests/ls/slink-acl.sh
+PASS: tests/ls/quote-align.sh
+PASS: tests/ls/rt-1.sh
+stat-free-color.sh: skipped test: no strace program
+SKIP: tests/ls/stat-free-color.sh
+root-rel-symlink-color.sh: skipped test: no relative symlink in /
+stat-free-symlinks.sh: skipped test: no strace program
+PASS: tests/ls/stat-dtype.sh
+PASS: tests/ls/stat-failed.sh
+SKIP: tests/ls/root-rel-symlink-color.sh
+SKIP: tests/ls/stat-free-symlinks.sh
+PASS: tests/cp/same-file.sh
+PASS: tests/ls/symlink-slash.sh
+PASS: tests/dd/sparse.sh
+PASS: tests/mkdir/p-1.sh
+PASS: tests/mkdir/p-2.sh
+PASS: tests/ls/time-style-diag.sh
+PASS: tests/du/long-sloop.sh
+PASS: tests/ls/x-option.sh
+PASS: tests/mkdir/p-slashdot.sh
+PASS: tests/mkdir/p-thru-slink.sh
+p-acl.sh: skipped test: setfacl does not work on the current file system
+SKIP: tests/mkdir/p-acl.sh
+PASS: tests/mkdir/p-v.sh
+PASS: tests/mkdir/p-3.sh
+selinux.sh: skipped test: this system lacks SELinux support
+SKIP: tests/mkdir/selinux.sh
+restorecon.sh: skipped test: this system lacks SELinux support
+PASS: tests/mkdir/t-slash.sh
+acl.sh: skipped test: This test requires getfacl and setfacl.
+SKIP: tests/mkdir/restorecon.sh
+smack-no-root.sh: skipped test: this system lacks SMACK support
+SKIP: tests/mv/acl.sh
+SKIP: tests/mkdir/smack-no-root.sh
+PASS: tests/mkdir/special-1.sh
+atomic2.sh: skipped test: no strace program
+atomic.sh: skipped test: no strace program
+SKIP: tests/mv/atomic2.sh
+SKIP: tests/mv/atomic.sh
+PASS: tests/mkdir/parents.sh
+PASS: tests/mv/backup-dir.sh
+PASS: tests/mv/backup-is-src.sh
+PASS: tests/mv/dir-file.sh
+PASS: tests/mv/diag.sh
+PASS: tests/mv/childproof.sh
+PASS: tests/mv/force.sh
+PASS: tests/ls/stat-vs-dirent.sh
+PASS: tests/mv/i-1.pl
+PASS: tests/dd/misc.sh
+PASS: tests/mv/hard-4.sh
+PASS: tests/mv/hard-3.sh
+PASS: tests/mv/hard-2.sh
+PASS: tests/mv/hard-link-1.sh
+i-3.sh: skipped test: requires controlling input terminal
+SKIP: tests/mv/i-3.sh
+PASS: tests/mkdir/perm.sh
+PASS: tests/mv/i-5.sh
+PASS: tests/ls/readdir-mountpoint-inode.sh
+PASS: tests/mv/dir2dir.sh
+PASS: tests/mv/i-4.sh
+PASS: tests/dd/nocache.sh
+PASS: tests/ls/abmon-align.sh
+PASS: tests/mv/into-self-4.sh
+PASS: tests/mv/into-self.sh
+PASS: tests/mv/into-self-3.sh
+PASS: tests/mv/into-self-2.sh
+leak-fd.sh: skipped test: expensive: disabled by default
+SKIP: tests/mv/leak-fd.sh
+PASS: tests/mv/mv-n.sh
+PASS: tests/mv/no-target-dir.sh
+PASS: tests/mv/mv-special-1.sh
+PASS: tests/mv/i-link-no.sh
+PASS: tests/mv/i-2.sh
+PASS: tests/mv/dup-source.sh
+PASS: tests/mv/perm-1.sh
+PASS: tests/misc/ls-time.sh
+PASS: tests/mv/symlink-onto-hardlink.sh
+PASS: tests/mv/part-fail.sh
+PASS: tests/mv/part-hardlink.sh
+PASS: tests/mv/partition-perm.sh
+PASS: tests/mv/part-rename.sh
+PASS: tests/mv/symlink-onto-hardlink-to-self.sh
+PASS: tests/mv/to-symlink.sh
+PASS: tests/mv/update.sh
+PASS: tests/mv/trailing-slash.sh
+PASS: tests/rmdir/ignore.sh
+PASS: tests/rmdir/fail-perm.sh
+big-4gb.sh: skipped test: expensive: disabled by default
+PASS: tests/readlink/rl-1.sh
+PASS: tests/rmdir/t-slash.sh
+PASS: tests/id/zero.sh
+SKIP: tests/tail-2/big-4gb.sh
+PASS: tests/readlink/multi.sh
+PASS: tests/tail-2/follow-name.sh
+PASS: tests/tail-2/follow-stdin.sh
+PASS: tests/tail-2/pipe-f.sh
+PASS: tests/tail-2/proc-ksyms.sh
+PASS: tests/readlink/can-e.sh
+PASS: tests/touch/60-seconds.sh
+PASS: tests/tail-2/start-middle.sh
+PASS: tests/touch/empty-file.sh
+PASS: tests/touch/dir-1.sh
+PASS: tests/touch/dangling-symlink.sh
+PASS: tests/touch/fail-diag.sh
+PASS: tests/touch/fifo.sh
+PASS: tests/readlink/can-m.sh
+PASS: tests/touch/no-create-missing.sh
+PASS: tests/touch/no-rights.sh
+PASS: tests/readlink/can-f.sh
+PASS: tests/touch/read-only.sh
+PASS: tests/touch/no-dereference.sh
+PASS: tests/touch/relative.sh
+PASS: tests/touch/not-owner.sh
+basic.sh: skipped test: must be run as root
+PASS: tests/touch/obsolescent.sh
+SKIP: tests/chown/basic.sh
+preserve-gid.sh: skipped test: must be run as root
+cp-a-selinux.sh: skipped test: must be run as root
+SKIP: tests/cp/preserve-gid.sh
+SKIP: tests/cp/cp-a-selinux.sh
+PASS: tests/touch/trailing-slash.sh
+PASS: tests/tail-2/flush-initial.sh
+special-bits.sh: skipped test: must be run as root
+SKIP: tests/cp/special-bits.sh
+cp-mv-enotsup-xattr.sh: skipped test: must be run as root
+capability.sh: skipped test: must be run as root
+skip-seek-past-dev.sh: skipped test: must be run as root
+SKIP: tests/cp/cp-mv-enotsup-xattr.sh
+SKIP: tests/cp/capability.sh
+fiemap_capable_: python missing: assuming not fiemap capable
+SKIP: tests/dd/skip-seek-past-dev.sh
+sparse-fiemap.sh: skipped test: current file system has insufficient FIEMAP support
+problematic-chars.sh: skipped test: must be run as root
+PASS: tests/tail-2/pipe-f2.sh
+SKIP: tests/cp/sparse-fiemap.sh
+SKIP: tests/df/problematic-chars.sh
+over-mount-device.sh: skipped test: must be run as root
+bind-mount-dir-cycle.sh: skipped test: must be run as root
+SKIP: tests/df/over-mount-device.sh
+bind-mount-dir-cycle-v2.sh: skipped test: must be run as root
+setgid.sh: skipped test: must be run as root
+SKIP: tests/du/bind-mount-dir-cycle.sh
+SKIP: tests/du/bind-mount-dir-cycle-v2.sh
+SKIP: tests/id/setgid.sh
+install-C-root.sh: skipped test: must be run as root
+  GEN      tests/factor/t00.sh
+  GEN      tests/factor/t01.sh
+capability.sh: skipped test: must be run as root
+SKIP: tests/install/install-C-root.sh
+nameless-uid.sh: skipped test: must be run as root
+SKIP: tests/ls/capability.sh
+  GEN      tests/factor/t02.sh
+SKIP: tests/ls/nameless-uid.sh
+chcon.sh: skipped test: must be run as root
+  GEN      tests/factor/t03.sh
+  GEN      tests/factor/t04.sh
+SKIP: tests/misc/chcon.sh
+chroot-credentials.sh: skipped test: must be run as root
+  GEN      tests/factor/t05.sh
+SKIP: tests/misc/chroot-credentials.sh
+truncate-owned-by-other.sh: skipped test: must be run as root
+  GEN      tests/factor/t06.sh
+  GEN      tests/factor/t07.sh
+SKIP: tests/misc/truncate-owned-by-other.sh
+  GEN      tests/factor/t08.sh
+writable-under-readonly.sh: skipped test: must be run as root
+  GEN      tests/factor/t10.sh
+  GEN      tests/factor/t09.sh
+  GEN      tests/factor/t11.sh
+selinux.sh: skipped test: must be run as root
+  GEN      tests/factor/t12.sh
+SKIP: tests/mkdir/writable-under-readonly.sh
+SKIP: tests/misc/selinux.sh
+  GEN      tests/factor/t13.sh
+hardlink-case.sh: skipped test: must be run as root
+sticky-to-xpart.sh: skipped test: must be run as root
+smack-root.sh: skipped test: this system lacks SMACK support
+  GEN      tests/factor/t14.sh
+fail-2eperm.sh: skipped test: must be run as root
+SKIP: tests/mv/hardlink-case.sh
+SKIP: tests/mv/sticky-to-xpart.sh
+  GEN      tests/factor/t15.sh
+SKIP: tests/mkdir/smack-root.sh
+no-give-up.sh: skipped test: must be run as root
+SKIP: tests/rm/fail-2eperm.sh
+one-file-system.sh: skipped test: must be run as root
+SKIP: tests/rm/no-give-up.sh
+read-only.sh: skipped test: must be run as root
+SKIP: tests/rm/one-file-system.sh
+  GEN      tests/factor/t16.sh
+append-only.sh: skipped test: must be run as root
+  GEN      tests/factor/t18.sh
+  GEN      tests/factor/t17.sh
+now-owned-by-other.sh: skipped test: must be run as root
+  GEN      tests/factor/t19.sh
+SKIP: tests/rm/read-only.sh
+SKIP: tests/tail-2/append-only.sh
+  GEN      tests/factor/t20.sh
+SKIP: tests/touch/now-owned-by-other.sh
+  GEN      tests/factor/t21.sh
+  GEN      tests/factor/t22.sh
+  GEN      tests/factor/t23.sh
+  GEN      tests/factor/t24.sh
+  GEN      tests/factor/t25.sh
+  GEN      tests/factor/t26.sh
+  GEN      tests/factor/t27.sh
+  GEN      tests/factor/t28.sh
+  GEN      tests/factor/t29.sh
+  GEN      tests/factor/t30.sh
+  GEN      tests/factor/t31.sh
+  GEN      tests/factor/t32.sh
+PASS: tests/dd/stats.sh
+  GEN      tests/factor/t33.sh
+  GEN      tests/factor/t34.sh
+  GEN      tests/factor/t35.sh
+  GEN      tests/factor/t36.sh
+t01.sh: skipped test: very expensive: disabled by default
+t02.sh: skipped test: very expensive: disabled by default
+t03.sh: skipped test: very expensive: disabled by default
+t00.sh: skipped test: very expensive: disabled by default
+SKIP: tests/factor/t01.sh
+SKIP: tests/factor/t02.sh
+SKIP: tests/factor/t03.sh
+SKIP: tests/factor/t00.sh
+t05.sh: skipped test: very expensive: disabled by default
+t06.sh: skipped test: very expensive: disabled by default
+t19.sh: skipped test: very expensive: disabled by default
+t11.sh: skipped test: very expensive: disabled by default
+t08.sh: skipped test: very expensive: disabled by default
+t14.sh: skipped test: very expensive: disabled by default
+t07.sh: skipped test: very expensive: disabled by default
+t15.sh: skipped test: very expensive: disabled by default
+t09.sh: skipped test: very expensive: disabled by default
+t10.sh: skipped test: very expensive: disabled by default
+t17.sh: skipped test: very expensive: disabled by default
+t13.sh: skipped test: very expensive: disabled by default
+t18.sh: skipped test: very expensive: disabled by default
+t04.sh: skipped test: very expensive: disabled by default
+SKIP: tests/factor/t05.sh
+SKIP: tests/factor/t06.sh
+t16.sh: skipped test: very expensive: disabled by default
+SKIP: tests/factor/t11.sh
+SKIP: tests/factor/t14.sh
+t12.sh: skipped test: very expensive: disabled by default
+SKIP: tests/factor/t08.sh
+SKIP: tests/factor/t10.sh
+SKIP: tests/factor/t09.sh
+SKIP: tests/factor/t07.sh
+SKIP: tests/factor/t15.sh
+SKIP: tests/factor/t17.sh
+SKIP: tests/factor/t13.sh
+SKIP: tests/factor/t19.sh
+SKIP: tests/factor/t04.sh
+SKIP: tests/factor/t18.sh
+SKIP: tests/factor/t16.sh
+SKIP: tests/factor/t12.sh
+t20.sh: skipped test: very expensive: disabled by default
+SKIP: tests/factor/t20.sh
+t22.sh: skipped test: very expensive: disabled by default
+t21.sh: skipped test: very expensive: disabled by default
+t23.sh: skipped test: very expensive: disabled by default
+SKIP: tests/factor/t22.sh
+SKIP: tests/factor/t21.sh
+SKIP: tests/factor/t23.sh
+t24.sh: skipped test: very expensive: disabled by default
+t25.sh: skipped test: very expensive: disabled by default
+SKIP: tests/factor/t24.sh
+t27.sh: skipped test: very expensive: disabled by default
+t26.sh: skipped test: very expensive: disabled by default
+SKIP: tests/factor/t25.sh
+t28.sh: skipped test: very expensive: disabled by default
+t29.sh: skipped test: very expensive: disabled by default
+SKIP: tests/factor/t27.sh
+t30.sh: skipped test: very expensive: disabled by default
+t31.sh: skipped test: very expensive: disabled by default
+SKIP: tests/factor/t26.sh
+t32.sh: skipped test: very expensive: disabled by default
+SKIP: tests/factor/t28.sh
+SKIP: tests/factor/t29.sh
+t34.sh: skipped test: very expensive: disabled by default
+SKIP: tests/factor/t31.sh
+SKIP: tests/factor/t30.sh
+t35.sh: skipped test: very expensive: disabled by default
+t33.sh: skipped test: very expensive: disabled by default
+SKIP: tests/factor/t32.sh
+t36.sh: skipped test: very expensive: disabled by default
+SKIP: tests/factor/t34.sh
+SKIP: tests/factor/t35.sh
+SKIP: tests/factor/t33.sh
+SKIP: tests/factor/t36.sh
+PASS: tests/dd/direct.sh
+PASS: tests/tail-2/assert-2.sh
+PASS: tests/mv/part-symlink.sh
+PASS: tests/tail-2/retry.sh
+PASS: tests/split/line-bytes.sh
+PASS: tests/cp/sparse.sh
+PASS: tests/misc/shred-remove.sh
+PASS: tests/misc/shred-passes.sh
+PASS: tests/misc/shred-exact.sh
+PASS: tests/du/threshold.sh
+PASS: tests/misc/od-multiple-t.sh
+PASS: tests/tail-2/inotify-rotate.sh
+============================================================================
+Testsuite summary for GNU coreutils 8.27.22-8d34b
+============================================================================
+# TOTAL: 594
+# PASS:  455
+# SKIP:  139
+# XFAIL: 0
+# FAIL:  0
+# XPASS: 0
+# ERROR: 0
+============================================================================
+make[4]: Leaving directory '/home/extractfix/build_testsuite_EF23'
+make[3]: Leaving directory '/home/extractfix/build_testsuite_EF23'
+make[2]: Leaving directory '/home/extractfix/build_testsuite_EF23'
+make[1]: Leaving directory '/home/extractfix/build_testsuite_EF23'

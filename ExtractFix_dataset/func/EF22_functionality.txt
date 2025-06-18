@@ -1,0 +1,1277 @@
+rm -f testout*
+make  all-recursive
+rm -f *_GRAY_*.bmp
+rm -f *_GRAY_*.png
+rm -f *_GRAY_*.ppm
+rm -f *_GRAY_*.jpg
+rm -f *_GRAY.yuv
+rm -f *_420_*.bmp
+rm -f *_420_*.png
+rm -f *_420_*.ppm
+rm -f *_420_*.jpg
+rm -f *_420.yuv
+rm -f *_422_*.bmp
+rm -f *_422_*.png
+rm -f *_422_*.ppm
+make[1]: Entering directory '/root/build_testsuite_EF22'
+rm -f *_422_*.jpg
+Making all in java
+rm -f *_422.yuv
+rm -f *_444_*.bmp
+make[2]: Entering directory '/root/build_testsuite_EF22/java'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/root/build_testsuite_EF22/java'
+Making all in simd
+rm -f *_444_*.png
+rm -f *_444_*.ppm
+make[2]: Entering directory '/root/build_testsuite_EF22/simd'
+make  all-am
+rm -f *_444_*.jpg
+rm -f *_444.yuv
+rm -f *_440_*.bmp
+rm -f *_440_*.png
+rm -f *_440_*.ppm
+make[3]: Entering directory '/root/build_testsuite_EF22/simd'
+make[3]: Nothing to be done for 'all-am'.
+make[3]: Leaving directory '/root/build_testsuite_EF22/simd'
+make[2]: Leaving directory '/root/build_testsuite_EF22/simd'
+rm -f *_440_*.jpg
+rm -f *_440.yuv
+make[2]: Entering directory '/root/build_testsuite_EF22'
+make[2]: Nothing to be done for 'all-am'.
+make[2]: Leaving directory '/root/build_testsuite_EF22'
+make[1]: Leaving directory '/root/build_testsuite_EF22'
+./tjunittest
+RGB Top-Down  -> 4:4:4 Q100 ... Done.  0.638008 ms
+  Result in test_enc_RGB_TD_444_Q100.jpg
+JPEG -> RGB Top-Down  ... Passed.  0.049114 ms
+JPEG -> RGB Top-Down  1/2 ... Passed.  0.023842 ms
+JPEG -> RGB Top-Down  1/4 ... Passed.  0.016928 ms
+JPEG -> RGB Top-Down  1/8 ... Passed.  0.012875 ms
+
+RGB Bottom-Up -> 4:4:4 Q100 ... Done.  0.036955 ms
+  Result in test_enc_RGB_BU_444_Q100.jpg
+JPEG -> RGB Bottom-Up ... Passed.  0.038862 ms
+JPEG -> RGB Bottom-Up 1/2 ... Passed.  0.022888 ms
+JPEG -> RGB Bottom-Up 1/4 ... Passed.  0.015974 ms
+JPEG -> RGB Bottom-Up 1/8 ... Passed.  0.020027 ms
+
+BGR Top-Down  -> 4:4:4 Q100 ... Done.  0.036001 ms
+  Result in test_enc_BGR_TD_444_Q100.jpg
+JPEG -> BGR Top-Down  ... Passed.  0.034094 ms
+JPEG -> BGR Top-Down  1/2 ... Passed.  0.020027 ms
+JPEG -> BGR Top-Down  1/4 ... Passed.  0.015020 ms
+JPEG -> BGR Top-Down  1/8 ... Passed.  0.012159 ms
+
+BGR Bottom-Up -> 4:4:4 Q100 ... Done.  0.035048 ms
+  Result in test_enc_BGR_BU_444_Q100.jpg
+JPEG -> BGR Bottom-Up ... Passed.  0.036955 ms
+JPEG -> BGR Bottom-Up 1/2 ... Passed.  0.021935 ms
+JPEG -> BGR Bottom-Up 1/4 ... Passed.  0.015020 ms
+JPEG -> BGR Bottom-Up 1/8 ... Passed.  0.010967 ms
+
+RGBX Top-Down  -> 4:4:4 Q100 ... Done.  0.041008 ms
+  Result in test_enc_RGBX_TD_444_Q100.jpg
+JPEG -> RGBX Top-Down  ... Passed.  0.036955 ms
+JPEG -> RGBX Top-Down  1/2 ... Passed.  0.019073 ms
+JPEG -> RGBX Top-Down  1/4 ... Passed.  0.016928 ms
+JPEG -> RGBX Top-Down  1/8 ... Passed.  0.015020 ms
+
+JPEG -> RGBA Top-Down  ... Passed.  0.034809 ms
+JPEG -> RGBA Top-Down  1/2 ... Passed.  0.019073 ms
+JPEG -> RGBA Top-Down  1/4 ... Passed.  0.016928 ms
+JPEG -> RGBA Top-Down  1/8 ... Passed.  0.014067 ms
+
+RGBX Bottom-Up -> 4:4:4 Q100 ... Done.  0.037909 ms
+  Result in test_enc_RGBX_BU_444_Q100.jpg
+JPEG -> RGBX Bottom-Up ... Passed.  0.040054 ms
+JPEG -> RGBX Bottom-Up 1/2 ... Passed.  0.018120 ms
+JPEG -> RGBX Bottom-Up 1/4 ... Passed.  0.017881 ms
+JPEG -> RGBX Bottom-Up 1/8 ... Passed.  0.014067 ms
+
+JPEG -> RGBA Bottom-Up ... Passed.  0.038862 ms
+JPEG -> RGBA Bottom-Up 1/2 ... Passed.  0.018120 ms
+JPEG -> RGBA Bottom-Up 1/4 ... Passed.  0.017166 ms
+JPEG -> RGBA Bottom-Up 1/8 ... Passed.  0.014067 ms
+
+BGRX Top-Down  -> 4:4:4 Q100 ... Done.  0.036955 ms
+  Result in test_enc_BGRX_TD_444_Q100.jpg
+JPEG -> BGRX Top-Down  ... Passed.  0.036001 ms
+JPEG -> BGRX Top-Down  1/2 ... Passed.  0.017881 ms
+JPEG -> BGRX Top-Down  1/4 ... Passed.  0.017166 ms
+JPEG -> BGRX Top-Down  1/8 ... Passed.  0.013113 ms
+
+JPEG -> BGRA Top-Down  ... Passed.  0.033855 ms
+JPEG -> BGRA Top-Down  1/2 ... Passed.  0.018120 ms
+JPEG -> BGRA Top-Down  1/4 ... Passed.  0.015974 ms
+JPEG -> BGRA Top-Down  1/8 ... Passed.  0.012875 ms
+
+BGRX Bottom-Up -> 4:4:4 Q100 ... Done.  0.036955 ms
+  Result in test_enc_BGRX_BU_444_Q100.jpg
+JPEG -> BGRX Bottom-Up ... Passed.  0.038862 ms
+JPEG -> BGRX Bottom-Up 1/2 ... Passed.  0.018120 ms
+JPEG -> BGRX Bottom-Up 1/4 ... Passed.  0.015974 ms
+JPEG -> BGRX Bottom-Up 1/8 ... Passed.  0.014067 ms
+
+JPEG -> BGRA Bottom-Up ... Passed.  0.039101 ms
+JPEG -> BGRA Bottom-Up 1/2 ... Passed.  0.017881 ms
+JPEG -> BGRA Bottom-Up 1/4 ... Passed.  0.017881 ms
+JPEG -> BGRA Bottom-Up 1/8 ... Passed.  0.014067 ms
+
+XBGR Top-Down  -> 4:4:4 Q100 ... Done.  0.036955 ms
+  Result in test_enc_XBGR_TD_444_Q100.jpg
+JPEG -> XBGR Top-Down  ... Passed.  0.035048 ms
+JPEG -> XBGR Top-Down  1/2 ... Passed.  0.017881 ms
+JPEG -> XBGR Top-Down  1/4 ... Passed.  0.015974 ms
+JPEG -> XBGR Top-Down  1/8 ... Passed.  0.014067 ms
+
+JPEG -> ABGR Top-Down  ... Passed.  0.035048 ms
+JPEG -> ABGR Top-Down  1/2 ... Passed.  0.018120 ms
+JPEG -> ABGR Top-Down  1/4 ... Passed.  0.016212 ms
+JPEG -> ABGR Top-Down  1/8 ... Passed.  0.014067 ms
+
+XBGR Bottom-Up -> 4:4:4 Q100 ... Done.  0.036955 ms
+  Result in test_enc_XBGR_BU_444_Q100.jpg
+JPEG -> XBGR Bottom-Up ... Passed.  0.039101 ms
+JPEG -> XBGR Bottom-Up 1/2 ... Passed.  0.017881 ms
+JPEG -> XBGR Bottom-Up 1/4 ... Passed.  0.016212 ms
+JPEG -> XBGR Bottom-Up 1/8 ... Passed.  0.014067 ms
+
+JPEG -> ABGR Bottom-Up ... Passed.  0.037909 ms
+JPEG -> ABGR Bottom-Up 1/2 ... Passed.  0.016928 ms
+JPEG -> ABGR Bottom-Up 1/4 ... Passed.  0.017166 ms
+JPEG -> ABGR Bottom-Up 1/8 ... Passed.  0.013828 ms
+
+XRGB Top-Down  -> 4:4:4 Q100 ... Done.  0.036955 ms
+  Result in test_enc_XRGB_TD_444_Q100.jpg
+JPEG -> XRGB Top-Down  ... Passed.  0.035048 ms
+JPEG -> XRGB Top-Down  1/2 ... Passed.  0.017881 ms
+JPEG -> XRGB Top-Down  1/4 ... Passed.  0.015974 ms
+JPEG -> XRGB Top-Down  1/8 ... Passed.  0.013828 ms
+
+JPEG -> ARGB Top-Down  ... Passed.  0.035048 ms
+JPEG -> ARGB Top-Down  1/2 ... Passed.  0.018120 ms
+JPEG -> ARGB Top-Down  1/4 ... Passed.  0.015974 ms
+JPEG -> ARGB Top-Down  1/8 ... Passed.  0.013113 ms
+
+XRGB Bottom-Up -> 4:4:4 Q100 ... Done.  0.037909 ms
+  Result in test_enc_XRGB_BU_444_Q100.jpg
+JPEG -> XRGB Bottom-Up ... Passed.  0.038862 ms
+JPEG -> XRGB Bottom-Up 1/2 ... Passed.  0.017881 ms
+JPEG -> XRGB Bottom-Up 1/4 ... Passed.  0.018120 ms
+JPEG -> XRGB Bottom-Up 1/8 ... Passed.  0.014067 ms
+
+JPEG -> ARGB Bottom-Up ... Passed.  0.039816 ms
+JPEG -> ARGB Bottom-Up 1/2 ... Passed.  0.018120 ms
+JPEG -> ARGB Bottom-Up 1/4 ... Passed.  0.015974 ms
+JPEG -> ARGB Bottom-Up 1/8 ... Passed.  0.014067 ms
+
+RGB Top-Down  -> 4:2:2 Q100 ... Done.  0.036955 ms
+  Result in test_enc_RGB_TD_422_Q100.jpg
+JPEG -> RGB Top-Down  ... Passed.  0.037909 ms
+
+RGB Bottom-Up -> 4:2:2 Q100 ... Done.  0.032902 ms
+  Result in test_enc_RGB_BU_422_Q100.jpg
+JPEG -> RGB Bottom-Up ... Passed.  0.038147 ms
+
+BGR Top-Down  -> 4:2:2 Q100 ... Done.  0.031948 ms
+  Result in test_enc_BGR_TD_422_Q100.jpg
+JPEG -> BGR Top-Down  ... Passed.  0.031948 ms
+
+BGR Bottom-Up -> 4:2:2 Q100 ... Done.  0.030994 ms
+  Result in test_enc_BGR_BU_422_Q100.jpg
+JPEG -> BGR Bottom-Up ... Passed.  0.036001 ms
+
+RGBX Top-Down  -> 4:2:2 Q100 ... Done.  0.032902 ms
+  Result in test_enc_RGBX_TD_422_Q100.jpg
+JPEG -> RGBX Top-Down  ... Passed.  0.033855 ms
+
+JPEG -> RGBA Top-Down  ... Passed.  0.030994 ms
+
+RGBX Bottom-Up -> 4:2:2 Q100 ... Done.  0.032902 ms
+  Result in test_enc_RGBX_BU_422_Q100.jpg
+JPEG -> RGBX Bottom-Up ... Passed.  0.036001 ms
+
+JPEG -> RGBA Bottom-Up ... Passed.  0.035048 ms
+
+BGRX Top-Down  -> 4:2:2 Q100 ... Done.  0.032187 ms
+  Result in test_enc_BGRX_TD_422_Q100.jpg
+JPEG -> BGRX Top-Down  ... Passed.  0.030994 ms
+
+JPEG -> BGRA Top-Down  ... Passed.  0.030041 ms
+
+BGRX Bottom-Up -> 4:2:2 Q100 ... Done.  0.031948 ms
+  Result in test_enc_BGRX_BU_422_Q100.jpg
+JPEG -> BGRX Bottom-Up ... Passed.  0.034809 ms
+
+JPEG -> BGRA Bottom-Up ... Passed.  0.034094 ms
+
+XBGR Top-Down  -> 4:2:2 Q100 ... Done.  0.041962 ms
+  Result in test_enc_XBGR_TD_422_Q100.jpg
+JPEG -> XBGR Top-Down  ... Passed.  0.032902 ms
+
+JPEG -> ABGR Top-Down  ... Passed.  0.030994 ms
+
+XBGR Bottom-Up -> 4:2:2 Q100 ... Done.  0.032187 ms
+  Result in test_enc_XBGR_BU_422_Q100.jpg
+JPEG -> XBGR Bottom-Up ... Passed.  0.036001 ms
+
+JPEG -> ABGR Bottom-Up ... Passed.  0.036001 ms
+
+XRGB Top-Down  -> 4:2:2 Q100 ... Done.  0.031948 ms
+  Result in test_enc_XRGB_TD_422_Q100.jpg
+JPEG -> XRGB Top-Down  ... Passed.  0.030994 ms
+
+JPEG -> ARGB Top-Down  ... Passed.  0.030994 ms
+
+XRGB Bottom-Up -> 4:2:2 Q100 ... Done.  0.031948 ms
+  Result in test_enc_XRGB_BU_422_Q100.jpg
+JPEG -> XRGB Bottom-Up ... Passed.  0.034809 ms
+
+JPEG -> ARGB Bottom-Up ... Passed.  0.035048 ms
+
+RGB Top-Down  -> 4:2:0 Q100 ... Done.  0.036955 ms
+  Result in test_enc_RGB_TD_420_Q100.jpg
+JPEG -> RGB Top-Down  ... Passed.  0.044107 ms
+
+RGB Bottom-Up -> 4:2:0 Q100 ... Done.  0.033140 ms
+  Result in test_enc_RGB_BU_420_Q100.jpg
+JPEG -> RGB Bottom-Up ... Passed.  0.045061 ms
+
+BGR Top-Down  -> 4:2:0 Q100 ... Done.  0.030994 ms
+  Result in test_enc_BGR_TD_420_Q100.jpg
+JPEG -> BGR Top-Down  ... Passed.  0.038862 ms
+
+BGR Bottom-Up -> 4:2:0 Q100 ... Done.  0.029802 ms
+  Result in test_enc_BGR_BU_420_Q100.jpg
+JPEG -> BGR Bottom-Up ... Passed.  0.043869 ms
+
+RGBX Top-Down  -> 4:2:0 Q100 ... Done.  0.031948 ms
+  Result in test_enc_RGBX_TD_420_Q100.jpg
+JPEG -> RGBX Top-Down  ... Passed.  0.037909 ms
+
+JPEG -> RGBA Top-Down  ... Passed.  0.033855 ms
+
+RGBX Bottom-Up -> 4:2:0 Q100 ... Done.  0.030994 ms
+  Result in test_enc_RGBX_BU_420_Q100.jpg
+JPEG -> RGBX Bottom-Up ... Passed.  0.040054 ms
+
+JPEG -> RGBA Bottom-Up ... Passed.  0.036955 ms
+
+BGRX Top-Down  -> 4:2:0 Q100 ... Done.  0.031948 ms
+  Result in test_enc_BGRX_TD_420_Q100.jpg
+JPEG -> BGRX Top-Down  ... Passed.  0.032902 ms
+
+JPEG -> BGRA Top-Down  ... Passed.  0.032902 ms
+
+BGRX Bottom-Up -> 4:2:0 Q100 ... Done.  0.030994 ms
+  Result in test_enc_BGRX_BU_420_Q100.jpg
+JPEG -> BGRX Bottom-Up ... Passed.  0.036955 ms
+
+JPEG -> BGRA Bottom-Up ... Passed.  0.036955 ms
+
+XBGR Top-Down  -> 4:2:0 Q100 ... Done.  0.030041 ms
+  Result in test_enc_XBGR_TD_420_Q100.jpg
+JPEG -> XBGR Top-Down  ... Passed.  0.032902 ms
+
+JPEG -> ABGR Top-Down  ... Passed.  0.031948 ms
+
+XBGR Bottom-Up -> 4:2:0 Q100 ... Done.  0.030041 ms
+  Result in test_enc_XBGR_BU_420_Q100.jpg
+JPEG -> XBGR Bottom-Up ... Passed.  0.036001 ms
+
+JPEG -> ABGR Bottom-Up ... Passed.  0.036001 ms
+
+XRGB Top-Down  -> 4:2:0 Q100 ... Done.  0.030041 ms
+  Result in test_enc_XRGB_TD_420_Q100.jpg
+JPEG -> XRGB Top-Down  ... Passed.  0.033140 ms
+
+JPEG -> ARGB Top-Down  ... Passed.  0.032187 ms
+
+XRGB Bottom-Up -> 4:2:0 Q100 ... Done.  0.030041 ms
+  Result in test_enc_XRGB_BU_420_Q100.jpg
+JPEG -> XRGB Bottom-Up ... Passed.  0.037909 ms
+
+JPEG -> ARGB Bottom-Up ... Passed.  0.036955 ms
+
+RGB Top-Down  -> 4:4:0 Q100 ... Done.  0.046968 ms
+  Result in test_enc_RGB_TD_440_Q100.jpg
+JPEG -> RGB Top-Down  ... Passed.  0.040054 ms
+
+RGB Bottom-Up -> 4:4:0 Q100 ... Done.  0.044107 ms
+  Result in test_enc_RGB_BU_440_Q100.jpg
+JPEG -> RGB Bottom-Up ... Passed.  0.041008 ms
+
+BGR Top-Down  -> 4:4:0 Q100 ... Done.  0.043869 ms
+  Result in test_enc_BGR_TD_440_Q100.jpg
+JPEG -> BGR Top-Down  ... Passed.  0.036001 ms
+
+BGR Bottom-Up -> 4:4:0 Q100 ... Done.  0.044107 ms
+  Result in test_enc_BGR_BU_440_Q100.jpg
+JPEG -> BGR Bottom-Up ... Passed.  0.040054 ms
+
+RGBX Top-Down  -> 4:4:0 Q100 ... Done.  0.046015 ms
+  Result in test_enc_RGBX_TD_440_Q100.jpg
+JPEG -> RGBX Top-Down  ... Passed.  0.040054 ms
+
+JPEG -> RGBA Top-Down  ... Passed.  0.038147 ms
+
+RGBX Bottom-Up -> 4:4:0 Q100 ... Done.  0.044823 ms
+  Result in test_enc_RGBX_BU_440_Q100.jpg
+JPEG -> RGBX Bottom-Up ... Passed.  0.041008 ms
+
+JPEG -> RGBA Bottom-Up ... Passed.  0.040054 ms
+
+BGRX Top-Down  -> 4:4:0 Q100 ... Done.  0.045061 ms
+  Result in test_enc_BGRX_TD_440_Q100.jpg
+JPEG -> BGRX Top-Down  ... Passed.  0.037909 ms
+
+JPEG -> BGRA Top-Down  ... Passed.  0.036955 ms
+
+BGRX Bottom-Up -> 4:4:0 Q100 ... Done.  0.045061 ms
+  Result in test_enc_BGRX_BU_440_Q100.jpg
+JPEG -> BGRX Bottom-Up ... Passed.  0.041962 ms
+
+JPEG -> BGRA Bottom-Up ... Passed.  0.040054 ms
+
+XBGR Top-Down  -> 4:4:0 Q100 ... Done.  0.045061 ms
+  Result in test_enc_XBGR_TD_440_Q100.jpg
+JPEG -> XBGR Top-Down  ... Passed.  0.038862 ms
+
+JPEG -> ABGR Top-Down  ... Passed.  0.056982 ms
+
+XBGR Bottom-Up -> 4:4:0 Q100 ... Done.  0.046015 ms
+  Result in test_enc_XBGR_BU_440_Q100.jpg
+JPEG -> XBGR Bottom-Up ... Passed.  0.041008 ms
+
+JPEG -> ABGR Bottom-Up ... Passed.  0.041962 ms
+
+XRGB Top-Down  -> 4:4:0 Q100 ... Done.  0.045061 ms
+  Result in test_enc_XRGB_TD_440_Q100.jpg
+JPEG -> XRGB Top-Down  ... Passed.  0.039101 ms
+
+JPEG -> ARGB Top-Down  ... Passed.  0.037193 ms
+
+XRGB Bottom-Up -> 4:4:0 Q100 ... Done.  0.044823 ms
+  Result in test_enc_XRGB_BU_440_Q100.jpg
+JPEG -> XRGB Bottom-Up ... Passed.  0.041008 ms
+
+JPEG -> ARGB Bottom-Up ... Passed.  0.040054 ms
+
+Grayscale Top-Down  -> GRAY Q100 ... Done.  0.016928 ms
+  Result in test_enc_Grayscale_TD_GRAY_Q100.jpg
+JPEG -> Grayscale Top-Down  ... Passed.  0.010014 ms
+JPEG -> Grayscale Top-Down  1/2 ... Passed.  0.007868 ms
+JPEG -> Grayscale Top-Down  1/4 ... Passed.  0.007153 ms
+JPEG -> Grayscale Top-Down  1/8 ... Passed.  0.005960 ms
+
+Grayscale Bottom-Up -> GRAY Q100 ... Done.  0.015020 ms
+  Result in test_enc_Grayscale_BU_GRAY_Q100.jpg
+JPEG -> Grayscale Bottom-Up ... Passed.  0.009060 ms
+JPEG -> Grayscale Bottom-Up 1/2 ... Passed.  0.006914 ms
+JPEG -> Grayscale Bottom-Up 1/4 ... Passed.  0.006199 ms
+JPEG -> Grayscale Bottom-Up 1/8 ... Passed.  0.005960 ms
+
+RGB Top-Down  -> GRAY Q100 ... Done.  0.014067 ms
+  Result in test_enc_RGB_TD_GRAY_Q100.jpg
+JPEG -> RGB Top-Down  ... Passed.  0.005960 ms
+JPEG -> RGB Top-Down  1/2 ... Passed.  0.002861 ms
+JPEG -> RGB Top-Down  1/4 ... Passed.  0.004053 ms
+JPEG -> RGB Top-Down  1/8 ... Passed.  0.004053 ms
+
+RGB Bottom-Up -> GRAY Q100 ... Done.  0.009060 ms
+  Result in test_enc_RGB_BU_GRAY_Q100.jpg
+JPEG -> RGB Bottom-Up ... Passed.  0.005007 ms
+JPEG -> RGB Bottom-Up 1/2 ... Passed.  0.003815 ms
+JPEG -> RGB Bottom-Up 1/4 ... Passed.  0.003099 ms
+JPEG -> RGB Bottom-Up 1/8 ... Passed.  0.002861 ms
+
+BGR Top-Down  -> GRAY Q100 ... Done.  0.008106 ms
+  Result in test_enc_BGR_TD_GRAY_Q100.jpg
+JPEG -> BGR Top-Down  ... Passed.  0.005007 ms
+JPEG -> BGR Top-Down  1/2 ... Passed.  0.004053 ms
+JPEG -> BGR Top-Down  1/4 ... Passed.  0.003099 ms
+JPEG -> BGR Top-Down  1/8 ... Passed.  0.003099 ms
+
+BGR Bottom-Up -> GRAY Q100 ... Done.  0.008106 ms
+  Result in test_enc_BGR_BU_GRAY_Q100.jpg
+JPEG -> BGR Bottom-Up ... Passed.  0.005007 ms
+JPEG -> BGR Bottom-Up 1/2 ... Passed.  0.002861 ms
+JPEG -> BGR Bottom-Up 1/4 ... Passed.  0.002861 ms
+JPEG -> BGR Bottom-Up 1/8 ... Passed.  0.001907 ms
+
+RGBX Top-Down  -> GRAY Q100 ... Done.  0.009060 ms
+  Result in test_enc_RGBX_TD_GRAY_Q100.jpg
+JPEG -> RGBX Top-Down  ... Passed.  0.005007 ms
+JPEG -> RGBX Top-Down  1/2 ... Passed.  0.004053 ms
+JPEG -> RGBX Top-Down  1/4 ... Passed.  0.004053 ms
+JPEG -> RGBX Top-Down  1/8 ... Passed.  0.003099 ms
+
+JPEG -> RGBA Top-Down  ... Passed.  0.005007 ms
+JPEG -> RGBA Top-Down  1/2 ... Passed.  0.003099 ms
+JPEG -> RGBA Top-Down  1/4 ... Passed.  0.003099 ms
+JPEG -> RGBA Top-Down  1/8 ... Passed.  0.003099 ms
+
+RGBX Bottom-Up -> GRAY Q100 ... Done.  0.009060 ms
+  Result in test_enc_RGBX_BU_GRAY_Q100.jpg
+JPEG -> RGBX Bottom-Up ... Passed.  0.003815 ms
+JPEG -> RGBX Bottom-Up 1/2 ... Passed.  0.003815 ms
+JPEG -> RGBX Bottom-Up 1/4 ... Passed.  0.002861 ms
+JPEG -> RGBX Bottom-Up 1/8 ... Passed.  0.002861 ms
+
+JPEG -> RGBA Bottom-Up ... Passed.  0.005007 ms
+JPEG -> RGBA Bottom-Up 1/2 ... Passed.  0.002861 ms
+JPEG -> RGBA Bottom-Up 1/4 ... Passed.  0.003815 ms
+JPEG -> RGBA Bottom-Up 1/8 ... Passed.  0.002861 ms
+
+BGRX Top-Down  -> GRAY Q100 ... Done.  0.007868 ms
+  Result in test_enc_BGRX_TD_GRAY_Q100.jpg
+JPEG -> BGRX Top-Down  ... Passed.  0.005007 ms
+JPEG -> BGRX Top-Down  1/2 ... Passed.  0.002861 ms
+JPEG -> BGRX Top-Down  1/4 ... Passed.  0.002861 ms
+JPEG -> BGRX Top-Down  1/8 ... Passed.  0.001907 ms
+
+JPEG -> BGRA Top-Down  ... Passed.  0.004053 ms
+JPEG -> BGRA Top-Down  1/2 ... Passed.  0.003099 ms
+JPEG -> BGRA Top-Down  1/4 ... Passed.  0.002861 ms
+JPEG -> BGRA Top-Down  1/8 ... Passed.  0.003099 ms
+
+BGRX Bottom-Up -> GRAY Q100 ... Done.  0.007868 ms
+  Result in test_enc_BGRX_BU_GRAY_Q100.jpg
+JPEG -> BGRX Bottom-Up ... Passed.  0.005007 ms
+JPEG -> BGRX Bottom-Up 1/2 ... Passed.  0.002861 ms
+JPEG -> BGRX Bottom-Up 1/4 ... Passed.  0.003815 ms
+JPEG -> BGRX Bottom-Up 1/8 ... Passed.  0.002861 ms
+
+JPEG -> BGRA Bottom-Up ... Passed.  0.004053 ms
+JPEG -> BGRA Bottom-Up 1/2 ... Passed.  0.004053 ms
+JPEG -> BGRA Bottom-Up 1/4 ... Passed.  0.002861 ms
+JPEG -> BGRA Bottom-Up 1/8 ... Passed.  0.003099 ms
+
+XBGR Top-Down  -> GRAY Q100 ... Done.  0.007868 ms
+  Result in test_enc_XBGR_TD_GRAY_Q100.jpg
+JPEG -> XBGR Top-Down  ... Passed.  0.004053 ms
+JPEG -> XBGR Top-Down  1/2 ... Passed.  0.004053 ms
+JPEG -> XBGR Top-Down  1/4 ... Passed.  0.003099 ms
+JPEG -> XBGR Top-Down  1/8 ... Passed.  0.003099 ms
+
+JPEG -> ABGR Top-Down  ... Passed.  0.004053 ms
+JPEG -> ABGR Top-Down  1/2 ... Passed.  0.003099 ms
+JPEG -> ABGR Top-Down  1/4 ... Passed.  0.003099 ms
+JPEG -> ABGR Top-Down  1/8 ... Passed.  0.003099 ms
+
+XBGR Bottom-Up -> GRAY Q100 ... Done.  0.008106 ms
+  Result in test_enc_XBGR_BU_GRAY_Q100.jpg
+JPEG -> XBGR Bottom-Up ... Passed.  0.004053 ms
+JPEG -> XBGR Bottom-Up 1/2 ... Passed.  0.004053 ms
+JPEG -> XBGR Bottom-Up 1/4 ... Passed.  0.003099 ms
+JPEG -> XBGR Bottom-Up 1/8 ... Passed.  0.002146 ms
+
+JPEG -> ABGR Bottom-Up ... Passed.  0.004053 ms
+JPEG -> ABGR Bottom-Up 1/2 ... Passed.  0.003099 ms
+JPEG -> ABGR Bottom-Up 1/4 ... Passed.  0.002861 ms
+JPEG -> ABGR Bottom-Up 1/8 ... Passed.  0.002861 ms
+
+XRGB Top-Down  -> GRAY Q100 ... Done.  0.007868 ms
+  Result in test_enc_XRGB_TD_GRAY_Q100.jpg
+JPEG -> XRGB Top-Down  ... Passed.  0.005007 ms
+JPEG -> XRGB Top-Down  1/2 ... Passed.  0.002861 ms
+JPEG -> XRGB Top-Down  1/4 ... Passed.  0.002861 ms
+JPEG -> XRGB Top-Down  1/8 ... Passed.  0.002861 ms
+
+JPEG -> ARGB Top-Down  ... Passed.  0.005007 ms
+JPEG -> ARGB Top-Down  1/2 ... Passed.  0.004053 ms
+JPEG -> ARGB Top-Down  1/4 ... Passed.  0.003099 ms
+JPEG -> ARGB Top-Down  1/8 ... Passed.  0.003099 ms
+
+XRGB Bottom-Up -> GRAY Q100 ... Done.  0.008106 ms
+  Result in test_enc_XRGB_BU_GRAY_Q100.jpg
+JPEG -> XRGB Bottom-Up ... Passed.  0.005007 ms
+JPEG -> XRGB Bottom-Up 1/2 ... Passed.  0.003099 ms
+JPEG -> XRGB Bottom-Up 1/4 ... Passed.  0.002861 ms
+JPEG -> XRGB Bottom-Up 1/8 ... Passed.  0.002861 ms
+
+JPEG -> ARGB Bottom-Up ... Passed.  0.003815 ms
+JPEG -> ARGB Bottom-Up 1/2 ... Passed.  0.003815 ms
+JPEG -> ARGB Bottom-Up 1/4 ... Passed.  0.002861 ms
+JPEG -> ARGB Bottom-Up 1/8 ... Passed.  0.002861 ms
+
+Buffer size regression test
+0001 x 01000001 x 02000001 x 03000001 x 04000001 x 05000001 x 06000001 x 07000001 x 08000001 x 09000001 x 10000001 x 11000001 x 12000001 x 13000001 x 14000001 x 15000001 x 16000001 x 17000001 x 18000001 x 19000001 x 20000001 x 01000001 x 02000001 x 03000001 x 04000001 x 05000001 x 06000001 x 07000001 x 08000001 x 09000001 x 10000001 x 11000001 x 12000001 x 13000001 x 14000001 x 15000001 x 16000001 x 17000001 x 18000001 x 19000001 x 20000001 x 01000001 x 02000001 x 03000001 x 04000001 x 05000001 x 06000001 x 07000001 x 08000001 x 09000001 x 10000001 x 11000001 x 12000001 x 13000001 x 14000001 x 15000001 x 16000001 x 17000001 x 18000001 x 19000001 x 20000001 x 01000001 x 02000001 x 03000001 x 04000001 x 05000001 x 06000001 x 07000001 x 08000001 x 09000001 x 10000001 x 11000001 x 12000001 x 13000001 x 14000001 x 15000001 x 16000001 x 17000001 x 18000001 x 19000001 x 20000001 x 01000001 x 02000001 x 03000001 x 04000001 x 05000001 x 06000001 x 07000001 x 08000001 x 09000001 x 10000001 x 11000001 x 12000001 x 13000001 x 14000001 x 15000001 x 16000001 x 17000001 x 18000001 x 19000001 x 2000Done.      
+./tjunittest -alloc
+Testing automatic buffer allocation
+RGB Top-Down  -> 4:4:4 Q100 ... Done.  0.751019 ms
+  Result in test_enc_RGB_TD_444_Q100.jpg
+JPEG -> RGB Top-Down  ... Passed.  0.059843 ms
+JPEG -> RGB Top-Down  1/2 ... Passed.  0.027895 ms
+JPEG -> RGB Top-Down  1/4 ... Passed.  0.019789 ms
+JPEG -> RGB Top-Down  1/8 ... Passed.  0.016212 ms
+
+RGB Bottom-Up -> 4:4:4 Q100 ... Done.  0.047922 ms
+  Result in test_enc_RGB_BU_444_Q100.jpg
+JPEG -> RGB Bottom-Up ... Passed.  0.058174 ms
+JPEG -> RGB Bottom-Up 1/2 ... Passed.  0.026941 ms
+JPEG -> RGB Bottom-Up 1/4 ... Passed.  0.019073 ms
+JPEG -> RGB Bottom-Up 1/8 ... Passed.  0.014067 ms
+
+BGR Top-Down  -> 4:4:4 Q100 ... Done.  0.045061 ms
+  Result in test_enc_BGR_TD_444_Q100.jpg
+JPEG -> BGR Top-Down  ... Passed.  0.043154 ms
+JPEG -> BGR Top-Down  1/2 ... Passed.  0.023842 ms
+JPEG -> BGR Top-Down  1/4 ... Passed.  0.018835 ms
+JPEG -> BGR Top-Down  1/8 ... Passed.  0.014067 ms
+
+BGR Bottom-Up -> 4:4:4 Q100 ... Done.  0.047922 ms
+  Result in test_enc_BGR_BU_444_Q100.jpg
+JPEG -> BGR Bottom-Up ... Passed.  0.046968 ms
+JPEG -> BGR Bottom-Up 1/2 ... Passed.  0.025988 ms
+JPEG -> BGR Bottom-Up 1/4 ... Passed.  0.017881 ms
+JPEG -> BGR Bottom-Up 1/8 ... Passed.  0.012875 ms
+
+RGBX Top-Down  -> 4:4:4 Q100 ... Done.  0.052929 ms
+  Result in test_enc_RGBX_TD_444_Q100.jpg
+JPEG -> RGBX Top-Down  ... Passed.  0.044107 ms
+JPEG -> RGBX Top-Down  1/2 ... Passed.  0.022173 ms
+JPEG -> RGBX Top-Down  1/4 ... Passed.  0.019073 ms
+JPEG -> RGBX Top-Down  1/8 ... Passed.  0.017881 ms
+
+JPEG -> RGBA Top-Down  ... Passed.  0.049114 ms
+JPEG -> RGBA Top-Down  1/2 ... Passed.  0.020981 ms
+JPEG -> RGBA Top-Down  1/4 ... Passed.  0.019073 ms
+JPEG -> RGBA Top-Down  1/8 ... Passed.  0.015974 ms
+
+RGBX Bottom-Up -> 4:4:4 Q100 ... Done.  0.046968 ms
+  Result in test_enc_RGBX_BU_444_Q100.jpg
+JPEG -> RGBX Bottom-Up ... Passed.  0.046968 ms
+JPEG -> RGBX Bottom-Up 1/2 ... Passed.  0.020981 ms
+JPEG -> RGBX Bottom-Up 1/4 ... Passed.  0.020027 ms
+JPEG -> RGBX Bottom-Up 1/8 ... Passed.  0.034094 ms
+
+JPEG -> RGBA Bottom-Up ... Passed.  0.046015 ms
+JPEG -> RGBA Bottom-Up 1/2 ... Passed.  0.019789 ms
+JPEG -> RGBA Bottom-Up 1/4 ... Passed.  0.019073 ms
+JPEG -> RGBA Bottom-Up 1/8 ... Passed.  0.015974 ms
+
+BGRX Top-Down  -> 4:4:4 Q100 ... Done.  0.047922 ms
+  Result in test_enc_BGRX_TD_444_Q100.jpg
+JPEG -> BGRX Top-Down  ... Passed.  0.045061 ms
+JPEG -> BGRX Top-Down  1/2 ... Passed.  0.021935 ms
+JPEG -> BGRX Top-Down  1/4 ... Passed.  0.019073 ms
+JPEG -> BGRX Top-Down  1/8 ... Passed.  0.015974 ms
+
+JPEG -> BGRA Top-Down  ... Passed.  0.046968 ms
+JPEG -> BGRA Top-Down  1/2 ... Passed.  0.020027 ms
+JPEG -> BGRA Top-Down  1/4 ... Passed.  0.018835 ms
+JPEG -> BGRA Top-Down  1/8 ... Passed.  0.015974 ms
+
+BGRX Bottom-Up -> 4:4:4 Q100 ... Done.  0.046968 ms
+  Result in test_enc_BGRX_BU_444_Q100.jpg
+JPEG -> BGRX Bottom-Up ... Passed.  0.046968 ms
+JPEG -> BGRX Bottom-Up 1/2 ... Passed.  0.020981 ms
+JPEG -> BGRX Bottom-Up 1/4 ... Passed.  0.020027 ms
+JPEG -> BGRX Bottom-Up 1/8 ... Passed.  0.022888 ms
+
+JPEG -> BGRA Bottom-Up ... Passed.  0.045061 ms
+JPEG -> BGRA Bottom-Up 1/2 ... Passed.  0.020981 ms
+JPEG -> BGRA Bottom-Up 1/4 ... Passed.  0.019073 ms
+JPEG -> BGRA Bottom-Up 1/8 ... Passed.  0.015974 ms
+
+XBGR Top-Down  -> 4:4:4 Q100 ... Done.  0.046968 ms
+  Result in test_enc_XBGR_TD_444_Q100.jpg
+JPEG -> XBGR Top-Down  ... Passed.  0.043869 ms
+JPEG -> XBGR Top-Down  1/2 ... Passed.  0.020981 ms
+JPEG -> XBGR Top-Down  1/4 ... Passed.  0.018835 ms
+JPEG -> XBGR Top-Down  1/8 ... Passed.  0.015974 ms
+
+JPEG -> ABGR Top-Down  ... Passed.  0.047207 ms
+JPEG -> ABGR Top-Down  1/2 ... Passed.  0.020981 ms
+JPEG -> ABGR Top-Down  1/4 ... Passed.  0.019073 ms
+JPEG -> ABGR Top-Down  1/8 ... Passed.  0.015974 ms
+
+XBGR Bottom-Up -> 4:4:4 Q100 ... Done.  0.046015 ms
+  Result in test_enc_XBGR_BU_444_Q100.jpg
+JPEG -> XBGR Bottom-Up ... Passed.  0.046968 ms
+JPEG -> XBGR Bottom-Up 1/2 ... Passed.  0.020027 ms
+JPEG -> XBGR Bottom-Up 1/4 ... Passed.  0.020027 ms
+JPEG -> XBGR Bottom-Up 1/8 ... Passed.  0.016928 ms
+
+JPEG -> ABGR Bottom-Up ... Passed.  0.051022 ms
+JPEG -> ABGR Bottom-Up 1/2 ... Passed.  0.020981 ms
+JPEG -> ABGR Bottom-Up 1/4 ... Passed.  0.019073 ms
+JPEG -> ABGR Bottom-Up 1/8 ... Passed.  0.015974 ms
+
+XRGB Top-Down  -> 4:4:4 Q100 ... Done.  0.046015 ms
+  Result in test_enc_XRGB_TD_444_Q100.jpg
+JPEG -> XRGB Top-Down  ... Passed.  0.043869 ms
+JPEG -> XRGB Top-Down  1/2 ... Passed.  0.020981 ms
+JPEG -> XRGB Top-Down  1/4 ... Passed.  0.018835 ms
+JPEG -> XRGB Top-Down  1/8 ... Passed.  0.023127 ms
+
+JPEG -> ARGB Top-Down  ... Passed.  0.040054 ms
+JPEG -> ARGB Top-Down  1/2 ... Passed.  0.020981 ms
+JPEG -> ARGB Top-Down  1/4 ... Passed.  0.018835 ms
+JPEG -> ARGB Top-Down  1/8 ... Passed.  0.015974 ms
+
+XRGB Bottom-Up -> 4:4:4 Q100 ... Done.  0.045776 ms
+  Result in test_enc_XRGB_BU_444_Q100.jpg
+JPEG -> XRGB Bottom-Up ... Passed.  0.046968 ms
+JPEG -> XRGB Bottom-Up 1/2 ... Passed.  0.020981 ms
+JPEG -> XRGB Bottom-Up 1/4 ... Passed.  0.019073 ms
+JPEG -> XRGB Bottom-Up 1/8 ... Passed.  0.015974 ms
+
+JPEG -> ARGB Bottom-Up ... Passed.  0.045061 ms
+JPEG -> ARGB Bottom-Up 1/2 ... Passed.  0.019789 ms
+JPEG -> ARGB Bottom-Up 1/4 ... Passed.  0.020027 ms
+JPEG -> ARGB Bottom-Up 1/8 ... Passed.  0.016928 ms
+
+RGB Top-Down  -> 4:2:2 Q100 ... Done.  0.042915 ms
+  Result in test_enc_RGB_TD_422_Q100.jpg
+JPEG -> RGB Top-Down  ... Passed.  0.044823 ms
+
+RGB Bottom-Up -> 4:2:2 Q100 ... Done.  0.041008 ms
+  Result in test_enc_RGB_BU_422_Q100.jpg
+JPEG -> RGB Bottom-Up ... Passed.  0.044107 ms
+
+BGR Top-Down  -> 4:2:2 Q100 ... Done.  0.040054 ms
+  Result in test_enc_BGR_TD_422_Q100.jpg
+JPEG -> BGR Top-Down  ... Passed.  0.039101 ms
+
+BGR Bottom-Up -> 4:2:2 Q100 ... Done.  0.039101 ms
+  Result in test_enc_BGR_BU_422_Q100.jpg
+JPEG -> BGR Bottom-Up ... Passed.  0.042915 ms
+
+RGBX Top-Down  -> 4:2:2 Q100 ... Done.  0.039816 ms
+  Result in test_enc_RGBX_TD_422_Q100.jpg
+JPEG -> RGBX Top-Down  ... Passed.  0.041008 ms
+
+JPEG -> RGBA Top-Down  ... Passed.  0.036001 ms
+
+RGBX Bottom-Up -> 4:2:2 Q100 ... Done.  0.046015 ms
+  Result in test_enc_RGBX_BU_422_Q100.jpg
+JPEG -> RGBX Bottom-Up ... Passed.  0.043154 ms
+
+JPEG -> RGBA Bottom-Up ... Passed.  0.038862 ms
+
+BGRX Top-Down  -> 4:2:2 Q100 ... Done.  0.046015 ms
+  Result in test_enc_BGRX_TD_422_Q100.jpg
+JPEG -> BGRX Top-Down  ... Passed.  0.036955 ms
+
+JPEG -> BGRA Top-Down  ... Passed.  0.035048 ms
+
+BGRX Bottom-Up -> 4:2:2 Q100 ... Done.  0.046015 ms
+  Result in test_enc_BGRX_BU_422_Q100.jpg
+JPEG -> BGRX Bottom-Up ... Passed.  0.041008 ms
+
+JPEG -> BGRA Bottom-Up ... Passed.  0.039816 ms
+
+XBGR Top-Down  -> 4:2:2 Q100 ... Done.  0.054121 ms
+  Result in test_enc_XBGR_TD_422_Q100.jpg
+JPEG -> XBGR Top-Down  ... Passed.  0.037909 ms
+
+JPEG -> ABGR Top-Down  ... Passed.  0.035048 ms
+
+XBGR Bottom-Up -> 4:2:2 Q100 ... Done.  0.040054 ms
+  Result in test_enc_XBGR_BU_422_Q100.jpg
+JPEG -> XBGR Bottom-Up ... Passed.  0.042200 ms
+
+JPEG -> ABGR Bottom-Up ... Passed.  0.038862 ms
+
+XRGB Top-Down  -> 4:2:2 Q100 ... Done.  0.039101 ms
+  Result in test_enc_XRGB_TD_422_Q100.jpg
+JPEG -> XRGB Top-Down  ... Passed.  0.036955 ms
+
+JPEG -> ARGB Top-Down  ... Passed.  0.035048 ms
+
+XRGB Bottom-Up -> 4:2:2 Q100 ... Done.  0.038862 ms
+  Result in test_enc_XRGB_BU_422_Q100.jpg
+JPEG -> XRGB Bottom-Up ... Passed.  0.040054 ms
+
+JPEG -> ARGB Bottom-Up ... Passed.  0.039816 ms
+
+RGB Top-Down  -> 4:2:0 Q100 ... Done.  0.045061 ms
+  Result in test_enc_RGB_TD_420_Q100.jpg
+JPEG -> RGB Top-Down  ... Passed.  0.051022 ms
+
+RGB Bottom-Up -> 4:2:0 Q100 ... Done.  0.040054 ms
+  Result in test_enc_RGB_BU_420_Q100.jpg
+JPEG -> RGB Bottom-Up ... Passed.  0.051022 ms
+
+BGR Top-Down  -> 4:2:0 Q100 ... Done.  0.038862 ms
+  Result in test_enc_BGR_TD_420_Q100.jpg
+JPEG -> BGR Top-Down  ... Passed.  0.044107 ms
+
+BGR Bottom-Up -> 4:2:0 Q100 ... Done.  0.038862 ms
+  Result in test_enc_BGR_BU_420_Q100.jpg
+JPEG -> BGR Bottom-Up ... Passed.  0.050068 ms
+
+RGBX Top-Down  -> 4:2:0 Q100 ... Done.  0.040054 ms
+  Result in test_enc_RGBX_TD_420_Q100.jpg
+JPEG -> RGBX Top-Down  ... Passed.  0.044823 ms
+
+JPEG -> RGBA Top-Down  ... Passed.  0.046015 ms
+
+RGBX Bottom-Up -> 4:2:0 Q100 ... Done.  0.038862 ms
+  Result in test_enc_RGBX_BU_420_Q100.jpg
+JPEG -> RGBX Bottom-Up ... Passed.  0.046968 ms
+
+JPEG -> RGBA Bottom-Up ... Passed.  0.043154 ms
+
+BGRX Top-Down  -> 4:2:0 Q100 ... Done.  0.038862 ms
+  Result in test_enc_BGRX_TD_420_Q100.jpg
+JPEG -> BGRX Top-Down  ... Passed.  0.046968 ms
+
+JPEG -> BGRA Top-Down  ... Passed.  0.037909 ms
+
+BGRX Bottom-Up -> 4:2:0 Q100 ... Done.  0.038147 ms
+  Result in test_enc_BGRX_BU_420_Q100.jpg
+JPEG -> BGRX Bottom-Up ... Passed.  0.045061 ms
+
+JPEG -> BGRA Bottom-Up ... Passed.  0.041962 ms
+
+XBGR Top-Down  -> 4:2:0 Q100 ... Done.  0.050783 ms
+  Result in test_enc_XBGR_TD_420_Q100.jpg
+JPEG -> XBGR Top-Down  ... Passed.  0.046968 ms
+
+JPEG -> ABGR Top-Down  ... Passed.  0.037909 ms
+
+XBGR Bottom-Up -> 4:2:0 Q100 ... Done.  0.038862 ms
+  Result in test_enc_XBGR_BU_420_Q100.jpg
+JPEG -> XBGR Bottom-Up ... Passed.  0.051975 ms
+
+JPEG -> ABGR Bottom-Up ... Passed.  0.041962 ms
+
+XRGB Top-Down  -> 4:2:0 Q100 ... Done.  0.037193 ms
+  Result in test_enc_XRGB_TD_420_Q100.jpg
+JPEG -> XRGB Top-Down  ... Passed.  0.041008 ms
+
+JPEG -> ARGB Top-Down  ... Passed.  0.037909 ms
+
+XRGB Bottom-Up -> 4:2:0 Q100 ... Done.  0.037909 ms
+  Result in test_enc_XRGB_BU_420_Q100.jpg
+JPEG -> XRGB Bottom-Up ... Passed.  0.051022 ms
+
+JPEG -> ARGB Bottom-Up ... Passed.  0.042915 ms
+
+RGB Top-Down  -> 4:4:0 Q100 ... Done.  0.055790 ms
+  Result in test_enc_RGB_TD_440_Q100.jpg
+JPEG -> RGB Top-Down  ... Passed.  0.052929 ms
+
+RGB Bottom-Up -> 4:4:0 Q100 ... Done.  0.054836 ms
+  Result in test_enc_RGB_BU_440_Q100.jpg
+JPEG -> RGB Bottom-Up ... Passed.  0.054121 ms
+
+BGR Top-Down  -> 4:4:0 Q100 ... Done.  0.054121 ms
+  Result in test_enc_BGR_TD_440_Q100.jpg
+JPEG -> BGR Top-Down  ... Passed.  0.049114 ms
+
+BGR Bottom-Up -> 4:4:0 Q100 ... Done.  0.052929 ms
+  Result in test_enc_BGR_BU_440_Q100.jpg
+JPEG -> BGR Bottom-Up ... Passed.  0.052214 ms
+
+RGBX Top-Down  -> 4:4:0 Q100 ... Done.  0.076056 ms
+  Result in test_enc_RGBX_TD_440_Q100.jpg
+JPEG -> RGBX Top-Down  ... Passed.  0.055075 ms
+
+JPEG -> RGBA Top-Down  ... Passed.  0.043154 ms
+
+RGBX Bottom-Up -> 4:4:0 Q100 ... Done.  0.056028 ms
+  Result in test_enc_RGBX_BU_440_Q100.jpg
+JPEG -> RGBX Bottom-Up ... Passed.  0.056028 ms
+
+JPEG -> RGBA Bottom-Up ... Passed.  0.046968 ms
+
+BGRX Top-Down  -> 4:4:0 Q100 ... Done.  0.055075 ms
+  Result in test_enc_BGRX_TD_440_Q100.jpg
+JPEG -> BGRX Top-Down  ... Passed.  0.051022 ms
+
+JPEG -> BGRA Top-Down  ... Passed.  0.043154 ms
+
+BGRX Bottom-Up -> 4:4:0 Q100 ... Done.  0.056028 ms
+  Result in test_enc_BGRX_BU_440_Q100.jpg
+JPEG -> BGRX Bottom-Up ... Passed.  0.052929 ms
+
+JPEG -> BGRA Bottom-Up ... Passed.  0.039101 ms
+
+XBGR Top-Down  -> 4:4:0 Q100 ... Done.  0.024080 ms
+  Result in test_enc_XBGR_TD_440_Q100.jpg
+JPEG -> XBGR Top-Down  ... Passed.  0.025034 ms
+
+JPEG -> ABGR Top-Down  ... Passed.  0.027895 ms
+
+XBGR Bottom-Up -> 4:4:0 Q100 ... Done.  0.024080 ms
+  Result in test_enc_XBGR_BU_440_Q100.jpg
+JPEG -> XBGR Bottom-Up ... Passed.  0.029087 ms
+
+JPEG -> ABGR Bottom-Up ... Passed.  0.028133 ms
+
+XRGB Top-Down  -> 4:4:0 Q100 ... Done.  0.023842 ms
+  Result in test_enc_XRGB_TD_440_Q100.jpg
+JPEG -> XRGB Top-Down  ... Passed.  0.025988 ms
+
+JPEG -> ARGB Top-Down  ... Passed.  0.029087 ms
+
+XRGB Bottom-Up -> 4:4:0 Q100 ... Done.  0.023842 ms
+  Result in test_enc_XRGB_BU_440_Q100.jpg
+JPEG -> XRGB Bottom-Up ... Passed.  0.028133 ms
+
+JPEG -> ARGB Bottom-Up ... Passed.  0.029087 ms
+
+Grayscale Top-Down  -> GRAY Q100 ... Done.  0.009060 ms
+  Result in test_enc_Grayscale_TD_GRAY_Q100.jpg
+JPEG -> Grayscale Top-Down  ... Passed.  0.005007 ms
+JPEG -> Grayscale Top-Down  1/2 ... Passed.  0.003099 ms
+JPEG -> Grayscale Top-Down  1/4 ... Passed.  0.003099 ms
+JPEG -> Grayscale Top-Down  1/8 ... Passed.  0.003099 ms
+
+Grayscale Bottom-Up -> GRAY Q100 ... Done.  0.012159 ms
+  Result in test_enc_Grayscale_BU_GRAY_Q100.jpg
+JPEG -> Grayscale Bottom-Up ... Passed.  0.005007 ms
+JPEG -> Grayscale Bottom-Up 1/2 ... Passed.  0.002861 ms
+JPEG -> Grayscale Bottom-Up 1/4 ... Passed.  0.002861 ms
+JPEG -> Grayscale Bottom-Up 1/8 ... Passed.  0.003099 ms
+
+RGB Top-Down  -> GRAY Q100 ... Done.  0.012875 ms
+  Result in test_enc_RGB_TD_GRAY_Q100.jpg
+JPEG -> RGB Top-Down  ... Passed.  0.006914 ms
+JPEG -> RGB Top-Down  1/2 ... Passed.  0.004053 ms
+JPEG -> RGB Top-Down  1/4 ... Passed.  0.002861 ms
+JPEG -> RGB Top-Down  1/8 ... Passed.  0.002861 ms
+
+RGB Bottom-Up -> GRAY Q100 ... Done.  0.009060 ms
+  Result in test_enc_RGB_BU_GRAY_Q100.jpg
+JPEG -> RGB Bottom-Up ... Passed.  0.005960 ms
+JPEG -> RGB Bottom-Up 1/2 ... Passed.  0.003815 ms
+JPEG -> RGB Bottom-Up 1/4 ... Passed.  0.004053 ms
+JPEG -> RGB Bottom-Up 1/8 ... Passed.  0.002861 ms
+
+BGR Top-Down  -> GRAY Q100 ... Done.  0.012875 ms
+  Result in test_enc_BGR_TD_GRAY_Q100.jpg
+JPEG -> BGR Top-Down  ... Passed.  0.005960 ms
+JPEG -> BGR Top-Down  1/2 ... Passed.  0.004053 ms
+JPEG -> BGR Top-Down  1/4 ... Passed.  0.003099 ms
+JPEG -> BGR Top-Down  1/8 ... Passed.  0.003099 ms
+
+BGR Bottom-Up -> GRAY Q100 ... Done.  0.013828 ms
+  Result in test_enc_BGR_BU_GRAY_Q100.jpg
+JPEG -> BGR Bottom-Up ... Passed.  0.005960 ms
+JPEG -> BGR Bottom-Up 1/2 ... Passed.  0.003815 ms
+JPEG -> BGR Bottom-Up 1/4 ... Passed.  0.002861 ms
+JPEG -> BGR Bottom-Up 1/8 ... Passed.  0.002861 ms
+
+RGBX Top-Down  -> GRAY Q100 ... Done.  0.012875 ms
+  Result in test_enc_RGBX_TD_GRAY_Q100.jpg
+JPEG -> RGBX Top-Down  ... Passed.  0.005007 ms
+JPEG -> RGBX Top-Down  1/2 ... Passed.  0.004053 ms
+JPEG -> RGBX Top-Down  1/4 ... Passed.  0.003099 ms
+JPEG -> RGBX Top-Down  1/8 ... Passed.  0.003099 ms
+
+JPEG -> RGBA Top-Down  ... Passed.  0.006914 ms
+JPEG -> RGBA Top-Down  1/2 ... Passed.  0.002861 ms
+JPEG -> RGBA Top-Down  1/4 ... Passed.  0.003099 ms
+JPEG -> RGBA Top-Down  1/8 ... Passed.  0.003099 ms
+
+RGBX Bottom-Up -> GRAY Q100 ... Done.  0.009060 ms
+  Result in test_enc_RGBX_BU_GRAY_Q100.jpg
+JPEG -> RGBX Bottom-Up ... Passed.  0.005007 ms
+JPEG -> RGBX Bottom-Up 1/2 ... Passed.  0.004053 ms
+JPEG -> RGBX Bottom-Up 1/4 ... Passed.  0.003099 ms
+JPEG -> RGBX Bottom-Up 1/8 ... Passed.  0.003099 ms
+
+JPEG -> RGBA Bottom-Up ... Passed.  0.005007 ms
+JPEG -> RGBA Bottom-Up 1/2 ... Passed.  0.002861 ms
+JPEG -> RGBA Bottom-Up 1/4 ... Passed.  0.004053 ms
+JPEG -> RGBA Bottom-Up 1/8 ... Passed.  0.003099 ms
+
+BGRX Top-Down  -> GRAY Q100 ... Done.  0.011206 ms
+  Result in test_enc_BGRX_TD_GRAY_Q100.jpg
+JPEG -> BGRX Top-Down  ... Passed.  0.005007 ms
+JPEG -> BGRX Top-Down  1/2 ... Passed.  0.004053 ms
+JPEG -> BGRX Top-Down  1/4 ... Passed.  0.003815 ms
+JPEG -> BGRX Top-Down  1/8 ... Passed.  0.002861 ms
+
+JPEG -> BGRA Top-Down  ... Passed.  0.003815 ms
+JPEG -> BGRA Top-Down  1/2 ... Passed.  0.003099 ms
+JPEG -> BGRA Top-Down  1/4 ... Passed.  0.003099 ms
+JPEG -> BGRA Top-Down  1/8 ... Passed.  0.003099 ms
+
+BGRX Bottom-Up -> GRAY Q100 ... Done.  0.009060 ms
+  Result in test_enc_BGRX_BU_GRAY_Q100.jpg
+JPEG -> BGRX Bottom-Up ... Passed.  0.005960 ms
+JPEG -> BGRX Bottom-Up 1/2 ... Passed.  0.003099 ms
+JPEG -> BGRX Bottom-Up 1/4 ... Passed.  0.004053 ms
+JPEG -> BGRX Bottom-Up 1/8 ... Passed.  0.003099 ms
+
+JPEG -> BGRA Bottom-Up ... Passed.  0.004053 ms
+JPEG -> BGRA Bottom-Up 1/2 ... Passed.  0.003099 ms
+JPEG -> BGRA Bottom-Up 1/4 ... Passed.  0.004053 ms
+JPEG -> BGRA Bottom-Up 1/8 ... Passed.  0.002861 ms
+
+XBGR Top-Down  -> GRAY Q100 ... Done.  0.009060 ms
+  Result in test_enc_XBGR_TD_GRAY_Q100.jpg
+JPEG -> XBGR Top-Down  ... Passed.  0.006199 ms
+JPEG -> XBGR Top-Down  1/2 ... Passed.  0.002861 ms
+JPEG -> XBGR Top-Down  1/4 ... Passed.  0.002861 ms
+JPEG -> XBGR Top-Down  1/8 ... Passed.  0.002861 ms
+
+JPEG -> ABGR Top-Down  ... Passed.  0.003815 ms
+JPEG -> ABGR Top-Down  1/2 ... Passed.  0.003099 ms
+JPEG -> ABGR Top-Down  1/4 ... Passed.  0.002861 ms
+JPEG -> ABGR Top-Down  1/8 ... Passed.  0.002861 ms
+
+XBGR Bottom-Up -> GRAY Q100 ... Done.  0.009060 ms
+  Result in test_enc_XBGR_BU_GRAY_Q100.jpg
+JPEG -> XBGR Bottom-Up ... Passed.  0.005007 ms
+JPEG -> XBGR Bottom-Up 1/2 ... Passed.  0.004053 ms
+JPEG -> XBGR Bottom-Up 1/4 ... Passed.  0.003099 ms
+JPEG -> XBGR Bottom-Up 1/8 ... Passed.  0.003099 ms
+
+JPEG -> ABGR Bottom-Up ... Passed.  0.004053 ms
+JPEG -> ABGR Bottom-Up 1/2 ... Passed.  0.002861 ms
+JPEG -> ABGR Bottom-Up 1/4 ... Passed.  0.002861 ms
+JPEG -> ABGR Bottom-Up 1/8 ... Passed.  0.002861 ms
+
+XRGB Top-Down  -> GRAY Q100 ... Done.  0.009060 ms
+  Result in test_enc_XRGB_TD_GRAY_Q100.jpg
+JPEG -> XRGB Top-Down  ... Passed.  0.005960 ms
+JPEG -> XRGB Top-Down  1/2 ... Passed.  0.003099 ms
+JPEG -> XRGB Top-Down  1/4 ... Passed.  0.003099 ms
+JPEG -> XRGB Top-Down  1/8 ... Passed.  0.003099 ms
+
+JPEG -> ARGB Top-Down  ... Passed.  0.004053 ms
+JPEG -> ARGB Top-Down  1/2 ... Passed.  0.002861 ms
+JPEG -> ARGB Top-Down  1/4 ... Passed.  0.002861 ms
+JPEG -> ARGB Top-Down  1/8 ... Passed.  0.002861 ms
+
+XRGB Bottom-Up -> GRAY Q100 ... Done.  0.008821 ms
+  Result in test_enc_XRGB_BU_GRAY_Q100.jpg
+JPEG -> XRGB Bottom-Up ... Passed.  0.005007 ms
+JPEG -> XRGB Bottom-Up 1/2 ... Passed.  0.002861 ms
+JPEG -> XRGB Bottom-Up 1/4 ... Passed.  0.004053 ms
+JPEG -> XRGB Bottom-Up 1/8 ... Passed.  0.002861 ms
+
+JPEG -> ARGB Bottom-Up ... Passed.  0.005007 ms
+JPEG -> ARGB Bottom-Up 1/2 ... Passed.  0.004053 ms
+JPEG -> ARGB Bottom-Up 1/4 ... Passed.  0.002861 ms
+JPEG -> ARGB Bottom-Up 1/8 ... Passed.  0.002146 ms
+
+Buffer size regression test
+0001 x 01000001 x 02000001 x 03000001 x 04000001 x 05000001 x 06000001 x 07000001 x 08000001 x 09000001 x 10000001 x 11000001 x 12000001 x 13000001 x 14000001 x 15000001 x 16000001 x 17000001 x 18000001 x 19000001 x 20000001 x 01000001 x 02000001 x 03000001 x 04000001 x 05000001 x 06000001 x 07000001 x 08000001 x 09000001 x 10000001 x 11000001 x 12000001 x 13000001 x 14000001 x 15000001 x 16000001 x 17000001 x 18000001 x 19000001 x 20000001 x 01000001 x 02000001 x 03000001 x 04000001 x 05000001 x 06000001 x 07000001 x 08000001 x 09000001 x 10000001 x 11000001 x 12000001 x 13000001 x 14000001 x 15000001 x 16000001 x 17000001 x 18000001 x 19000001 x 20000001 x 01000001 x 02000001 x 03000001 x 04000001 x 05000001 x 06000001 x 07000001 x 08000001 x 09000001 x 10000001 x 11000001 x 12000001 x 13000001 x 14000001 x 15000001 x 16000001 x 17000001 x 18000001 x 19000001 x 20000001 x 01000001 x 02000001 x 03000001 x 04000001 x 05000001 x 06000001 x 07000001 x 08000001 x 09000001 x 10000001 x 11000001 x 12000001 x 13000001 x 14000001 x 15000001 x 16000001 x 17000001 x 18000001 x 19000001 x 2000Done.      
+./tjunittest -yuv
+RGB Top-Down  -> 4:4:4 YUV ... Passed.  0.730991 ms
+  Result in test_enc_RGB_TD_444.yuv
+
+RGB Bottom-Up -> 4:4:4 YUV ... Passed.  0.025034 ms
+  Result in test_enc_RGB_BU_444.yuv
+
+BGR Top-Down  -> 4:4:4 YUV ... Passed.  0.022173 ms
+  Result in test_enc_BGR_TD_444.yuv
+
+BGR Bottom-Up -> 4:4:4 YUV ... Passed.  0.020981 ms
+  Result in test_enc_BGR_BU_444.yuv
+
+RGBX Top-Down  -> 4:4:4 YUV ... Passed.  0.027180 ms
+  Result in test_enc_RGBX_TD_444.yuv
+
+
+RGBX Bottom-Up -> 4:4:4 YUV ... Passed.  0.020981 ms
+  Result in test_enc_RGBX_BU_444.yuv
+
+
+BGRX Top-Down  -> 4:4:4 YUV ... Passed.  0.021935 ms
+  Result in test_enc_BGRX_TD_444.yuv
+
+
+BGRX Bottom-Up -> 4:4:4 YUV ... Passed.  0.022173 ms
+  Result in test_enc_BGRX_BU_444.yuv
+
+
+XBGR Top-Down  -> 4:4:4 YUV ... Passed.  0.022173 ms
+  Result in test_enc_XBGR_TD_444.yuv
+
+
+XBGR Bottom-Up -> 4:4:4 YUV ... Passed.  0.020981 ms
+  Result in test_enc_XBGR_BU_444.yuv
+
+
+XRGB Top-Down  -> 4:4:4 YUV ... Passed.  0.022173 ms
+  Result in test_enc_XRGB_TD_444.yuv
+
+
+XRGB Bottom-Up -> 4:4:4 YUV ... Passed.  0.021935 ms
+  Result in test_enc_XRGB_BU_444.yuv
+
+
+RGB Top-Down  -> 4:2:2 YUV ... Passed.  0.023127 ms
+  Result in test_enc_RGB_TD_422.yuv
+
+RGB Bottom-Up -> 4:2:2 YUV ... Passed.  0.020981 ms
+  Result in test_enc_RGB_BU_422.yuv
+
+BGR Top-Down  -> 4:2:2 YUV ... Passed.  0.020981 ms
+  Result in test_enc_BGR_TD_422.yuv
+
+BGR Bottom-Up -> 4:2:2 YUV ... Passed.  0.020027 ms
+  Result in test_enc_BGR_BU_422.yuv
+
+RGBX Top-Down  -> 4:2:2 YUV ... Passed.  0.024080 ms
+  Result in test_enc_RGBX_TD_422.yuv
+
+
+RGBX Bottom-Up -> 4:2:2 YUV ... Passed.  0.022173 ms
+  Result in test_enc_RGBX_BU_422.yuv
+
+
+BGRX Top-Down  -> 4:2:2 YUV ... Passed.  0.022173 ms
+  Result in test_enc_BGRX_TD_422.yuv
+
+
+BGRX Bottom-Up -> 4:2:2 YUV ... Passed.  0.021935 ms
+  Result in test_enc_BGRX_BU_422.yuv
+
+
+XBGR Top-Down  -> 4:2:2 YUV ... Passed.  0.021935 ms
+  Result in test_enc_XBGR_TD_422.yuv
+
+
+XBGR Bottom-Up -> 4:2:2 YUV ... Passed.  0.042200 ms
+  Result in test_enc_XBGR_BU_422.yuv
+
+
+XRGB Top-Down  -> 4:2:2 YUV ... Passed.  0.021935 ms
+  Result in test_enc_XRGB_TD_422.yuv
+
+
+XRGB Bottom-Up -> 4:2:2 YUV ... Passed.  0.022173 ms
+  Result in test_enc_XRGB_BU_422.yuv
+
+
+RGB Top-Down  -> 4:2:0 YUV ... Passed.  0.022888 ms
+  Result in test_enc_RGB_TD_420.yuv
+
+RGB Bottom-Up -> 4:2:0 YUV ... Passed.  0.020981 ms
+  Result in test_enc_RGB_BU_420.yuv
+
+BGR Top-Down  -> 4:2:0 YUV ... Passed.  0.020981 ms
+  Result in test_enc_BGR_TD_420.yuv
+
+BGR Bottom-Up -> 4:2:0 YUV ... Passed.  0.020981 ms
+  Result in test_enc_BGR_BU_420.yuv
+
+RGBX Top-Down  -> 4:2:0 YUV ... Passed.  0.020981 ms
+  Result in test_enc_RGBX_TD_420.yuv
+
+
+RGBX Bottom-Up -> 4:2:0 YUV ... Passed.  0.019789 ms
+  Result in test_enc_RGBX_BU_420.yuv
+
+
+BGRX Top-Down  -> 4:2:0 YUV ... Passed.  0.018835 ms
+  Result in test_enc_BGRX_TD_420.yuv
+
+
+BGRX Bottom-Up -> 4:2:0 YUV ... Passed.  0.019073 ms
+  Result in test_enc_BGRX_BU_420.yuv
+
+
+XBGR Top-Down  -> 4:2:0 YUV ... Passed.  0.020027 ms
+  Result in test_enc_XBGR_TD_420.yuv
+
+
+XBGR Bottom-Up -> 4:2:0 YUV ... Passed.  0.020027 ms
+  Result in test_enc_XBGR_BU_420.yuv
+
+
+XRGB Top-Down  -> 4:2:0 YUV ... Passed.  0.019073 ms
+  Result in test_enc_XRGB_TD_420.yuv
+
+
+XRGB Bottom-Up -> 4:2:0 YUV ... Passed.  0.019073 ms
+  Result in test_enc_XRGB_BU_420.yuv
+
+
+RGB Top-Down  -> 4:4:0 YUV ... Passed.  0.036955 ms
+  Result in test_enc_RGB_TD_440.yuv
+
+RGB Bottom-Up -> 4:4:0 YUV ... Passed.  0.036001 ms
+  Result in test_enc_RGB_BU_440.yuv
+
+BGR Top-Down  -> 4:4:0 YUV ... Passed.  0.034809 ms
+  Result in test_enc_BGR_TD_440.yuv
+
+BGR Bottom-Up -> 4:4:0 YUV ... Passed.  0.035048 ms
+  Result in test_enc_BGR_BU_440.yuv
+
+RGBX Top-Down  -> 4:4:0 YUV ... Passed.  0.036955 ms
+  Result in test_enc_RGBX_TD_440.yuv
+
+
+RGBX Bottom-Up -> 4:4:0 YUV ... Passed.  0.036001 ms
+  Result in test_enc_RGBX_BU_440.yuv
+
+
+BGRX Top-Down  -> 4:4:0 YUV ... Passed.  0.036001 ms
+  Result in test_enc_BGRX_TD_440.yuv
+
+
+BGRX Bottom-Up -> 4:4:0 YUV ... Passed.  0.036001 ms
+  Result in test_enc_BGRX_BU_440.yuv
+
+
+XBGR Top-Down  -> 4:4:0 YUV ... Passed.  0.036001 ms
+  Result in test_enc_XBGR_TD_440.yuv
+
+
+XBGR Bottom-Up -> 4:4:0 YUV ... Passed.  0.036001 ms
+  Result in test_enc_XBGR_BU_440.yuv
+
+
+XRGB Top-Down  -> 4:4:0 YUV ... Passed.  0.037193 ms
+  Result in test_enc_XRGB_TD_440.yuv
+
+
+XRGB Bottom-Up -> 4:4:0 YUV ... Passed.  0.035048 ms
+  Result in test_enc_XRGB_BU_440.yuv
+
+
+Grayscale Top-Down  -> GRAY YUV ... Passed.  0.012159 ms
+  Result in test_enc_Grayscale_TD_GRAY.yuv
+
+Grayscale Bottom-Up -> GRAY YUV ... Passed.  0.010014 ms
+  Result in test_enc_Grayscale_BU_GRAY.yuv
+
+RGB Top-Down  -> GRAY YUV ... Passed.  0.011921 ms
+  Result in test_enc_RGB_TD_GRAY.yuv
+
+RGB Bottom-Up -> GRAY YUV ... Passed.  0.010967 ms
+  Result in test_enc_RGB_BU_GRAY.yuv
+
+BGR Top-Down  -> GRAY YUV ... Passed.  0.010014 ms
+  Result in test_enc_BGR_TD_GRAY.yuv
+
+BGR Bottom-Up -> GRAY YUV ... Passed.  0.010014 ms
+  Result in test_enc_BGR_BU_GRAY.yuv
+
+RGBX Top-Down  -> GRAY YUV ... Passed.  0.010967 ms
+  Result in test_enc_RGBX_TD_GRAY.yuv
+
+
+RGBX Bottom-Up -> GRAY YUV ... Passed.  0.010014 ms
+  Result in test_enc_RGBX_BU_GRAY.yuv
+
+
+BGRX Top-Down  -> GRAY YUV ... Passed.  0.010014 ms
+  Result in test_enc_BGRX_TD_GRAY.yuv
+
+
+BGRX Bottom-Up -> GRAY YUV ... Passed.  0.009060 ms
+  Result in test_enc_BGRX_BU_GRAY.yuv
+
+
+XBGR Top-Down  -> GRAY YUV ... Passed.  0.009060 ms
+  Result in test_enc_XBGR_TD_GRAY.yuv
+
+
+XBGR Bottom-Up -> GRAY YUV ... Passed.  0.009775 ms
+  Result in test_enc_XBGR_BU_GRAY.yuv
+
+
+XRGB Top-Down  -> GRAY YUV ... Passed.  0.008821 ms
+  Result in test_enc_XRGB_TD_GRAY.yuv
+
+
+XRGB Bottom-Up -> GRAY YUV ... Passed.  0.009060 ms
+  Result in test_enc_XRGB_BU_GRAY.yuv
+
+
+RGB Top-Down  -> 4:4:4 Q100 ... Done.  0.065088 ms
+  Result in test_yuv0_enc_RGB_TD_444_Q100.jpg
+JPEG -> YUV 444 ... Passed.  0.036001 ms
+
+RGB Top-Down  -> 4:4:4 Q100 ... Done.  0.042915 ms
+  Result in test_yuv1_enc_RGB_TD_444_Q100.jpg
+JPEG -> YUV 444 ... Passed.  0.022888 ms
+
+RGB Top-Down  -> 4:2:2 Q100 ... Done.  0.046968 ms
+  Result in test_yuv0_enc_RGB_TD_422_Q100.jpg
+JPEG -> YUV 422 ... Passed.  0.028133 ms
+
+RGB Top-Down  -> 4:2:2 Q100 ... Done.  0.042915 ms
+  Result in test_yuv1_enc_RGB_TD_422_Q100.jpg
+JPEG -> YUV 422 ... Passed.  0.025988 ms
+
+RGB Top-Down  -> 4:2:0 Q100 ... Done.  0.041962 ms
+  Result in test_yuv0_enc_RGB_TD_420_Q100.jpg
+JPEG -> YUV 420 ... Passed.  0.030041 ms
+
+RGB Top-Down  -> 4:2:0 Q100 ... Done.  0.037909 ms
+  Result in test_yuv1_enc_RGB_TD_420_Q100.jpg
+JPEG -> YUV 420 ... Passed.  0.025988 ms
+
+RGB Top-Down  -> 4:4:0 Q100 ... Done.  0.065088 ms
+  Result in test_yuv0_enc_RGB_TD_440_Q100.jpg
+JPEG -> YUV 440 ... Passed.  0.026941 ms
+
+RGB Top-Down  -> 4:4:0 Q100 ... Done.  0.052929 ms
+  Result in test_yuv1_enc_RGB_TD_440_Q100.jpg
+JPEG -> YUV 440 ... Passed.  0.023127 ms
+
+RGB Top-Down  -> GRAY Q100 ... Done.  0.023127 ms
+  Result in test_yuv0_enc_RGB_TD_GRAY_Q100.jpg
+JPEG -> YUV GRAY ... Passed.  0.012159 ms
+
+RGB Top-Down  -> GRAY Q100 ... Done.  0.019073 ms
+  Result in test_yuv1_enc_RGB_TD_GRAY_Q100.jpg
+JPEG -> YUV GRAY ... Passed.  0.010014 ms
+
+Grayscale Top-Down  -> GRAY Q100 ... Done.  0.021935 ms
+  Result in test_yuv0_enc_Grayscale_TD_GRAY_Q100.jpg
+JPEG -> YUV GRAY ... Passed.  0.010014 ms
+
+Grayscale Top-Down  -> GRAY Q100 ... Done.  0.020027 ms
+  Result in test_yuv1_enc_Grayscale_TD_GRAY_Q100.jpg
+JPEG -> YUV GRAY ... Passed.  0.008821 ms
+
+./cjpeg -dct int -outfile testoutint.jpg /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.ppm
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgint.jpg testoutint.jpg
+./cjpeg -dct fast -opt -outfile testoutfst.jpg /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.ppm
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgfst.jpg testoutfst.jpg
+./cjpeg -dct fast -quality 100 -opt -outfile testoutfst100.jpg /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.ppm
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgfst100.jpg testoutfst100.jpg
+./cjpeg -dct float -outfile testoutflt.jpg /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.ppm
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgflt.jpg testoutflt.jpg
+./cjpeg -dct int -grayscale -outfile testoutgray.jpg /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.ppm
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimggray.jpg testoutgray.jpg
+./djpeg -dct int -fast -ppm -outfile testoutint.ppm /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgint.ppm testoutint.ppm
+./djpeg -dct fast -ppm -outfile testoutfst.ppm /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgfst.ppm testoutfst.ppm
+./djpeg -dct float -ppm -outfile testoutflt.ppm /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgflt.ppm testoutflt.ppm
+./djpeg -dct int -scale 1/2 -ppm -outfile testoutint1_2.ppm /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgint1_2.ppm testoutint1_2.ppm
+./djpeg -dct fast -scale 1/2 -ppm -outfile testoutfst1_2.ppm /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgfst1_2.ppm testoutfst1_2.ppm
+./djpeg -dct int -scale 1/4 -ppm -outfile testoutint1_4.ppm /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgint1_4.ppm testoutint1_4.ppm
+./djpeg -dct fast -scale 1/4 -ppm -outfile testoutfst1_4.ppm /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgfst1_4.ppm testoutfst1_4.ppm
+./djpeg -dct int -scale 1/8 -ppm -outfile testoutint1_8.ppm /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgint1_8.ppm testoutint1_8.ppm
+./djpeg -dct fast -scale 1/8 -ppm -outfile testoutfst1_8.ppm /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgfst1_8.ppm testoutfst1_8.ppm
+./djpeg -dct int -bmp -colors 256 -outfile testout.bmp  /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimg.bmp testout.bmp
+./cjpeg -dct int -arithmetic -outfile testoutari.jpg /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.ppm
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgari.jpg testoutari.jpg
+./jpegtran -arithmetic -outfile testouta.jpg /dataset/repos/libjpeg-turbo_EF22/testimages/testimgint.jpg
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgari.jpg testouta.jpg
+./djpeg -dct int -fast -ppm -outfile testoutari.ppm /dataset/repos/libjpeg-turbo_EF22/testimages/testimgari.jpg
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgari.ppm testoutari.ppm
+./jpegtran -outfile testouta.jpg /dataset/repos/libjpeg-turbo_EF22/testimages/testimgari.jpg
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgint.jpg testouta.jpg
+./cjpeg -dct int -progressive -outfile testoutp.jpg /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.ppm
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgp.jpg testoutp.jpg
+./jpegtran -outfile testoutt.jpg testoutp.jpg
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgint.jpg testoutt.jpg
+./jpegtran -crop 120x90+20+50 -transpose -perfect -outfile testoutcrop.jpg /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgcrop.jpg testoutcrop.jpg

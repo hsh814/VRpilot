@@ -1,0 +1,6 @@
+TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorted in ascending order.
+TIFFReadDirectory: Warning, Unknown field with tag 33410 (0x8282) encountered.
+TIFFFetchNormalTag: Warning, ASCII value for tag "DocumentName" contains null byte in value; value incorrectly truncated during reading due to implementation limitations.
+OJPEGSetupDecode: Warning, Depreciated and troublesome old-style JPEG compression mode, please convert to new-style JPEG compression and notify vendor of writing software.
+/dataset/repos/libtiff_EF11/libtiff/tif_ojpeg.c:816:8: runtime error: division by zero
+/scripts/test_security.sh: line 10:     7 Floating point exception(core dumped) tools/tiffmedian /dataset/EF11/00083-libtiff-fpe-OJPEGDecodeRaw /tmp/foo

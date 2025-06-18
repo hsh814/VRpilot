@@ -1,0 +1,111 @@
+TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorted in ascending order.
+TIFFReadDirectory: Warning, Unknown field with tag 45058 (0xb002) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 22 (0x16) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 23 (0x17) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 28 (0x1c) encountered.
+TIFFFetchNormalTag: Incorrect count for "YResolution"; tag ignored.
+TIFFReadDirectory: Warning, TIFF directory is missing required "StripByteCounts" field, calculating from imagelength.
+TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorted in ascending order.
+TIFFReadDirectory: Warning, Unknown field with tag 45058 (0xb002) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 22 (0x16) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 23 (0x17) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 28 (0x1c) encountered.
+TIFFFetchNormalTag: Incorrect count for "YResolution"; tag ignored.
+TIFFReadDirectory: Warning, TIFF directory is missing required "StripByteCounts" field, calculating from imagelength.
+TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorted in ascending order.
+TIFFReadDirectory: Warning, Unknown field with tag 45058 (0xb002) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 22 (0x16) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 23 (0x17) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 28 (0x1c) encountered.
+TIFFFetchNormalTag: Incorrect count for "YResolution"; tag ignored.
+TIFFReadDirectory: Warning, TIFF directory is missing required "StripByteCounts" field, calculating from imagelength.
+%PDF-1.1 
+%‚„œ”
+1 0 obj
+<< 
+/Type /Catalog 
+/Pages 3 0 R 
+>>
+endobj
+2 0 obj
+<< 
+/CreationDate (D:20141129185545)
+/ModDate (D:20141129185545)
+/Producer (libtiff / tiff2pdf - 20120922)
+/Title (/tmp/Untitled.tiff)
+>> 
+endobj
+3 0 obj
+<< 
+/Type /Pages 
+/Kids [ 4 0 R ] 
+/Count 1 
+>> 
+endobj
+4 0 obj
+<<
+/Type /Page 
+/Parent 3 0 R 
+/MediaBox [0.0000 0.0000 55368.0000 0.2400] 
+/Contents 5 0 R 
+/Resources << 
+/XObject <<
+/Im1 7 0 R >>
+/ProcSet [ /ImageB ]
+>>
+>>
+endobj
+5 0 obj
+<< 
+/Length 6 0 R 
+ >>
+stream
+q  55368.0000 0.0000 0.0000 0.2400 0.0000 0.0000 cm /Im1 Do Q
+
+endstream
+endobj
+6 0 obj
+62
+endobj
+7 0 obj
+<< 
+/Length 8 0 R 
+/Type /XObject 
+/Subtype /Image 
+/Name /Im1
+/Width 769
+/Height 1
+/BitsPerComponent 1
+/ColorSpace /DeviceGray 
+/Filter /CCITTFaxDecode /DecodeParms << /K -1 /Columns 769 /Rows 1 /BlackIs1 true >>
+ >>
+stream
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff77bdbb9 in __GI_raise (sig=sig@entry=6) at ../nptl/sysdeps/unix/sysv/linux/raise.c:56
+56	../nptl/sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+#0  0x00007ffff77bdbb9 in __GI_raise (sig=sig@entry=6) at ../nptl/sysdeps/unix/sysv/linux/raise.c:56
+#1  0x00007ffff77c0fc8 in __GI_abort () at abort.c:89
+#2  0x00007ffff77fae14 in __libc_message (do_abort=1, fmt=fmt@entry=0x7ffff7909668 "*** Error in `%s': %s: 0x%s ***\n") at ../sysdeps/posix/libc_fatal.c:175
+#3  0x00007ffff78089b6 in malloc_printerr (ptr=0x55555576ca90, str=0x7ffff79057da "malloc(): memory corruption", action=<optimized out>) at malloc.c:4996
+#4  _int_malloc (av=av@entry=0x7ffff7b46760 <main_arena>, bytes=bytes@entry=1233) at malloc.c:3447
+#5  0x00007ffff7809261 in _int_realloc (av=0x7ffff7b46760 <main_arena>, oldp=0x55555576d110, oldsize=1216, nb=1248) at malloc.c:4286
+#6  0x00007ffff780aa49 in __GI___libc_realloc (oldmem=0x55555576d120, bytes=1240) at malloc.c:3029
+#7  0x00007ffff7baa75e in _TIFFrealloc (p=0x55555576d120, s=1240) at tif_unix.c:272
+#8  0x00007ffff7b5425a in _TIFFCheckRealloc (tif=0x55555576ccd0, buffer=0x55555576d120, nmemb=155, elem_size=8, 
+    what=0x7ffff7bac0a0 <reason> "for fields array") at tif_aux.c:73
+#9  0x00007ffff7b5e02d in _TIFFMergeFields (tif=0x55555576ccd0, info=0x7ffff7dd5520 <faxFields>, n=5) at tif_dirinfo.c:372
+#10 0x00007ffff7b76e31 in InitCCITTFax3 (tif=0x55555576ccd0) at tif_fax3.c:1289
+#11 0x00007ffff7b78428 in TIFFInitCCITTFax4 (tif=0x55555576ccd0, scheme=4) at tif_fax3.c:1470
+#12 0x00007ffff7b56f4c in TIFFSetCompressionScheme (tif=0x55555576ccd0, scheme=4) at tif_compress.c:172
+#13 0x00007ffff7b57ec2 in _TIFFVSetField (tif=0x55555576ccd0, tag=259, ap=0x7fffffffe358) at tif_dir.c:227
+#14 0x00007ffff7b5a9c3 in TIFFVSetField (tif=0x55555576ccd0, tag=259, ap=0x7fffffffe358) at tif_dir.c:802
+#15 0x00007ffff7b5a79b in TIFFSetField (tif=0x55555576ccd0, tag=259) at tif_dir.c:746
+#16 0x000055555555b8c2 in t2p_readwrite_pdf_image (t2p=0x55555576b010, input=0x55555576bc20, output=0x55555576ccd0) at tiff2pdf.c:2544
+#17 0x0000555555566ac6 in t2p_write_pdf (t2p=0x55555576b010, input=0x55555576bc20, output=0x55555576ccd0) at tiff2pdf.c:5349
+#18 0x0000555555556f64 in main (argc=2, argv=0x7fffffffe698) at tiff2pdf.c:794
+A debugging session is active.
+
+	Inferior 1 [process 10251] will be killed.
+
+Quit anyway? (y or n) [answered Y; input not from terminal]

@@ -1,0 +1,5 @@
+Bug: https://bugzilla.redhat.com/show_bug.cgi?id=1319503
+
+gif2tiff EF03/crash.gif out.tiff
+
+Could not reproduce.

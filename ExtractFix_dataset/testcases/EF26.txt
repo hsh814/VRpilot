@@ -1,0 +1,6 @@
+Bug: https://debbugs.gnu.org/cgi/bugreport.cgi?bug=19784
+
+After configure:
+
+gcc -Ilib -g -fsanitize=address /dataset/repos/coreutils/src/make-prime-list.c -o make-prime-list
+./make-prime-list 5000

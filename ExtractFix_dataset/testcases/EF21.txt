@@ -1,0 +1,4 @@
+Bug: https://github.com/mozilla/mozjpeg/issues/268
+
+./djpeg -crop "1x1+16+16" -onepass -dither ordered -dct float -colors 8 -targa -grayscale -outfile o 001-mozjpeg-quantize_ord_dither-536.crash
+./djpeg -crop "1x1+16+16" -onepass -dither ordered -dct float -colors 8 -targa -grayscale -outfile o 002-mozjpeg-quantize_ord_dither-536.crash 

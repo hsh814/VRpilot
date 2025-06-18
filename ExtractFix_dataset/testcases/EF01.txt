@@ -1,0 +1,3 @@
+Bug: http://bugzilla.maptools.org/show_bug.cgi?id=2558
+
+tools/tiffcrop EF01/EF01.tif tmp.tif

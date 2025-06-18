@@ -1,0 +1,10 @@
+03 repos/tiff-4.0.6 CVE-2016-3186 https://bugzilla.redhat.com/attachment.cgi?id=1144235&action=diff 
+
+Complicated because I can't find this patch in the original repo. But it applies cleanly to:
+https://github.com/vadz/libtiff/tree/Release-v4-0-6
+
+20 repos/libjpeg-turbo CVE-2018-19664 https://github.com/libjpeg-turbo/libjpeg-turbo/commit/1ecd9a
+
+This is the wrong patch, should be: https://github.com/libjpeg-turbo/libjpeg-turbo/commit/f8cca819
+
+

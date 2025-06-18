@@ -1,0 +1,3 @@
+Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=759802
+
+./djpeg /dataset/testcases/EF22/cnode0006-heap-buffer-overflow-796.jpg

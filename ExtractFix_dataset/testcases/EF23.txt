@@ -1,0 +1,3 @@
+Bug: https://debbugs.gnu.org/cgi/bugreport.cgi?bug=26545
+
+touch blah ; shred -n4 -s7 blah

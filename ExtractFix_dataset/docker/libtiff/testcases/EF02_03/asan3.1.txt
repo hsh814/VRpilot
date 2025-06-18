@@ -1,0 +1,18 @@
+TIFFReadDirectory: Warning, Unknown field with tag 292 (0x124) encountered.
+ASAN:SIGSEGV
+=================================================================
+==16176==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000124 (pc 0x7f98e07ccbbb bp 0x7ffd7f57f440 sp 0x7ffd7f57f3e0 T0)
+    #0 0x7f98e07ccbba in _TIFFVGetField /dataset/repos/libtiff/libtiff/tif_dir.c:1056
+    #1 0x7f98e07ce304 in TIFFVGetField /dataset/repos/libtiff/libtiff/tif_dir.c:1174
+    #2 0x7f98e07ce162 in TIFFGetField /dataset/repos/libtiff/libtiff/tif_dir.c:1158
+    #3 0x403331 in checkTag /dataset/repos/libtiff/tools/tiffcmp.c:516
+    #4 0x403e8f in CheckLongTag /dataset/repos/libtiff/tools/tiffcmp.c:610
+    #5 0x4023ad in cmptags /dataset/repos/libtiff/tools/tiffcmp.c:279
+    #6 0x401851 in tiffcmp /dataset/repos/libtiff/tools/tiffcmp.c:167
+    #7 0x4014f2 in main /dataset/repos/libtiff/tools/tiffcmp.c:98
+    #8 0x7f98e03e683f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+    #9 0x401148 in _start (/root/build/tools/.libs/lt-tiffcmp+0x401148)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /dataset/repos/libtiff/libtiff/tif_dir.c:1056 _TIFFVGetField
+==16176==ABORTING

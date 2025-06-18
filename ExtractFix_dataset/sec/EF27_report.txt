@@ -1,0 +1,3 @@
+jpc_dec.c:1196:18: runtime error: division by zero
+jpc_dec.c:1197:5: runtime error: division by zero
+/scripts/test_security.sh: line 3:     7 Floating point exception(core dumped) src/appl/imginfo -f /dataset/EF27/sample1.jp2

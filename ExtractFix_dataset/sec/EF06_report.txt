@@ -1,0 +1,56 @@
+TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorted in ascending order.
+TIFFFetchNormalTag: Warning, IO error during reading of "YResolution"; tag ignored.
+TIFFFetchNormalTag: Warning, IO error during reading of "Software"; tag ignored.
+=================================================================
+==7==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200000ee54 at pc 0x00000040bac2 bp 0x7ffc4046e1d0 sp 0x7ffc4046e1c0
+READ of size 1 at 0x60200000ee54 thread T0
+    #0 0x40bac1 in PSDataColorContig /dataset/repos/libtiff_EF06/tools/tiff2ps.c:2470
+    #1 0x40b4e5 in PSpage /dataset/repos/libtiff_EF06/tools/tiff2ps.c:2347
+    #2 0x4081e6 in TIFF2PS /dataset/repos/libtiff_EF06/tools/tiff2ps.c:1606
+    #3 0x40314a in main /dataset/repos/libtiff_EF06/tools/tiff2ps.c:473
+    #4 0x7fdbc853583f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+    #5 0x402588 in _start (/root/build_EF06/tools/tiff2ps+0x402588)
+
+0x60200000ee54 is located 0 bytes to the right of 4-byte region [0x60200000ee50,0x60200000ee54)
+allocated by thread T0 here:
+    #0 0x7fdbc8fe7602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x7fdbc8cf613a in _TIFFmalloc /dataset/repos/libtiff_EF06/libtiff/tif_unix.c:316
+    #2 0x40b9bc in PSDataColorContig /dataset/repos/libtiff_EF06/tools/tiff2ps.c:2443
+    #3 0x40b4e5 in PSpage /dataset/repos/libtiff_EF06/tools/tiff2ps.c:2347
+    #4 0x4081e6 in TIFF2PS /dataset/repos/libtiff_EF06/tools/tiff2ps.c:1606
+    #5 0x40314a in main /dataset/repos/libtiff_EF06/tools/tiff2ps.c:473
+    #6 0x7fdbc853583f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /dataset/repos/libtiff_EF06/tools/tiff2ps.c:2470 PSDataColorContig
+Shadow bytes around the buggy address:
+  0x0c047fff9d70: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9d80: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9d90: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9da0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9db0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x0c047fff9dc0: fa fa fa fa fa fa fa fa fa fa[04]fa fa fa 00 07
+  0x0c047fff9dd0: fa fa fd fa fa fa fd fa fa fa 00 fa fa fa fd fa
+  0x0c047fff9de0: fa fa 00 fa fa fa fd fa fa fa 00 07 fa fa fd fd
+  0x0c047fff9df0: fa fa fd fa fa fa 02 fa fa fa fd fa fa fa 00 00
+  0x0c047fff9e00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e10: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+==7==ABORTING

@@ -1,0 +1,5 @@
+Bug: http://bugzilla.maptools.org/show_bug.cgi?id=2587
+
+tiffsplit EF05/test049
+
+Could not reproduce.

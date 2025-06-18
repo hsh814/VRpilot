@@ -1,0 +1,7 @@
+Bug: http://bugzilla.maptools.org/show_bug.cgi?id=2493
+Patch: tools/thumbnail.c, tools/tiffcmp.c: only read/write TIFFTAG_GROUP3OPTIONS or TIFFTAG_GROUP4OPTIONS if compression is COMPRESSION_CCITTFAX3 or COMPRESSION_CCITTFAX4
+Rev: 8b6e80fca434525497e5a31c3309a3bab5b3c1c8
+
+thumbnail EF02/02_thumbnail.tiff out.tiff
+tiffcmp EF02/10_tiffcmp.tiff EF02/00_basefile.tiff
+

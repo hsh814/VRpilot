@@ -1,0 +1,5 @@
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=22186
+
+nm -A -a -l -S -s --special-syms --synthetic --with-symbol-versions -D EF13/3899.crashes.bin
+
+

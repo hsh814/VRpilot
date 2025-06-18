@@ -1,0 +1,17 @@
+=================================================================
+==8==ERROR: AddressSanitizer: negative-size-param: (size=-6)
+    #0 0x7f85d147905d in __asan_memmove (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x8d05d)
+    #1 0x405b5d in bytes_chunk_extract /dataset/repos/coreutils_EF24/src/split.c:987
+    #2 0x40894d in main /dataset/repos/coreutils_EF24/src/split.c:1625
+    #3 0x7f85d104283f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+    #4 0x4023e8 in _start (/home/extractfix/build_EF24/src/split+0x4023e8)
+
+0x7f85d2514006 is located 2054 bytes inside of 135168-byte region [0x7f85d2513800,0x7f85d2534800)
+allocated by thread T0 here:
+    #0 0x7f85d1484602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x40eb4f in xmalloc /dataset/repos/coreutils_EF24/lib/xmalloc.c:41
+    #2 0x40863f in main /dataset/repos/coreutils_EF24/src/split.c:1568
+    #3 0x7f85d104283f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+
+SUMMARY: AddressSanitizer: negative-size-param ??:0 __asan_memmove
+==8==ABORTING

@@ -1,0 +1,6 @@
+Bug: https://bugzilla.gnome.org/show_bug.cgi?id=763071
+
+gcc -fsanitize=address -I/path/to/libxml2_headers -lxml2 poc.c -o poc 
+LD_LIBRARY_PATH=/path/to/libxml2 ./poc
+
+Could not reproduce.

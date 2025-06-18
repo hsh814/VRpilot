@@ -1,0 +1,154 @@
+Running tests...
+Test project /root/build_EF01
+      Start  1: bmp2tiff-palette-palette-1c-8b
+ 1/74 Test  #1: bmp2tiff-palette-palette-1c-8b ...............   Passed    0.01 sec
+      Start  2: bmp2tiff-rgb-rgb-3c-8b
+ 2/74 Test  #2: bmp2tiff-rgb-rgb-3c-8b .......................   Passed    0.00 sec
+      Start  3: gif2tiff-palette-palette-1c-8b
+ 3/74 Test  #3: gif2tiff-palette-palette-1c-8b ...............   Passed    0.01 sec
+      Start  4: ppm2tiff-miniswhite-miniswhite-1c-1b
+ 4/74 Test  #4: ppm2tiff-miniswhite-miniswhite-1c-1b .........   Passed    0.01 sec
+      Start  5: ppm2tiff-minisblack-minisblack-1c-8b
+ 5/74 Test  #5: ppm2tiff-minisblack-minisblack-1c-8b .........   Passed    0.01 sec
+      Start  6: ppm2tiff-rgb-rgb-3c-8b
+ 6/74 Test  #6: ppm2tiff-rgb-rgb-3c-8b .......................   Passed    0.00 sec
+      Start  7: tiffcp-g3-miniswhite-1c-1b
+ 7/74 Test  #7: tiffcp-g3-miniswhite-1c-1b ...................   Passed    0.00 sec
+      Start  8: tiffcp-g31d-miniswhite-1c-1b
+ 8/74 Test  #8: tiffcp-g31d-miniswhite-1c-1b .................   Passed    0.00 sec
+      Start  9: tiffcp-g31dfill-miniswhite-1c-1b
+ 9/74 Test  #9: tiffcp-g31dfill-miniswhite-1c-1b .............   Passed    0.00 sec
+      Start 10: tiffcp-g32d-miniswhite-1c-1b
+10/74 Test #10: tiffcp-g32d-miniswhite-1c-1b .................   Passed    0.00 sec
+      Start 11: tiffcp-g32dfill-miniswhite-1c-1b
+11/74 Test #11: tiffcp-g32dfill-miniswhite-1c-1b .............   Passed    0.00 sec
+      Start 12: tiffcp-g4-miniswhite-1c-1b
+12/74 Test #12: tiffcp-g4-miniswhite-1c-1b ...................   Passed    0.01 sec
+      Start 13: tiffcp-logluv-logluv-3c-16b
+13/74 Test #13: tiffcp-logluv-logluv-3c-16b ..................   Passed    0.01 sec
+      Start 14: tiffcp-thumbnail-miniswhite-1c-1b
+14/74 Test #14: tiffcp-thumbnail-miniswhite-1c-1b ............   Passed    0.01 sec
+      Start 15: tiffdump-miniswhite-1c-1b
+15/74 Test #15: tiffdump-miniswhite-1c-1b ....................   Passed    0.02 sec
+      Start 16: tiffinfo-minisblack-1c-16b
+16/74 Test #16: tiffinfo-minisblack-1c-16b ...................   Passed    0.03 sec
+      Start 17: tiffcp-split
+17/74 Test #17: tiffcp-split .................................   Passed    0.04 sec
+      Start 18: tiffcp-split-join
+18/74 Test #18: tiffcp-split-join ............................   Passed    0.05 sec
+      Start 19: tiff2pdf-miniswhite-1c-1b
+19/74 Test #19: tiff2pdf-miniswhite-1c-1b ....................   Passed    0.02 sec
+      Start 20: tiff2rgba-default-logluv-3c-16b
+20/74 Test #20: tiff2rgba-default-logluv-3c-16b ..............   Passed    0.01 sec
+      Start 21: tiff2rgba-default-minisblack-1c-16b
+21/74 Test #21: tiff2rgba-default-minisblack-1c-16b ..........   Passed    0.01 sec
+      Start 22: tiff2rgba-default-minisblack-1c-8b
+22/74 Test #22: tiff2rgba-default-minisblack-1c-8b ...........   Passed    0.00 sec
+      Start 23: tiff2rgba-default-minisblack-2c-8b-alpha
+23/74 Test #23: tiff2rgba-default-minisblack-2c-8b-alpha .....   Passed    0.00 sec
+      Start 24: tiff2rgba-default-miniswhite-1c-1b
+24/74 Test #24: tiff2rgba-default-miniswhite-1c-1b ...........   Passed    0.00 sec
+      Start 25: tiff2rgba-default-palette-1c-1b
+25/74 Test #25: tiff2rgba-default-palette-1c-1b ..............   Passed    0.00 sec
+      Start 26: tiff2rgba-default-palette-1c-4b
+26/74 Test #26: tiff2rgba-default-palette-1c-4b ..............   Passed    0.00 sec
+      Start 27: tiff2rgba-default-palette-1c-8b
+27/74 Test #27: tiff2rgba-default-palette-1c-8b ..............   Passed    0.00 sec
+      Start 28: tiff2rgba-default-rgb-3c-16b
+28/74 Test #28: tiff2rgba-default-rgb-3c-16b .................   Passed    0.00 sec
+      Start 29: tiff2rgba-default-rgb-3c-8b
+29/74 Test #29: tiff2rgba-default-rgb-3c-8b ..................   Passed    0.00 sec
+      Start 30: tiff2rgba-default-quad-tile
+30/74 Test #30: tiff2rgba-default-quad-tile ..................   Passed    0.00 sec
+      Start 31: tiffcrop-R90-logluv-3c-16b
+31/74 Test #31: tiffcrop-R90-logluv-3c-16b ...................   Passed    0.00 sec
+      Start 32: tiffcrop-R90-minisblack-1c-16b
+32/74 Test #32: tiffcrop-R90-minisblack-1c-16b ...............   Passed    0.00 sec
+      Start 33: tiffcrop-R90-minisblack-1c-8b
+33/74 Test #33: tiffcrop-R90-minisblack-1c-8b ................   Passed    0.00 sec
+      Start 34: tiffcrop-R90-minisblack-2c-8b-alpha
+34/74 Test #34: tiffcrop-R90-minisblack-2c-8b-alpha ..........   Passed    0.00 sec
+      Start 35: tiffcrop-R90-miniswhite-1c-1b
+35/74 Test #35: tiffcrop-R90-miniswhite-1c-1b ................   Passed    0.00 sec
+      Start 36: tiffcrop-R90-palette-1c-1b
+36/74 Test #36: tiffcrop-R90-palette-1c-1b ...................   Passed    0.00 sec
+      Start 37: tiffcrop-R90-palette-1c-4b
+37/74 Test #37: tiffcrop-R90-palette-1c-4b ...................   Passed    0.00 sec
+      Start 38: tiffcrop-R90-palette-1c-8b
+38/74 Test #38: tiffcrop-R90-palette-1c-8b ...................   Passed    0.00 sec
+      Start 39: tiffcrop-R90-rgb-3c-16b
+39/74 Test #39: tiffcrop-R90-rgb-3c-16b ......................   Passed    0.00 sec
+      Start 40: tiffcrop-R90-rgb-3c-8b
+40/74 Test #40: tiffcrop-R90-rgb-3c-8b .......................   Passed    0.00 sec
+      Start 41: tiffcrop-R90-quad-tile
+41/74 Test #41: tiffcrop-R90-quad-tile .......................   Passed    0.00 sec
+      Start 42: tiffcrop-doubleflip-logluv-3c-16b
+42/74 Test #42: tiffcrop-doubleflip-logluv-3c-16b ............   Passed    0.00 sec
+      Start 43: tiffcrop-doubleflip-minisblack-1c-16b
+43/74 Test #43: tiffcrop-doubleflip-minisblack-1c-16b ........   Passed    0.00 sec
+      Start 44: tiffcrop-doubleflip-minisblack-1c-8b
+44/74 Test #44: tiffcrop-doubleflip-minisblack-1c-8b .........   Passed    0.00 sec
+      Start 45: tiffcrop-doubleflip-minisblack-2c-8b-alpha
+45/74 Test #45: tiffcrop-doubleflip-minisblack-2c-8b-alpha ...   Passed    0.00 sec
+      Start 46: tiffcrop-doubleflip-miniswhite-1c-1b
+46/74 Test #46: tiffcrop-doubleflip-miniswhite-1c-1b .........   Passed    0.00 sec
+      Start 47: tiffcrop-doubleflip-palette-1c-1b
+47/74 Test #47: tiffcrop-doubleflip-palette-1c-1b ............   Passed    0.00 sec
+      Start 48: tiffcrop-doubleflip-palette-1c-4b
+48/74 Test #48: tiffcrop-doubleflip-palette-1c-4b ............   Passed    0.00 sec
+      Start 49: tiffcrop-doubleflip-palette-1c-8b
+49/74 Test #49: tiffcrop-doubleflip-palette-1c-8b ............   Passed    0.00 sec
+      Start 50: tiffcrop-doubleflip-rgb-3c-16b
+50/74 Test #50: tiffcrop-doubleflip-rgb-3c-16b ...............   Passed    0.00 sec
+      Start 51: tiffcrop-doubleflip-rgb-3c-8b
+51/74 Test #51: tiffcrop-doubleflip-rgb-3c-8b ................   Passed    0.00 sec
+      Start 52: tiffcrop-doubleflip-quad-tile
+52/74 Test #52: tiffcrop-doubleflip-quad-tile ................   Passed    0.00 sec
+      Start 53: tiffcrop-extract-logluv-3c-16b
+53/74 Test #53: tiffcrop-extract-logluv-3c-16b ...............   Passed    0.00 sec
+      Start 54: tiffcrop-extract-minisblack-1c-16b
+54/74 Test #54: tiffcrop-extract-minisblack-1c-16b ...........   Passed    0.00 sec
+      Start 55: tiffcrop-extract-minisblack-1c-8b
+55/74 Test #55: tiffcrop-extract-minisblack-1c-8b ............   Passed    0.00 sec
+      Start 56: tiffcrop-extract-minisblack-2c-8b-alpha
+56/74 Test #56: tiffcrop-extract-minisblack-2c-8b-alpha ......   Passed    0.00 sec
+      Start 57: tiffcrop-extract-miniswhite-1c-1b
+57/74 Test #57: tiffcrop-extract-miniswhite-1c-1b ............   Passed    0.00 sec
+      Start 58: tiffcrop-extract-palette-1c-1b
+58/74 Test #58: tiffcrop-extract-palette-1c-1b ...............   Passed    0.00 sec
+      Start 59: tiffcrop-extract-palette-1c-4b
+59/74 Test #59: tiffcrop-extract-palette-1c-4b ...............   Passed    0.00 sec
+      Start 60: tiffcrop-extract-palette-1c-8b
+60/74 Test #60: tiffcrop-extract-palette-1c-8b ...............   Passed    0.00 sec
+      Start 61: tiffcrop-extract-rgb-3c-16b
+61/74 Test #61: tiffcrop-extract-rgb-3c-16b ..................   Passed    0.00 sec
+      Start 62: tiffcrop-extract-rgb-3c-8b
+62/74 Test #62: tiffcrop-extract-rgb-3c-8b ...................   Passed    0.00 sec
+      Start 63: tiffcrop-extract-quad-tile
+63/74 Test #63: tiffcrop-extract-quad-tile ...................   Passed    0.00 sec
+      Start 64: tiffcrop-extractz14-logluv-3c-16b
+64/74 Test #64: tiffcrop-extractz14-logluv-3c-16b ............   Passed    0.00 sec
+      Start 65: tiffcrop-extractz14-minisblack-1c-16b
+65/74 Test #65: tiffcrop-extractz14-minisblack-1c-16b ........   Passed    0.00 sec
+      Start 66: tiffcrop-extractz14-minisblack-1c-8b
+66/74 Test #66: tiffcrop-extractz14-minisblack-1c-8b .........   Passed    0.00 sec
+      Start 67: tiffcrop-extractz14-minisblack-2c-8b-alpha
+67/74 Test #67: tiffcrop-extractz14-minisblack-2c-8b-alpha ...   Passed    0.00 sec
+      Start 68: tiffcrop-extractz14-miniswhite-1c-1b
+68/74 Test #68: tiffcrop-extractz14-miniswhite-1c-1b .........   Passed    0.00 sec
+      Start 69: tiffcrop-extractz14-palette-1c-1b
+69/74 Test #69: tiffcrop-extractz14-palette-1c-1b ............   Passed    0.00 sec
+      Start 70: tiffcrop-extractz14-palette-1c-4b
+70/74 Test #70: tiffcrop-extractz14-palette-1c-4b ............   Passed    0.00 sec
+      Start 71: tiffcrop-extractz14-palette-1c-8b
+71/74 Test #71: tiffcrop-extractz14-palette-1c-8b ............   Passed    0.00 sec
+      Start 72: tiffcrop-extractz14-rgb-3c-16b
+72/74 Test #72: tiffcrop-extractz14-rgb-3c-16b ...............   Passed    0.00 sec
+      Start 73: tiffcrop-extractz14-rgb-3c-8b
+73/74 Test #73: tiffcrop-extractz14-rgb-3c-8b ................   Passed    0.00 sec
+      Start 74: tiffcrop-extractz14-quad-tile
+74/74 Test #74: tiffcrop-extractz14-quad-tile ................   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 74
+
+Total Test time (real) =   0.51 sec

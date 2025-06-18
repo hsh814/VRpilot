@@ -1,0 +1,17 @@
+ASAN:SIGSEGV
+=================================================================
+==44813==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f24ea6f491a bp 0x7ffd04412ec0 sp 0x7ffd04412970 T0)
+    #0 0x7f24ea6f4919 in quantize_ord_dither /dataset/repos/libjpeg-turbo/jquant1.c:536
+    #1 0x7f24ea6da796 in post_process_1pass /dataset/repos/libjpeg-turbo/jdpostct.c:145
+    #2 0x7f24ea6b79bb in process_data_simple_main /dataset/repos/libjpeg-turbo/jdmainct.c:311
+    #3 0x7f24ea69c8fb in jpeg_read_scanlines /dataset/repos/libjpeg-turbo/jdapistd.c:282
+    #4 0x7f24ea69dcc5 in read_and_discard_scanlines /dataset/repos/libjpeg-turbo/jdapistd.c:316
+    #5 0x7f24ea69dcc5 in increment_simple_rowgroup_ctr /dataset/repos/libjpeg-turbo/jdapistd.c:342
+    #6 0x7f24ea69dcc5 in jpeg_skip_scanlines /dataset/repos/libjpeg-turbo/jdapistd.c:504
+    #7 0x4029eb in main /dataset/repos/libjpeg-turbo/djpeg.c:743
+    #8 0x7f24ea29a83f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+    #9 0x402d28 in _start (/root/build/djpeg+0x402d28)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /dataset/repos/libjpeg-turbo/jquant1.c:536 quantize_ord_dither
+==44813==ABORTING

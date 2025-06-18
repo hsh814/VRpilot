@@ -1,0 +1,93 @@
+make: Entering directory '/root/build_testsuite_EF12/bfd'
+make  check-recursive
+make[1]: Entering directory '/root/build_testsuite_EF12/bfd'
+Making check in doc
+make[2]: Entering directory '/root/build_testsuite_EF12/bfd/doc'
+make[2]: Nothing to be done for 'check'.
+make[2]: Leaving directory '/root/build_testsuite_EF12/bfd/doc'
+Making check in po
+make[2]: Entering directory '/root/build_testsuite_EF12/bfd/po'
+make[2]: Nothing to be done for 'check'.
+make[2]: Leaving directory '/root/build_testsuite_EF12/bfd/po'
+make[2]: Entering directory '/root/build_testsuite_EF12/bfd'
+make[2]: Nothing to be done for 'check-am'.
+make[2]: Leaving directory '/root/build_testsuite_EF12/bfd'
+make[1]: Leaving directory '/root/build_testsuite_EF12/bfd'
+make: Leaving directory '/root/build_testsuite_EF12/bfd'
+make: Entering directory '/root/build_testsuite_EF12/binutils'
+make  check-recursive
+make[1]: Entering directory '/root/build_testsuite_EF12/binutils'
+Making check in doc
+make[2]: Entering directory '/root/build_testsuite_EF12/binutils/doc'
+make[2]: Nothing to be done for 'check'.
+make[2]: Leaving directory '/root/build_testsuite_EF12/binutils/doc'
+Making check in po
+make[2]: Entering directory '/root/build_testsuite_EF12/binutils/po'
+make[2]: Nothing to be done for 'check'.
+make[2]: Leaving directory '/root/build_testsuite_EF12/binutils/po'
+make[2]: Entering directory '/root/build_testsuite_EF12/binutils'
+make  check-DEJAGNU
+make[3]: Entering directory '/root/build_testsuite_EF12/binutils'
+srcdir=`cd /dataset/repos/binutils-gdb_EF12/binutils && pwd`; export srcdir; \
+r=`pwd`; export r; \
+LC_ALL=C; export LC_ALL; \
+EXPECT=expect; export EXPECT; \
+runtest=runtest; \
+if /bin/bash -c "$runtest --version" > /dev/null 2>&1; then \
+  CC="gcc" CC_FOR_BUILD="gcc" \
+  CC_FOR_TARGET="` if [ -f $r/../gcc/xgcc ] ; then if [ -f $r/../newlib/Makefile ] ; then echo $r/../gcc/xgcc -B$r/../gcc/ -idirafter $r/../newlib/targ-include -idirafter ${srcroot}/../newlib/libc/include -nostdinc; else echo $r/../gcc/xgcc -B$r/../gcc/; fi; else if [ "x86_64-pc-linux-gnu" = "x86_64-pc-linux-gnu" ] ; then echo gcc; else echo gcc | sed 's,y,y,'; fi; fi`" CFLAGS_FOR_TARGET="-g -O2" \
+	$runtest --tool binutils --srcdir ${srcdir}/testsuite \
+		; \
+else echo "WARNING: could not find \`runtest'" 1>&2; :;\
+fi
+WARNING: Couldn't find tool init file
+Test Run By root on Tue Nov 30 03:58:11 2021
+Native configuration is x86_64-pc-linux-gnu
+
+		=== binutils tests ===
+
+Schedule of variations:
+    unix
+
+Running target unix
+Using /usr/share/dejagnu/baseboards/unix.exp as board description file for target.
+Using /usr/share/dejagnu/config/unix.exp as generic interface file for target.
+Using /dataset/repos/binutils-gdb_EF12/binutils/testsuite/config/default.exp as tool-and-target-specific interface file.
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/aarch64/aarch64.exp ...
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/ar.exp ...
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/arc/objdump.exp ...
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/arm/objdump.exp ...
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/bfin/objdump.exp ...
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/compress.exp ...
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/dlltool.exp ...
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/elfedit.exp ...
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/hppa/objdump.exp ...
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/i386/i386.exp ...
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/m68k/objdump.exp ...
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/mips/mips.exp ...
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/nm.exp ...
+Version /root/build_testsuite_EF12/binutils/nm-new 2.30.51.20180417
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/objcopy.exp ...
+Version /root/build_testsuite_EF12/binutils/objcopy 2.30.51.20180417
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/objdump.exp ...
+Version /root/build_testsuite_EF12/binutils/objdump 2.30.51.20180417
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/readelf.exp ...
+Version /root/build_testsuite_EF12/binutils/readelf 2.30.51.20180417
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/size.exp ...
+Version /root/build_testsuite_EF12/binutils/size 2.30.51.20180417
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/update-section.exp ...
+Version /root/build_testsuite_EF12/binutils/objcopy 2.30.51.20180417
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/vax/objdump.exp ...
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/wasm32/wasm32.exp ...
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/windres/windres.exp ...
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/x86-64/objects.exp ...
+Running /dataset/repos/binutils-gdb_EF12/binutils/testsuite/binutils-all/x86-64/x86-64.exp ...
+
+		=== binutils Summary ===
+
+# of expected passes		219
+# of unsupported tests		1
+make[3]: Leaving directory '/root/build_testsuite_EF12/binutils'
+make[2]: Leaving directory '/root/build_testsuite_EF12/binutils'
+make[1]: Leaving directory '/root/build_testsuite_EF12/binutils'
+make: Leaving directory '/root/build_testsuite_EF12/binutils'

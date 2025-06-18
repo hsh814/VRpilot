@@ -1,0 +1,6 @@
+repos/
+*.zip
+env/
+data/
+openai_api.key
+.DS_Store

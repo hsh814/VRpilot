@@ -1,0 +1,4 @@
+Bug: https://debbugs.gnu.org/cgi/bugreport.cgi?bug=25023
+
+echo a > a
+pr "-S$(printf "\t\t\t")" a -m a > /dev/null

@@ -1,0 +1,19 @@
+TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorted in ascending order.
+TIFFReadDirectory: Warning, Unknown field with tag 65535 (0xffff) encountered.
+/dataset/testcases/EF10/00123-libtiff-fpe-JPEGSetupEncode: Warning, Nonstandard tile width 3, convert file.
+TIFFFetchNormalTag: Warning, IO error during reading of "DocumentName"; tag ignored.
+TIFFFetchNormalTag: Warning, Incorrect count for "XResolution"; tag ignored.
+TIFFFetchNormalTag: Warning, Incorrect count for "YResolution"; tag ignored.
+TIFFFetchNormalTag: Warning, IO error during reading of "Software"; tag ignored.
+TIFFFillTile: 0: Invalid tile byte count, tile 1.
+JPEGLib: Not a JPEG file: starts with 0x49 0x49.
+TIFFFillTile: 0: Invalid tile byte count, tile 3.
+TIFFFillTile: 0: Invalid tile byte count, tile 4.
+TIFFFillTile: 0: Invalid tile byte count, tile 5.
+TIFFFillTile: 0: Invalid tile byte count, tile 6.
+JPEGLib: Not a JPEG file: starts with 0x49 0x49.
+TIFFFillTile: 0: Invalid tile byte count, tile 9.
+TIFFFillTile: 0: Invalid tile byte count, tile 10.
+TIFFFillTile: 0: Invalid tile byte count, tile 11.
+JPEGLib: Not a JPEG file: starts with 0x49 0x49.
+/dataset/repos/libtiff/libtiff/tif_jpeg.c:1687:26: runtime error: division by zero

@@ -1,0 +1,3 @@
+Bug: https://debbugs.gnu.org/cgi/bugreport.cgi?bug=25003
+
+touch blah ; ./split -n7/75 blah

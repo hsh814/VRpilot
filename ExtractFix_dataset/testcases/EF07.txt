@@ -1,0 +1,3 @@
+Bug: http://bugzilla.maptools.org/show_bug.cgi?id=2640
+
+tiff2pdf EF07/00112-libtiff-heapoverflow-_TIFFmemcpy -o foo

@@ -1,0 +1,5 @@
+Bug: http://bugzilla.maptools.org/show_bug.cgi?id=2611
+
+tools/tiffmedian EF11/00083-libtiff-fpe-OJPEGDecodeRaw /tmp/foo
+
+Note: UBSAN

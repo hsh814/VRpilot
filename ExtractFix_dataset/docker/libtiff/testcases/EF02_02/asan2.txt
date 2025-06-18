@@ -1,0 +1,74 @@
+TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorted in ascending order.
+TIFFReadDirectory: Warning, Unknown field with tag 45058 (0xb002) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 22 (0x16) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 23 (0x17) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 28 (0x1c) encountered.
+TIFFFetchNormalTag: Warning, Incorrect count for "YResolution"; tag ignored.
+TIFFReadDirectory: Warning, TIFF directory is missing required "StripByteCounts" field, calculating from imagelength.
+TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorted in ascending order.
+TIFFReadDirectory: Warning, Unknown field with tag 45058 (0xb002) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 22 (0x16) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 23 (0x17) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 28 (0x1c) encountered.
+TIFFFetchNormalTag: Warning, Incorrect count for "YResolution"; tag ignored.
+TIFFReadDirectory: Warning, TIFF directory is missing required "StripByteCounts" field, calculating from imagelength.
+TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorted in ascending order.
+TIFFReadDirectory: Warning, Unknown field with tag 45058 (0xb002) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 22 (0x16) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 23 (0x17) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 28 (0x1c) encountered.
+TIFFFetchNormalTag: Warning, Incorrect count for "YResolution"; tag ignored.
+TIFFReadDirectory: Warning, TIFF directory is missing required "StripByteCounts" field, calculating from imagelength.
+=================================================================
+==16204==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60b00000aff1 at pc 0x7f44c67b2145 bp 0x7ffe766170a0 sp 0x7ffe76617090
+WRITE of size 1 at 0x60b00000aff1 thread T0
+    #0 0x7f44c67b2144 in NeXTDecode /dataset/repos/libtiff/libtiff/tif_next.c:124
+    #1 0x7f44c67e640a in TIFFReadEncodedStrip /dataset/repos/libtiff/libtiff/tif_read.c:357
+    #2 0x40ef90 in t2p_readwrite_pdf_image /dataset/repos/libtiff/tools/tiff2pdf.c:2407
+    #3 0x42a21a in t2p_write_pdf /dataset/repos/libtiff/tools/tiff2pdf.c:5408
+    #4 0x403767 in main /dataset/repos/libtiff/tools/tiff2pdf.c:794
+    #5 0x7f44c634383f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+    #6 0x401f48 in _start (/root/build/tools/.libs/lt-tiff2pdf+0x401f48)
+
+0x60b00000aff1 is located 0 bytes to the right of 97-byte region [0x60b00000af90,0x60b00000aff1)
+allocated by thread T0 here:
+    #0 0x7f44c6ae8602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x7f44c67f843e in _TIFFmalloc /dataset/repos/libtiff/libtiff/tif_unix.c:263
+    #2 0x40ee1b in t2p_readwrite_pdf_image /dataset/repos/libtiff/tools/tiff2pdf.c:2394
+    #3 0x42a21a in t2p_write_pdf /dataset/repos/libtiff/tools/tiff2pdf.c:5408
+    #4 0x403767 in main /dataset/repos/libtiff/tools/tiff2pdf.c:794
+    #5 0x7f44c634383f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /dataset/repos/libtiff/libtiff/tif_next.c:124 NeXTDecode
+Shadow bytes around the buggy address:
+  0x0c167fff95a0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c167fff95b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c167fff95c0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c167fff95d0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c167fff95e0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x0c167fff95f0: fa fa 00 00 00 00 00 00 00 00 00 00 00 00[01]fa
+  0x0c167fff9600: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c167fff9610: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c167fff9620: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c167fff9630: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c167fff9640: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+==16204==ABORTING

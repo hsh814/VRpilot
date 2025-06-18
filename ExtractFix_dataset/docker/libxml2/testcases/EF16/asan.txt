@@ -1,0 +1,77 @@
+/dataset/testcases/EF16/attachment_316182.xml:1: HTML parser error : htmlParseEntityRef: expecting ';'
+&:&::&:::::jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+  ^
+/dataset/testcases/EF16/attachment_316182.xml:1: HTML parser error : htmlParseEntityRef: expecting ';'
+&:&::&:::::jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+     ^
+=================================================================
+==16488==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x631000010810 at pc 0x7ff571a6b935 bp 0x7fff071709e0 sp 0x7fff07170188
+READ of size 73661 at 0x631000010810 thread T0
+    #0 0x7ff571a6b934 in __asan_memcpy (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x8c934)
+    #1 0x7ff5716b0cca in xmlDictAddString /dataset/repos/libxml2/dict.c:285
+    #2 0x7ff5716b3f66 in xmlDictLookup__internal_alias /dataset/repos/libxml2/dict.c:926
+    #3 0x7ff5714c11e7 in htmlParseNameComplex /dataset/repos/libxml2/HTMLparser.c:2517
+    #4 0x7ff5714c0800 in htmlParseName /dataset/repos/libxml2/HTMLparser.c:2483
+    #5 0x7ff5714c2905 in htmlParseEntityRef__internal_alias /dataset/repos/libxml2/HTMLparser.c:2682
+    #6 0x7ff5714cfaa2 in htmlParseReference /dataset/repos/libxml2/HTMLparser.c:4044
+    #7 0x7ff5714d5489 in htmlParseContentInternal /dataset/repos/libxml2/HTMLparser.c:4619
+    #8 0x7ff5714d6aee in htmlParseDocument__internal_alias /dataset/repos/libxml2/HTMLparser.c:4769
+    #9 0x7ff5714e1a93 in htmlDoRead /dataset/repos/libxml2/HTMLparser.c:6741
+    #10 0x7ff5714e1c7d in htmlReadFile__internal_alias /dataset/repos/libxml2/HTMLparser.c:6799
+    #11 0x40baf0 in parseAndPrintFile /dataset/repos/libxml2/xmllint.c:2255
+    #12 0x4139be in main /dataset/repos/libxml2/xmllint.c:3767
+    #13 0x7ff570f7a83f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+    #14 0x404bb8 in _start (/root/build/.libs/lt-xmllint+0x404bb8)
+
+0x631000010810 is located 0 bytes to the right of 65552-byte region [0x631000000800,0x631000010810)
+allocated by thread T0 here:
+    #0 0x7ff571a77961 in realloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98961)
+    #1 0x7ff571594f76 in xmlBufGrowInternal /dataset/repos/libxml2/buf.c:486
+    #2 0x7ff5715951ff in xmlBufGrow /dataset/repos/libxml2/buf.c:515
+    #3 0x7ff5714842e8 in xmlParserInputBufferGrow__internal_alias /dataset/repos/libxml2/xmlIO.c:3326
+    #4 0x7ff5713c7ee3 in xmlParserInputGrow__internal_alias /dataset/repos/libxml2/parserInternals.c:320
+    #5 0x7ff5714c0c39 in htmlParseNameComplex /dataset/repos/libxml2/HTMLparser.c:2511
+    #6 0x7ff5714c0800 in htmlParseName /dataset/repos/libxml2/HTMLparser.c:2483
+    #7 0x7ff5714c2905 in htmlParseEntityRef__internal_alias /dataset/repos/libxml2/HTMLparser.c:2682
+    #8 0x7ff5714cfaa2 in htmlParseReference /dataset/repos/libxml2/HTMLparser.c:4044
+    #9 0x7ff5714d5489 in htmlParseContentInternal /dataset/repos/libxml2/HTMLparser.c:4619
+    #10 0x7ff5714d6aee in htmlParseDocument__internal_alias /dataset/repos/libxml2/HTMLparser.c:4769
+    #11 0x7ff5714e1a93 in htmlDoRead /dataset/repos/libxml2/HTMLparser.c:6741
+    #12 0x7ff5714e1c7d in htmlReadFile__internal_alias /dataset/repos/libxml2/HTMLparser.c:6799
+    #13 0x40baf0 in parseAndPrintFile /dataset/repos/libxml2/xmllint.c:2255
+    #14 0x4139be in main /dataset/repos/libxml2/xmllint.c:3767
+    #15 0x7ff570f7a83f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow ??:0 __asan_memcpy
+Shadow bytes around the buggy address:
+  0x0c627fffa0b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c627fffa0c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c627fffa0d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c627fffa0e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c627fffa0f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c627fffa100: 00 00[fa]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c627fffa110: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c627fffa120: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c627fffa130: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c627fffa140: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c627fffa150: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+==16488==ABORTING

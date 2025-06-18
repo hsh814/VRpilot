@@ -1,0 +1,335 @@
+==10001== Memcheck, a memory error detector
+==10001== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==10001== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==10001== Command: thumbnail 02_thumbnail.tiff /tmp/out
+==10001== 
+TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorted in ascending order.
+TIFFReadDirectory: Warning, Unknown field with tag 32770 (0x8002) encountered.
+TIFFReadDirectory: Warning, Unknown field with tag 292 (0x124) encountered.
+rastersize=1
+bpr=1, sy=0, bpr*sy=0
+==10001== Invalid read of size 1
+==10001==    at 0x10A831: setrow (thumbnail.c:520)
+==10001==    by 0x10AA24: setImage1 (thumbnail.c:554)
+==10001==    by 0x10AADF: setImage (thumbnail.c:564)
+==10001==    by 0x10ACA3: generateThumbnail (thumbnail.c:601)
+==10001==    by 0x1096F6: main (thumbnail.c:120)
+==10001==  Address 0x6244a51 is 0 bytes after a block of size 1 alloc'd
+==10001==    at 0x4C2AB80: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10001==    by 0x4E9471E: _TIFFmalloc (tif_unix.c:260)
+==10001==    by 0x10ABEE: generateThumbnail (thumbnail.c:588)
+==10001==    by 0x1096F6: main (thumbnail.c:120)
+==10001== 
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+bpr=1, sy=0, bpr*sy=0
+==10001== Invalid write of size 8
+==10001==    at 0x4E462BA: _TIFFVGetField (tif_dir.c:1036)
+==10001==    by 0x4E469CF: TIFFVGetField (tif_dir.c:1154)
+==10001==    by 0x4E4692C: TIFFGetField (tif_dir.c:1138)
+==10001==    by 0x109927: cpTag (thumbnail.c:165)
+==10001==    by 0x109C01: cpTags (thumbnail.c:277)
+==10001==    by 0x109F44: cpIFD (thumbnail.c:352)
+==10001==    by 0x10970F: main (thumbnail.c:122)
+==10001==  Address 0x124 is not stack'd, malloc'd or (recently) free'd
+==10001== 
+==10001== 
+==10001== Process terminating with default action of signal 11 (SIGSEGV)
+==10001==  Access not within mapped region at address 0x124
+==10001==    at 0x4E462BA: _TIFFVGetField (tif_dir.c:1036)
+==10001==    by 0x4E469CF: TIFFVGetField (tif_dir.c:1154)
+==10001==    by 0x4E4692C: TIFFGetField (tif_dir.c:1138)
+==10001==    by 0x109927: cpTag (thumbnail.c:165)
+==10001==    by 0x109C01: cpTags (thumbnail.c:277)
+==10001==    by 0x109F44: cpIFD (thumbnail.c:352)
+==10001==    by 0x10970F: main (thumbnail.c:122)
+==10001==  If you believe this happened as a result of a stack
+==10001==  overflow in your program's main thread (unlikely but
+==10001==  possible), you can try to increase the size of the
+==10001==  main thread stack using the --main-stacksize= flag.
+==10001==  The main thread stack size used in this run was 8388608.
+==10001== 
+==10001== HEAP SUMMARY:
+==10001==     in use at exit: 65,568 bytes in 19 blocks
+==10001==   total heap usage: 47 allocs, 28 frees, 136,082 bytes allocated
+==10001== 
+==10001== LEAK SUMMARY:
+==10001==    definitely lost: 0 bytes in 0 blocks
+==10001==    indirectly lost: 0 bytes in 0 blocks
+==10001==      possibly lost: 0 bytes in 0 blocks
+==10001==    still reachable: 65,568 bytes in 19 blocks
+==10001==         suppressed: 0 bytes in 0 blocks
+==10001== Rerun with --leak-check=full to see details of leaked memory
+==10001== 
+==10001== For counts of detected and suppressed errors, rerun with: -v
+==10001== ERROR SUMMARY: 59185 errors from 2 contexts (suppressed: 0 from 0)

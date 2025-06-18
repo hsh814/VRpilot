@@ -1,0 +1,54 @@
+Corrupt JPEG data: 2 extraneous bytes before marker 0xfe
+=================================================================
+==42700==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7ffdae5d4358 at pc 0x7f710b7bb392 bp 0x7ffdae5d3e80 sp 0x7ffdae5d3e70
+WRITE of size 8 at 0x7ffdae5d4358 thread T0
+    #0 0x7f710b7bb391 in get_sos /dataset/repos/libjpeg-turbo/jdmarker.c:327
+    #1 0x7f710b7c4198 in read_markers /dataset/repos/libjpeg-turbo/jdmarker.c:1016
+    #2 0x7f710b7b5bc4 in consume_markers /dataset/repos/libjpeg-turbo/jdinput.c:386
+    #3 0x7f710b79b311 in jpeg_consume_input /dataset/repos/libjpeg-turbo/jdapimin.c:301
+    #4 0x7f710b79b052 in jpeg_read_header /dataset/repos/libjpeg-turbo/jdapimin.c:249
+    #5 0x403c87 in main /dataset/repos/libjpeg-turbo/djpeg.c:542
+    #6 0x7f710b38883f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+    #7 0x4015f8 in _start (/root/build/.libs/lt-djpeg+0x4015f8)
+
+Address 0x7ffdae5d4358 is located in stack of thread T0 at offset 888 in frame
+    #0 0x40388e in main /dataset/repos/libjpeg-turbo/djpeg.c:435
+
+  This frame has 2 object(s):
+    [32, 200) 'jerr'
+    [256, 888) 'cinfo' <== Memory access at offset 888 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism or swapcontext
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /dataset/repos/libjpeg-turbo/jdmarker.c:327 get_sos
+Shadow bytes around the buggy address:
+  0x100035cb2810: 00 00 00 00 00 f4 f4 f4 f2 f2 f2 f2 00 00 00 00
+  0x100035cb2820: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100035cb2830: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100035cb2840: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100035cb2850: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x100035cb2860: 00 00 00 00 00 00 00 00 00 00 00[f4]f3 f3 f3 f3
+  0x100035cb2870: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100035cb2880: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100035cb2890: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100035cb28a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100035cb28b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+==42700==ABORTING

@@ -1,0 +1,79 @@
+readelf: Warning: Section 0 has an out of range sh_link value of 4160749568
+readelf: Warning: Section 1 has an out of range sh_link value of 16769792
+readelf: Warning: Section 2 has an out of range sh_link value of 33554432
+readelf: Warning: Section 6 has an out of range sh_link value of 247
+readelf: Warning: Section 7 has an out of range sh_link value of 2130706432
+readelf: Warning: Section 11 has an out of range sh_link value of 774778414
+readelf: Warning: Section 12 has an out of range sh_link value of 774778414
+readelf: Warning: possibly corrupt ELF header - it has a non-zero program header offset, but no program headers
+readelf: Warning: could not find separate debug file ''
+readelf: Warning: tried: /lib/debug/
+readelf: Warning: tried: /usr/lib/debug/usr/
+readelf: Warning: tried: /usr/lib/debug/
+readelf: Warning: tried: /dataset/EF12/.debug/
+readelf: Warning: tried: /dataset/EF12/
+readelf: Warning: tried: .debug/
+readelf: Warning: tried: 
+=================================================================
+==7==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60700000de38 at pc 0x0000004906fa bp 0x7ffcde42f2d0 sp 0x7ffcde42f2c0
+READ of size 8 at 0x60700000de38 thread T0
+    #0 0x4906f9 in process_cu_tu_index /dataset/repos/binutils-gdb_EF12/binutils/dwarf.c:9290
+    #1 0x49148d in load_cu_tu_indexes /dataset/repos/binutils-gdb_EF12/binutils/dwarf.c:9411
+    #2 0x4914f0 in find_cu_tu_set /dataset/repos/binutils-gdb_EF12/binutils/dwarf.c:9429
+    #3 0x44859d in display_debug_section /dataset/repos/binutils-gdb_EF12/binutils/readelf.c:13721
+    #4 0x448b6d in process_section_contents /dataset/repos/binutils-gdb_EF12/binutils/readelf.c:13814
+    #5 0x45c4cd in process_object /dataset/repos/binutils-gdb_EF12/binutils/readelf.c:18702
+    #6 0x45de2e in process_file /dataset/repos/binutils-gdb_EF12/binutils/readelf.c:19122
+    #7 0x45e115 in main /dataset/repos/binutils-gdb_EF12/binutils/readelf.c:19181
+    #8 0x7fbaa1d9c83f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+    #9 0x4020f8 in _start (/root/build_EF12/binutils/readelf+0x4020f8)
+
+0x60700000de3f is located 0 bytes to the right of 79-byte region [0x60700000ddf0,0x60700000de3f)
+allocated by thread T0 here:
+    #0 0x7fbaa21de602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
+    #1 0x40a658 in get_data /dataset/repos/binutils-gdb_EF12/binutils/readelf.c:423
+    #2 0x447163 in load_specific_debug_section /dataset/repos/binutils-gdb_EF12/binutils/readelf.c:13495
+    #3 0x447fa4 in load_debug_section /dataset/repos/binutils-gdb_EF12/binutils/readelf.c:13648
+    #4 0x46ab0a in load_debug_section_with_follow /dataset/repos/binutils-gdb_EF12/binutils/dwarf.c:2705
+    #5 0x49147a in load_cu_tu_indexes /dataset/repos/binutils-gdb_EF12/binutils/dwarf.c:9410
+    #6 0x4914f0 in find_cu_tu_set /dataset/repos/binutils-gdb_EF12/binutils/dwarf.c:9429
+    #7 0x44859d in display_debug_section /dataset/repos/binutils-gdb_EF12/binutils/readelf.c:13721
+    #8 0x448b6d in process_section_contents /dataset/repos/binutils-gdb_EF12/binutils/readelf.c:13814
+    #9 0x45c4cd in process_object /dataset/repos/binutils-gdb_EF12/binutils/readelf.c:18702
+    #10 0x45de2e in process_file /dataset/repos/binutils-gdb_EF12/binutils/readelf.c:19122
+    #11 0x45e115 in main /dataset/repos/binutils-gdb_EF12/binutils/readelf.c:19181
+    #12 0x7fbaa1d9c83f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /dataset/repos/binutils-gdb_EF12/binutils/dwarf.c:9290 process_cu_tu_index
+Shadow bytes around the buggy address:
+  0x0c0e7fff9b70: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0e7fff9b80: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0e7fff9b90: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0e7fff9ba0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0e7fff9bb0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa 00 00
+=>0x0c0e7fff9bc0: 00 00 00 00 00 00 00[07]fa fa fa fa 00 00 00 00
+  0x0c0e7fff9bd0: 00 00 00 00 05 fa fa fa fa fa fd fd fd fd fd fd
+  0x0c0e7fff9be0: fd fd fd fa fa fa fa fa 00 00 00 00 00 00 00 00
+  0x0c0e7fff9bf0: 00 07 fa fa fa fa fd fd fd fd fd fd fd fd fd fd
+  0x0c0e7fff9c00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c0e7fff9c10: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+==7==ABORTING

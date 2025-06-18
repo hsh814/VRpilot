@@ -1,0 +1,2 @@
+jpc_dec.c:1196:18: runtime error: division by zero
+jpc_dec.c:1197:5: runtime error: division by zero

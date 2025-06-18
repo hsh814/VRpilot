@@ -1,0 +1,5 @@
+Q: Following 'Java' code snippet has $VUL_NAME vulnerability. The vulnerable line numbers are $LINE. Generate a fix for this. Your fix should not break any functionality of the function.
+
+$VUL_CODE
+
+A: Let's think step by step.

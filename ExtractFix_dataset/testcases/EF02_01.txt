@@ -1,0 +1,6 @@
+Bug: http://bugzilla.maptools.org/show_bug.cgi?id=2489
+Patch: tools/thumbnail.c: fix out-of-buffer write
+Rev: 3206e0c752a62da1ae606867113ed3bf9bf73306
+
+thumbnail EF02/03_thumbnail.tiff out.tiff
+

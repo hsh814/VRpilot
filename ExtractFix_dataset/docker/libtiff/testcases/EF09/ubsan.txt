@@ -1,0 +1,2 @@
+TIFFScanlineSize64: Invalid YCbCr subsampling.
+/dataset/repos/libtiff/tools/rgb2ycbcr.c:257:19: runtime error: division by zero

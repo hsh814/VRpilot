@@ -1,0 +1,48 @@
+==10062== Memcheck, a memory error detector
+==10062== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==10062== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==10062== Command: tiffcmp 10_tiffcmp.tiff 00_basefile.tiff
+==10062== 
+TIFFReadDirectory: Warning, Unknown field with tag 292 (0x124) encountered.
+==10062== Invalid write of size 8
+==10062==    at 0x4E462BA: _TIFFVGetField (tif_dir.c:1036)
+==10062==    by 0x4E469CF: TIFFVGetField (tif_dir.c:1154)
+==10062==    by 0x4E4692C: TIFFGetField (tif_dir.c:1138)
+==10062==    by 0x10A831: checkTag (tiffcmp.c:516)
+==10062==    by 0x10AD60: CheckLongTag (tiffcmp.c:610)
+==10062==    by 0x109C19: cmptags (tiffcmp.c:279)
+==10062==    by 0x1092D7: tiffcmp (tiffcmp.c:167)
+==10062==    by 0x10913C: main (tiffcmp.c:98)
+==10062==  Address 0x124 is not stack'd, malloc'd or (recently) free'd
+==10062== 
+==10062== 
+==10062== Process terminating with default action of signal 11 (SIGSEGV)
+==10062==  Access not within mapped region at address 0x124
+==10062==    at 0x4E462BA: _TIFFVGetField (tif_dir.c:1036)
+==10062==    by 0x4E469CF: TIFFVGetField (tif_dir.c:1154)
+==10062==    by 0x4E4692C: TIFFGetField (tif_dir.c:1138)
+==10062==    by 0x10A831: checkTag (tiffcmp.c:516)
+==10062==    by 0x10AD60: CheckLongTag (tiffcmp.c:610)
+==10062==    by 0x109C19: cmptags (tiffcmp.c:279)
+==10062==    by 0x1092D7: tiffcmp (tiffcmp.c:167)
+==10062==    by 0x10913C: main (tiffcmp.c:98)
+==10062==  If you believe this happened as a result of a stack
+==10062==  overflow in your program's main thread (unlikely but
+==10062==  possible), you can try to increase the size of the
+==10062==  main thread stack using the --main-stacksize= flag.
+==10062==  The main thread stack size used in this run was 8388608.
+==10062== 
+==10062== HEAP SUMMARY:
+==10062==     in use at exit: 4,865 bytes in 17 blocks
+==10062==   total heap usage: 34 allocs, 17 frees, 11,481 bytes allocated
+==10062== 
+==10062== LEAK SUMMARY:
+==10062==    definitely lost: 0 bytes in 0 blocks
+==10062==    indirectly lost: 0 bytes in 0 blocks
+==10062==      possibly lost: 0 bytes in 0 blocks
+==10062==    still reachable: 4,865 bytes in 17 blocks
+==10062==         suppressed: 0 bytes in 0 blocks
+==10062== Rerun with --leak-check=full to see details of leaked memory
+==10062== 
+==10062== For counts of detected and suppressed errors, rerun with: -v
+==10062== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)

@@ -1,0 +1,34 @@
+GNU gdb (Ubuntu 7.7.1-0ubuntu5~14.04.2) 7.7.1
+Copyright (C) 2014 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from tiffcmp...done.
+TIFFReadDirectory: Warning, Unknown field with tag 292 (0x124) encountered.
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff7b5c2ba in _TIFFVGetField (tif=0x555555759010, tag=292, ap=0x7fffffffe388) at tif_dir.c:1036
+1036							*va_arg(ap, void **) = tv->value;
+#0  0x00007ffff7b5c2ba in _TIFFVGetField (tif=0x555555759010, tag=292, ap=0x7fffffffe388) at tif_dir.c:1036
+#1  0x00007ffff7b5c9d0 in TIFFVGetField (tif=0x555555759010, tag=292, ap=0x7fffffffe388) at tif_dir.c:1154
+#2  0x00007ffff7b5c92d in TIFFGetField (tif=0x555555759010, tag=292) at tif_dir.c:1138
+#3  0x0000555555556832 in checkTag (tif1=0x555555759010, tif2=0x555555759c20, tag=292, name=0x555555557224 "Group3Options", p1=0x7fffffffe4c8, 
+    p2=0x7fffffffe4cc) at tiffcmp.c:516
+#4  0x0000555555556d61 in CheckLongTag (tif1=0x555555759010, tif2=0x555555759c20, tag=292, name=0x555555557224 "Group3Options") at tiffcmp.c:610
+#5  0x0000555555555c1a in cmptags (tif1=0x555555759010, tif2=0x555555759c20) at tiffcmp.c:279
+#6  0x00005555555552d8 in tiffcmp (tif1=0x555555759010, tif2=0x555555759c20) at tiffcmp.c:167
+#7  0x000055555555513d in main (argc=3, argv=0x7fffffffe678) at tiffcmp.c:98
+A debugging session is active.
+
+	Inferior 1 [process 10292] will be killed.
+
+Quit anyway? (y or n) [answered Y; input not from terminal]

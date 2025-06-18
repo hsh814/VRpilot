@@ -1,0 +1,8 @@
+Bug: http://bugzilla.maptools.org/show_bug.cgi?id=2501
+Patch: tools/tiffdither.c: check memory allocations to avoid writing to
+Rev: 147b2698c84004fe2da93c0fc7177a7c3797533d
+
+tiffdither EF02/20_tiffdither.tiff out.tiff
+tiffdither EF02/21_tiffdither.tiff out.tiff
+
+Could not reproduce.
