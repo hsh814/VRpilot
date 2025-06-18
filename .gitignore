@@ -2,5 +2,10 @@ repos/
 *.zip
 env/
 data/
+tmp/
+result/
 openai_api.key
 .DS_Store
+.vscode
+.idea
+.env

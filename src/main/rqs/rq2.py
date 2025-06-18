@@ -48,7 +48,7 @@ if __name__ == "__main__":
     # parameter setting
     CUR_RQ = "RQ2"
     PROJECT_NAME = "libtiff"
-    MODEL_NAME = "gpt-3.5-turbo"  # ["gpt-4-0314", "gpt-3.5-turbo"]
+    MODEL_NAME = "gpt-4o-mini"  # ["gpt-4-0314", "gpt-3.5-turbo"]
     TEMPERATURES = [0,0.25,0.5,0.75,1]
     REPEAT = 5
     MAX_QUERY_CNT = 5
@@ -69,7 +69,7 @@ if __name__ == "__main__":
 
     # init
     project_dir = os.path.join(
-        DATA_DIR, "repos", PROJECT_NAME)
+        DATA_DIR, "docker", PROJECT_NAME)
     config_fpath = os.path.join(
         CONFIG_DIR, PROJECT_NAME, "configuration.json")
     repo_dir = os.path.join(project_dir, "repos", PROJECT_NAME)
@@ -88,7 +88,7 @@ if __name__ == "__main__":
         img_tag = "0"  # start with "0"
         reset_repo(repo_dir, target_commit)
         # init
-        clear_all_docker_containers()
+        # clear_all_docker_containers()
         # run the test for the original (vulnerable) version
         project = Project(vul.vul_id, PROJECT_NAME,
                           project_dir, target_commit, img_tag)

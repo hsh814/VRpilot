@@ -22,9 +22,9 @@ def interact_with_openai(model_name, prompt, temper):
     hit = 0
     while (hit < MAX_HIT):
         try:
-            openai.organization = API_KEY_SET[cur_api_idx]['org']
+            # openai.organization = API_KEY_SET[cur_api_idx]['org']
             openai.api_key = API_KEY_SET[cur_api_idx]['api']
-            response = openai.ChatCompletion.create(
+            response = openai.chat.completions.create(
                 model=model_name,
                 messages=[
                     {"role": "system",

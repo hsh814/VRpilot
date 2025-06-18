@@ -1,7 +1,7 @@
 from main.utils.git_util import reset_repo
 from main.utils.cmd_util import execute_cmd_with_output
 from main.utils.file_util import copy_folder, delete_folder
-from main.utils.docker_util import delete_image, build_image
+from main.utils.docker_util import delete_image, build_image, check_image
 import os
 from path_config import TMP_DIR
 import re
@@ -51,6 +51,8 @@ class Project():
     def build(self):
         # init the docker environment
         print("[Time] start - build() image", get_current_time())
+        if check_image(self.img_id, self.img_tag):
+            return True, None
         delete_image(self.img_id, self.img_tag)
         if_success, build_log = build_image(self.img_id, self.img_tag,
                                             self.working_project_dir, self.vul_id)
@@ -65,7 +67,7 @@ class Project():
         error_msg = []
 
         output = execute_cmd_with_output(
-            "docker run -it {}:{} /scripts/test_functionality.sh {}".format(self.img_id, self.img_tag, self.vul_id), self.working_repo_dir)
+            "docker run {}:{} /scripts/test_functionality.sh {}".format(self.img_id, self.img_tag, self.vul_id), self.working_repo_dir)
         # print(output)
 
         if self.project_name == 'libxml2':
@@ -166,7 +168,7 @@ class Project():
 
         print("[Time] start - run_security_test()", get_current_time())
         output = execute_cmd_with_output(
-            "docker run -it {}:{} /scripts/test_security.sh {}".format(self.img_id, self.img_tag, self.vul_id), self.working_repo_dir)
+            "docker run {}:{} /scripts/test_security.sh {}".format(self.img_id, self.img_tag, self.vul_id), self.working_repo_dir)
         print(output)
         if self.project_name == 'libxml2':
 

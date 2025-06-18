@@ -4,6 +4,10 @@ from main.utils.cmd_util import execute_cmd_with_output
 from main.utils.file_util import read_file
 import os
 
+def check_image(image_name, image_tag) -> bool:
+    client = docker.from_env()
+    return len(client.images.list(filters={'reference': f"{image_name}:{image_tag}"})) > 0
+
 def delete_image(image_name, image_tag):
     client = docker.from_env()
 
@@ -39,8 +43,8 @@ def clear_all_docker_containers():
     client = docker.from_env()
 
     docker_containers = client.containers.list(all=True)
-    for dc in docker_containers:
-        dc.remove(force=True)
+    # for dc in docker_containers:
+    #     dc.remove(force=True)
 
     # docker_img = client.images.list(all=True)
     # for di in docker_img:
