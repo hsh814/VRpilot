@@ -67,7 +67,7 @@ class Project():
         error_msg = []
 
         output = execute_cmd_with_output(
-            "docker run {}:{} /scripts/test_functionality.sh {}".format(self.img_id, self.img_tag, self.vul_id), self.working_repo_dir)
+            "docker run --rm {}:{} /scripts/test_functionality.sh {}".format(self.img_id, self.img_tag, self.vul_id), self.working_repo_dir)
         # print(output)
 
         if self.project_name == 'libxml2':
@@ -168,7 +168,7 @@ class Project():
 
         print("[Time] start - run_security_test()", get_current_time())
         output = execute_cmd_with_output(
-            "docker run {}:{} /scripts/test_security.sh {}".format(self.img_id, self.img_tag, self.vul_id), self.working_repo_dir)
+            "docker run --rm {}:{} /scripts/test_security.sh {}".format(self.img_id, self.img_tag, self.vul_id), self.working_repo_dir)
         print(output)
         if self.project_name == 'libxml2':
 

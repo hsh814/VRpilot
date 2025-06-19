@@ -9,3 +9,4 @@ openai_api.key
 .vscode
 .idea
 .env
+__pycache__

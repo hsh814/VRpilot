@@ -198,7 +198,7 @@ if __name__ == "__main__":
                     model_response = interact_with_openai(MODEL_NAME, prompt, temper)
 
                     ###########ZERO SHOT CoT
-                    prompt += "\n" + model_response + "\n Therefore the fixed code is\n" + initial_code
+                    prompt += "\n" + model_response + "\n Extract the final fixed code. Do not use ```c ```. Only write code.\n" + initial_code
                     model_response = interact_with_openai(MODEL_NAME, prompt, temper)
 
                     print("[Timer] {} End to get Response from ChatGPT, {}".format(
