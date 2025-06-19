@@ -3,6 +3,8 @@ import traceback
 from main.utils.cmd_util import execute_cmd_with_output
 from main.utils.file_util import read_file
 import os
+import io
+import tarfile
 
 def check_image(image_name, image_tag) -> bool:
     client = docker.from_env()
@@ -19,25 +21,43 @@ def delete_image(image_name, image_tag):
 
 
 
-def build_image(image_name, image_tag, working_repo_dir, vul_id):
-
-    if_build_success = True
-    log = None
+def build_image(image_name, image_tag, working_repo_dir):
+    
+    client = docker.from_env()
+    log_lines = list()
 
     # Build the image with the specified tag
+    log_file = open(os.path.join(working_repo_dir, "docker-image-build.log"), "w", encoding='utf-8')
     try:
-        cmd = f"docker build -t {image_name}:{image_tag} --build-arg ID=\"{vul_id}\" . > build.log 2>&1"
-        output = execute_cmd_with_output(cmd, working_repo_dir)
-        log = read_file(os.path.join(working_repo_dir, "build.log"))
+        print(f"[*] Building image {image_name}:{image_tag} from {working_repo_dir}")
+        image, build_log_generator = client.images.build(path=working_repo_dir, tag=f"{image_name}:{image_tag}", rm=True, forcerm=True)
+        for chunk in build_log_generator:
+            if 'stream' in chunk:
+                line = chunk['stream'].strip()
+                if line != "":
+                    print(line)
+                    log_lines.append(line)
+                    log_file.write(line + '\n')
+        print(f"[*] Successfully build image {image.short_id}")
+        return True, "\n".join(log_lines)
+    except docker.errors.BuildError as e:
+        print("\n[!] Failed to build image. Capturing error log...")
         
+        for line_info in e.build_log:
+            if 'stream' in line_info:
+                line = line_info['stream'].strip()
+                if line:
+                    print(line)
+                    log_lines.append(line)
+                    log_file.write(line + '\n')
+
+        return False, "\n".join(log_lines)
     except Exception as e:
         print(f"Failed to build image {image_name}:{image_tag}, error: {e}")
-
-    for line in log.split("\n"):
-        if "error:" in line:
-            if_build_success = False
-            break
-    return if_build_success, log
+        log_file.write(f"Error msg: {e}\n")
+        return False, "\n".join(log_lines)
+    finally:
+        log_file.close()
 
 def clear_all_docker_containers():
     client = docker.from_env()
@@ -49,4 +69,21 @@ def clear_all_docker_containers():
     # docker_img = client.images.list(all=True)
     # for di in docker_img:
     #     di.remove(force=True)   
+
+# working_repo_dir = "ExtractFix_dataset/docker/libtiff/repos/libtiff"
+def run_with_new_src_code(image_name, image_tag, working_repo_dir, cmd): 
+    client = docker.from_env()
+    container = client.containers.create(f"{image_name}:{image_tag}", detach=True, command=["sleep", "infinity"])
+    container.start()
+    tarstream = io.BytesIO()
+    with tarfile.open(fileobj=tarstream, mode='w') as tar:
+        tar.add(working_repo_dir, arcname=os.path.basename(working_repo_dir))
+    tarstream.seek(0)
+    container.put_archive("/dataset/repos", tarstream)
+    
+    exit_code, (stdout, stderr) = container.exec_run(cmd, demux=True)
+    container.remove(force=True)
+    stdout_str = stdout.decode('utf-8').strip() if stdout else ""
+    stderr_str = stderr.decode('utf-8').strip() if stderr else ""
+    return exit_code, stdout_str, stderr_str
     

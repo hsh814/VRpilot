@@ -1,7 +1,7 @@
 from main.utils.git_util import reset_repo
 from main.utils.cmd_util import execute_cmd_with_output
 from main.utils.file_util import copy_folder, delete_folder
-from main.utils.docker_util import delete_image, build_image, check_image
+from main.utils.docker_util import delete_image, build_image, check_image, run_with_new_src_code
 import os
 from path_config import TMP_DIR
 import re
@@ -10,7 +10,7 @@ from main.utils.time_util import get_current_time
 
 class Project():
 
-    def __init__(self, vul_id, project_name, ori_project_dir, cur_com, docker_img_tag):
+    def __init__(self, vul_id, project_name, ori_project_dir, cur_com, docker_img_tag, exp_id):
         self.vul_id = vul_id
         self.project_name = project_name
 
@@ -22,7 +22,7 @@ class Project():
 
         # information about the working project
         self.working_project_dir = os.path.join(
-            TMP_DIR, project_name+docker_img_tag)
+            TMP_DIR, project_name+exp_id)
         if os.path.exists(self.working_project_dir):
             delete_folder(self.working_project_dir)
         self.working_repo_dir = os.path.join(
@@ -66,9 +66,10 @@ class Project():
         num_of_failed = 0
         error_msg = []
 
-        output = execute_cmd_with_output(
-            "docker run --rm {}:{} /scripts/test_functionality.sh {}".format(self.img_id, self.img_tag, self.vul_id), self.working_repo_dir)
+        exit_code, stdout_str, stderr_str = run_with_new_src_code(self.img_id, self.img_tag, self.working_repo_dir, f"/scripts/test_functionality.sh {self.vul_id}")
+        # output = execute_cmd_with_output("docker run --rm {}:{} /scripts/test_functionality.sh {}".format(self.img_id, self.img_tag, self.vul_id), self.working_repo_dir)
         # print(output)
+        output = stdout_str + "\n" + stderr_str
 
         if self.project_name == 'libxml2':
             # parse the result
@@ -167,8 +168,9 @@ class Project():
         """return True if the security test is passed, otherwise return False"""
 
         print("[Time] start - run_security_test()", get_current_time())
-        output = execute_cmd_with_output(
-            "docker run --rm {}:{} /scripts/test_security.sh {}".format(self.img_id, self.img_tag, self.vul_id), self.working_repo_dir)
+        exit_code, stdout_str, stderr_str = run_with_new_src_code(self.img_id, self.img_tag, self.working_repo_dir, f"/scripts/test_security.sh {self.vul_id}")
+        # output = execute_cmd_with_output("docker run --rm {}:{} /scripts/test_security.sh {}".format(self.img_id, self.img_tag, self.vul_id), self.working_repo_dir)
+        output = stdout_str + "\n" + stderr_str
         print(output)
         if self.project_name == 'libxml2':
 

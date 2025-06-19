@@ -1,12 +1,16 @@
 #!/bin/bash
+mkdir -p /root/build
+cd /root/build
 
 case "$1" in
     EF12)
-        cd /root/build_EF12
+        /dataset/repos/binutils-gdb/configure CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address"
+        make -j 32
         ./binutils/readelf -w /dataset/EF12/bug3
         ;;
     EF13)
-        cd /root/build_EF13
+        /dataset/repos/binutils-gdb/configure CFLAGS="-g -fsanitize=undefined" LDFLAGS="-g -fsanitize=undefined"
+        make -j 32
         ./binutils/nm-new -A -a -l -S -s --special-syms --synthetic --with-symbol-versions -D /dataset/EF13/3899.crashes.bin
         ;;
     *)

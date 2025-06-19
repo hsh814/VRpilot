@@ -8,12 +8,12 @@
 
 from main.utils.gpt_util import if_exceed_token_limit
 import os
-from path_config import DATA_DIR, CONFIG_DIR, PRO_DIR
+from path_config import DATA_DIR, CONFIG_DIR, PRO_DIR, TMP_DIR
 from main.data_structure.project import Project, extract_err_msg_from_build_log
 from main.utils.git_util import get_parent_commit, reset_repo
 from main.utils.file_util import read_file, write_file, delete_folder, append_str_to_file
 from main.utils.markdown_util import generate_patch_with_GPT_response, generate_patch_with_GPT_response_new, make_patch_with_diff
-from main.utils.docker_util import clear_all_docker_containers
+from main.utils.docker_util import run_with_new_src_code, check_image, build_image
 from main.utils.json_util import read_json_from_file
 from main.utils.time_util import get_current_time
 from main.data_structure.vulnerability import Vulnerability
@@ -73,7 +73,13 @@ if __name__ == "__main__":
     config_fpath = os.path.join(
         CONFIG_DIR, PROJECT_NAME, "configuration.json")
     repo_dir = os.path.join(project_dir, "repos", PROJECT_NAME)
-
+    
+    # Build docker image
+    if not check_image(PROJECT_NAME, "default"):
+        is_success, build_log = build_image(PROJECT_NAME, "default", project_dir)
+        if not is_success:
+            print(f"[Time] {get_current_time()} Failed to build image {PROJECT_NAME}:default \n {build_log}")
+            exit(1)
     # Read configuration from json file
     config_data = read_json_from_file(config_fpath)
     for idx in range(0, len(config_data["configurations"])):
@@ -85,21 +91,20 @@ if __name__ == "__main__":
 
         target_commit = get_parent_commit(
             repo_dir, vul.fix_commit)  # vulernable version
-        img_tag = "0"  # start with "0"
+
         reset_repo(repo_dir, target_commit)
         # init
-        # clear_all_docker_containers()
         # run the test for the original (vulnerable) version
         project = Project(vul.vul_id, PROJECT_NAME,
-                          project_dir, target_commit, img_tag)
+                          project_dir, target_commit, "default", str(idx))
         vul.set_project(project)
         project.init_env()
 
-        # gatekeeper
-        if_success, build_log = project.build()
-        if if_success == False:
-            print("Build failed, something wrong here!", get_current_time())
-            exit(0)
+        # Deprecated: use single docker image per project
+        # if_success, build_log = project.build()
+        # if if_success == False:
+        #     print("Build failed, something wrong here!", get_current_time())
+        #     exit(0)
 
         vul_fun_test_res, vul_sec_test_res = project.run_test()
         print("Vulnerable version reg test result: passed {}: failed {}".format(
@@ -129,7 +134,6 @@ if __name__ == "__main__":
         without_feedback_compilable = 0
         witout_feedback_plausible = 0
 
-        clear_all_docker_containers()
         # Create result folder and saves response, prompt there
         cur_prompt_type_dir = setup_result_folders(
             RESULT_DIR, PROJECT_NAME, vul.vul_id, init_prompt)
@@ -198,7 +202,7 @@ if __name__ == "__main__":
                     model_response = interact_with_openai(MODEL_NAME, prompt, temper)
 
                     ###########ZERO SHOT CoT
-                    prompt += "\n" + model_response + "\n Extract the final fixed code. Do not use ```c ```. Only write code.\n" + initial_code
+                    prompt += "\n" + model_response + "\n Based on your analysis, provide the complete, fixed C code. The output must be only the raw C code. Do not include any explanations, comments about fix, or markdown code fences like ```c ```. Only write code.\n" + initial_code
                     model_response = interact_with_openai(MODEL_NAME, prompt, temper)
 
                     print("[Timer] {} End to get Response from ChatGPT, {}".format(
@@ -223,9 +227,8 @@ if __name__ == "__main__":
                     write_file(path_response, model_response, create_dir=True)
                     #continue
                     # Check if the model's response is valid
-                    img_tag = (str)(((int)(img_tag) + 1) % 100)
                     project = Project(vul.vul_id, PROJECT_NAME,
-                                      project_dir, target_commit, img_tag)
+                                      project_dir, target_commit, "default", f"{repeat_idx}_{query_idx}")
                     project.init_env()
                     patch, modified_code = make_patch_with_diff(
                         config_fpath, project, model_response, idx)

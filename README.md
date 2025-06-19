@@ -8,6 +8,7 @@ VRpilot: LLM-based Vulnerability Repair with Reasoning and Patch Validation Feed
     dependencies. Run the command: `$> bash create_venv.sh`
   - Install Docker Desktop version 4.14.0
   - Create extractfix images. Run the command: `$> bash download_extractfix_data.sh`
+  - Or just run `$> cd ExtractFix_dataset && ./init.sh`
   - From the root directory:
     - Create file `openai_api.key` and add a key to access the openai API  
     - Run the following command `$> export PYTHONPATH="$PWD/src"`
