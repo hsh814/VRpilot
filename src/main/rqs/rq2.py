@@ -20,6 +20,7 @@ from main.data_structure.vulnerability import Vulnerability
 from main.core.interact_with_GPT import interact_with_openai
 from main.utils.diff_util import print_diff
 from main.core.prompt import prompt_generator
+import argparse
 
 
 def setup_result_folders(RESULT_DIR, project_name, vul_id, prompt_type):
@@ -46,9 +47,13 @@ def setup_result_folders(RESULT_DIR, project_name, vul_id, prompt_type):
 if __name__ == "__main__":
 
     # parameter setting
+    parser = argparse.ArgumentParser(description="VRpilot run script")
+    parser.add_argument("project", help="Project name", choices=["binutils-gdb", "coreutils", "ffmpeg", "jasper", "libarchive", "libjpeg-turbo", "libming", "libtiff", "libxml2", "zziplib"])
+    parser.add_argument("--model", help="OpenAI model", default="gpt-4o-mini", choices=["gpt-4o-mini", "gpt-4o", "gpt-o1-pro-2025-03-19", "gpt-o3-2025-04-16"])
+    args = parser.parse_args()
     CUR_RQ = "RQ2"
-    PROJECT_NAME = "libtiff"
-    MODEL_NAME = "gpt-4o-mini"  # ["gpt-4-0314", "gpt-3.5-turbo"]
+    PROJECT_NAME = args.project
+    MODEL_NAME = args.model  # ["gpt-4-0314", "gpt-3.5-turbo"]
     TEMPERATURES = [0,0.25,0.5,0.75,1]
     REPEAT = 5
     MAX_QUERY_CNT = 5
