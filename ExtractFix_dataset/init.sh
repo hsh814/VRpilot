@@ -4,6 +4,7 @@ pushd docker
   git clone https://sourceware.org/git/binutils-gdb.git binutils-gdb/repos/binutils-gdb
 
   git clone https://github.com/coreutils/coreutils.git coreutils/repos/coreutils
+  git clone https://github.com/coreutils/gnulib.git coreutils/repos/coreutils/gnulib
 
   git clone https://github.com/jasper-software/jasper.git jasper/repos/jasper
 

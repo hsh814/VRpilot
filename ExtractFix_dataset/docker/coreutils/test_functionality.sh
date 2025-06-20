@@ -1,17 +1,19 @@
 #!/bin/bash
+cd /dataset/repos/coreutils
+./bootstrap
+mkdir -p /root/build_testsuite
+cd /root/build_testsuite
+FORCE_UNSAFE_CONFIGURE=1 /dataset/repos/coreutils/configure
+make -j 32
 
 case "$1" in
     EF23)
-        cd /home/extractfix/build_testsuite_EF23
         ;;
     EF24)
-        cd /home/extractfix/build_testsuite_EF24
         ;;
     EF25)
-        cd /home/extractfix/build_testsuite_EF25
         ;;
     EF26)
-        cd /home/extractfix/build_testsuite_EF26
         ;;
     *)
         echo "No such bug: $1"

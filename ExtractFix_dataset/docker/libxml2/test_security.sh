@@ -1,11 +1,9 @@
 #!/bin/bash
 
-if [ ! -d /root/build_"$1" ]; then
-    echo "No such bug: $1"
-    exit 1;
-fi
-
-cd /root/build_"$1"
+mkdir -p /root/build
+cd /root/build
+/dataset/repos/libxml2/autogen.sh CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address"
+make -j 32
 
 case "$1" in
     EF15)

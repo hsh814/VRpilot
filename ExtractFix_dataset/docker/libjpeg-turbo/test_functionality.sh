@@ -1,17 +1,31 @@
 #!/bin/bash
 
+mkdir -p /root/build_testsuite
+case "$1" in
+    EF19|EF22)
+        cd /dataset/repos/libjpeg-turbo
+        autoreconf -fvi
+        cd /root/build
+        /dataset/repos/libjpeg-turbo/configure
+        ;;
+    EF20|EF21)
+        cd /root/build
+        cmake -G"Unix Makefiles" /dataset/repos/libjpeg-turbo
+        ;;
+    *)
+        echo "No such bug: $1"
+        ;;
+esac
+make -j 32
+
 case "$1" in
     EF19)
-        cd /root/build_testsuite_EF19
         ;;
     EF20)
-        cd /root/build_testsuite_EF20
         ;;
     EF21)
-        cd /root/build_testsuite_EF21
         ;;
     EF22)
-        cd /root/build_testsuite_EF22
         ;;
     *)
         echo "No such bug: $1"

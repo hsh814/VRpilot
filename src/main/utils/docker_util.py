@@ -83,7 +83,7 @@ def run_with_new_src_code(image_name, image_tag, working_repo_dir, cmd):
     
     exit_code, (stdout, stderr) = container.exec_run(cmd, demux=True)
     container.remove(force=True)
-    stdout_str = stdout.decode('utf-8').strip() if stdout else ""
-    stderr_str = stderr.decode('utf-8').strip() if stderr else ""
+    stdout_str = stdout.decode('utf-8', errors='ignore').strip() if stdout else ""
+    stderr_str = stderr.decode('utf-8', errors='ignore').strip() if stderr else ""
     return exit_code, stdout_str, stderr_str
     
