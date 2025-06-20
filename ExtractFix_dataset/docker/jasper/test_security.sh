@@ -1,12 +1,7 @@
 #!/bin/bash
 
-cd /dataset/repos/jasper
-sed -i 's/inline bool/bool/' src/libjasper/base/jas_malloc.c
-autoreconf -i
-
-mkdir -p /root/build
-/dataset/repos/jasper/configure CFLAGS="-fsanitize=undefined -g" LDFLAGS="-fsanitize=undefined -g"
-make -j 32
+/scripts/test_build.sh $1
+cd /root/build
 
 case "$1" in
     EF27)

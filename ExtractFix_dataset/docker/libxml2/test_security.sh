@@ -1,10 +1,7 @@
 #!/bin/bash
 
-mkdir -p /root/build
+/scripts/test_build.sh $1
 cd /root/build
-/dataset/repos/libxml2/autogen.sh CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address"
-make -j 32
-
 case "$1" in
     EF15)
         ./xmllint /dataset/EF15/attachment_316157.xml

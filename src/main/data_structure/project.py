@@ -51,13 +51,13 @@ class Project():
     def build(self):
         # init the docker environment
         print("[Time] start - build() image", get_current_time())
-        if check_image(self.img_id, self.img_tag):
-            return True, None
-        delete_image(self.img_id, self.img_tag)
-        if_success, build_log = build_image(self.img_id, self.img_tag,
-                                            self.working_project_dir, self.vul_id)
+        exit_code, stdout_str, stderr_str = run_with_new_src_code(self.img_id, self.img_tag, self.working_repo_dir, f"/scripts/test_build.sh {self.vul_id}")
         print("[Time] end - build() image", get_current_time())
-        return if_success, build_log
+        output = stdout_str + "\n" + stderr_str
+        for line in output.splitlines():
+            if "error:" in line:
+                return False, output
+        return True, output
 
     def run_functional_test(self):
         print("[Time] start - run_functional_test()", get_current_time())

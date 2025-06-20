@@ -149,6 +149,7 @@ RUN mkdir -p /root/build
 RUN mkdir /scripts
 COPY test_security.sh /scripts
 COPY test_functionality.sh /scripts
+COPY test_build.sh /scripts
 RUN chmod +x /scripts/*.sh
 
 WORKDIR /root

@@ -19,5 +19,8 @@ pushd docker
   git clone https://gitlab.gnome.org/GNOME/libxml2.git libxml2/repos/libxml2
 
   git clone https://github.com/gdraheim/zziplib.git zziplib/repos/zziplib
+  pushd zziplib/repos/zziplib/docs
+    wget https://github.com/LuaDist/libzzip/raw/master/docs/zziplib-manpages.tar
+  popd
 
 popd
