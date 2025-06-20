@@ -12,7 +12,7 @@ from path_config import DATA_DIR, CONFIG_DIR, PRO_DIR, TMP_DIR
 from main.data_structure.project import Project, extract_err_msg_from_build_log
 from main.utils.git_util import get_parent_commit, reset_repo
 from main.utils.file_util import read_file, write_file, delete_folder, append_str_to_file
-from main.utils.markdown_util import generate_patch_with_GPT_response, generate_patch_with_GPT_response_new, make_patch_with_diff
+from main.utils.markdown_util import make_patch_with_diff
 from main.utils.docker_util import run_with_new_src_code, check_image, build_image
 from main.utils.json_util import read_json_from_file
 from main.utils.time_util import get_current_time
@@ -59,19 +59,6 @@ if __name__ == "__main__":
         TEMPERATURES = [1] # This model do not support other temperatures
     REPEAT = 5
     MAX_QUERY_CNT = 5
-    BEST_INIT_PROMPT_DICT = {"EF01": "new",
-                             #  "EF02_01": "asan-line2line-oracle-nofunction",
-                             #  "EF02_02": "asan-line2line-oracle-nomessage",
-                             #  "EF07": "asan-line2line-oracle-nomessage-notoken-assymetric",
-                             #  "EF08": "asan-line2line-oracle-nomessage",
-                             #  "EF09": "asan-line2line-oracle-nomessage-assymetric",
-                             #  "EF10": "asan-line2line-oracle-nomessage-assymetric",
-                             #  "EF15": "asan-line2line-oracle-nomessage-assymetric",
-                             "EF17": "asan-line2line-oracle-nomessage",
-                             "EF18": "asan-line2line-oracle-nomessage-notoken-assymetric",
-                             #  "EF20": "asan-line2line-oracle-nomessage-assymetric",
-                             #  "EF22": "asan-line2line-oracle-nomessage-notoken-assymetric"
-                             }
     RESULT_DIR = os.path.join(PRO_DIR, "result", CUR_RQ, )
 
     # init
@@ -126,7 +113,7 @@ if __name__ == "__main__":
             exit(0)
 
         # Saves the unique responses
-        init_prompt = "new"#BEST_INIT_PROMPT_DICT[vul.vul_id]
+        init_prompt = "new"
         vul_code = read_file(os.path.join(
             vul.project.ori_repo_dir, vul.vul_code_file_rel_path))
         query_idx = 1
@@ -183,7 +170,7 @@ if __name__ == "__main__":
                         vul.vul_id, init_prompt, temper, repeat_idx, query_idx, get_current_time()))
 
                     prompt, initial_code = prompt_generator(
-                        query_idx, repo_dir, config, init_prompt, vul, compile_err_msg=cur_compile_err_msg, fun_err_msg=cur_fun_err_msg, sec_err_msg=cur_sec_err_msg, prompt_dir=cur_prompt_type_dir, cur_change=cur_change)
+                        query_idx, repo_dir, vul, compile_err_msg=cur_compile_err_msg, fun_err_msg=cur_fun_err_msg, sec_err_msg=cur_sec_err_msg, prompt_dir=cur_prompt_type_dir, cur_change=cur_change)
                     prompt = f"{cur_conversation_history}\n{prompt}".strip()
                     append_str_to_file(
                         "### Query #{} Prompt:\n{}\n\n".format(query_idx, prompt), cur_log_fpath)
@@ -238,7 +225,7 @@ if __name__ == "__main__":
                                       project_dir, target_commit, "default", f"{repeat_idx}_{query_idx}")
                     project.init_env()
                     patch, modified_code = make_patch_with_diff(
-                        config_fpath, project, model_response, idx)
+                        vul, project, model_response, idx)
                     #continue
                     append_str_to_file("### Query #{} Modified_code:{}\n\n".format(query_idx,
                         modified_code), cur_log_fpath)
