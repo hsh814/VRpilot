@@ -1,10 +1,13 @@
 import tiktoken
 
-MODEL_MAX_TOKEN={'gpt-3.5-turbo':4000,'gpt-4-0314':8000, 'gpt-4o-mini': 2000000, 'gpt-4o': 100000, 'gpt-o3-2025-04-16': 100000}
+MODEL_MAX_TOKEN={'gpt-3.5-turbo':4000,'gpt-4-0314':8000, 'gpt-4o-mini': 2000000, 'gpt-4o': 100000, 'o3-2025-04-16': 100000}
 
 def num_tokens_from_string(query: str, model_name: str) -> int:
     """Returns the number of tokens in a text string."""
-    encoding = tiktoken.encoding_for_model(model_name)
+    if model_name == "o3-2025-04-16":
+        encoding = tiktoken.get_encoding("cl100k_base")
+    else:
+        encoding = tiktoken.encoding_for_model(model_name)
     num_tokens = len(encoding.encode(query))
     return num_tokens
 
