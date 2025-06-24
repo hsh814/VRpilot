@@ -8,8 +8,10 @@ projects=(
   "coreutils"
   "jasper"
   "libjpeg-turbo"
+  "libming"
   "libtiff"
   "libxml2"
+  "zziplib"
 )
 
 mkdir -p tmp/log

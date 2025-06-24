@@ -22,7 +22,7 @@ class Project():
 
         # information about the working project
         self.working_project_dir = os.path.join(
-            TMP_DIR, project_name+exp_id)
+            TMP_DIR, f"{self.project_name}_{exp_id}")
         if os.path.exists(self.working_project_dir):
             delete_folder(self.working_project_dir)
         self.working_repo_dir = os.path.join(
@@ -54,7 +54,7 @@ class Project():
         exit_code, stdout_str, stderr_str = run_with_new_src_code(self.img_id, self.img_tag, self.working_repo_dir, f"/scripts/test_build.sh {self.vul_id}")
         print("[Time] end - build() image", get_current_time())
         output = stdout_str + "\n" + stderr_str
-        for line in output.splitlines():
+        for line in stderr_str.splitlines():
             if "error:" in line:
                 return False, output
         return True, output
@@ -174,15 +174,17 @@ class Project():
         print(output)
         is_passed = True
         err_msg = None
-        for line in output.splitlines():
+        for line in stderr_str.splitlines():
+            if not is_passed:
+                err_msg += line
             if "ERROR:" in line: # AddressSanitizer
                 print("Fail the security test.")
                 is_passed = False
-                break
+                err_msg = line
             if "runtime error:" in line: # UndefinedBehaviorSanitizer
                 print("Fail the security test.")
                 is_passed = False
-                break
+                err_msg = line
         if not is_passed:
             print(f"Error message:\n{stderr_str}")
             err_msg = stderr_str

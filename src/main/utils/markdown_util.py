@@ -40,7 +40,7 @@ def make_patch_with_diff (vul: Vulnerability, project: Project, generated_text, 
     responsepath = os.path.join(project.working_project_dir,"response_code_block.txt")
     vulnerable_file_path = os.path.join(project.working_repo_dir, vul_code_file_rel_path)
     content = read_file(vulnerable_file_path)
-    program_lines = content.split("\n")
+    program_lines = content.splitlines()
     # if (vul_id == "cve_2016_10094"):
     #     prepend = "\n".join(program_lines[:2885])
     #     append = "\n".join(program_lines[2930:])
@@ -241,7 +241,7 @@ def make_patch_with_diff (vul: Vulnerability, project: Project, generated_text, 
     #     print(generated_text)
     prepend = extract_content_within_line_range(vulnerable_file_path, 1, vul.vul_code_block_start_line - 1)
     code_block = extract_content_within_line_range(vulnerable_file_path, vul.vul_code_block_start_line, vul.vul_code_block_end_line)
-    append = extract_content_within_line_range(vulnerable_file_path, vul.vul_code_block_end_line, len(program_lines))
+    append = extract_content_within_line_range(vulnerable_file_path, vul.vul_code_block_end_line + 1, len(program_lines))
     write_file(responsepath, generated_text)
     write_file(ori_file_path, code_block)
     cmd_diff = "diff "+ori_file_path+" "+responsepath+ " > patchfile.patch"

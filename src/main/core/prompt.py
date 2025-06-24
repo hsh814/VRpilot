@@ -19,8 +19,8 @@ def first_prompt(repo_dir, vul, prompt_dir):
     
     ###########ZERO SHOT CoT
     
-    prompt = "Q: Following \"C\" code snippet has a {} vulnerability. The vulnerable line numbers are {}. Generate a fix for this.\
-        Your fix should not break any functionality of the function.\n {}\n A: Let's think step by step.".format(
+    prompt = "Q: Following \"C\" code snippet contains a {} vulnerability. The vulnerable line number (or patch line) is {}. Generate a fix for this.\
+        Your fix should not break any functionality of the function. Generate a secure fix without changing the function signature. Also, you should not add new functions, headers, or dummy functions.\n {}\n A: Let's think step by step.".format(
             vul.vul_description, vul_line_num, vul_code_fun_with_line_num)
 
     return prompt, initial_block
@@ -33,10 +33,11 @@ def following_prompt(repo_dir, vul, compile_err_msg, fun_err_msg, sec_err_msg, c
     
     vul_code_fun_with_line_num, vul_line_num, initial_block = get_code_context(repo_dir, vul)
     #######ZERO SHOT CoT 
-    prompt = "Following \"C\" code snippet has a {} vulnerability. The vulnerable line numbers are {}.\n{}\n".format(
+    prompt = "Following \"C\" code snippet has a {} vulnerability. The vulnerable line number (or patch line) is {}. \
+        Your fix should not break any functionality of the function. Generate a secure fix without changing the function signature or adding new functions.\n{}\n".format(
                 vul.vul_description, vul_line_num, vul_code_fun_with_line_num) 
 
-    prompt += f"The following are the code changes you suggested: {cur_change}\n"
+    prompt += f"The following are the code changes you previously suggested: {cur_change}\n"
 
     # compilation error
     if compile_err_msg is not None:

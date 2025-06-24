@@ -92,7 +92,7 @@ if __name__ == "__main__":
         # init
         # run the test for the original (vulnerable) version
         project = Project(vul.vul_id, PROJECT_NAME,
-                          project_dir, target_commit, "default", str(idx))
+                          project_dir, target_commit, "default", f"{vul.vul_id}_buggy")
         vul.set_project(project)
         project.init_env()
 
@@ -198,7 +198,7 @@ if __name__ == "__main__":
                     model_response = interact_with_openai(MODEL_NAME, prompt, temper)
 
                     ###########ZERO SHOT CoT
-                    prompt += "\n" + model_response + "\n Based on your analysis, provide the complete, fixed C code. The output must be only the raw C code. Do not include any explanations, comments about fix, or markdown code fences like ```c ```. Only write code.\n" + initial_code
+                    prompt += "\n" + model_response + "\n Based on your analysis, provide the complete, fixed C code. The output must be only the raw C code. Do not include any explanations, comments about fix, or markdown code fences like ```c ```. Write down whole function in fixed version.\n" + initial_code
                     model_response = interact_with_openai(MODEL_NAME, prompt, temper)
 
                     print("[Timer] {} End to get Response from ChatGPT, {}".format(
@@ -224,7 +224,7 @@ if __name__ == "__main__":
                     #continue
                     # Check if the model's response is valid
                     project = Project(vul.vul_id, PROJECT_NAME,
-                                      project_dir, target_commit, "default", f"{repeat_idx}_{query_idx}")
+                                      project_dir, target_commit, "default", f"{vul.vul_id}_{repeat_idx}_{query_idx}")
                     project.init_env()
                     patch, modified_code = make_patch_with_diff(
                         vul, project, model_response, idx)
