@@ -121,7 +121,7 @@
         {
             "vul_id": "cve_2016_3186",
             "project_name": "libtiff",
-            "fix_commit": "Release-v4-0-6",
+            "fix_commit": "Release-v4-0-5",
             "language": "c",
             "vul_code_file_rel_path": "tools/gif2tiff.c",
             "vul_code_block_start_line": 344,

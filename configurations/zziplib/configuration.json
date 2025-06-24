@@ -43,7 +43,7 @@
         {
             "vul_id": "cve_2017_5976",
             "project_name": "zziplib",
-            "fix_commit": "",
+            "fix_commit": "03de3beabbf570474a9ac05d6dc6b42cdb184cd1",
             "language": "c",
             "vul_code_file_rel_path": "zzip/memdisk.c",
             "vul_code_block_start_line": 239,
