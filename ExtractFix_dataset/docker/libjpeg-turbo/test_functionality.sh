@@ -2,13 +2,13 @@
 
 mkdir -p /root/build_testsuite
 case "$1" in
-    EF19|EF22)
+    EF19|cve_2012_2806)
         cd /dataset/repos/libjpeg-turbo
         autoreconf -fvi
         cd /root/build
         /dataset/repos/libjpeg-turbo/configure
         ;;
-    EF20|EF21)
+    cve_2018_19664|EF21)
         cd /root/build
         cmake -G"Unix Makefiles" /dataset/repos/libjpeg-turbo
         ;;
@@ -21,11 +21,11 @@ make -j 32
 case "$1" in
     EF19)
         ;;
-    EF20)
+    cve_2018_19664)
         ;;
     EF21)
         ;;
-    EF22)
+    cve_2012_2806)
         ;;
     *)
         echo "No such bug: $1"

@@ -1,0 +1,64 @@
+{
+    "configurations": [
+        {
+            "vul_id": "cve_2016_8691",
+            "project_name": "jasper",
+            "fix_commit": "d8c2604cd438c41ec72aff52c16ebd8183068020",
+            "language": "c",
+            "vul_code_file_rel_path": "src/libjasper/jpc/jpc_cs.c",
+            "vul_code_block_start_line": 479,
+            "vul_code_block_end_line": 523,
+            "vul_description": "",
+            "asan_scenario_buginfo": {
+                "real_patchinfo": [
+                    {
+                        "filename": "jpc_cs.c",
+                        "edit_lines": [
+                            515
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "vul_id": "cve_2016_9387",
+            "project_name": "jasper",
+            "fix_commit": "",
+            "language": "c",
+            "vul_code_file_rel_path": "",
+            "vul_code_block_start_line": ,
+            "vul_code_block_end_line": ,
+            "vul_description": "",
+            "asan_scenario_buginfo": {
+                "real_patchinfo": [
+                    {
+                        "filename": "",
+                        "edit_lines": [
+                            
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "vul_id": "cve_2016_9557",
+            "project_name": "jasper",
+            "fix_commit": "d42b2388f7f8e0332c846675133acea151fc557a",
+            "language": "c",
+            "vul_code_file_rel_path": "src/libjasper/base/jas_image.c",
+            "vul_code_block_start_line": 132,
+            "vul_code_block_end_line": 189,
+            "vul_description": "",
+            "asan_scenario_buginfo": {
+                "real_patchinfo": [
+                    {
+                        "filename": "jas_image.c",
+                        "edit_lines": [
+                            164
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -7,44 +7,44 @@ RUN apt-get -y build-dep libtiff5
 
 RUN mkdir -p /dataset/repos
 COPY testcases /dataset
-# COPY repos/libtiff /dataset/repos/libtiff_EF01
-# COPY repos/libtiff /dataset/repos/libtiff_EF02_01
+# COPY repos/libtiff /dataset/repos/libtiff_cve_2016_5321
+# COPY repos/libtiff /dataset/repos/libtiff_cve_2014_8128
 # COPY repos/libtiff /dataset/repos/libtiff_EF02_02
 # COPY repos/libtiff /dataset/repos/libtiff_EF02_03
 # COPY repos/libtiff /dataset/repos/libtiff_EF02_04
 # COPY repos/libtiff /dataset/repos/libtiff_EF02_05
 # COPY repos/libtiff /dataset/repos/libtiff_EF04
 # COPY repos/libtiff /dataset/repos/libtiff_EF06
-# COPY repos/libtiff /dataset/repos/libtiff_EF07
-# COPY repos/libtiff /dataset/repos/libtiff_EF08
-# COPY repos/libtiff /dataset/repos/libtiff_EF09
-# COPY repos/libtiff /dataset/repos/libtiff_EF10
+# COPY repos/libtiff /dataset/repos/libtiff_cve_2016_10094
+# COPY repos/libtiff /dataset/repos/libtiff_cve_2017_7601
+# COPY repos/libtiff /dataset/repos/libtiff_cve_2016_3623
+# COPY repos/libtiff /dataset/repos/libtiff_cve_2017_7595
 # COPY repos/libtiff /dataset/repos/libtiff_EF11
-# COPY testcases/EF01 /dataset/EF01
-# COPY testcases/EF02_01 /dataset/EF02_01
+# COPY testcases/cve_2016_5321 /dataset/cve_2016_5321
+# COPY testcases/cve_2014_8128 /dataset/cve_2014_8128
 # COPY testcases/EF02_02 /dataset/EF02_02
 # COPY testcases/EF02_03 /dataset/EF02_03
 # COPY testcases/EF02_04 /dataset/EF02_04
 # COPY testcases/EF02_05 /dataset/EF02_05
 # COPY testcases/EF04 /dataset/EF04
 # COPY testcases/EF06 /dataset/EF06
-# COPY testcases/EF07 /dataset/EF07
-# COPY testcases/EF08 /dataset/EF08
-# COPY testcases/EF09 /dataset/EF09
-# COPY testcases/EF10 /dataset/EF10
+# COPY testcases/cve_2016_10094 /dataset/cve_2016_10094
+# COPY testcases/cve_2017_7601 /dataset/cve_2017_7601
+# COPY testcases/cve_2016_3623 /dataset/cve_2016_3623
+# COPY testcases/cve_2017_7595 /dataset/cve_2017_7595
 # COPY testcases/EF11 /dataset/EF11
 
 # WORKDIR /root
-# RUN mkdir build_EF01 build_EF02_01 build_EF02_02 build_EF02_03 build_EF02_04 build_EF02_05 \
-#           build_EF04 build_EF06 build_EF07 build_EF08 build_EF09 build_EF10 build_EF11
+# RUN mkdir build_cve_2016_5321 build_cve_2014_8128 build_EF02_02 build_EF02_03 build_EF02_04 build_EF02_05 \
+#           build_EF04 build_EF06 build_cve_2016_10094 build_cve_2017_7601 build_cve_2016_3623 build_cve_2017_7595 build_EF11
 
-# # EF01, EF04, EF06, EF07 use ASAN
-# WORKDIR /dataset/repos/libtiff_EF01
+# # cve_2016_5321, EF04, EF06, cve_2016_10094 use ASAN
+# WORKDIR /dataset/repos/libtiff_cve_2016_5321
 # RUN git clean -fdx
 # RUN git reset --hard
-# RUN git checkout EF01
-# WORKDIR /root/build_EF01
-# RUN CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address" cmake /dataset/repos/libtiff_EF01
+# RUN git checkout cve_2016_5321
+# WORKDIR /root/build_cve_2016_5321
+# RUN CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address" cmake /dataset/repos/libtiff_cve_2016_5321
 # RUN make -j $(nproc)
 
 # WORKDIR /dataset/repos/libtiff_EF04
@@ -63,37 +63,37 @@ COPY testcases /dataset
 # RUN CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address" cmake /dataset/repos/libtiff_EF06
 # RUN make -j $(nproc)
 
-# WORKDIR /dataset/repos/libtiff_EF07
+# WORKDIR /dataset/repos/libtiff_cve_2016_10094
 # RUN git clean -fdx
 # RUN git reset --hard
-# RUN git checkout EF07
-# WORKDIR /root/build_EF07
-# RUN CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address" cmake /dataset/repos/libtiff_EF07
+# RUN git checkout cve_2016_10094
+# WORKDIR /root/build_cve_2016_10094
+# RUN CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address" cmake /dataset/repos/libtiff_cve_2016_10094
 # RUN make -j $(nproc)
 
-# # EF08-EF11 use UBSAN
-# WORKDIR /dataset/repos/libtiff_EF08
+# # cve_2017_7601-EF11 use UBSAN
+# WORKDIR /dataset/repos/libtiff_cve_2017_7601
 # RUN git clean -fdx
 # RUN git reset --hard
-# RUN git checkout EF08
-# WORKDIR /root/build_EF08
-# RUN CFLAGS="-g -fsanitize=undefined" LDFLAGS="-g -fsanitize=undefined" cmake /dataset/repos/libtiff_EF08
+# RUN git checkout cve_2017_7601
+# WORKDIR /root/build_cve_2017_7601
+# RUN CFLAGS="-g -fsanitize=undefined" LDFLAGS="-g -fsanitize=undefined" cmake /dataset/repos/libtiff_cve_2017_7601
 # RUN make -j $(nproc)
 
-# WORKDIR /dataset/repos/libtiff_EF09
+# WORKDIR /dataset/repos/libtiff_cve_2016_3623
 # RUN git clean -fdx
 # RUN git reset --hard
-# RUN git checkout EF09
-# WORKDIR /root/build_EF09
-# RUN CFLAGS="-g -fsanitize=undefined" LDFLAGS="-g -fsanitize=undefined" cmake /dataset/repos/libtiff_EF09
+# RUN git checkout cve_2016_3623
+# WORKDIR /root/build_cve_2016_3623
+# RUN CFLAGS="-g -fsanitize=undefined" LDFLAGS="-g -fsanitize=undefined" cmake /dataset/repos/libtiff_cve_2016_3623
 # RUN make -j $(nproc)
 
-# WORKDIR /dataset/repos/libtiff_EF10
+# WORKDIR /dataset/repos/libtiff_cve_2017_7595
 # RUN git clean -fdx
 # RUN git reset --hard
-# RUN git checkout EF10
-# WORKDIR /root/build_EF10
-# RUN CFLAGS="-g -fsanitize=undefined" LDFLAGS="-g -fsanitize=undefined" cmake /dataset/repos/libtiff_EF10
+# RUN git checkout cve_2017_7595
+# WORKDIR /root/build_cve_2017_7595
+# RUN CFLAGS="-g -fsanitize=undefined" LDFLAGS="-g -fsanitize=undefined" cmake /dataset/repos/libtiff_cve_2017_7595
 # RUN make -j $(nproc)
 
 # WORKDIR /dataset/repos/libtiff_EF11
@@ -105,12 +105,12 @@ COPY testcases /dataset
 # RUN make -j $(nproc)
 
 # # EF02_* use ./configure and ASAN
-# WORKDIR /dataset/repos/libtiff_EF02_01
+# WORKDIR /dataset/repos/libtiff_cve_2014_8128
 # RUN git clean -fdx
 # RUN git reset --hard
-# RUN git checkout EF02_01
-# WORKDIR /root/build_EF02_01
-# RUN /dataset/repos/libtiff_EF02_01/configure CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address"
+# RUN git checkout cve_2014_8128
+# WORKDIR /root/build_cve_2014_8128
+# RUN /dataset/repos/libtiff_cve_2014_8128/configure CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address"
 # RUN make -j $(nproc)
 
 # WORKDIR /dataset/repos/libtiff_EF02_02

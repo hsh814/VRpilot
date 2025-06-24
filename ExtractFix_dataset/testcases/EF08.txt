@@ -1,5 +1,5 @@
 Bug: http://bugzilla.maptools.org/show_bug.cgi?id=2648
 
-tiffcp -i EF08/00119-libtiff-shift-long-tif_jpeg /tmp/foo
+tiffcp -i cve_2017_7601/00119-libtiff-shift-long-tif_jpeg /tmp/foo
 
 Note: UBSAN

@@ -13,34 +13,34 @@ rm -f *_420.yuv
 rm -f *_422_*.bmp
 rm -f *_422_*.png
 rm -f *_422_*.ppm
-make[1]: Entering directory '/root/build_testsuite_EF22'
+make[1]: Entering directory '/root/build_testsuite_cve_2012_2806'
 rm -f *_422_*.jpg
 Making all in java
 rm -f *_422.yuv
 rm -f *_444_*.bmp
-make[2]: Entering directory '/root/build_testsuite_EF22/java'
+make[2]: Entering directory '/root/build_testsuite_cve_2012_2806/java'
 make[2]: Nothing to be done for 'all'.
-make[2]: Leaving directory '/root/build_testsuite_EF22/java'
+make[2]: Leaving directory '/root/build_testsuite_cve_2012_2806/java'
 Making all in simd
 rm -f *_444_*.png
 rm -f *_444_*.ppm
-make[2]: Entering directory '/root/build_testsuite_EF22/simd'
+make[2]: Entering directory '/root/build_testsuite_cve_2012_2806/simd'
 make  all-am
 rm -f *_444_*.jpg
 rm -f *_444.yuv
 rm -f *_440_*.bmp
 rm -f *_440_*.png
 rm -f *_440_*.ppm
-make[3]: Entering directory '/root/build_testsuite_EF22/simd'
+make[3]: Entering directory '/root/build_testsuite_cve_2012_2806/simd'
 make[3]: Nothing to be done for 'all-am'.
-make[3]: Leaving directory '/root/build_testsuite_EF22/simd'
-make[2]: Leaving directory '/root/build_testsuite_EF22/simd'
+make[3]: Leaving directory '/root/build_testsuite_cve_2012_2806/simd'
+make[2]: Leaving directory '/root/build_testsuite_cve_2012_2806/simd'
 rm -f *_440_*.jpg
 rm -f *_440.yuv
-make[2]: Entering directory '/root/build_testsuite_EF22'
+make[2]: Entering directory '/root/build_testsuite_cve_2012_2806'
 make[2]: Nothing to be done for 'all-am'.
-make[2]: Leaving directory '/root/build_testsuite_EF22'
-make[1]: Leaving directory '/root/build_testsuite_EF22'
+make[2]: Leaving directory '/root/build_testsuite_cve_2012_2806'
+make[1]: Leaving directory '/root/build_testsuite_cve_2012_2806'
 ./tjunittest
 RGB Top-Down  -> 4:4:4 Q100 ... Done.  0.638008 ms
   Result in test_enc_RGB_TD_444_Q100.jpg
@@ -1231,47 +1231,47 @@ Grayscale Top-Down  -> GRAY Q100 ... Done.  0.020027 ms
   Result in test_yuv1_enc_Grayscale_TD_GRAY_Q100.jpg
 JPEG -> YUV GRAY ... Passed.  0.008821 ms
 
-./cjpeg -dct int -outfile testoutint.jpg /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.ppm
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgint.jpg testoutint.jpg
-./cjpeg -dct fast -opt -outfile testoutfst.jpg /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.ppm
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgfst.jpg testoutfst.jpg
-./cjpeg -dct fast -quality 100 -opt -outfile testoutfst100.jpg /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.ppm
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgfst100.jpg testoutfst100.jpg
-./cjpeg -dct float -outfile testoutflt.jpg /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.ppm
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgflt.jpg testoutflt.jpg
-./cjpeg -dct int -grayscale -outfile testoutgray.jpg /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.ppm
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimggray.jpg testoutgray.jpg
-./djpeg -dct int -fast -ppm -outfile testoutint.ppm /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgint.ppm testoutint.ppm
-./djpeg -dct fast -ppm -outfile testoutfst.ppm /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgfst.ppm testoutfst.ppm
-./djpeg -dct float -ppm -outfile testoutflt.ppm /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgflt.ppm testoutflt.ppm
-./djpeg -dct int -scale 1/2 -ppm -outfile testoutint1_2.ppm /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgint1_2.ppm testoutint1_2.ppm
-./djpeg -dct fast -scale 1/2 -ppm -outfile testoutfst1_2.ppm /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgfst1_2.ppm testoutfst1_2.ppm
-./djpeg -dct int -scale 1/4 -ppm -outfile testoutint1_4.ppm /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgint1_4.ppm testoutint1_4.ppm
-./djpeg -dct fast -scale 1/4 -ppm -outfile testoutfst1_4.ppm /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgfst1_4.ppm testoutfst1_4.ppm
-./djpeg -dct int -scale 1/8 -ppm -outfile testoutint1_8.ppm /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgint1_8.ppm testoutint1_8.ppm
-./djpeg -dct fast -scale 1/8 -ppm -outfile testoutfst1_8.ppm /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgfst1_8.ppm testoutfst1_8.ppm
-./djpeg -dct int -bmp -colors 256 -outfile testout.bmp  /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimg.bmp testout.bmp
-./cjpeg -dct int -arithmetic -outfile testoutari.jpg /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.ppm
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgari.jpg testoutari.jpg
-./jpegtran -arithmetic -outfile testouta.jpg /dataset/repos/libjpeg-turbo_EF22/testimages/testimgint.jpg
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgari.jpg testouta.jpg
-./djpeg -dct int -fast -ppm -outfile testoutari.ppm /dataset/repos/libjpeg-turbo_EF22/testimages/testimgari.jpg
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgari.ppm testoutari.ppm
-./jpegtran -outfile testouta.jpg /dataset/repos/libjpeg-turbo_EF22/testimages/testimgari.jpg
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgint.jpg testouta.jpg
-./cjpeg -dct int -progressive -outfile testoutp.jpg /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.ppm
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgp.jpg testoutp.jpg
+./cjpeg -dct int -outfile testoutint.jpg /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testorig.ppm
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgint.jpg testoutint.jpg
+./cjpeg -dct fast -opt -outfile testoutfst.jpg /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testorig.ppm
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgfst.jpg testoutfst.jpg
+./cjpeg -dct fast -quality 100 -opt -outfile testoutfst100.jpg /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testorig.ppm
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgfst100.jpg testoutfst100.jpg
+./cjpeg -dct float -outfile testoutflt.jpg /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testorig.ppm
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgflt.jpg testoutflt.jpg
+./cjpeg -dct int -grayscale -outfile testoutgray.jpg /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testorig.ppm
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimggray.jpg testoutgray.jpg
+./djpeg -dct int -fast -ppm -outfile testoutint.ppm /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgint.ppm testoutint.ppm
+./djpeg -dct fast -ppm -outfile testoutfst.ppm /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgfst.ppm testoutfst.ppm
+./djpeg -dct float -ppm -outfile testoutflt.ppm /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgflt.ppm testoutflt.ppm
+./djpeg -dct int -scale 1/2 -ppm -outfile testoutint1_2.ppm /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgint1_2.ppm testoutint1_2.ppm
+./djpeg -dct fast -scale 1/2 -ppm -outfile testoutfst1_2.ppm /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgfst1_2.ppm testoutfst1_2.ppm
+./djpeg -dct int -scale 1/4 -ppm -outfile testoutint1_4.ppm /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgint1_4.ppm testoutint1_4.ppm
+./djpeg -dct fast -scale 1/4 -ppm -outfile testoutfst1_4.ppm /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgfst1_4.ppm testoutfst1_4.ppm
+./djpeg -dct int -scale 1/8 -ppm -outfile testoutint1_8.ppm /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgint1_8.ppm testoutint1_8.ppm
+./djpeg -dct fast -scale 1/8 -ppm -outfile testoutfst1_8.ppm /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgfst1_8.ppm testoutfst1_8.ppm
+./djpeg -dct int -bmp -colors 256 -outfile testout.bmp  /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimg.bmp testout.bmp
+./cjpeg -dct int -arithmetic -outfile testoutari.jpg /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testorig.ppm
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgari.jpg testoutari.jpg
+./jpegtran -arithmetic -outfile testouta.jpg /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgint.jpg
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgari.jpg testouta.jpg
+./djpeg -dct int -fast -ppm -outfile testoutari.ppm /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgari.jpg
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgari.ppm testoutari.ppm
+./jpegtran -outfile testouta.jpg /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgari.jpg
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgint.jpg testouta.jpg
+./cjpeg -dct int -progressive -outfile testoutp.jpg /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testorig.ppm
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgp.jpg testoutp.jpg
 ./jpegtran -outfile testoutt.jpg testoutp.jpg
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgint.jpg testoutt.jpg
-./jpegtran -crop 120x90+20+50 -transpose -perfect -outfile testoutcrop.jpg /dataset/repos/libjpeg-turbo_EF22/testimages/testorig.jpg
-cmp /dataset/repos/libjpeg-turbo_EF22/testimages/testimgcrop.jpg testoutcrop.jpg
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgint.jpg testoutt.jpg
+./jpegtran -crop 120x90+20+50 -transpose -perfect -outfile testoutcrop.jpg /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testorig.jpg
+cmp /dataset/repos/libjpeg-turbo_cve_2012_2806/testimages/testimgcrop.jpg testoutcrop.jpg

@@ -1,5 +1,5 @@
 Running tests...
-Test project /root/build_testsuite_EF20
+Test project /root/build_testsuite_cve_2018_19664
         Start   1: tjunittest-shared
   1/302 Test   #1: tjunittest-shared .................................   Passed    3.76 sec
         Start   2: tjunittest-shared-alloc

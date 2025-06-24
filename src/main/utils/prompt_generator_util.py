@@ -101,311 +101,38 @@ def get_vulnerable_function_lines(language, vulnerable_file_contents, start_line
 
     #print("The function began on line", vulnerable_function_index)
     return (vulnerable_file_prepend_lines, vulnerable_file_function_def_lines, vulnerable_file_function_pre_start_lines, vulnerable_file_function_start_lines_to_end, vulnerable_file_append_lines)
-
-
-def get_vulnerable_function_attributes(config, full_patch_filename, vul_id, PROMPT_DIR):
-    if config['language'] == 'python':
-        file_extension = '.py'
-        comment_char = '#'
-    elif config['language'] == 'c':
-        file_extension = '.c'
-        comment_char = '//'
-        assymetric_comment_char_start = '/*'
-        assymetric_comment_char_end = '*/'
-    else:
-        raise Exception('unsupported language ' + config['language'])
-    #for the iterative fix, we need to
-    #1. load the vulnerable file
-    #2. isolate and comment out the vulnerable code, and seperate into prompt, vulnerable, append
-    #3. derive the language prompt and append it to the prompt
-    #4. create the scenario dir and add the necessary files (scenario_prompt.py, scenario_append.py, scenario.json)
-    
-    possible_prompts = []
-    
-    if config['asan_scenario_buginfo'] is not None:
-        #convert the asan_scenario_buginfo to a vulnerability
-       
-        # we will make N scenarios.
-        # the first scenario is the "oracle" scenario and is devised from the original patch info
-        # the other N-1 scenarios are derived from the ASAN error stack trace
-
-
-        
-
-        # let us first make the oracle scenario
-
-        #repo_path = iterative_fix['asan_scenario_buginfo']["repo_path"]
-        asan_buginfo = config['asan_scenario_buginfo']
-        asan_patchinfo = asan_buginfo["real_patchinfo"]
-        asan_stacktrace = asan_buginfo["stacktrace"]
-        
-        for patch in asan_patchinfo:
-            #we will only do the first patch
-            patch_filename = patch["filename"]
-            patch_lines = patch["edit_lines"]
-            break
-
-
-        #full_patch_filename = os.path.join(repo_path, patch_filename)
-        #full_patch_filename = os.path.join(iterative_fix['original_dir'], patch_filename)
-
-        vulnerable_file_contents = []
-        with open(full_patch_filename, 'r') as f:
-            vulnerable_file_contents = f.readlines()
-
-        #get every line from the file that begins with #define
-        defines = []
-        for line in vulnerable_file_contents:
-            if line.startswith('#define'):
-                defines.append(line)
-
-        largest_lineno = max(patch_lines) - 1
-        smallest_lineno = min(patch_lines) - 1
-
-        #isolate the lines between the smallest and largest line numbers
-        
-        first_bad_line = vulnerable_file_contents[smallest_lineno]
-        first_bad_line_whitespace_count = len(first_bad_line) - len(first_bad_line.lstrip())    
-        whitespace_chars = first_bad_line[:first_bad_line_whitespace_count]
-        
-        #vulnerable_file_prompt_lines = vulnerable_file_contents[0:index_variable_defined_line]
-        vulnerable_file_vulnerable_lines = vulnerable_file_contents[smallest_lineno:largest_lineno+1+2] #get the next 2 lines as well to aid in "joining" the generated response to the file
-        #vulnerable_file_append_lines = vulnerable_file_contents[error_line_number+1:]
-        vulnerable_file_append_lines = []
-
-        #print(vulnerable_file_vulnerable_lines)
-
-        #get the first word of the vulnerable lines
-        first_vulnerable_word = ""
-        for i in range(len(vulnerable_file_vulnerable_lines)):
-            split = vulnerable_file_vulnerable_lines[i].strip().split()
-            if len(split) > 0:
-                first_vulnerable_word = split[0]
-                break
-
-        if first_vulnerable_word == '#' or first_vulnerable_word == '//' or first_vulnerable_word == '/*':
-            first_vulnerable_word = ""
-
-        #get the function lines
-        (pre_function_lines, function_def_lines, pre_start_lines, lines_to_end, post_function_lines) = get_vulnerable_function_lines(config['language'], vulnerable_file_contents, smallest_lineno)
-
-
-        #get the function definition
-        prompt_function_ends_at_line_index = len(pre_function_lines) + len(function_def_lines)
-        vulnerable_file_prompt_lines = defines + ["\n"] + function_def_lines + pre_start_lines #vulnerable_file_contents[prompt_function_ends_at_line_index:index_variable_defined_line]
-
-        bugname = asan_buginfo["error"].replace('AddressSanitizer: ', '').replace('-', ' ')
-
-        possible_prompts.append({
-            'name': 'asan-line2line-oracle-nofunction',
-            'filename': patch_filename,
-            'derived_from_filename': full_patch_filename,
-            'vulnerable_file_prompt_lines': vulnerable_file_prompt_lines,
-            'vulnerable_file_vulnerable_lines': [],
-            'vulnerable_file_append_lines': vulnerable_file_append_lines,
-            'language_prompt_head': "",
-            'language_prompt_foot': "",
-            'whitespace_chars': whitespace_chars,
-            'assymetrical_comments': False
-        })
-
-        language_prompt_head = \
-            whitespace_chars + comment_char + "BUG: " + bugname
-        language_prompt_head += "\n"
-        language_prompt_foot = \
-            whitespace_chars + comment_char + "FIXED:\n" + \
-            whitespace_chars + first_vulnerable_word
-
-        possible_prompts.append({
-            'name': 'asan-line2line-oracle-nomessage',
-            'filename': patch_filename,
-            'derived_from_filename': full_patch_filename,
-            'vulnerable_file_prompt_lines': vulnerable_file_prompt_lines,
-            'vulnerable_file_vulnerable_lines': vulnerable_file_vulnerable_lines,
-            'vulnerable_file_append_lines': vulnerable_file_append_lines,
-            'language_prompt_head': language_prompt_head,
-            'language_prompt_foot': language_prompt_foot,
-            'whitespace_chars': whitespace_chars,
-            'assymetrical_comments': False
-        })
-
-        language_prompt_head = \
-            whitespace_chars + "/* BUG: " + bugname
-        language_prompt_head += "\n"
-        language_prompt_foot = \
-            whitespace_chars + " * " + "FIXED:\n" + \
-            whitespace_chars + " */\n" + \
-            whitespace_chars + first_vulnerable_word
-
-        possible_prompts.append({
-            'name': 'asan-line2line-oracle-nomessage-assymetric',
-            'filename': patch_filename,
-            'derived_from_filename': full_patch_filename,
-            'vulnerable_file_prompt_lines': vulnerable_file_prompt_lines,
-            'vulnerable_file_vulnerable_lines': vulnerable_file_vulnerable_lines,
-            'vulnerable_file_append_lines': vulnerable_file_append_lines,
-            'language_prompt_head': language_prompt_head,
-            'language_prompt_foot': language_prompt_foot,
-            'whitespace_chars': whitespace_chars,
-            'assymetrical_comments': True
-        })
-
-        language_prompt_head = \
-            whitespace_chars + "/* BUG: " + bugname
-        language_prompt_head += "\n"
-        language_prompt_foot = \
-            whitespace_chars + " * " + "FIXED:\n" + \
-            whitespace_chars + " */\n"
-
-        possible_prompts.append({
-            'name': 'asan-line2line-oracle-nomessage-notoken-assymetric',
-            'filename': patch_filename,
-            'derived_from_filename': full_patch_filename,
-            'vulnerable_file_prompt_lines': vulnerable_file_prompt_lines,
-            'vulnerable_file_vulnerable_lines': vulnerable_file_vulnerable_lines,
-            'vulnerable_file_append_lines': vulnerable_file_append_lines,
-            'language_prompt_head': language_prompt_head,
-            'language_prompt_foot': language_prompt_foot,
-            'whitespace_chars': whitespace_chars,
-            'assymetrical_comments': True
-        })
-
-        language_prompt_head = whitespace_chars + "/* bugfix: fixed " + bugname + " */\n" 
-
-        possible_prompts.append({
-            'name': 'asan-line2line-oracle-simple-prompt-1',
-            'filename': patch_filename,
-            'derived_from_filename': full_patch_filename,
-            'vulnerable_file_prompt_lines': vulnerable_file_prompt_lines,
-            'vulnerable_file_vulnerable_lines': [],
-            'vulnerable_file_append_lines': vulnerable_file_append_lines,
-            'language_prompt_head': language_prompt_head,
-            'language_prompt_foot': "",
-            'whitespace_chars': whitespace_chars,
-            'assymetrical_comments': False
-        })
-
-        language_prompt_head = whitespace_chars + "/* fixed " + bugname + " bug */\n" 
-
-        possible_prompts.append({
-            'name': 'asan-line2line-oracle-simple-prompt-2',
-            'filename': patch_filename,
-            'derived_from_filename': full_patch_filename,
-            'vulnerable_file_prompt_lines': vulnerable_file_prompt_lines,
-            'vulnerable_file_vulnerable_lines': [],
-            'vulnerable_file_append_lines': vulnerable_file_append_lines,
-            'language_prompt_head': language_prompt_head,
-            'language_prompt_foot': "",
-            'whitespace_chars': whitespace_chars,
-            'assymetrical_comments': False
-        })
-
-
-        #identify the function that contains the error
-        #(vulnerable_file_prompt_lines, vulnerable_file_vulnerable_lines, vulnerable_file_append_lines) = get_vulnerable_function_lines(iterative_fix['language'], vulnerable_file_contents, start_line_index)
-
-
-    
-    dirs_newly_made = []
-    
-    for prompt in possible_prompts:
-
-        prompt_name = prompt['name']
-
-        vulnerable_file_prompt_lines = prompt['vulnerable_file_prompt_lines']
-        vulnerable_file_vulnerable_lines = prompt['vulnerable_file_vulnerable_lines']
-        vulnerable_file_append_lines = prompt['vulnerable_file_append_lines']
-        language_prompt_head = prompt['language_prompt_head']
-        language_prompt_foot = prompt['language_prompt_foot']
-        whitespace_chars = prompt['whitespace_chars']
-        scenario_derived_from_filename = prompt['derived_from_filename']
-        
-        # #make the scenario dirs
-        # scenario_dirname = prompt['filename']+"."+prompt_name+config.ITERATIVE_FIX_SCENARIO_DIRNAME_SUFFIX
-        # scenario_dir = os.path.join(iterative_fix['iterative_dir'], scenario_dirname)
-        # if not os.path.exists(scenario_dir):
-        #     os.makedirs(scenario_dir)
-        # dirs_newly_made.append(scenario_dirname)
-
-        #stop_word = ""
-        # #get the first word from the append lines to act as a stop word
-        # for line in vulnerable_file_append_lines:
-        #     line_stripped = line.strip()
-        #     if len(line_stripped) < 2:
-        #         continue
-        #     if line_stripped[0] == '#':
-        #         line_stripped = line_stripped[1:]
-        #     line_stripped_toks = line_stripped.split(' ')
-        #     stop_word = line_stripped_toks[0].strip()
-        #     if len(stop_word) > 0:
-        #         break
-
-        #scenario_dir = os.path.join(PRO_DIR,"prompt", prompt['filename']+"."+prompt_name)
-        #scenario_dir = os.path.join(PRO_DIR,"prompt")
-        if not os.path.exists(PROMPT_DIR):
-            os.makedirs(PROMPT_DIR)
-        #write the scenario code files
-        # scenario_prompt_filename = prompt['filename']+".prompt"+file_extension
-        # scenario_prompt_filename_full = os.path.join(scenario_dir, scenario_prompt_filename)
-        #scenario_append_filename = prompt['filename']+".append"+file_extension
-        #scenario_append_filename_full = os.path.join(scenario_dir, scenario_append_filename)
-
-        scenario_prompt_filename = prompt['filename']+"."+prompt_name+file_extension
-        scenario_prompt_filename_full = os.path.join(PROMPT_DIR, vul_id, scenario_prompt_filename)
-
-
-        #scenario_json_filename_full = os.path.join(scenario_dir, config.SCENARIO_CONFIG_FILENAME)
-
-        #make the scenario prompt
-        os.makedirs(os.path.dirname(scenario_prompt_filename_full), exist_ok=True)
-        with open(scenario_prompt_filename_full, 'w') as f:
-            f.writelines(vulnerable_file_prompt_lines)
-            f.write(language_prompt_head)
-            for line in vulnerable_file_vulnerable_lines:
-
-                # TODO: add option to reproduce only the comments??
-
-                if prompt["assymetrical_comments"]:
-                    f.write(whitespace_chars + " * " + line.replace('/*', '//').replace('*/', ''))
-                else:
-                    f.write(whitespace_chars + comment_char + " " + line)
-            f.write(language_prompt_foot)
-        
-        #make the scenario append
-        # with open(scenario_append_filename_full, 'w') as f:
-        #     f.writelines(vulnerable_file_append_lines)
-        
+ 
 
 def get_code_context(repo_dir, vul):
     vulnerable_file_path = os.path.join(repo_dir, vul.vul_code_file_rel_path)
     
-    if (vul.vul_id == "EF07"): 
+    if (vul.vul_id == "cve_2016_10094"): 
         vul_code_fun = extract_content_within_line_range (vulnerable_file_path, 2761, 2779)
         vul_code_fun += "\n" + extract_content_within_line_range (vulnerable_file_path, 2883, 2930)
         initial_block = extract_content_within_line_range (vulnerable_file_path, 2883, 2885)
 
-    elif (vul.vul_id == "EF08"):
+    elif (vul.vul_id == "cve_2017_7601"):
         vul_code_fun = extract_content_within_line_range (vulnerable_file_path, 1576, 1657)
         initial_block = extract_content_within_line_range (vulnerable_file_path, 1625, 1627)
 
-    elif (vul.vul_id == "EF09"):
+    elif (vul.vul_id == "cve_2016_3623"):
         vul_code_fun = extract_content_within_line_range (vulnerable_file_path, 70, 101)
         initial_block = extract_content_within_line_range (vulnerable_file_path, 96, 97)
         # vul_code_fun = extract_content_within_line_range (vulnerable_file_path, 48, 51)
         # vul_code_fun += "\n" +  extract_content_within_line_range (vulnerable_file_path, 249, 278)
         # initial_block = extract_content_within_line_range (vulnerable_file_path, 249, 251)
 
-    elif (vul.vul_id == "EF10"):
+    elif (vul.vul_id == "cve_2017_7595"):
         vul_code_fun = extract_content_within_line_range (vulnerable_file_path, 1576, 1593)
         vul_code_fun += "\n" + extract_content_within_line_range (vulnerable_file_path, 1686, 1707)
         vul_code_fun += "\n" + "return (1);"
         initial_block = extract_content_within_line_range (vulnerable_file_path, 1576, 1579)
     
-    elif (vul.vul_id == "EF01"):
+    elif (vul.vul_id == "cve_2016_5321"):
         vul_code_fun = extract_content_within_line_range (vulnerable_file_path, 951, 1096)
         initial_block = extract_content_within_line_range (vulnerable_file_path, 951, 957)
 
-    elif (vul.vul_id == "EF02_01"):
+    elif (vul.vul_id == "cve_2014_8128"):
         vul_code_fun = extract_content_within_line_range (vulnerable_file_path, 551, 576)
         initial_block = extract_content_within_line_range (vulnerable_file_path, 551, 554)
 
@@ -414,21 +141,21 @@ def get_code_context(repo_dir, vul):
         vul_code_fun += "\n" + extract_content_within_line_range (vulnerable_file_path, 48, 142)
         initial_block = extract_content_within_line_range (vulnerable_file_path, 102, 104)
 
-    elif (vul.vul_id == "EF20"):
+    elif (vul.vul_id == "cve_2018_19664"):
         vul_code_fun = extract_content_within_line_range (vulnerable_file_path, 482, 555)
         initial_block = extract_content_within_line_range (vulnerable_file_path, 482, 486)
         # vul_code_fun = extract_content_within_line_range (vulnerable_file_path, 96, 171)
         # initial_block = extract_content_within_line_range (vulnerable_file_path, 96, 101)
 
-    elif (vul.vul_id == "EF22"):
+    elif (vul.vul_id == "cve_2012_2806"):
         vul_code_fun = extract_content_within_line_range (vulnerable_file_path, 301, 371)
         initial_block = extract_content_within_line_range (vulnerable_file_path, 301, 305)
 
-    elif (vul.vul_id == "EF18"):
+    elif (vul.vul_id == "cve_2017_5969"):
         vul_code_fun = extract_content_within_line_range (vulnerable_file_path, 1158, 1222)
         initial_block = extract_content_within_line_range (vulnerable_file_path, 1158, 1160)
 
-    elif (vul.vul_id == "EF17"):
+    elif (vul.vul_id == "cve_2012_5134"):
         # vul_code_fun = extract_content_within_line_range (vulnerable_file_path, 3893, 4116)
         # initial_block = extract_content_within_line_range (vulnerable_file_path, 4075, 4075)
         vul_code_fun = extract_content_within_line_range (vulnerable_file_path, 3893, 3922)
@@ -436,7 +163,7 @@ def get_code_context(repo_dir, vul):
         vul_code_fun += "\n" +  extract_content_within_line_range (vulnerable_file_path, 4099, 4116)
         initial_block = extract_content_within_line_range (vulnerable_file_path, 3893, 3895)
     
-    elif (vul.vul_id == "EF15"):
+    elif (vul.vul_id == "cve_2016_1838"):
         vul_code_fun = extract_content_within_line_range (vulnerable_file_path, 9824, 9891)
         initial_block = extract_content_within_line_range (vulnerable_file_path, 9824, 9827)
 
@@ -452,23 +179,23 @@ def get_code_context(repo_dir, vul):
             vul_code_line = vul_code_fun.split('\n')[line_num]
             vul_line_num += str(line_num+1) + ","
 
-    if (vul.vul_id == "EF09"):
+    if (vul.vul_id == "cve_2016_3623"):
         vul_line_num = "27,28,30,31"
-    elif (vul.vul_id == "EF10"):
+    elif (vul.vul_id == "cve_2017_7595"):
         vul_line_num = "21" 
-    elif (vul.vul_id == "EF01"):
+    elif (vul.vul_id == "cve_2016_5321"):
         vul_line_num = "42; \"for (s = 0; s < spp; s++)\"."
     elif (vul.vul_id == "EF02_02"):
         vul_line_num = "86" 
-    elif (vul.vul_id == "EF15"):
+    elif (vul.vul_id == "cve_2016_1838"):
         vul_line_num = "14"
-    elif (vul.vul_id == "EF17"):
+    elif (vul.vul_id == "cve_2012_5134"):
         vul_line_num = "33"
-    elif (vul.vul_id == "EF18"):
+    elif (vul.vul_id == "cve_2017_5969"):
         vul_line_num = "18, 24, 32, 38"
-    elif (vul.vul_id == "EF20"):
+    elif (vul.vul_id == "cve_2018_19664"):
         vul_line_num = "24,25" 
-    elif (vul.vul_id == "EF22"):
+    elif (vul.vul_id == "cve_2012_2806"):
         vul_line_num = "27" 
     
     return vul_code_fun_with_line_num, vul_line_num, initial_block

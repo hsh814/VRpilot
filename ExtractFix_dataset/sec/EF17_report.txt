@@ -1,35 +1,35 @@
 =================================================================
 ==7==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60b00000accf at pc 0x7f1476b3035a bp 0x7ffe1d8a5050 sp 0x7ffe1d8a5040
 READ of size 1 at 0x60b00000accf thread T0
-    #0 0x7f1476b30359 in xmlParseAttValueComplex /dataset/repos/libxml2_EF17/parser.c:4079
-    #1 0x7f1476b600f8 in xmlParseAttValueInternal /dataset/repos/libxml2_EF17/parser.c:9009
-    #2 0x7f1476b603df in xmlParseAttribute2 /dataset/repos/libxml2_EF17/parser.c:9065
-    #3 0x7f1476b61350 in xmlParseStartTag2 /dataset/repos/libxml2_EF17/parser.c:9223
-    #4 0x7f1476b6897e in xmlParseElement__internal_alias /dataset/repos/libxml2_EF17/parser.c:9910
-    #5 0x7f1476b717ff in xmlParseDocument__internal_alias /dataset/repos/libxml2_EF17/parser.c:10666
-    #6 0x7f1476b8d48a in xmlDoRead /dataset/repos/libxml2_EF17/parser.c:15066
-    #7 0x7f1476b8d68c in xmlReadFile__internal_alias /dataset/repos/libxml2_EF17/parser.c:15126
-    #8 0x40c21a in parseAndPrintFile /dataset/repos/libxml2_EF17/xmllint.c:2381
-    #9 0x41369c in main /dataset/repos/libxml2_EF17/xmllint.c:3733
+    #0 0x7f1476b30359 in xmlParseAttValueComplex /dataset/repos/libxml2_cve_2012_5134/parser.c:4079
+    #1 0x7f1476b600f8 in xmlParseAttValueInternal /dataset/repos/libxml2_cve_2012_5134/parser.c:9009
+    #2 0x7f1476b603df in xmlParseAttribute2 /dataset/repos/libxml2_cve_2012_5134/parser.c:9065
+    #3 0x7f1476b61350 in xmlParseStartTag2 /dataset/repos/libxml2_cve_2012_5134/parser.c:9223
+    #4 0x7f1476b6897e in xmlParseElement__internal_alias /dataset/repos/libxml2_cve_2012_5134/parser.c:9910
+    #5 0x7f1476b717ff in xmlParseDocument__internal_alias /dataset/repos/libxml2_cve_2012_5134/parser.c:10666
+    #6 0x7f1476b8d48a in xmlDoRead /dataset/repos/libxml2_cve_2012_5134/parser.c:15066
+    #7 0x7f1476b8d68c in xmlReadFile__internal_alias /dataset/repos/libxml2_cve_2012_5134/parser.c:15126
+    #8 0x40c21a in parseAndPrintFile /dataset/repos/libxml2_cve_2012_5134/xmllint.c:2381
+    #9 0x41369c in main /dataset/repos/libxml2_cve_2012_5134/xmllint.c:3733
     #10 0x7f14766c183f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
-    #11 0x404b78 in _start (/root/build_EF17/.libs/lt-xmllint+0x404b78)
+    #11 0x404b78 in _start (/root/build_cve_2012_5134/.libs/lt-xmllint+0x404b78)
 
 0x60b00000accf is located 1 bytes to the left of 100-byte region [0x60b00000acd0,0x60b00000ad34)
 allocated by thread T0 here:
     #0 0x7f14771b6602 in malloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98602)
-    #1 0x7f1476b2e5b2 in xmlParseAttValueComplex /dataset/repos/libxml2_EF17/parser.c:3921
-    #2 0x7f1476b600f8 in xmlParseAttValueInternal /dataset/repos/libxml2_EF17/parser.c:9009
-    #3 0x7f1476b603df in xmlParseAttribute2 /dataset/repos/libxml2_EF17/parser.c:9065
-    #4 0x7f1476b61350 in xmlParseStartTag2 /dataset/repos/libxml2_EF17/parser.c:9223
-    #5 0x7f1476b6897e in xmlParseElement__internal_alias /dataset/repos/libxml2_EF17/parser.c:9910
-    #6 0x7f1476b717ff in xmlParseDocument__internal_alias /dataset/repos/libxml2_EF17/parser.c:10666
-    #7 0x7f1476b8d48a in xmlDoRead /dataset/repos/libxml2_EF17/parser.c:15066
-    #8 0x7f1476b8d68c in xmlReadFile__internal_alias /dataset/repos/libxml2_EF17/parser.c:15126
-    #9 0x40c21a in parseAndPrintFile /dataset/repos/libxml2_EF17/xmllint.c:2381
-    #10 0x41369c in main /dataset/repos/libxml2_EF17/xmllint.c:3733
+    #1 0x7f1476b2e5b2 in xmlParseAttValueComplex /dataset/repos/libxml2_cve_2012_5134/parser.c:3921
+    #2 0x7f1476b600f8 in xmlParseAttValueInternal /dataset/repos/libxml2_cve_2012_5134/parser.c:9009
+    #3 0x7f1476b603df in xmlParseAttribute2 /dataset/repos/libxml2_cve_2012_5134/parser.c:9065
+    #4 0x7f1476b61350 in xmlParseStartTag2 /dataset/repos/libxml2_cve_2012_5134/parser.c:9223
+    #5 0x7f1476b6897e in xmlParseElement__internal_alias /dataset/repos/libxml2_cve_2012_5134/parser.c:9910
+    #6 0x7f1476b717ff in xmlParseDocument__internal_alias /dataset/repos/libxml2_cve_2012_5134/parser.c:10666
+    #7 0x7f1476b8d48a in xmlDoRead /dataset/repos/libxml2_cve_2012_5134/parser.c:15066
+    #8 0x7f1476b8d68c in xmlReadFile__internal_alias /dataset/repos/libxml2_cve_2012_5134/parser.c:15126
+    #9 0x40c21a in parseAndPrintFile /dataset/repos/libxml2_cve_2012_5134/xmllint.c:2381
+    #10 0x41369c in main /dataset/repos/libxml2_cve_2012_5134/xmllint.c:3733
     #11 0x7f14766c183f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
 
-SUMMARY: AddressSanitizer: heap-buffer-overflow /dataset/repos/libxml2_EF17/parser.c:4079 xmlParseAttValueComplex
+SUMMARY: AddressSanitizer: heap-buffer-overflow /dataset/repos/libxml2_cve_2012_5134/parser.c:4079 xmlParseAttValueComplex
 Shadow bytes around the buggy address:
   0x0c167fff9540: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
   0x0c167fff9550: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa

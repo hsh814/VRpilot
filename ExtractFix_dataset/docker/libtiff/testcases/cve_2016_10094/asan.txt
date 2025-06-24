@@ -2,7 +2,7 @@ TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorte
 TIFFReadDirectory: Warning, Unknown field with tag 789 (0x315) encountered.
 TIFFReadDirectory: Warning, Unknown field with tag 9 (0x9) encountered.
 TIFFReadDirectory: Warning, Unknown field with tag 396 (0x18c) encountered.
-/dataset/testcases/EF07/00112-libtiff-heapoverflow-_TIFFmemcpy: Warning, Nonstandard tile length 3, convert file.
+/dataset/testcases/cve_2016_10094/00112-libtiff-heapoverflow-_TIFFmemcpy: Warning, Nonstandard tile length 3, convert file.
 TIFFFetchNormalTag: Warning, ASCII value for tag "DocumentName" contains null byte in value; value incorrectly truncated during reading due to implementation limitations.
 TIFFFetchNormalTag: Warning, IO error during reading of "Tag 396"; tag ignored.
 TIFFFetchNormalTag: Warning, incorrect count for field "PageNumber", expected 2, got 4098.
@@ -11,7 +11,7 @@ TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorte
 TIFFReadDirectory: Warning, Unknown field with tag 789 (0x315) encountered.
 TIFFReadDirectory: Warning, Unknown field with tag 9 (0x9) encountered.
 TIFFReadDirectory: Warning, Unknown field with tag 396 (0x18c) encountered.
-/dataset/testcases/EF07/00112-libtiff-heapoverflow-_TIFFmemcpy: Warning, Nonstandard tile length 3, convert file.
+/dataset/testcases/cve_2016_10094/00112-libtiff-heapoverflow-_TIFFmemcpy: Warning, Nonstandard tile length 3, convert file.
 TIFFFetchNormalTag: Warning, ASCII value for tag "DocumentName" contains null byte in value; value incorrectly truncated during reading due to implementation limitations.
 TIFFFetchNormalTag: Warning, IO error during reading of "Tag 396"; tag ignored.
 TIFFFetchNormalTag: Warning, incorrect count for field "PageNumber", expected 2, got 4098.
@@ -19,7 +19,7 @@ TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorte
 TIFFReadDirectory: Warning, Unknown field with tag 789 (0x315) encountered.
 TIFFReadDirectory: Warning, Unknown field with tag 9 (0x9) encountered.
 TIFFReadDirectory: Warning, Unknown field with tag 396 (0x18c) encountered.
-/dataset/testcases/EF07/00112-libtiff-heapoverflow-_TIFFmemcpy: Warning, Nonstandard tile length 3, convert file.
+/dataset/testcases/cve_2016_10094/00112-libtiff-heapoverflow-_TIFFmemcpy: Warning, Nonstandard tile length 3, convert file.
 TIFFFetchNormalTag: Warning, ASCII value for tag "DocumentName" contains null byte in value; value incorrectly truncated during reading due to implementation limitations.
 TIFFFetchNormalTag: Warning, IO error during reading of "Tag 396"; tag ignored.
 TIFFFetchNormalTag: Warning, incorrect count for field "PageNumber", expected 2, got 4098.
@@ -27,7 +27,7 @@ TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorte
 TIFFReadDirectory: Warning, Unknown field with tag 789 (0x315) encountered.
 TIFFReadDirectory: Warning, Unknown field with tag 9 (0x9) encountered.
 TIFFReadDirectory: Warning, Unknown field with tag 396 (0x18c) encountered.
-/dataset/testcases/EF07/00112-libtiff-heapoverflow-_TIFFmemcpy: Warning, Nonstandard tile length 3, convert file.
+/dataset/testcases/cve_2016_10094/00112-libtiff-heapoverflow-_TIFFmemcpy: Warning, Nonstandard tile length 3, convert file.
 TIFFFetchNormalTag: Warning, ASCII value for tag "DocumentName" contains null byte in value; value incorrectly truncated during reading due to implementation limitations.
 TIFFFetchNormalTag: Warning, IO error during reading of "Tag 396"; tag ignored.
 TIFFFetchNormalTag: Warning, incorrect count for field "PageNumber", expected 2, got 4098.

@@ -1,5 +1,5 @@
 TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorted in ascending order.
-/dataset/EF01/EF01.tif: Warning, Nonstandard tile length 1, convert file.
+/dataset/cve_2016_5321/cve_2016_5321.tif: Warning, Nonstandard tile length 1, convert file.
 TIFFReadDirectory: Warning, Unknown field with tag 406 (0x196) encountered.
 TIFFFetchNormalTag: Warning, ASCII value for tag "DocumentName" contains null byte in value; value incorrectly truncated during reading due to implementation limitations.
 TIFFFetchNormalTag: Warning, IO error during reading of "YResolution"; tag ignored.
@@ -9,20 +9,20 @@ TIFFAdvanceDirectory: Error fetching directory count.
 =================================================================
 ==7==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7ffd7ebaf610 at pc 0x000000402e5a bp 0x7ffd7ebaf510 sp 0x7ffd7ebaf500
 READ of size 8 at 0x7ffd7ebaf610 thread T0
-    #0 0x402e59 in readSeparateTilesIntoBuffer /dataset/repos/libtiff_EF01/tools/tiffcrop.c:994
-    #1 0x41e09c in loadImage /dataset/repos/libtiff_EF01/tools/tiffcrop.c:6079
-    #2 0x4098a7 in main /dataset/repos/libtiff_EF01/tools/tiffcrop.c:2278
+    #0 0x402e59 in readSeparateTilesIntoBuffer /dataset/repos/libtiff_cve_2016_5321/tools/tiffcrop.c:994
+    #1 0x41e09c in loadImage /dataset/repos/libtiff_cve_2016_5321/tools/tiffcrop.c:6079
+    #2 0x4098a7 in main /dataset/repos/libtiff_cve_2016_5321/tools/tiffcrop.c:2278
     #3 0x7f8f9cdc883f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
-    #4 0x402258 in _start (/root/build_EF01/tools/tiffcrop+0x402258)
+    #4 0x402258 in _start (/root/build_cve_2016_5321/tools/tiffcrop+0x402258)
 
 Address 0x7ffd7ebaf610 is located in stack of thread T0 at offset 96 in frame
-    #0 0x402b33 in readSeparateTilesIntoBuffer /dataset/repos/libtiff_EF01/tools/tiffcrop.c:955
+    #0 0x402b33 in readSeparateTilesIntoBuffer /dataset/repos/libtiff_cve_2016_5321/tools/tiffcrop.c:955
 
   This frame has 1 object(s):
     [32, 96) 'srcbuffs' <== Memory access at offset 96 overflows this variable
 HINT: this may be a false positive if your program uses some custom stack unwind mechanism or swapcontext
       (longjmp and C++ exceptions *are* supported)
-SUMMARY: AddressSanitizer: stack-buffer-overflow /dataset/repos/libtiff_EF01/tools/tiffcrop.c:994 readSeparateTilesIntoBuffer
+SUMMARY: AddressSanitizer: stack-buffer-overflow /dataset/repos/libtiff_cve_2016_5321/tools/tiffcrop.c:994 readSeparateTilesIntoBuffer
 Shadow bytes around the buggy address:
   0x10002fd6de70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   0x10002fd6de80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00

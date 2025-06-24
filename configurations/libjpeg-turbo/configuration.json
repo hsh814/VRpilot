@@ -1,7 +1,27 @@
 {
     "configurations": [
+        {
+            "vul_id": "cve_2017_15232",
+            "project_name": "libjpeg-turbo",
+            "fix_commit": "1ecd9a5729d78518397889a630e3534bd9d963a8",
+            "language": "c",
+            "vul_code_file_rel_path": "jdpostct.c",
+            "vul_code_block_start_line": 125,
+            "vul_code_block_end_line": 148,
+            "vul_description": "",
+            "asan_scenario_buginfo": {
+                "real_patchinfo": [
+                    {
+                        "filename": "jdpostct.c",
+                        "edit_lines": [
+                            133
+                        ]
+                    }
+                ]
+            }
+        },
     {
-        "vul_id": "EF20",
+        "vul_id": "cve_2018_19664",
         "project_name": "libjpeg-turbo",
         "fix_commit": "f8cca81",
         "language":"c",
@@ -35,7 +55,7 @@
         }
     },
     {
-        "vul_id": "EF22",
+        "vul_id": "cve_2012_2806",
         "project_name": "libjpeg-turbo",
         "fix_commit": "dd2b651",
         "language":"c",

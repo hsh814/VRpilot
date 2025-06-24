@@ -1007,7 +1007,7 @@
                 172
             ]
         ],
-        "human_patch": "https://github.com/inversoft/prime-jwt/commit/0d94dcef0133d699f21d217e922564adbb83a227",
+        "human_patch": "https://github.com/inversoft/prime-jwt/commit/0d94dccve_2016_532133d699f21d217e922564adbb83a227",
         "vul_id": "VUL4J-49"
     },
     {
@@ -1212,7 +1212,7 @@
                 389
             ]
         ],
-        "human_patch": "https://github.com/nahsra/antisamy/commit/7313931dc3c0d1377b010f07faef2063dd359a36",
+        "human_patch": "https://github.com/nahsra/antisamy/commit/7313931dc3c0d1377b010f07facve_2018_1966463dd359a36",
         "vul_id": "VUL4J-60"
     },
     {

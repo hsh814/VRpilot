@@ -2,24 +2,24 @@ Corrupt JPEG data: 2 extraneous bytes before marker 0xfe
 =================================================================
 ==7==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7ffdcf9e1788 at pc 0x7f1e88e3e392 bp 0x7ffdcf9e12b0 sp 0x7ffdcf9e12a0
 WRITE of size 8 at 0x7ffdcf9e1788 thread T0
-    #0 0x7f1e88e3e391 in get_sos /dataset/repos/libjpeg-turbo_EF22/jdmarker.c:327
-    #1 0x7f1e88e47198 in read_markers /dataset/repos/libjpeg-turbo_EF22/jdmarker.c:1016
-    #2 0x7f1e88e38bc4 in consume_markers /dataset/repos/libjpeg-turbo_EF22/jdinput.c:386
-    #3 0x7f1e88e1e311 in jpeg_consume_input /dataset/repos/libjpeg-turbo_EF22/jdapimin.c:301
-    #4 0x7f1e88e1e052 in jpeg_read_header /dataset/repos/libjpeg-turbo_EF22/jdapimin.c:249
-    #5 0x403c97 in main /dataset/repos/libjpeg-turbo_EF22/djpeg.c:542
+    #0 0x7f1e88e3e391 in get_sos /dataset/repos/libjpeg-turbo_cve_2012_2806/jdmarker.c:327
+    #1 0x7f1e88e47198 in read_markers /dataset/repos/libjpeg-turbo_cve_2012_2806/jdmarker.c:1016
+    #2 0x7f1e88e38bc4 in consume_markers /dataset/repos/libjpeg-turbo_cve_2012_2806/jdinput.c:386
+    #3 0x7f1e88e1e311 in jpeg_consume_input /dataset/repos/libjpeg-turbo_cve_2012_2806/jdapimin.c:301
+    #4 0x7f1e88e1e052 in jpeg_read_header /dataset/repos/libjpeg-turbo_cve_2012_2806/jdapimin.c:249
+    #5 0x403c97 in main /dataset/repos/libjpeg-turbo_cve_2012_2806/djpeg.c:542
     #6 0x7f1e88a0b83f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
-    #7 0x401608 in _start (/root/build_EF22/.libs/lt-djpeg+0x401608)
+    #7 0x401608 in _start (/root/build_cve_2012_2806/.libs/lt-djpeg+0x401608)
 
 Address 0x7ffdcf9e1788 is located in stack of thread T0 at offset 888 in frame
-    #0 0x40389e in main /dataset/repos/libjpeg-turbo_EF22/djpeg.c:435
+    #0 0x40389e in main /dataset/repos/libjpeg-turbo_cve_2012_2806/djpeg.c:435
 
   This frame has 2 object(s):
     [32, 200) 'jerr'
     [256, 888) 'cinfo' <== Memory access at offset 888 overflows this variable
 HINT: this may be a false positive if your program uses some custom stack unwind mechanism or swapcontext
       (longjmp and C++ exceptions *are* supported)
-SUMMARY: AddressSanitizer: stack-buffer-overflow /dataset/repos/libjpeg-turbo_EF22/jdmarker.c:327 get_sos
+SUMMARY: AddressSanitizer: stack-buffer-overflow /dataset/repos/libjpeg-turbo_cve_2012_2806/jdmarker.c:327 get_sos
 Shadow bytes around the buggy address:
   0x100039f342a0: f2 f2 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   0x100039f342b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00

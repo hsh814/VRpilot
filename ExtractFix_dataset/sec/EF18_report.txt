@@ -1,47 +1,47 @@
-/dataset/EF18/crash-libxml2-recover.xml:15: parser error : xmlParseElementChildrenContentDecl : '|' expected
+/dataset/cve_2017_5969/crash-libxml2-recover.xml:15: parser error : xmlParseElementChildrenContentDecl : '|' expected
   <!ELEMENT child4 (a, (b|cp+, (a|d)?, (e|f)* )?>
                              ^
-/dataset/EF18/crash-libxml2-recover.xml:17: parser error : Input is not proper UTF-8, indicate encoding !
+/dataset/cve_2017_5969/crash-libxml2-recover.xml:17: parser error : Input is not proper UTF-8, indicate encoding !
 Bytes: 0xA5 0x62 0x29 0x2A
-  <!ELEMENT child5_1 ( (a¥b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
+  <!ELEMENT child5_1 ( (aï¿½b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
                          ^
-/dataset/EF18/crash-libxml2-recover.xml:17: parser error : ContentDecl : ',' '|' or ')' expected
-  <!ELEMENT child5_1 ( (a¥b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
+/dataset/cve_2017_5969/crash-libxml2-recover.xml:17: parser error : ContentDecl : ',' '|' or ')' expected
+  <!ELEMENT child5_1 ( (aï¿½b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
                          ^
-/dataset/EF18/crash-libxml2-recover.xml:17: parser error : ContentDecl : ',' '|' or ')' expected
-  <!ELEMENT child5_1 ( (a¥b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
+/dataset/cve_2017_5969/crash-libxml2-recover.xml:17: parser error : ContentDecl : ',' '|' or ')' expected
+  <!ELEMENT child5_1 ( (aï¿½b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
                          ^
-/dataset/EF18/crash-libxml2-recover.xml:17: parser error : expected '>'
-  <!ELEMENT child5_1 ( (a¥b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
+/dataset/cve_2017_5969/crash-libxml2-recover.xml:17: parser error : expected '>'
+  <!ELEMENT child5_1 ( (aï¿½b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
                          ^
-/dataset/EF18/crash-libxml2-recover.xml:17: parser error : internal error: xmlParseInternalSubset: error detected in Markup declaration
+/dataset/cve_2017_5969/crash-libxml2-recover.xml:17: parser error : internal error: xmlParseInternalSubset: error detected in Markup declaration
 
-  <!ELEMENT child5_1 ( (a¥b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
+  <!ELEMENT child5_1 ( (aï¿½b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
                          ^
-/dataset/EF18/crash-libxml2-recover.xml:17: parser error : DOCTYPE improperly terminated
-  <!ELEMENT child5_1 ( (a¥b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
+/dataset/cve_2017_5969/crash-libxml2-recover.xml:17: parser error : DOCTYPE improperly terminated
+  <!ELEMENT child5_1 ( (aï¿½b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
                          ^
-/dataset/EF18/crash-libxml2-recover.xml:17: parser error : Start tag expected, '<' not found
-  <!ELEMENT child5_1 ( (a¥b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
+/dataset/cve_2017_5969/crash-libxml2-recover.xml:17: parser error : Start tag expected, '<' not found
+  <!ELEMENT child5_1 ( (aï¿½b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
                          ^
 ASAN:SIGSEGV
 =================================================================
 ==7==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000000 (pc 0x7f91bab429aa bp 0x7ffdc98239a0 sp 0x7ffdc9823980 T0)
-    #0 0x7f91bab429a9 in xmlDumpElementContent /dataset/repos/libxml2_EF18/valid.c:1181
-    #1 0x7f91bab428f5 in xmlDumpElementContent /dataset/repos/libxml2_EF18/valid.c:1177
-    #2 0x7f91bab452f6 in xmlDumpElementDecl__internal_alias /dataset/repos/libxml2_EF18/valid.c:1708
-    #3 0x7f91bad8e254 in xmlBufDumpElementDecl /dataset/repos/libxml2_EF18/xmlsave.c:501
-    #4 0x7f91bad8fffc in xmlNodeDumpOutputInternal /dataset/repos/libxml2_EF18/xmlsave.c:939
-    #5 0x7f91bad8f7af in xmlNodeListDumpOutput /dataset/repos/libxml2_EF18/xmlsave.c:825
-    #6 0x7f91bad8f233 in xmlDtdDumpOutput /dataset/repos/libxml2_EF18/xmlsave.c:749
-    #7 0x7f91bad8fefc in xmlNodeDumpOutputInternal /dataset/repos/libxml2_EF18/xmlsave.c:931
-    #8 0x7f91bad91fc6 in xmlDocContentDumpOutput /dataset/repos/libxml2_EF18/xmlsave.c:1234
-    #9 0x7f91bad95510 in xmlSaveDoc__internal_alias /dataset/repos/libxml2_EF18/xmlsave.c:1936
-    #10 0x40d513 in parseAndPrintFile /dataset/repos/libxml2_EF18/xmllint.c:2712
-    #11 0x4139ce in main /dataset/repos/libxml2_EF18/xmllint.c:3767
+    #0 0x7f91bab429a9 in xmlDumpElementContent /dataset/repos/libxml2_cve_2017_5969/valid.c:1181
+    #1 0x7f91bab428f5 in xmlDumpElementContent /dataset/repos/libxml2_cve_2017_5969/valid.c:1177
+    #2 0x7f91bab452f6 in xmlDumpElementDecl__internal_alias /dataset/repos/libxml2_cve_2017_5969/valid.c:1708
+    #3 0x7f91bad8e254 in xmlBufDumpElementDecl /dataset/repos/libxml2_cve_2017_5969/xmlsave.c:501
+    #4 0x7f91bad8fffc in xmlNodeDumpOutputInternal /dataset/repos/libxml2_cve_2017_5969/xmlsave.c:939
+    #5 0x7f91bad8f7af in xmlNodeListDumpOutput /dataset/repos/libxml2_cve_2017_5969/xmlsave.c:825
+    #6 0x7f91bad8f233 in xmlDtdDumpOutput /dataset/repos/libxml2_cve_2017_5969/xmlsave.c:749
+    #7 0x7f91bad8fefc in xmlNodeDumpOutputInternal /dataset/repos/libxml2_cve_2017_5969/xmlsave.c:931
+    #8 0x7f91bad91fc6 in xmlDocContentDumpOutput /dataset/repos/libxml2_cve_2017_5969/xmlsave.c:1234
+    #9 0x7f91bad95510 in xmlSaveDoc__internal_alias /dataset/repos/libxml2_cve_2017_5969/xmlsave.c:1936
+    #10 0x40d513 in parseAndPrintFile /dataset/repos/libxml2_cve_2017_5969/xmllint.c:2712
+    #11 0x4139ce in main /dataset/repos/libxml2_cve_2017_5969/xmllint.c:3767
     #12 0x7f91ba61f83f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
-    #13 0x404bc8 in _start (/root/build_EF18/.libs/lt-xmllint+0x404bc8)
+    #13 0x404bc8 in _start (/root/build_cve_2017_5969/.libs/lt-xmllint+0x404bc8)
 
 AddressSanitizer can not provide additional info.
-SUMMARY: AddressSanitizer: SEGV /dataset/repos/libxml2_EF18/valid.c:1181 xmlDumpElementContent
+SUMMARY: AddressSanitizer: SEGV /dataset/repos/libxml2_cve_2017_5969/valid.c:1181 xmlDumpElementContent
 ==7==ABORTING

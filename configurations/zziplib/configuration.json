@@ -1,0 +1,64 @@
+{
+    "configurations": [
+        {
+            "vul_id": "cve_2017_5974",
+            "project_name": "zziplib",
+            "fix_commit": "03de3beabbf570474a9ac05d6dc6b42cdb184cd1",
+            "language": "c",
+            "vul_code_file_rel_path": "zzip/memdisk.c",
+            "vul_code_block_start_line": 166,
+            "vul_code_block_end_line": 234,
+            "vul_description": "",
+            "asan_scenario_buginfo": {
+                "real_patchinfo": [
+                    {
+                        "filename": "memdisk.c",
+                        "edit_lines": [
+                           219
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "vul_id": "cve_2017_5975",
+            "project_name": "zziplib",
+            "fix_commit": "64e745f8a3604ba1c444febed86b5e142ce03dd7",
+            "language": "c",
+            "vul_code_file_rel_path": "zzip/memdisk.c",
+            "vul_code_block_start_line": 166,
+            "vul_code_block_end_line": 244,
+            "vul_description": "",
+            "asan_scenario_buginfo": {
+                "real_patchinfo": [
+                    {
+                        "filename": "memdisk.c",
+                        "edit_lines": [
+                           180
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "vul_id": "cve_2017_5976",
+            "project_name": "zziplib",
+            "fix_commit": "",
+            "language": "c",
+            "vul_code_file_rel_path": "zzip/memdisk.c",
+            "vul_code_block_start_line": 239,
+            "vul_code_block_end_line": 265,
+            "vul_description": "",
+            "asan_scenario_buginfo": {
+                "real_patchinfo": [
+                    {
+                        "filename": "memdisk.c",
+                        "edit_lines": [
+                           248
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

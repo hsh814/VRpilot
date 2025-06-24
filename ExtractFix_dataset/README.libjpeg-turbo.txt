@@ -1,10 +1,10 @@
-Bugs: EF19, EF20, EF21, EF22
+Bugs: EF19, cve_2018_19664, EF21, cve_2012_2806
 
 Build:
 
 libjpeg switched build systems at some point, so some use autoconf and some use cmake.
 
-EF19, EF22:
+EF19, cve_2012_2806:
 
 mkdir build ; cd build
 ( cd /dataset/repos/libjpeg-turbo/ ; git clean -fdx ; git reset --hard ; git checkout EFXX )
@@ -12,7 +12,7 @@ mkdir build ; cd build
 /dataset/repos/libjpeg-turbo/configure CFLAGS="-fsanitize=address -g" LDFLAGS="-fsanitize=address -g"
 make -j $(nproc)
 
-EF20, EF21:
+cve_2018_19664, EF21:
 
 mkdir build ; cd build
 ( cd /dataset/repos/libjpeg-turbo/ ; git clean -fdx ; git reset --hard ; git checkout EFXX )
@@ -31,7 +31,7 @@ How well each patch matches our repair system:
     rdppm.c: 6 lines added, 6 lines removed, spans 215 lines
 SUMMARY: AddressSanitizer: heap-buffer-overflow /dataset/repos/libjpeg-turbo/rdbmp.c:145 get_8bit_row
 ASAN report: 1/3 source files match, 2/12 hunks match
-========== EF20 =========
+========== cve_2018_19664 =========
  *  wrbmp.c: 3 lines added, 2 lines removed, spans 2 lines
 SUMMARY: AddressSanitizer: heap-buffer-overflow /dataset/repos/libjpeg-turbo/wrbmp.c:145 put_pixel_rows
 ASAN report: 1/1 source files match, 0/1 hunks match
@@ -40,7 +40,7 @@ ASAN report: 1/1 source files match, 0/1 hunks match
  *  jquant1.c: 4 lines added, 0 lines removed, spans 3 lines
 SUMMARY: AddressSanitizer: SEGV ??:0 ??
 ASAN report: 2/2 source files match, 2/2 hunks match
-========== EF22 =========
+========== cve_2012_2806 =========
  *  jdmarker.c: 3 lines added, 2 lines removed, spans 2 lines
 SUMMARY: AddressSanitizer: stack-buffer-overflow /dataset/repos/libjpeg-turbo/jdmarker.c:327 get_sos
 ASAN report: 1/1 source files match, 1/1 hunks match

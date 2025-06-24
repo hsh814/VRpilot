@@ -1,59 +1,59 @@
 make  all-recursive
-make[1]: Entering directory '/root/build_testsuite_EF15'
+make[1]: Entering directory '/root/build_testsuite_cve_2016_1838'
 Making all in include
-make[2]: Entering directory '/root/build_testsuite_EF15/include'
+make[2]: Entering directory '/root/build_testsuite_cve_2016_1838/include'
 Making all in libxml
-make[3]: Entering directory '/root/build_testsuite_EF15/include/libxml'
+make[3]: Entering directory '/root/build_testsuite_cve_2016_1838/include/libxml'
 make[3]: Nothing to be done for 'all'.
-make[3]: Leaving directory '/root/build_testsuite_EF15/include/libxml'
-make[3]: Entering directory '/root/build_testsuite_EF15/include'
+make[3]: Leaving directory '/root/build_testsuite_cve_2016_1838/include/libxml'
+make[3]: Entering directory '/root/build_testsuite_cve_2016_1838/include'
 make[3]: Nothing to be done for 'all-am'.
-make[3]: Leaving directory '/root/build_testsuite_EF15/include'
-make[2]: Leaving directory '/root/build_testsuite_EF15/include'
+make[3]: Leaving directory '/root/build_testsuite_cve_2016_1838/include'
+make[2]: Leaving directory '/root/build_testsuite_cve_2016_1838/include'
 Making all in .
-make[2]: Entering directory '/root/build_testsuite_EF15'
+make[2]: Entering directory '/root/build_testsuite_cve_2016_1838'
 make[2]: Nothing to be done for 'all-am'.
-make[2]: Leaving directory '/root/build_testsuite_EF15'
+make[2]: Leaving directory '/root/build_testsuite_cve_2016_1838'
 Making all in doc
-make[2]: Entering directory '/root/build_testsuite_EF15/doc'
+make[2]: Entering directory '/root/build_testsuite_cve_2016_1838/doc'
 Making all in .
-make[3]: Entering directory '/root/build_testsuite_EF15/doc'
+make[3]: Entering directory '/root/build_testsuite_cve_2016_1838/doc'
 make[3]: Nothing to be done for 'all-am'.
-make[3]: Leaving directory '/root/build_testsuite_EF15/doc'
+make[3]: Leaving directory '/root/build_testsuite_cve_2016_1838/doc'
 Making all in devhelp
-make[3]: Entering directory '/root/build_testsuite_EF15/doc/devhelp'
+make[3]: Entering directory '/root/build_testsuite_cve_2016_1838/doc/devhelp'
 make[3]: Nothing to be done for 'all'.
-make[3]: Leaving directory '/root/build_testsuite_EF15/doc/devhelp'
+make[3]: Leaving directory '/root/build_testsuite_cve_2016_1838/doc/devhelp'
 Making all in examples
-make[3]: Entering directory '/root/build_testsuite_EF15/doc/examples'
+make[3]: Entering directory '/root/build_testsuite_cve_2016_1838/doc/examples'
 make[3]: Nothing to be done for 'all'.
-make[3]: Leaving directory '/root/build_testsuite_EF15/doc/examples'
-make[2]: Leaving directory '/root/build_testsuite_EF15/doc'
+make[3]: Leaving directory '/root/build_testsuite_cve_2016_1838/doc/examples'
+make[2]: Leaving directory '/root/build_testsuite_cve_2016_1838/doc'
 Making all in example
-make[2]: Entering directory '/root/build_testsuite_EF15/example'
+make[2]: Entering directory '/root/build_testsuite_cve_2016_1838/example'
 make[2]: Nothing to be done for 'all'.
-make[2]: Leaving directory '/root/build_testsuite_EF15/example'
+make[2]: Leaving directory '/root/build_testsuite_cve_2016_1838/example'
 Making all in xstc
-make[2]: Entering directory '/root/build_testsuite_EF15/xstc'
+make[2]: Entering directory '/root/build_testsuite_cve_2016_1838/xstc'
 make[2]: Nothing to be done for 'all'.
-make[2]: Leaving directory '/root/build_testsuite_EF15/xstc'
+make[2]: Leaving directory '/root/build_testsuite_cve_2016_1838/xstc'
 Making all in python
-make[2]: Entering directory '/root/build_testsuite_EF15/python'
+make[2]: Entering directory '/root/build_testsuite_cve_2016_1838/python'
 make  all-recursive
-make[3]: Entering directory '/root/build_testsuite_EF15/python'
+make[3]: Entering directory '/root/build_testsuite_cve_2016_1838/python'
 Making all in .
-make[4]: Entering directory '/root/build_testsuite_EF15/python'
+make[4]: Entering directory '/root/build_testsuite_cve_2016_1838/python'
 make[4]: Nothing to be done for 'all-am'.
-make[4]: Leaving directory '/root/build_testsuite_EF15/python'
+make[4]: Leaving directory '/root/build_testsuite_cve_2016_1838/python'
 Making all in tests
-make[4]: Entering directory '/root/build_testsuite_EF15/python/tests'
+make[4]: Entering directory '/root/build_testsuite_cve_2016_1838/python/tests'
 make[4]: Nothing to be done for 'all'.
-make[4]: Leaving directory '/root/build_testsuite_EF15/python/tests'
-make[3]: Leaving directory '/root/build_testsuite_EF15/python'
-make[2]: Leaving directory '/root/build_testsuite_EF15/python'
-make[1]: Leaving directory '/root/build_testsuite_EF15'
-[ -d test   ] || ln -s /dataset/repos/libxml2_EF15/test   .
-[ -d result ] || ln -s /dataset/repos/libxml2_EF15/result .
+make[4]: Leaving directory '/root/build_testsuite_cve_2016_1838/python/tests'
+make[3]: Leaving directory '/root/build_testsuite_cve_2016_1838/python'
+make[2]: Leaving directory '/root/build_testsuite_cve_2016_1838/python'
+make[1]: Leaving directory '/root/build_testsuite_cve_2016_1838'
+[ -d test   ] || ln -s /dataset/repos/libxml2_cve_2016_1838/test   .
+[ -d result ] || ln -s /dataset/repos/libxml2_cve_2016_1838/result .
 ./runtest &&  ./testrecurse && ./testapi &&  ./testchar&&  ./testdict &&  ./runxmlconf
 ## XML regression tests
 ## XML regression tests on memory
@@ -153,74 +153,74 @@ xmlconf/xmlconf.xml is missing
   latest XML Conformance Test Suites
   http://www.w3.org/XML/Test/xmlts20080827.tar.gz
   see http://www.w3.org/XML/Test/ for informations
-make[1]: Entering directory '/root/build_testsuite_EF15/python'
+make[1]: Entering directory '/root/build_testsuite_cve_2016_1838/python'
 make  all-recursive
-make[2]: Entering directory '/root/build_testsuite_EF15/python'
+make[2]: Entering directory '/root/build_testsuite_cve_2016_1838/python'
 Making all in .
-make[3]: Entering directory '/root/build_testsuite_EF15/python'
+make[3]: Entering directory '/root/build_testsuite_cve_2016_1838/python'
 make[3]: Nothing to be done for 'all-am'.
-make[3]: Leaving directory '/root/build_testsuite_EF15/python'
+make[3]: Leaving directory '/root/build_testsuite_cve_2016_1838/python'
 Making all in tests
-make[3]: Entering directory '/root/build_testsuite_EF15/python/tests'
+make[3]: Entering directory '/root/build_testsuite_cve_2016_1838/python/tests'
 make[3]: Nothing to be done for 'all'.
-make[3]: Leaving directory '/root/build_testsuite_EF15/python/tests'
-make[2]: Leaving directory '/root/build_testsuite_EF15/python'
+make[3]: Leaving directory '/root/build_testsuite_cve_2016_1838/python/tests'
+make[2]: Leaving directory '/root/build_testsuite_cve_2016_1838/python'
 cd tests && make tests
-make[2]: Entering directory '/root/build_testsuite_EF15/python/tests'
+make[2]: Entering directory '/root/build_testsuite_cve_2016_1838/python/tests'
 ## running Python regression tests
-make[2]: Leaving directory '/root/build_testsuite_EF15/python/tests'
-make[1]: Leaving directory '/root/build_testsuite_EF15/python'
+make[2]: Leaving directory '/root/build_testsuite_cve_2016_1838/python/tests'
+make[1]: Leaving directory '/root/build_testsuite_cve_2016_1838/python'
 make  check-recursive
-make[1]: Entering directory '/root/build_testsuite_EF15'
+make[1]: Entering directory '/root/build_testsuite_cve_2016_1838'
 Making check in include
-make[2]: Entering directory '/root/build_testsuite_EF15/include'
+make[2]: Entering directory '/root/build_testsuite_cve_2016_1838/include'
 Making check in libxml
-make[3]: Entering directory '/root/build_testsuite_EF15/include/libxml'
+make[3]: Entering directory '/root/build_testsuite_cve_2016_1838/include/libxml'
 make[3]: Nothing to be done for 'check'.
-make[3]: Leaving directory '/root/build_testsuite_EF15/include/libxml'
-make[3]: Entering directory '/root/build_testsuite_EF15/include'
+make[3]: Leaving directory '/root/build_testsuite_cve_2016_1838/include/libxml'
+make[3]: Entering directory '/root/build_testsuite_cve_2016_1838/include'
 make[3]: Nothing to be done for 'check-am'.
-make[3]: Leaving directory '/root/build_testsuite_EF15/include'
-make[2]: Leaving directory '/root/build_testsuite_EF15/include'
+make[3]: Leaving directory '/root/build_testsuite_cve_2016_1838/include'
+make[2]: Leaving directory '/root/build_testsuite_cve_2016_1838/include'
 Making check in .
-make[2]: Entering directory '/root/build_testsuite_EF15'
+make[2]: Entering directory '/root/build_testsuite_cve_2016_1838'
 make[2]: Nothing to be done for 'check-am'.
-make[2]: Leaving directory '/root/build_testsuite_EF15'
+make[2]: Leaving directory '/root/build_testsuite_cve_2016_1838'
 Making check in doc
-make[2]: Entering directory '/root/build_testsuite_EF15/doc'
+make[2]: Entering directory '/root/build_testsuite_cve_2016_1838/doc'
 Making check in .
-make[3]: Entering directory '/root/build_testsuite_EF15/doc'
+make[3]: Entering directory '/root/build_testsuite_cve_2016_1838/doc'
 make[3]: Nothing to be done for 'check-am'.
-make[3]: Leaving directory '/root/build_testsuite_EF15/doc'
+make[3]: Leaving directory '/root/build_testsuite_cve_2016_1838/doc'
 Making check in devhelp
-make[3]: Entering directory '/root/build_testsuite_EF15/doc/devhelp'
+make[3]: Entering directory '/root/build_testsuite_cve_2016_1838/doc/devhelp'
 make[3]: Nothing to be done for 'check'.
-make[3]: Leaving directory '/root/build_testsuite_EF15/doc/devhelp'
+make[3]: Leaving directory '/root/build_testsuite_cve_2016_1838/doc/devhelp'
 Making check in examples
-make[3]: Entering directory '/root/build_testsuite_EF15/doc/examples'
+make[3]: Entering directory '/root/build_testsuite_cve_2016_1838/doc/examples'
 make[3]: Nothing to be done for 'check'.
-make[3]: Leaving directory '/root/build_testsuite_EF15/doc/examples'
-make[2]: Leaving directory '/root/build_testsuite_EF15/doc'
+make[3]: Leaving directory '/root/build_testsuite_cve_2016_1838/doc/examples'
+make[2]: Leaving directory '/root/build_testsuite_cve_2016_1838/doc'
 Making check in example
-make[2]: Entering directory '/root/build_testsuite_EF15/example'
+make[2]: Entering directory '/root/build_testsuite_cve_2016_1838/example'
 make[2]: Nothing to be done for 'check'.
-make[2]: Leaving directory '/root/build_testsuite_EF15/example'
+make[2]: Leaving directory '/root/build_testsuite_cve_2016_1838/example'
 Making check in xstc
-make[2]: Entering directory '/root/build_testsuite_EF15/xstc'
+make[2]: Entering directory '/root/build_testsuite_cve_2016_1838/xstc'
 make[2]: Nothing to be done for 'check'.
-make[2]: Leaving directory '/root/build_testsuite_EF15/xstc'
+make[2]: Leaving directory '/root/build_testsuite_cve_2016_1838/xstc'
 Making check in python
-make[2]: Entering directory '/root/build_testsuite_EF15/python'
+make[2]: Entering directory '/root/build_testsuite_cve_2016_1838/python'
 make  check-recursive
-make[3]: Entering directory '/root/build_testsuite_EF15/python'
+make[3]: Entering directory '/root/build_testsuite_cve_2016_1838/python'
 Making check in .
-make[4]: Entering directory '/root/build_testsuite_EF15/python'
+make[4]: Entering directory '/root/build_testsuite_cve_2016_1838/python'
 make[4]: Nothing to be done for 'check-am'.
-make[4]: Leaving directory '/root/build_testsuite_EF15/python'
+make[4]: Leaving directory '/root/build_testsuite_cve_2016_1838/python'
 Making check in tests
-make[4]: Entering directory '/root/build_testsuite_EF15/python/tests'
+make[4]: Entering directory '/root/build_testsuite_cve_2016_1838/python/tests'
 make[4]: Nothing to be done for 'check'.
-make[4]: Leaving directory '/root/build_testsuite_EF15/python/tests'
-make[3]: Leaving directory '/root/build_testsuite_EF15/python'
-make[2]: Leaving directory '/root/build_testsuite_EF15/python'
-make[1]: Leaving directory '/root/build_testsuite_EF15'
+make[4]: Leaving directory '/root/build_testsuite_cve_2016_1838/python/tests'
+make[3]: Leaving directory '/root/build_testsuite_cve_2016_1838/python'
+make[2]: Leaving directory '/root/build_testsuite_cve_2016_1838/python'
+make[1]: Leaving directory '/root/build_testsuite_cve_2016_1838'

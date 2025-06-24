@@ -6,28 +6,28 @@ RUN apt-get -y install build-essential vim git cmake
 RUN apt-get -y build-dep libxml2
 
 RUN mkdir -p /dataset/repos
-# COPY repos/libxml2 /dataset/repos/libxml2_EF15
+# COPY repos/libxml2 /dataset/repos/libxml2_cve_2016_1838
 # COPY repos/libxml2 /dataset/repos/libxml2_EF16
-# COPY repos/libxml2 /dataset/repos/libxml2_EF17
-# COPY repos/libxml2 /dataset/repos/libxml2_EF18
-# COPY testcases/EF15 /dataset/EF15
+# COPY repos/libxml2 /dataset/repos/libxml2_cve_2012_5134
+# COPY repos/libxml2 /dataset/repos/libxml2_cve_2017_5969
+# COPY testcases/cve_2016_1838 /dataset/cve_2016_1838
 # COPY testcases/EF16 /dataset/EF16
-# COPY testcases/EF17 /dataset/EF17
-# COPY testcases/EF18 /dataset/EF18
+# COPY testcases/cve_2012_5134 /dataset/cve_2012_5134
+# COPY testcases/cve_2017_5969 /dataset/cve_2017_5969
 COPY testcases /dataset
 
 # WORKDIR /root
-# RUN mkdir -p build_EF15 build_testsuite_EF15 build_EF16 build_testsuite_EF16 build_EF17 build_testsuite_EF17 build_EF18 build_testsuite_EF18
+# RUN mkdir -p build_cve_2016_1838 build_testsuite_cve_2016_1838 build_EF16 build_testsuite_EF16 build_cve_2012_5134 build_testsuite_cve_2012_5134 build_cve_2017_5969 build_testsuite_cve_2017_5969
 
-# WORKDIR /dataset/repos/libxml2_EF15
+# WORKDIR /dataset/repos/libxml2_cve_2016_1838
 # RUN git clean -fdx
 # RUN git reset --hard
-# RUN git checkout EF15
-# WORKDIR /root/build_EF15
-# RUN /dataset/repos/libxml2_EF15/autogen.sh CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address"
+# RUN git checkout cve_2016_1838
+# WORKDIR /root/build_cve_2016_1838
+# RUN /dataset/repos/libxml2_cve_2016_1838/autogen.sh CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address"
 # RUN make -j $(nproc)
-# WORKDIR /root/build_testsuite_EF15
-# RUN /dataset/repos/libxml2_EF15/autogen.sh
+# WORKDIR /root/build_testsuite_cve_2016_1838
+# RUN /dataset/repos/libxml2_cve_2016_1838/autogen.sh
 # RUN make -j $(nproc)
 
 # WORKDIR /dataset/repos/libxml2_EF16
@@ -41,26 +41,26 @@ COPY testcases /dataset
 # RUN /dataset/repos/libxml2_EF16/autogen.sh
 # RUN make -j $(nproc)
 
-# WORKDIR /dataset/repos/libxml2_EF17
+# WORKDIR /dataset/repos/libxml2_cve_2012_5134
 # RUN git clean -fdx
 # RUN git reset --hard
-# RUN git checkout EF17
-# WORKDIR /root/build_EF17
-# RUN /dataset/repos/libxml2_EF17/autogen.sh CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address"
+# RUN git checkout cve_2012_5134
+# WORKDIR /root/build_cve_2012_5134
+# RUN /dataset/repos/libxml2_cve_2012_5134/autogen.sh CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address"
 # RUN make -j $(nproc)
-# WORKDIR /root/build_testsuite_EF17
-# RUN /dataset/repos/libxml2_EF17/autogen.sh
+# WORKDIR /root/build_testsuite_cve_2012_5134
+# RUN /dataset/repos/libxml2_cve_2012_5134/autogen.sh
 # RUN make -j $(nproc)
 
-# WORKDIR /dataset/repos/libxml2_EF18
+# WORKDIR /dataset/repos/libxml2_cve_2017_5969
 # RUN git clean -fdx
 # RUN git reset --hard
-# RUN git checkout EF18
-# WORKDIR /root/build_EF18
-# RUN /dataset/repos/libxml2_EF18/autogen.sh CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address"
+# RUN git checkout cve_2017_5969
+# WORKDIR /root/build_cve_2017_5969
+# RUN /dataset/repos/libxml2_cve_2017_5969/autogen.sh CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address"
 # RUN make -j $(nproc)
-# WORKDIR /root/build_testsuite_EF18
-# RUN /dataset/repos/libxml2_EF18/autogen.sh
+# WORKDIR /root/build_testsuite_cve_2017_5969
+# RUN /dataset/repos/libxml2_cve_2017_5969/autogen.sh
 # RUN make -j $(nproc)
 
 RUN mkdir /scripts

@@ -1,5 +1,5 @@
 Bug: http://bugzilla.maptools.org/show_bug.cgi?id=2653
 
-tiffcp -i EF10/00123-libtiff-fpe-JPEGSetupEncode /tmp/foo
+tiffcp -i cve_2017_7595/00123-libtiff-fpe-JPEGSetupEncode /tmp/foo
 
 Note: UBSAN

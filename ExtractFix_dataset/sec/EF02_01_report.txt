@@ -4106,21 +4106,21 @@ bpr=1, sy=0, bpr*sy=0
 =================================================================
 ==7==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7ffc1d4395a0 at pc 0x0000004043f5 bp 0x7ffc1d438d30 sp 0x7ffc1d438d20
 WRITE of size 8 at 0x7ffc1d4395a0 thread T0
-    #0 0x4043f4 in setImage1 /dataset/repos/libtiff_EF02_01/tools/thumbnail.c:571
-    #1 0x404552 in setImage /dataset/repos/libtiff_EF02_01/tools/thumbnail.c:583
-    #2 0x404989 in generateThumbnail /dataset/repos/libtiff_EF02_01/tools/thumbnail.c:625
-    #3 0x401c8f in main /dataset/repos/libtiff_EF02_01/tools/thumbnail.c:120
+    #0 0x4043f4 in setImage1 /dataset/repos/libtiff_cve_2014_8128/tools/thumbnail.c:571
+    #1 0x404552 in setImage /dataset/repos/libtiff_cve_2014_8128/tools/thumbnail.c:583
+    #2 0x404989 in generateThumbnail /dataset/repos/libtiff_cve_2014_8128/tools/thumbnail.c:625
+    #3 0x401c8f in main /dataset/repos/libtiff_cve_2014_8128/tools/thumbnail.c:120
     #4 0x7ff79605883f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
-    #5 0x4017d8 in _start (/root/build_EF02_01/tools/.libs/lt-thumbnail+0x4017d8)
+    #5 0x4017d8 in _start (/root/build_cve_2014_8128/tools/.libs/lt-thumbnail+0x4017d8)
 
 Address 0x7ffc1d4395a0 is located in stack of thread T0 at offset 2080 in frame
-    #0 0x4041e1 in setImage1 /dataset/repos/libtiff_EF02_01/tools/thumbnail.c:553
+    #0 0x4041e1 in setImage1 /dataset/repos/libtiff_cve_2014_8128/tools/thumbnail.c:553
 
   This frame has 1 object(s):
     [32, 2080) 'rows' <== Memory access at offset 2080 overflows this variable
 HINT: this may be a false positive if your program uses some custom stack unwind mechanism or swapcontext
       (longjmp and C++ exceptions *are* supported)
-SUMMARY: AddressSanitizer: stack-buffer-overflow /dataset/repos/libtiff_EF02_01/tools/thumbnail.c:571 setImage1
+SUMMARY: AddressSanitizer: stack-buffer-overflow /dataset/repos/libtiff_cve_2014_8128/tools/thumbnail.c:571 setImage1
 Shadow bytes around the buggy address:
   0x100003a7f260: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   0x100003a7f270: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00

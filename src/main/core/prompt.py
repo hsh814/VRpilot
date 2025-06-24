@@ -1,5 +1,5 @@
 import os
-from main.utils.prompt_generator_util import get_vulnerable_function_attributes, get_code_context
+from main.utils.prompt_generator_util import get_code_context
 import os
 from main.utils.file_util import read_file, extract_content_within_line_range
 

@@ -1,6 +1,6 @@
 TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorted in ascending order.
 TIFFReadDirectory: Warning, Unknown field with tag 65535 (0xffff) encountered.
-/dataset/testcases/EF10/00123-libtiff-fpe-JPEGSetupEncode: Warning, Nonstandard tile width 3, convert file.
+/dataset/testcases/cve_2017_7595/00123-libtiff-fpe-JPEGSetupEncode: Warning, Nonstandard tile width 3, convert file.
 TIFFFetchNormalTag: Warning, IO error during reading of "DocumentName"; tag ignored.
 TIFFFetchNormalTag: Warning, Incorrect count for "XResolution"; tag ignored.
 TIFFFetchNormalTag: Warning, Incorrect count for "YResolution"; tag ignored.

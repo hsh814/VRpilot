@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "vul_id": "cve_2016_9264",
+            "project_name": "libming",
+            "fix_commit": "19e7127e29122be571c87bfb90bca9581417d220",
+            "language": "c",
+            "vul_code_file_rel_path": "util/listmp3.c",
+            "vul_code_block_start_line": 65,
+            "vul_code_block_end_line": 177,
+            "vul_description": "",
+            "asan_scenario_buginfo": {
+                "real_patchinfo": [
+                    {
+                        "filename": "listmp3.c",
+                        "edit_lines": [
+                            105
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

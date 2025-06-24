@@ -1,4 +1,4 @@
-Bugs: EF15, EF16, EF17, EF18
+Bugs: cve_2016_1838, EF16, cve_2012_5134, cve_2017_5969
 
 Build:
 
@@ -18,7 +18,7 @@ make check
 
 How well each patch matches our repair system:
 
-========== EF15 =========
+========== cve_2016_1838 =========
  *  parser.c: 6 lines added, 2 lines removed, spans 12 lines
 SUMMARY: AddressSanitizer: heap-buffer-overflow /dataset/repos/libxml2/error.c:192 xmlParserPrintFileContextInternal
 ASAN report: 1/1 source files match, 0/2 hunks match
@@ -27,11 +27,11 @@ ASAN report: 1/1 source files match, 0/2 hunks match
     runtest.c: 2 lines added, 2 lines removed, spans 18 lines
 SUMMARY: AddressSanitizer: heap-buffer-overflow ??:0 __asan_memcpy
 ASAN report: 1/2 source files match, 4/4 hunks match
-========== EF17 =========
+========== cve_2012_5134 =========
  *  parser.c: 1 lines added, 1 lines removed, spans 0 lines
 SUMMARY: AddressSanitizer: heap-buffer-overflow /dataset/repos/libxml2/parser.c:4079 xmlParseAttValueComplex
 ASAN report: 1/1 source files match, 1/1 hunks match
-========== EF18 =========
+========== cve_2017_5969 =========
  *  valid.c: 14 lines added, 10 lines removed, spans 13 lines
 SUMMARY: AddressSanitizer: SEGV /dataset/repos/libxml2/valid.c:1181 xmlDumpElementContent
 ASAN report: 1/1 source files match, 1/1 hunks match

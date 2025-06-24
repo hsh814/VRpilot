@@ -98,7 +98,7 @@ class Project():
         elif self.project_name == 'libtiff':
             lines = output.split('\n')
 
-            if self.vul_id == "EF02_01" or self.vul_id == "EF02_02":
+            if self.vul_id == "cve_2014_8128" or self.vul_id == "EF02_02":
                 # remove ansi escape characters
                 ansi_escape = re.compile(
                     r'(?:\x1B[@-_]|[\x80-\x9F])[0-?]*[ -/]*[@-~]')
@@ -128,7 +128,7 @@ class Project():
         elif self.project_name == 'libjpeg-turbo':
             #print(output)
             lines = output.split('\n')
-            if (self.vul_id == "EF20"):
+            if (self.vul_id == "cve_2018_19664"):
                 for line in lines:
                     if 'Test' in line and ':' in line and '#' in line:
                         num_of_test += 1
@@ -152,7 +152,7 @@ class Project():
                         error_msg.append(test_name)
                         i = i + 1
 
-            elif (self.vul_id == "EF22"):
+            elif (self.vul_id == "cve_2012_2806"):
                 for line in lines:
                     if '->' in line and 'Done.' not in line:
                         num_of_test += 1
@@ -196,7 +196,7 @@ class Project():
             if_passed = True
             err_msg = ""
 
-            if self.vul_id == 'EF01' or self.vul_id == 'EF07':  # EF01, EF04, EF06, EF07 use ASAN
+            if self.vul_id == 'cve_2016_5321' or self.vul_id == 'cve_2016_10094':  # cve_2016_5321, EF04, EF06, cve_2016_10094 use ASAN
                 for line in output.splitlines():
                     if "ERROR:" in line:
                         print("Fail the security test.")
@@ -206,14 +206,14 @@ class Project():
                         err_msg += line
                         #print("Security test error msg: ", err_msg)
                         break
-            elif self.vul_id == 'EF08':  # EF08-EF11 use UBSAN
+            elif self.vul_id == 'cve_2017_7601':  # cve_2017_7601-EF11 use UBSAN
                 for line in output.splitlines():
                     if "runtime error:" in line:
                         print("Fail the security test.")
                         if_passed = False
                         err_msg = line
                         break
-            elif self.vul_id == 'EF09' or self.vul_id == 'EF10':  # EF08-EF11 use UBSAN
+            elif self.vul_id == 'cve_2016_3623' or self.vul_id == 'cve_2017_7595':  # cve_2017_7601-EF11 use UBSAN
                 # remove ansi escape characters
                 ansi_escape = re.compile(
                     r'(?:\x1B[@-_]|[\x80-\x9F])[0-?]*[ -/]*[@-~]')
@@ -224,7 +224,7 @@ class Project():
                         if_passed = False
                         err_msg += line + "\n"
                         #break
-            elif self.vul_id == 'EF02_01' or self.vul_id == 'EF02_02':  # EF02_* use ./configure and ASAN
+            elif self.vul_id == 'cve_2014_8128' or self.vul_id == 'EF02_02':  # EF02_* use ./configure and ASAN
                 for line in output.splitlines():
                     if "ERROR:" in line:
                         print("Fail the security test.")

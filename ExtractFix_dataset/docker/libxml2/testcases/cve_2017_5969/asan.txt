@@ -1,28 +1,28 @@
-/dataset/testcases/EF18/crash-libxml2-recover.xml:15: parser error : xmlParseElementChildrenContentDecl : '|' expected
+/dataset/testcases/cve_2017_5969/crash-libxml2-recover.xml:15: parser error : xmlParseElementChildrenContentDecl : '|' expected
   <!ELEMENT child4 (a, (b|cp+, (a|d)?, (e|f)* )?>
                              ^
-/dataset/testcases/EF18/crash-libxml2-recover.xml:17: parser error : Input is not proper UTF-8, indicate encoding !
+/dataset/testcases/cve_2017_5969/crash-libxml2-recover.xml:17: parser error : Input is not proper UTF-8, indicate encoding !
 Bytes: 0xA5 0x62 0x29 0x2A
-  <!ELEMENT child5_1 ( (a¥b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
+  <!ELEMENT child5_1 ( (aï¿½b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
                          ^
-/dataset/testcases/EF18/crash-libxml2-recover.xml:17: parser error : ContentDecl : ',' '|' or ')' expected
-  <!ELEMENT child5_1 ( (a¥b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
+/dataset/testcases/cve_2017_5969/crash-libxml2-recover.xml:17: parser error : ContentDecl : ',' '|' or ')' expected
+  <!ELEMENT child5_1 ( (aï¿½b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
                          ^
-/dataset/testcases/EF18/crash-libxml2-recover.xml:17: parser error : ContentDecl : ',' '|' or ')' expected
-  <!ELEMENT child5_1 ( (a¥b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
+/dataset/testcases/cve_2017_5969/crash-libxml2-recover.xml:17: parser error : ContentDecl : ',' '|' or ')' expected
+  <!ELEMENT child5_1 ( (aï¿½b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
                          ^
-/dataset/testcases/EF18/crash-libxml2-recover.xml:17: parser error : expected '>'
-  <!ELEMENT child5_1 ( (a¥b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
+/dataset/testcases/cve_2017_5969/crash-libxml2-recover.xml:17: parser error : expected '>'
+  <!ELEMENT child5_1 ( (aï¿½b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
                          ^
-/dataset/testcases/EF18/crash-libxml2-recover.xml:17: parser error : internal error: xmlParseInternalSubset: error detected in Markup declaration
+/dataset/testcases/cve_2017_5969/crash-libxml2-recover.xml:17: parser error : internal error: xmlParseInternalSubset: error detected in Markup declaration
 
-  <!ELEMENT child5_1 ( (a¥b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
+  <!ELEMENT child5_1 ( (aï¿½b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
                          ^
-/dataset/testcases/EF18/crash-libxml2-recover.xml:17: parser error : DOCTYPE improperly terminated
-  <!ELEMENT child5_1 ( (a¥b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
+/dataset/testcases/cve_2017_5969/crash-libxml2-recover.xml:17: parser error : DOCTYPE improperly terminated
+  <!ELEMENT child5_1 ( (aï¿½b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
                          ^
-/dataset/testcases/EF18/crash-libxml2-recover.xml:17: parser error : Start tag expected, '<' not found
-  <!ELEMENT child5_1 ( (a¥b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
+/dataset/testcases/cve_2017_5969/crash-libxml2-recover.xml:17: parser error : Start tag expected, '<' not found
+  <!ELEMENT child5_1 ( (aï¿½b)* | (c,b)? | (d,a)+ | ((e|f),b,c) )* >
                          ^
 ASAN:SIGSEGV
 =================================================================
