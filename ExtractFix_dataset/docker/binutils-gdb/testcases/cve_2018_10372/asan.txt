@@ -10,8 +10,8 @@ readelf: Warning: could not find separate debug file ''
 readelf: Warning: tried: /lib/debug/
 readelf: Warning: tried: /usr/lib/debug/usr/
 readelf: Warning: tried: /usr/lib/debug/
-readelf: Warning: tried: /dataset/testcases/EF12/.debug/
-readelf: Warning: tried: /dataset/testcases/EF12/
+readelf: Warning: tried: /dataset/testcases/cve_2018_10372/.debug/
+readelf: Warning: tried: /dataset/testcases/cve_2018_10372/
 readelf: Warning: tried: .debug/
 readelf: Warning: tried: 
 =================================================================

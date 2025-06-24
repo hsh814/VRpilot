@@ -9,6 +9,8 @@ make -j 32
 exit 0
 
 case "$1" in
+    cve_2016_9264)
+        ;;
     *)
         echo "No such bug: $1"
         exit 1

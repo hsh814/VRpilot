@@ -1,10 +1,10 @@
   GEN      public-submodule-commit
 make  check-recursive
-make[1]: Entering directory '/home/extractfix/build_testsuite_EF23'
+make[1]: Entering directory '/home/extractfix/build_testsuite_gnubug_26545'
 Making check in .
-make[2]: Entering directory '/home/extractfix/build_testsuite_EF23'
+make[2]: Entering directory '/home/extractfix/build_testsuite_gnubug_26545'
 make  check-TESTS check-local
-make[3]: Entering directory '/home/extractfix/build_testsuite_EF23'
+make[3]: Entering directory '/home/extractfix/build_testsuite_gnubug_26545'
   GEN      check-README
   GEN      check-duplicate-no-install
   GEN      sc-avoid-builtin
@@ -16,7 +16,7 @@ make[3]: Entering directory '/home/extractfix/build_testsuite_EF23'
   GEN      sc-exponent-grouping
   GEN      sc-lower-case-var
   GEN      check-texinfo
-make[4]: Entering directory '/home/extractfix/build_testsuite_EF23'
+make[4]: Entering directory '/home/extractfix/build_testsuite_gnubug_26545'
 tty-eof.pl: this script requires Perl's Expect package >=1.11
 SKIP: tests/misc/tty-eof.pl
 ext3-perf.sh: skipped test: very expensive: disabled by default
@@ -805,7 +805,7 @@ Testsuite summary for GNU coreutils 8.27.22-8d34b
 # XPASS: 0
 # ERROR: 0
 ============================================================================
-make[4]: Leaving directory '/home/extractfix/build_testsuite_EF23'
-make[3]: Leaving directory '/home/extractfix/build_testsuite_EF23'
-make[2]: Leaving directory '/home/extractfix/build_testsuite_EF23'
-make[1]: Leaving directory '/home/extractfix/build_testsuite_EF23'
+make[4]: Leaving directory '/home/extractfix/build_testsuite_gnubug_26545'
+make[3]: Leaving directory '/home/extractfix/build_testsuite_gnubug_26545'
+make[2]: Leaving directory '/home/extractfix/build_testsuite_gnubug_26545'
+make[1]: Leaving directory '/home/extractfix/build_testsuite_gnubug_26545'

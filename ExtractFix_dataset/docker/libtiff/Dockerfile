@@ -13,8 +13,8 @@ COPY testcases /dataset
 # COPY repos/libtiff /dataset/repos/libtiff_EF02_03
 # COPY repos/libtiff /dataset/repos/libtiff_EF02_04
 # COPY repos/libtiff /dataset/repos/libtiff_EF02_05
-# COPY repos/libtiff /dataset/repos/libtiff_EF04
-# COPY repos/libtiff /dataset/repos/libtiff_EF06
+# COPY repos/libtiff /dataset/repos/libtiff_cve_2016_5314
+# COPY repos/libtiff /dataset/repos/libtiff_bugzilla_2633
 # COPY repos/libtiff /dataset/repos/libtiff_cve_2016_10094
 # COPY repos/libtiff /dataset/repos/libtiff_cve_2017_7601
 # COPY repos/libtiff /dataset/repos/libtiff_cve_2016_3623
@@ -26,8 +26,8 @@ COPY testcases /dataset
 # COPY testcases/EF02_03 /dataset/EF02_03
 # COPY testcases/EF02_04 /dataset/EF02_04
 # COPY testcases/EF02_05 /dataset/EF02_05
-# COPY testcases/EF04 /dataset/EF04
-# COPY testcases/EF06 /dataset/EF06
+# COPY testcases/cve_2016_5314 /dataset/cve_2016_5314
+# COPY testcases/bugzilla_2633 /dataset/bugzilla_2633
 # COPY testcases/cve_2016_10094 /dataset/cve_2016_10094
 # COPY testcases/cve_2017_7601 /dataset/cve_2017_7601
 # COPY testcases/cve_2016_3623 /dataset/cve_2016_3623
@@ -36,9 +36,9 @@ COPY testcases /dataset
 
 # WORKDIR /root
 # RUN mkdir build_cve_2016_5321 build_cve_2014_8128 build_EF02_02 build_EF02_03 build_EF02_04 build_EF02_05 \
-#           build_EF04 build_EF06 build_cve_2016_10094 build_cve_2017_7601 build_cve_2016_3623 build_cve_2017_7595 build_EF11
+#           build_cve_2016_5314 build_bugzilla_2633 build_cve_2016_10094 build_cve_2017_7601 build_cve_2016_3623 build_cve_2017_7595 build_EF11
 
-# # cve_2016_5321, EF04, EF06, cve_2016_10094 use ASAN
+# # cve_2016_5321, cve_2016_5314, bugzilla_2633, cve_2016_10094 use ASAN
 # WORKDIR /dataset/repos/libtiff_cve_2016_5321
 # RUN git clean -fdx
 # RUN git reset --hard
@@ -47,20 +47,20 @@ COPY testcases /dataset
 # RUN CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address" cmake /dataset/repos/libtiff_cve_2016_5321
 # RUN make -j $(nproc)
 
-# WORKDIR /dataset/repos/libtiff_EF04
+# WORKDIR /dataset/repos/libtiff_cve_2016_5314
 # RUN git clean -fdx
 # RUN git reset --hard
-# RUN git checkout EF04
-# WORKDIR /root/build_EF04
-# RUN CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address" cmake /dataset/repos/libtiff_EF04
+# RUN git checkout cve_2016_5314
+# WORKDIR /root/build_cve_2016_5314
+# RUN CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address" cmake /dataset/repos/libtiff_cve_2016_5314
 # RUN make -j $(nproc)
 
-# WORKDIR /dataset/repos/libtiff_EF06
+# WORKDIR /dataset/repos/libtiff_bugzilla_2633
 # RUN git clean -fdx
 # RUN git reset --hard
-# RUN git checkout EF06
-# WORKDIR /root/build_EF06
-# RUN CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address" cmake /dataset/repos/libtiff_EF06
+# RUN git checkout bugzilla_2633
+# WORKDIR /root/build_bugzilla_2633
+# RUN CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address" cmake /dataset/repos/libtiff_bugzilla_2633
 # RUN make -j $(nproc)
 
 # WORKDIR /dataset/repos/libtiff_cve_2016_10094

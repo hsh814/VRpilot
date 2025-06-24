@@ -1,4 +1,4 @@
-Bugs: EF19, cve_2018_19664, EF21, cve_2012_2806
+Bugs: EF19, cve_2018_19664, cve_2017_15232, cve_2012_2806
 
 Build:
 
@@ -12,7 +12,7 @@ mkdir build ; cd build
 /dataset/repos/libjpeg-turbo/configure CFLAGS="-fsanitize=address -g" LDFLAGS="-fsanitize=address -g"
 make -j $(nproc)
 
-cve_2018_19664, EF21:
+cve_2018_19664, cve_2017_15232:
 
 mkdir build ; cd build
 ( cd /dataset/repos/libjpeg-turbo/ ; git clean -fdx ; git reset --hard ; git checkout EFXX )
@@ -35,7 +35,7 @@ ASAN report: 1/3 source files match, 2/12 hunks match
  *  wrbmp.c: 3 lines added, 2 lines removed, spans 2 lines
 SUMMARY: AddressSanitizer: heap-buffer-overflow /dataset/repos/libjpeg-turbo/wrbmp.c:145 put_pixel_rows
 ASAN report: 1/1 source files match, 0/1 hunks match
-========== EF21 =========
+========== cve_2017_15232 =========
  *  jdpostct.c: 5 lines added, 0 lines removed, spans 4 lines
  *  jquant1.c: 4 lines added, 0 lines removed, spans 3 lines
 SUMMARY: AddressSanitizer: SEGV ??:0 ??

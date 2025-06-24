@@ -2,7 +2,7 @@ TIFFReadDirectoryCheckOrder: Warning, Invalid TIFF directory; tags are not sorte
 TIFFReadDirectory: Warning, Unknown field with tag 464 (0x1d0) encountered.
 TIFFReadDirectory: Warning, Unknown field with tag 513 (0x201) encountered.
 TIFFReadDirectory: Warning, Unknown field with tag 642 (0x282) encountered.
-/dataset/testcases/EF04/CVE-2016-5314.tif: Warning, Nonstandard tile length 6, convert file.
+/dataset/testcases/cve_2016_5314/CVE-2016-5314.tif: Warning, Nonstandard tile length 6, convert file.
 TIFFFetchNormalTag: Warning, Incompatible type for "DocumentName"; tag ignored.
 PixarLogDecode: Decoding error at scanline 0, incorrect header check.
 PixarLogDecode: Decoding error at scanline 0, invalid block type.

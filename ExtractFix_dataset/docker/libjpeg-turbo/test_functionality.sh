@@ -8,7 +8,7 @@ case "$1" in
         cd /root/build
         /dataset/repos/libjpeg-turbo/configure
         ;;
-    cve_2018_19664|EF21)
+    cve_2018_19664|cve_2017_15232)
         cd /root/build
         cmake -G"Unix Makefiles" /dataset/repos/libjpeg-turbo
         ;;
@@ -23,7 +23,7 @@ case "$1" in
         ;;
     cve_2018_19664)
         ;;
-    EF21)
+    cve_2017_15232)
         ;;
     cve_2012_2806)
         ;;

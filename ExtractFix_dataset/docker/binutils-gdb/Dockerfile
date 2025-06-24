@@ -8,35 +8,35 @@ RUN apt-get -y build-dep binutils
 RUN mkdir -p /dataset/repos
 COPY testcases /dataset
 
-# COPY repos/binutils-gdb /dataset/repos/binutils-gdb_EF12
-# COPY repos/binutils-gdb /dataset/repos/binutils-gdb_EF13
+# COPY repos/binutils-gdb /dataset/repos/binutils-gdb_cve_2018_10372
+# COPY repos/binutils-gdb /dataset/repos/binutils-gdb_cve_2017_15025
 
 
 # WORKDIR /root
-# RUN mkdir build_EF12 build_EF13 build_testsuite_EF12 build_testsuite_EF13
+# RUN mkdir build_cve_2018_10372 build_cve_2017_15025 build_testsuite_cve_2018_10372 build_testsuite_cve_2017_15025
 
-# WORKDIR /dataset/repos/binutils-gdb_EF12
+# WORKDIR /dataset/repos/binutils-gdb_cve_2018_10372
 # RUN git clean -fdx
 # RUN git reset --hard
-# RUN git checkout EF12
-# WORKDIR /root/build_EF12
-# RUN /dataset/repos/binutils-gdb_EF12/configure CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address"
+# RUN git checkout cve_2018_10372
+# WORKDIR /root/build_cve_2018_10372
+# RUN /dataset/repos/binutils-gdb_cve_2018_10372/configure CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address"
 # RUN make -j $(nproc)
-# WORKDIR /root/build_testsuite_EF12 
-# RUN /dataset/repos/binutils-gdb_EF12/configure
+# WORKDIR /root/build_testsuite_cve_2018_10372 
+# RUN /dataset/repos/binutils-gdb_cve_2018_10372/configure
 # RUN make -j $(nproc)
 # RUN make -C bfd check
 # RUN make -C binutils check
 
-# WORKDIR /dataset/repos/binutils-gdb_EF13
+# WORKDIR /dataset/repos/binutils-gdb_cve_2017_15025
 # RUN git clean -fdx
 # RUN git reset --hard
-# RUN git checkout EF13
-# WORKDIR /root/build_EF13
-# RUN /dataset/repos/binutils-gdb_EF13/configure CFLAGS="-g -fsanitize=undefined" LDFLAGS="-g -fsanitize=undefined"
+# RUN git checkout cve_2017_15025
+# WORKDIR /root/build_cve_2017_15025
+# RUN /dataset/repos/binutils-gdb_cve_2017_15025/configure CFLAGS="-g -fsanitize=undefined" LDFLAGS="-g -fsanitize=undefined"
 # RUN make -j $(nproc)
-# WORKDIR /root/build_testsuite_EF13 
-# RUN /dataset/repos/binutils-gdb_EF13/configure
+# WORKDIR /root/build_testsuite_cve_2017_15025 
+# RUN /dataset/repos/binutils-gdb_cve_2017_15025/configure
 # RUN make -j $(nproc)
 # RUN make -C bfd check
 # RUN make -C binutils check

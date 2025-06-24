@@ -6,7 +6,7 @@ cd /root/build_testsuite
 make -j 32
 
 case "$1" in
-    cve_2016_1838|EF16|cve_2012_5134|cve_2017_5969)
+    cve_2016_1834|cve_2016_1838|cve_2016_1839|cve_2012_5134|cve_2017_5969)
         cd /root/build_testsuite
         make check
         ;;

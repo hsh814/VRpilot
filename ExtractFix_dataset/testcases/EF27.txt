@@ -1,3 +1,3 @@
 Bug: https://blogs.gentoo.org/ago/2016/10/16/jasper-two-divide-by-zero-in-jpc_dec_process_siz-jpc_dec-c/
 
-./src/appl/imginfo -f /dataset/testcases/EF27/sample1.jp2
+./src/appl/imginfo -f /dataset/testcases/cve_2016_8691/sample1.jp2

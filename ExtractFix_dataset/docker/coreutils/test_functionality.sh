@@ -7,13 +7,13 @@ FORCE_UNSAFE_CONFIGURE=1 /dataset/repos/coreutils/configure
 make -j 32
 
 case "$1" in
-    EF23)
+    gnubug_26545)
         ;;
-    EF24)
+    gnubug_25003)
         ;;
-    EF25)
+    gnubug_25023)
         ;;
-    EF26)
+    gnubug_19784)
         ;;
     *)
         echo "No such bug: $1"

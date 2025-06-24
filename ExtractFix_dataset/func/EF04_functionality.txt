@@ -1,5 +1,5 @@
 Running tests...
-Test project /root/build_EF04
+Test project /root/build_cve_2016_5314
       Start  1: bmp2tiff-palette-palette-1c-8b
  1/74 Test  #1: bmp2tiff-palette-palette-1c-8b ...............   Passed    0.01 sec
       Start  2: bmp2tiff-rgb-rgb-3c-8b

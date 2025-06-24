@@ -4,13 +4,13 @@ ASAN:SIGSEGV
 ==8==ERROR: AddressSanitizer: SEGV on unknown address 0x000000000001 (pc 0x7f68d4c50b85 bp 0x7ffea84b18a0 sp 0x7ffea84b1028 T0)
     #0 0x7f68d4c50b84  (/lib/x86_64-linux-gnu/libc.so.6+0x172b84)
     #1 0x7f68d5243b1e in __asan_memset (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x8cb1e)
-    #2 0x7f68d4f58921 in quantize_ord_dither /dataset/repos/libjpeg-turbo_EF21/jquant1.c:536
-    #3 0x7f68d4f3e796 in post_process_1pass /dataset/repos/libjpeg-turbo_EF21/jdpostct.c:145
-    #4 0x7f68d4f1b9bb in process_data_simple_main /dataset/repos/libjpeg-turbo_EF21/jdmainct.c:311
-    #5 0x7f68d4f008fb in jpeg_read_scanlines /dataset/repos/libjpeg-turbo_EF21/jdapistd.c:282
-    #6 0x402a48 in main /dataset/repos/libjpeg-turbo_EF21/djpeg.c:745
+    #2 0x7f68d4f58921 in quantize_ord_dither /dataset/repos/libjpeg-turbo_cve_2017_15232/jquant1.c:536
+    #3 0x7f68d4f3e796 in post_process_1pass /dataset/repos/libjpeg-turbo_cve_2017_15232/jdpostct.c:145
+    #4 0x7f68d4f1b9bb in process_data_simple_main /dataset/repos/libjpeg-turbo_cve_2017_15232/jdmainct.c:311
+    #5 0x7f68d4f008fb in jpeg_read_scanlines /dataset/repos/libjpeg-turbo_cve_2017_15232/jdapistd.c:282
+    #6 0x402a48 in main /dataset/repos/libjpeg-turbo_cve_2017_15232/djpeg.c:745
     #7 0x7f68d4afe83f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
-    #8 0x402d28 in _start (/root/build_EF21/djpeg+0x402d28)
+    #8 0x402d28 in _start (/root/build_cve_2017_15232/djpeg+0x402d28)
 
 AddressSanitizer can not provide additional info.
 SUMMARY: AddressSanitizer: SEGV ??:0 ??

@@ -1,10 +1,10 @@
   GEN      public-submodule-commit
 make  check-recursive
-make[1]: Entering directory '/home/extractfix/build_testsuite_EF26'
+make[1]: Entering directory '/home/extractfix/build_testsuite_gnubug_19784'
 Making check in .
-make[2]: Entering directory '/home/extractfix/build_testsuite_EF26'
+make[2]: Entering directory '/home/extractfix/build_testsuite_gnubug_19784'
 make  check-TESTS check-local
-make[3]: Entering directory '/home/extractfix/build_testsuite_EF26'
+make[3]: Entering directory '/home/extractfix/build_testsuite_gnubug_19784'
   GEN      check-README
   GEN      check-duplicate-no-install
   GEN      sc-avoid-builtin
@@ -18,7 +18,7 @@ make[3]: Entering directory '/home/extractfix/build_testsuite_EF26'
 Unescaped left brace in regex is deprecated, passed through in regex; marked by <-- HERE in m/\@var{ <-- HERE / at -e line 1.
 Unescaped left brace in regex is deprecated, passed through in regex; marked by <-- HERE in m/\@var{ <-- HERE (.+?)}/ at -e line 1.
   GEN      check-texinfo
-make[4]: Entering directory '/home/extractfix/build_testsuite_EF26'
+make[4]: Entering directory '/home/extractfix/build_testsuite_gnubug_19784'
 tty-eof.pl: this script requires Perl's Expect package >=1.11
 SKIP: tests/misc/tty-eof.pl
 inotify-race.sh: skipped test: very expensive: disabled by default
@@ -784,7 +784,7 @@ Testsuite summary for GNU coreutils 8.23.119-65852
 # XPASS: 0
 # ERROR: 0
 ============================================================================
-make[4]: Leaving directory '/home/extractfix/build_testsuite_EF26'
-make[3]: Leaving directory '/home/extractfix/build_testsuite_EF26'
-make[2]: Leaving directory '/home/extractfix/build_testsuite_EF26'
-make[1]: Leaving directory '/home/extractfix/build_testsuite_EF26'
+make[4]: Leaving directory '/home/extractfix/build_testsuite_gnubug_19784'
+make[3]: Leaving directory '/home/extractfix/build_testsuite_gnubug_19784'
+make[2]: Leaving directory '/home/extractfix/build_testsuite_gnubug_19784'
+make[1]: Leaving directory '/home/extractfix/build_testsuite_gnubug_19784'

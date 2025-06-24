@@ -9,7 +9,7 @@ case "$1" in
         cd /root/build
         /dataset/repos/libjpeg-turbo/configure CFLAGS="-fsanitize=address -g" LDFLAGS="-fsanitize=address -g"
         ;;
-    cve_2018_19664|EF21)
+    cve_2018_19664|cve_2017_15232)
         cd /root/build
         CFLAGS="-fsanitize=address -g" LDFLAGS="-fsanitize=address -g" cmake -G"Unix Makefiles" /dataset/repos/libjpeg-turbo
         ;;

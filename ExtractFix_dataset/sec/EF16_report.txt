@@ -1,45 +1,45 @@
-/dataset/EF16/attachment_316182.xml:1: HTML parser error : htmlParseEntityRef: expecting ';'
+/dataset/cve_2016_1839/attachment_316182.xml:1: HTML parser error : htmlParseEntityRef: expecting ';'
 &:&::&:::::jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
   ^
-/dataset/EF16/attachment_316182.xml:1: HTML parser error : htmlParseEntityRef: expecting ';'
+/dataset/cve_2016_1839/attachment_316182.xml:1: HTML parser error : htmlParseEntityRef: expecting ';'
 &:&::&:::::jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
      ^
 =================================================================
 ==7==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x631000010810 at pc 0x7fe04b882935 bp 0x7ffcb0274a40 sp 0x7ffcb02741e8
 READ of size 73661 at 0x631000010810 thread T0
     #0 0x7fe04b882934 in __asan_memcpy (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x8c934)
-    #1 0x7fe04b4c7cca in xmlDictAddString /dataset/repos/libxml2_EF16/dict.c:285
-    #2 0x7fe04b4caf66 in xmlDictLookup__internal_alias /dataset/repos/libxml2_EF16/dict.c:926
-    #3 0x7fe04b2d81e7 in htmlParseNameComplex /dataset/repos/libxml2_EF16/HTMLparser.c:2517
-    #4 0x7fe04b2d7800 in htmlParseName /dataset/repos/libxml2_EF16/HTMLparser.c:2483
-    #5 0x7fe04b2d9905 in htmlParseEntityRef__internal_alias /dataset/repos/libxml2_EF16/HTMLparser.c:2682
-    #6 0x7fe04b2e6aa2 in htmlParseReference /dataset/repos/libxml2_EF16/HTMLparser.c:4044
-    #7 0x7fe04b2ec489 in htmlParseContentInternal /dataset/repos/libxml2_EF16/HTMLparser.c:4619
-    #8 0x7fe04b2edaee in htmlParseDocument__internal_alias /dataset/repos/libxml2_EF16/HTMLparser.c:4769
-    #9 0x7fe04b2f8a93 in htmlDoRead /dataset/repos/libxml2_EF16/HTMLparser.c:6741
-    #10 0x7fe04b2f8c7d in htmlReadFile__internal_alias /dataset/repos/libxml2_EF16/HTMLparser.c:6799
-    #11 0x40bb00 in parseAndPrintFile /dataset/repos/libxml2_EF16/xmllint.c:2255
-    #12 0x4139ce in main /dataset/repos/libxml2_EF16/xmllint.c:3767
+    #1 0x7fe04b4c7cca in xmlDictAddString /dataset/repos/libxml2_cve_2016_1839/dict.c:285
+    #2 0x7fe04b4caf66 in xmlDictLookup__internal_alias /dataset/repos/libxml2_cve_2016_1839/dict.c:926
+    #3 0x7fe04b2d81e7 in htmlParseNameComplex /dataset/repos/libxml2_cve_2016_1839/HTMLparser.c:2517
+    #4 0x7fe04b2d7800 in htmlParseName /dataset/repos/libxml2_cve_2016_1839/HTMLparser.c:2483
+    #5 0x7fe04b2d9905 in htmlParseEntityRef__internal_alias /dataset/repos/libxml2_cve_2016_1839/HTMLparser.c:2682
+    #6 0x7fe04b2e6aa2 in htmlParseReference /dataset/repos/libxml2_cve_2016_1839/HTMLparser.c:4044
+    #7 0x7fe04b2ec489 in htmlParseContentInternal /dataset/repos/libxml2_cve_2016_1839/HTMLparser.c:4619
+    #8 0x7fe04b2edaee in htmlParseDocument__internal_alias /dataset/repos/libxml2_cve_2016_1839/HTMLparser.c:4769
+    #9 0x7fe04b2f8a93 in htmlDoRead /dataset/repos/libxml2_cve_2016_1839/HTMLparser.c:6741
+    #10 0x7fe04b2f8c7d in htmlReadFile__internal_alias /dataset/repos/libxml2_cve_2016_1839/HTMLparser.c:6799
+    #11 0x40bb00 in parseAndPrintFile /dataset/repos/libxml2_cve_2016_1839/xmllint.c:2255
+    #12 0x4139ce in main /dataset/repos/libxml2_cve_2016_1839/xmllint.c:3767
     #13 0x7fe04ad9183f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
-    #14 0x404bc8 in _start (/root/build_EF16/.libs/lt-xmllint+0x404bc8)
+    #14 0x404bc8 in _start (/root/build_cve_2016_1839/.libs/lt-xmllint+0x404bc8)
 
 0x631000010810 is located 0 bytes to the right of 65552-byte region [0x631000000800,0x631000010810)
 allocated by thread T0 here:
     #0 0x7fe04b88e961 in realloc (/usr/lib/x86_64-linux-gnu/libasan.so.2+0x98961)
-    #1 0x7fe04b3abf76 in xmlBufGrowInternal /dataset/repos/libxml2_EF16/buf.c:486
-    #2 0x7fe04b3ac1ff in xmlBufGrow /dataset/repos/libxml2_EF16/buf.c:515
-    #3 0x7fe04b29b2e8 in xmlParserInputBufferGrow__internal_alias /dataset/repos/libxml2_EF16/xmlIO.c:3326
-    #4 0x7fe04b1deee3 in xmlParserInputGrow__internal_alias /dataset/repos/libxml2_EF16/parserInternals.c:320
-    #5 0x7fe04b2d7c39 in htmlParseNameComplex /dataset/repos/libxml2_EF16/HTMLparser.c:2511
-    #6 0x7fe04b2d7800 in htmlParseName /dataset/repos/libxml2_EF16/HTMLparser.c:2483
-    #7 0x7fe04b2d9905 in htmlParseEntityRef__internal_alias /dataset/repos/libxml2_EF16/HTMLparser.c:2682
-    #8 0x7fe04b2e6aa2 in htmlParseReference /dataset/repos/libxml2_EF16/HTMLparser.c:4044
-    #9 0x7fe04b2ec489 in htmlParseContentInternal /dataset/repos/libxml2_EF16/HTMLparser.c:4619
-    #10 0x7fe04b2edaee in htmlParseDocument__internal_alias /dataset/repos/libxml2_EF16/HTMLparser.c:4769
-    #11 0x7fe04b2f8a93 in htmlDoRead /dataset/repos/libxml2_EF16/HTMLparser.c:6741
-    #12 0x7fe04b2f8c7d in htmlReadFile__internal_alias /dataset/repos/libxml2_EF16/HTMLparser.c:6799
-    #13 0x40bb00 in parseAndPrintFile /dataset/repos/libxml2_EF16/xmllint.c:2255
-    #14 0x4139ce in main /dataset/repos/libxml2_EF16/xmllint.c:3767
+    #1 0x7fe04b3abf76 in xmlBufGrowInternal /dataset/repos/libxml2_cve_2016_1839/buf.c:486
+    #2 0x7fe04b3ac1ff in xmlBufGrow /dataset/repos/libxml2_cve_2016_1839/buf.c:515
+    #3 0x7fe04b29b2e8 in xmlParserInputBufferGrow__internal_alias /dataset/repos/libxml2_cve_2016_1839/xmlIO.c:3326
+    #4 0x7fe04b1deee3 in xmlParserInputGrow__internal_alias /dataset/repos/libxml2_cve_2016_1839/parserInternals.c:320
+    #5 0x7fe04b2d7c39 in htmlParseNameComplex /dataset/repos/libxml2_cve_2016_1839/HTMLparser.c:2511
+    #6 0x7fe04b2d7800 in htmlParseName /dataset/repos/libxml2_cve_2016_1839/HTMLparser.c:2483
+    #7 0x7fe04b2d9905 in htmlParseEntityRef__internal_alias /dataset/repos/libxml2_cve_2016_1839/HTMLparser.c:2682
+    #8 0x7fe04b2e6aa2 in htmlParseReference /dataset/repos/libxml2_cve_2016_1839/HTMLparser.c:4044
+    #9 0x7fe04b2ec489 in htmlParseContentInternal /dataset/repos/libxml2_cve_2016_1839/HTMLparser.c:4619
+    #10 0x7fe04b2edaee in htmlParseDocument__internal_alias /dataset/repos/libxml2_cve_2016_1839/HTMLparser.c:4769
+    #11 0x7fe04b2f8a93 in htmlDoRead /dataset/repos/libxml2_cve_2016_1839/HTMLparser.c:6741
+    #12 0x7fe04b2f8c7d in htmlReadFile__internal_alias /dataset/repos/libxml2_cve_2016_1839/HTMLparser.c:6799
+    #13 0x40bb00 in parseAndPrintFile /dataset/repos/libxml2_cve_2016_1839/xmllint.c:2255
+    #14 0x4139ce in main /dataset/repos/libxml2_cve_2016_1839/xmllint.c:3767
     #15 0x7fe04ad9183f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
 
 SUMMARY: AddressSanitizer: heap-buffer-overflow ??:0 __asan_memcpy

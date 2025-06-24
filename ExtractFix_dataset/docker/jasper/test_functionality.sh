@@ -12,13 +12,19 @@ cd /root/build_testsuite
 make -j 32
 
 case "$1" in
-    EF27)
+    cve_2016_8691)
         for f in data/images/*.mif data/images/*.jpg data/images/*.pnm /dataset/jasper_newtests/* ; do
             echo "$f"
             src/appl/imginfo -f "$f"
         done
         ;;
-    EF28)
+    cve_2016_9387)
+        for f in data/images/*.mif data/images/*.jpg data/images/*.pnm /dataset/jasper_newtests/* ; do
+            echo "$f"
+            src/appl/imginfo -f "$f"
+        done
+        ;;
+    cve_2016_9557)
         for f in data/images/*.mif data/images/*.jpg data/images/*.pnm /dataset/jasper_newtests/* ; do
             echo "$f"
             src/appl/imginfo -f "$f"

@@ -10,8 +10,8 @@ case "$1" in
     cve_2018_19664)
         ./djpeg -colors 256 -bmp /dataset/cve_2018_19664/49065782-f0ebfd00-f216-11e8-9e9b-a86f3d5ea58a.jpg
         ;;
-    EF21)
-        ./djpeg -crop "1x1+16+16" -onepass -dither ordered -dct float -colors 8 -targa -grayscale -outfile o /dataset/EF21/001-mozjpeg-quantize_ord_dither-536.crash
+    cve_2017_15232)
+        ./djpeg -crop "1x1+16+16" -onepass -dither ordered -dct float -colors 8 -targa -grayscale -outfile o /dataset/cve_2017_15232/001-mozjpeg-quantize_ord_dither-536.crash
         ;;
     cve_2012_2806)
         ./djpeg /dataset/cve_2012_2806/cnode0006-heap-buffer-overflow-796.jpg

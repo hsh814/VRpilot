@@ -196,7 +196,7 @@ class Project():
             if_passed = True
             err_msg = ""
 
-            if self.vul_id == 'cve_2016_5321' or self.vul_id == 'cve_2016_10094':  # cve_2016_5321, EF04, EF06, cve_2016_10094 use ASAN
+            if self.vul_id == 'cve_2016_5321' or self.vul_id == 'cve_2016_10094':  # cve_2016_5321, cve_2016_5314, bugzilla_2633, cve_2016_10094 use ASAN
                 for line in output.splitlines():
                     if "ERROR:" in line:
                         print("Fail the security test.")

@@ -1,11 +1,11 @@
-Bugs: cve_2016_5321, cve_2014_8128, EF02_02, EF02_03, EF02_04, EF04, EF06, cve_2016_10094, cve_2017_7601, cve_2016_3623, cve_2017_7595, EF11
+Bugs: cve_2016_5321, cve_2014_8128, EF02_02, EF02_03, EF02_04, cve_2016_5314, bugzilla_2633, cve_2016_10094, cve_2017_7601, cve_2016_3623, cve_2017_7595, EF11
 
 
 Note: EF02 is a single CVE but actually 5 separate bugs, so was split into EF02_{01..05}
 
 Build:
 
-cve_2016_5321, EF04, EF06, cve_2016_10094:
+cve_2016_5321, cve_2016_5314, bugzilla_2633, cve_2016_10094:
 
 mkdir build ; cd build
 ( cd /dataset/repos/libtiff/ ; git clean -fdx ; git reset --hard ; git checkout EFXX )
@@ -28,7 +28,7 @@ make -j $(nproc)
 
 Test:
 
-cve_2016_5321, EF04, EF06-EF11:
+cve_2016_5321, cve_2016_5314, bugzilla_2633-EF11:
 
 make test
 
@@ -61,7 +61,7 @@ ASAN report: 1/2 source files match, 1/3 hunks match
     libtiff/tif_dirread.c: 4 lines added, 0 lines removed, spans 3 lines
 SUMMARY: AddressSanitizer: SEGV /dataset/repos/libtiff/libtiff/tif_dir.c:1056 _TIFFVGetField
 ASAN report: 0/3 source files match, 0/3 hunks match
-========== EF06 =========
+========== bugzilla_2633 =========
  *  tools/tiff2ps.c: 6 lines added, 1 lines removed, spans 252 lines
 SUMMARY: AddressSanitizer: heap-buffer-overflow /dataset/repos/libtiff/tools/tiff2ps.c:2470 PSDataColorContig
 ASAN report: 1/1 source files match, 2/2 hunks match

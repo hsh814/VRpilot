@@ -1,4 +1,4 @@
-Bugs: cve_2016_1838, EF16, cve_2012_5134, cve_2017_5969
+Bugs: cve_2016_1838, cve_2016_1839, cve_2012_5134, cve_2017_5969
 
 Build:
 
@@ -22,7 +22,7 @@ How well each patch matches our repair system:
  *  parser.c: 6 lines added, 2 lines removed, spans 12 lines
 SUMMARY: AddressSanitizer: heap-buffer-overflow /dataset/repos/libxml2/error.c:192 xmlParserPrintFileContextInternal
 ASAN report: 1/1 source files match, 0/2 hunks match
-========== EF16 =========
+========== cve_2016_1839 =========
  *  HTMLparser.c: 8 lines added, 0 lines removed, spans 46 lines
     runtest.c: 2 lines added, 2 lines removed, spans 18 lines
 SUMMARY: AddressSanitizer: heap-buffer-overflow ??:0 __asan_memcpy
