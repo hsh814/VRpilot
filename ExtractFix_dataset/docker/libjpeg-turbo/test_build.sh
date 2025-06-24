@@ -1,21 +1,16 @@
 #!/bin/bash
-
-mkdir -p /root/build
-
+export ASAN_OPTIONS=detect_leaks=0
+cd /dataset/repos/libjpeg-turbo
 case "$1" in
-    EF19|cve_2012_2806)
-        cd /dataset/repos/libjpeg-turbo
+    EF19|cve_2012_2806|cve_2017_15232)
         autoreconf -fvi
-        cd /root/build
-        /dataset/repos/libjpeg-turbo/configure CFLAGS="-fsanitize=address -g" LDFLAGS="-fsanitize=address -g"
+        ./configure --without-simd CFLAGS="-fsanitize=address -g" LDFLAGS="-fsanitize=address -g"
         ;;
-    cve_2018_19664|cve_2017_15232)
-        cd /root/build
-        CFLAGS="-fsanitize=address -g" LDFLAGS="-fsanitize=address -g" cmake -G"Unix Makefiles" /dataset/repos/libjpeg-turbo
+    cve_2018_19664)
+        CFLAGS="-fsanitize=address -g" LDFLAGS="-fsanitize=address -g" cmake -G"Unix Makefiles" .
         ;;
     *)
         echo "No such bug: $1"
         ;;
 esac
-cd /root/build
 make -j 32

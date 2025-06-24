@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cd /root/build
+export ASAN_OPTIONS=detect_leaks=0
 
 case "$1" in
     bugzilla_2633|cve_2016_3186|cve_2016_5321|cve_2016_5314|cve_2016_9532|cve_2016_10094)

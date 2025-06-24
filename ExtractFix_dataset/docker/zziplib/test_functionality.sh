@@ -7,7 +7,5 @@ make -j 32
 exit 0
 case "$1" in
     *)
-        echo "No such bug: $1"
-        exit 1
         ;;
 esac

@@ -5,5 +5,6 @@ cd /dataset/repos/libming
 
 mkdir -p /root/build
 cd /root/build
-/dataset/repos/libming/configure CFLAGS="-static -g -fsanitize=address" LDFLAGS="-static -g -fsanitize=address"
+export ASAN_OPTIONS=detect_leaks=0
+/dataset/repos/libming/configure --disable-freetype CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address"
 make -j 1 # Use single process to prevent race condition

@@ -2,6 +2,7 @@
 
 /scripts/test_build.sh $1
 cd /root/build
+export ASAN_OPTIONS=detect_leaks=0
 
 case "$1" in
     bugzilla_2633)
@@ -23,7 +24,7 @@ case "$1" in
         tools/rgb2ycbcr /dataset/cve_2016_5314/CVE-2016-5314.tif tmp.tif
         ;;
     cve_2016_5321)
-        tools/tiffcrop /dataset/cve_2016_5321/cve_2016_5321.tif tmp.tif
+        tools/tiffcrop /dataset/cve_2016_5321/EF01.tif tmp.tif
         ;;
     cve_2016_9532)
         tools/tiffcrop /dataset/cve_2016_9532/exploit tmp.tif

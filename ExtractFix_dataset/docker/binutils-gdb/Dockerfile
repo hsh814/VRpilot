@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 RUN sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list
 RUN apt-get update
-RUN apt-get -y install build-essential vim git cmake
+RUN apt-get -y install build-essential git vim unzip python-dev python-pip ipython zip libtool bison texinfo flex
 RUN apt-get -y build-dep binutils
 
 RUN mkdir -p /dataset/repos

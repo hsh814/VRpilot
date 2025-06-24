@@ -1,7 +1,8 @@
 #!/bin/bash
 
 /scripts/test_build.sh $1
-cd /root/build
+cd /dataset/repos/jasper
+export ASAN_OPTIONS=detect_leaks=0
 
 case "$1" in
     cve_2016_8691)

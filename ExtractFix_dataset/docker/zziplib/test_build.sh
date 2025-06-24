@@ -2,6 +2,7 @@
 
 mkdir -p /root/build
 cd /root/build
-/dataset/repos/zziplib/configure CFLAGS="-static -g -fsanitize=address" LDFLAGS="-static -g -fsanitize=address"
+export ASAN_OPTIONS=detect_leaks=0
+/dataset/repos/zziplib/configure CFLAGS="-g -fsanitize=address" LDFLAGS="-g -fsanitize=address"
 make -j 32
 
