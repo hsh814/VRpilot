@@ -8,7 +8,7 @@
             "vul_code_file_rel_path": "tools/tiff2ps.c",
             "vul_code_block_start_line": 2433,
             "vul_code_block_end_line": 2494,
-            "vul_description": "",
+            "vul_description": "heap buffer overflow",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {
@@ -126,7 +126,7 @@
             "vul_code_file_rel_path": "tools/gif2tiff.c",
             "vul_code_block_start_line": 344,
             "vul_code_block_end_line": 360,
-            "vul_description": "",
+            "vul_description": "buffer overflow",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {
@@ -172,7 +172,7 @@
             "vul_code_file_rel_path": "libtiff/tif_pixarlog.c",
             "vul_code_block_start_line": 740,
             "vul_code_block_end_line": 872,
-            "vul_description": "",
+            "vul_description": "buffer write overrun",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {
@@ -235,7 +235,7 @@
         "vul_code_file_rel_path": "tools/tiffcrop.c",
         "vul_code_block_start_line": 1148,
         "vul_code_block_end_line": 1208,
-        "vul_description": "",
+        "vul_description": "heap buffer overflow",
         "asan_scenario_buginfo": {
             "real_patchinfo": [
                 {

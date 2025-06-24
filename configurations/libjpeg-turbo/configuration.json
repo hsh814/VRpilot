@@ -8,7 +8,7 @@
             "vul_code_file_rel_path": "jdpostct.c",
             "vul_code_block_start_line": 125,
             "vul_code_block_end_line": 148,
-            "vul_description": "",
+            "vul_description": "null pointer dereference",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {

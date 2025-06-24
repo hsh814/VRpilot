@@ -85,7 +85,7 @@
             "vul_code_file_rel_path": "xmlstring.c",
             "vul_code_block_start_line":448,
             "vul_code_block_end_line": 468,
-            "vul_description": "",
+            "vul_description": "heap buffer overflow",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {
@@ -145,7 +145,7 @@
             "vul_code_file_rel_path": "HTMLparser.c",
             "vul_code_block_start_line": 2490,
             "vul_code_block_end_line": 2518,
-            "vul_description": "",
+            "vul_description": "heap buffer overflow",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {

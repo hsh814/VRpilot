@@ -8,7 +8,7 @@
             "vul_code_file_rel_path": "util/listmp3.c",
             "vul_code_block_start_line": 65,
             "vul_code_block_end_line": 177,
-            "vul_description": "",
+            "vul_description": "global buffer overflow",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {

@@ -8,7 +8,7 @@
             "vul_code_file_rel_path": "zzip/memdisk.c",
             "vul_code_block_start_line": 166,
             "vul_code_block_end_line": 234,
-            "vul_description": "",
+            "vul_description": "heap buffer overflow",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {
@@ -28,7 +28,7 @@
             "vul_code_file_rel_path": "zzip/memdisk.c",
             "vul_code_block_start_line": 166,
             "vul_code_block_end_line": 244,
-            "vul_description": "",
+            "vul_description": "heap buffer overflow",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {
@@ -48,7 +48,7 @@
             "vul_code_file_rel_path": "zzip/memdisk.c",
             "vul_code_block_start_line": 239,
             "vul_code_block_end_line": 265,
-            "vul_description": "",
+            "vul_description": "heap buffer overflow",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {

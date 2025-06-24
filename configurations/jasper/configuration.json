@@ -8,7 +8,7 @@
             "vul_code_file_rel_path": "src/libjasper/jpc/jpc_cs.c",
             "vul_code_block_start_line": 479,
             "vul_code_block_end_line": 523,
-            "vul_description": "",
+            "vul_description": "divide by zero",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {
@@ -23,18 +23,18 @@
         {
             "vul_id": "cve_2016_9387",
             "project_name": "jasper",
-            "fix_commit": "",
+            "fix_commit": "d91198abd00fc435a397fe6bad906a4c1748e9cf",
             "language": "c",
-            "vul_code_file_rel_path": "",
-            "vul_code_block_start_line": ,
-            "vul_code_block_end_line": ,
-            "vul_description": "",
+            "vul_code_file_rel_path": "src/libjasper/jpc/jpc_dec.c",
+            "vul_code_block_start_line": 1188,
+            "vul_code_block_end_line": 1286,
+            "vul_description": "integer overflow",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {
-                        "filename": "",
+                        "filename": "jpc_dec.c",
                         "edit_lines": [
-                            
+                            1234
                         ]
                     }
                 ]
@@ -48,7 +48,7 @@
             "vul_code_file_rel_path": "src/libjasper/base/jas_image.c",
             "vul_code_block_start_line": 132,
             "vul_code_block_end_line": 189,
-            "vul_description": "",
+            "vul_description": "signed integer overflow",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {

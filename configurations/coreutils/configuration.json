@@ -8,7 +8,7 @@
             "vul_code_file_rel_path": "src/make-prime-list.c",
             "vul_code_block_start_line": 171,
             "vul_code_block_end_line": 227,
-            "vul_description": "",
+            "vul_description": "heap buffer overflow",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {
@@ -28,7 +28,7 @@
             "vul_code_file_rel_path": "src/split.c",
             "vul_code_block_start_line": 973,
             "vul_code_block_end_line": 1019,
-            "vul_description": "",
+            "vul_description": "invalid memory access - negative size parameter in memmove",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {
@@ -48,7 +48,7 @@
             "vul_code_file_rel_path": "src/pr.c",
             "vul_code_block_start_line": 1190,
             "vul_code_block_end_line": 1298,
-            "vul_description": "",
+            "vul_description": "global buffer overflow",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {
@@ -68,7 +68,7 @@
             "vul_code_file_rel_path": "src/shred.c",
             "vul_code_block_start_line": 280,
             "vul_code_block_end_line": 299,
-            "vul_description": "",
+            "vul_description": "memcpy-param-overlap",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {

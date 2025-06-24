@@ -8,7 +8,7 @@
             "vul_code_file_rel_path": "bfd/elf64-x86-64.c",
             "vul_code_block_start_line": 6669,
             "vul_code_block_end_line": 7023,
-            "vul_description": "",
+            "vul_description": "heap buffer overflow",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {
@@ -28,7 +28,7 @@
             "vul_code_file_rel_path": "bfd/dwarf2.c",
             "vul_code_block_start_line": 2033,
             "vul_code_block_end_line": 2484,
-            "vul_description": "",
+            "vul_description": "divide by zero",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {
@@ -48,7 +48,7 @@
             "vul_code_file_rel_path": "binutils/readelf.c",
             "vul_code_block_start_line": 11591,
             "vul_code_block_end_line": 11729,
-            "vul_description": "",
+            "vul_description": "heap buffer overflow",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {
@@ -68,7 +68,7 @@
             "vul_code_file_rel_path": "binutils/dwarf.c",
             "vul_code_block_start_line": 9090,
             "vul_code_block_end_line": 9393,
-            "vul_description": "",
+            "vul_description": "heap buffer overflow",
             "asan_scenario_buginfo": {
                 "real_patchinfo": [
                     {
