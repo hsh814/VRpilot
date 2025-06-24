@@ -85,6 +85,8 @@ if __name__ == "__main__":
 
         target_commit = get_parent_commit(
             repo_dir, vul.fix_commit)  # vulernable version
+        if vul.vul_id == "cve_2016_3186":
+            target_commit = vul.fix_commit
 
         reset_repo(repo_dir, target_commit)
         # init

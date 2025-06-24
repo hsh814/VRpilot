@@ -172,88 +172,103 @@ class Project():
         # output = execute_cmd_with_output("docker run --rm {}:{} /scripts/test_security.sh {}".format(self.img_id, self.img_tag, self.vul_id), self.working_repo_dir)
         output = stdout_str + "\n" + stderr_str
         print(output)
-        if self.project_name == 'libxml2':
+        is_passed = True
+        err_msg = None
+        for line in output.splitlines():
+            if "ERROR:" in line: # AddressSanitizer
+                print("Fail the security test.")
+                is_passed = False
+                break
+            if "runtime error:" in line: # UndefinedBehaviorSanitizer
+                print("Fail the security test.")
+                is_passed = False
+                break
+        if not is_passed:
+            print(f"Error message:\n{stderr_str}")
+            err_msg = stderr_str
+        return {"if_passed": is_passed, "error message": err_msg, "log": output}
+        # if self.project_name == 'libxml2':
 
-            # TODO: extract error msg from output
-            if_passed = True
-            err_msg = None
+        #     # TODO: extract error msg from output
+        #     if_passed = True
+        #     err_msg = None
 
-            # parse the result
-            for line in output.splitlines():
-                if "ERROR:" in line:
-                    print("Fail the security test.")
-                    if_passed = False
-                if "SUMMARY:" in line:
-                    err_msg = line
-                    print("Security test error msg: ", err_msg)
-                    break
+        #     # parse the result
+        #     for line in output.splitlines():
+        #         if "ERROR:" in line:
+        #             print("Fail the security test.")
+        #             if_passed = False
+        #         if "SUMMARY:" in line:
+        #             err_msg = line
+        #             print("Security test error msg: ", err_msg)
+        #             break
 
-            return {"if_passed": if_passed, "error message": err_msg, 'log': output}
+        #     return {"if_passed": if_passed, "error message": err_msg, 'log': output}
 
-        elif self.project_name == 'libtiff':
+        # elif self.project_name == 'libtiff':
 
-            # TODO: extract error msg from output
-            if_passed = True
-            err_msg = ""
+        #     # TODO: extract error msg from output
+        #     if_passed = True
+        #     err_msg = ""
 
-            if self.vul_id == 'cve_2016_5321' or self.vul_id == 'cve_2016_10094':  # cve_2016_5321, cve_2016_5314, bugzilla_2633, cve_2016_10094 use ASAN
-                for line in output.splitlines():
-                    if "ERROR:" in line:
-                        print("Fail the security test.")
-                        if_passed = False
-                        err_msg += line
-                    if "SUMMARY:" in line:
-                        err_msg += line
-                        #print("Security test error msg: ", err_msg)
-                        break
-            elif self.vul_id == 'cve_2017_7601':  # cve_2017_7601-EF11 use UBSAN
-                for line in output.splitlines():
-                    if "runtime error:" in line:
-                        print("Fail the security test.")
-                        if_passed = False
-                        err_msg = line
-                        break
-            elif self.vul_id == 'cve_2016_3623' or self.vul_id == 'cve_2017_7595':  # cve_2017_7601-EF11 use UBSAN
-                # remove ansi escape characters
-                ansi_escape = re.compile(
-                    r'(?:\x1B[@-_]|[\x80-\x9F])[0-?]*[ -/]*[@-~]')
-                for line in output.splitlines():
-                    line = ansi_escape.sub('', line.strip())
-                    if "runtime error" in line:
-                        print("Fail the security test.")
-                        if_passed = False
-                        err_msg += line + "\n"
-                        #break
-            elif self.vul_id == 'cve_2014_8128' or self.vul_id == 'EF02_02':  # EF02_* use ./configure and ASAN
-                for line in output.splitlines():
-                    if "ERROR:" in line:
-                        print("Fail the security test.")
-                        if_passed = False
-                        #break
-                    if "SUMMARY:" in line:
-                        err_msg += line
-                        #print("Security test error msg: ", err_msg)
-                        break
+        #     if self.vul_id == 'cve_2016_5321' or self.vul_id == 'cve_2016_10094':  # cve_2016_5321, cve_2016_5314, bugzilla_2633, cve_2016_10094 use ASAN
+        #         for line in output.splitlines():
+        #             if "ERROR:" in line:
+        #                 print("Fail the security test.")
+        #                 if_passed = False
+        #                 err_msg += line
+        #             if "SUMMARY:" in line:
+        #                 err_msg += line
+        #                 #print("Security test error msg: ", err_msg)
+        #                 break
+        #     elif self.vul_id == 'cve_2017_7601':  # cve_2017_7601-EF11 use UBSAN
+        #         for line in output.splitlines():
+        #             if "runtime error:" in line:
+        #                 print("Fail the security test.")
+        #                 if_passed = False
+        #                 err_msg = line
+        #                 break
+        #     elif self.vul_id == 'cve_2016_3623' or self.vul_id == 'cve_2017_7595':  # cve_2017_7601-EF11 use UBSAN
+        #         # remove ansi escape characters
+        #         ansi_escape = re.compile(
+        #             r'(?:\x1B[@-_]|[\x80-\x9F])[0-?]*[ -/]*[@-~]')
+        #         for line in output.splitlines():
+        #             line = ansi_escape.sub('', line.strip())
+        #             if "runtime error" in line:
+        #                 print("Fail the security test.")
+        #                 if_passed = False
+        #                 err_msg += line + "\n"
+        #                 #break
+        #     elif self.vul_id == 'cve_2014_8128' or self.vul_id == 'EF02_02':  # EF02_* use ./configure and ASAN
+        #         for line in output.splitlines():
+        #             if "ERROR:" in line:
+        #                 print("Fail the security test.")
+        #                 if_passed = False
+        #                 #break
+        #             if "SUMMARY:" in line:
+        #                 err_msg += line
+        #                 #print("Security test error msg: ", err_msg)
+        #                 break
 
-            return {"if_passed": if_passed, "error message": err_msg, 'log': output}
+        #     return {"if_passed": if_passed, "error message": err_msg, 'log': output}
 
-        elif self.project_name == 'libjpeg-turbo':
+        # elif self.project_name == 'libjpeg-turbo':
 
-            # TODO: extract error msg from output
-            if_passed = True
-            err_msg = ""
+        #     # TODO: extract error msg from output
+        #     if_passed = True
+        #     err_msg = ""
 
-            for line in output.splitlines():
-                if "ERROR:" in line:
-                    print("Fail the security test.")
-                    if_passed = False
-                    #break
-                if "SUMMARY:" in line:
-                    err_msg += line
-                    #print("Security test error msg: ", err_msg)
-                    break
+        #     for line in output.splitlines():
+        #         if "ERROR:" in line:
+        #             print("Fail the security test.")
+        #             if_passed = False
+        #             #break
+        #         if "SUMMARY:" in line:
+        #             err_msg += line
+        #             #print("Security test error msg: ", err_msg)
+        #             break
 
-            return {"if_passed": if_passed, "error message": err_msg, 'log': output}
+        #     return {"if_passed": if_passed, "error message": err_msg, 'log': output}
 
     def run_test(self):
         fun_test_res = self.run_functional_test()
