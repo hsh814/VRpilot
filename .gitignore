@@ -13,3 +13,4 @@ result/
 *.zip
 openai_api.key
 docker-image-build.log
+*-bak

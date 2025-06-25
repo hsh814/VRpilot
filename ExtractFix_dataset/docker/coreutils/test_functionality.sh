@@ -3,7 +3,7 @@ cd /dataset/repos/coreutils
 ./bootstrap
 mkdir -p /root/build_testsuite
 cd /root/build_testsuite
-FORCE_UNSAFE_CONFIGURE=1 /dataset/repos/coreutils/configure
+FORCE_UNSAFE_CONFIGURE=1 CFLAGS="-Wno-error" /dataset/repos/coreutils/configure
 make -j 32
 
 case "$1" in
