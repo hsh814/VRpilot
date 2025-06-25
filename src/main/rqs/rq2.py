@@ -112,7 +112,7 @@ if __name__ == "__main__":
         if vul_sec_test_res['if_passed'] == True:
             print("{} The original version is secure, something wrong here!".format(
                 vul.vul_id), get_current_time())
-            exit(0)
+            continue
 
         # Saves the unique responses
         init_prompt = "new"
