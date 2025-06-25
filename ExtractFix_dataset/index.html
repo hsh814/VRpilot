@@ -479,7 +479,7 @@
                         </tr>
                         <tr>
                             <td>FFmpeg</td>
-                            <td>Bugzilla-1404</td>
+                            <td>bugzilla_1404</td>
                             <td><pre><code class="language-diff">    h->sym_factor = h->dist[0] * h->scale_den[1];
 +    if (h->sym_factor > 32768) {
 +        return AVERROR_INVALIDDATA;</code></pre></td>

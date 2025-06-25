@@ -27,4 +27,4 @@
 27 repos/jasper CVE-2016-8691 https://github.com/mdadams/jasper/commit/d8c2604cd438c41ec72aff52c16ebd8183068020
 28 repos/jasper CVE-2016-9387 https://github.com/mdadams/jasper/commit/d91198abd00fc435a397fe6bad906a4c1748e9cf
 29 repos/FFmpeg CVE-2017-9992 https://github.com/FFmpeg/FFmpeg/commit/f52fbf4f3ed02a7d872d8a102006f29b4421f360
-30 repos/FFmpeg Bugzilla-1404 https://github.com/FFmpeg/FFmpeg/commit/279420b5a63b3f254e4932a4afb91759fb50186a
+30 repos/FFmpeg bugzilla_1404 https://github.com/FFmpeg/FFmpeg/commit/279420b5a63b3f254e4932a4afb91759fb50186a

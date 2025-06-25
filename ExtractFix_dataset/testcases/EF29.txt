@@ -1,3 +1,3 @@
 Bug: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=1345
 
-tools/target_dec_dfa_fuzzer EF29/clusterfuzz-testcase-minimized-ffmpeg_AV_CODEC_ID_DFA_fuzzer-6062963045695488
+tools/target_dec_dfa_fuzzer cve_2017_9992/clusterfuzz-testcase-minimized-ffmpeg_AV_CODEC_ID_DFA_fuzzer-6062963045695488

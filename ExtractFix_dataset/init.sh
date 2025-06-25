@@ -6,6 +6,8 @@ pushd docker
   git clone https://github.com/coreutils/coreutils.git coreutils/repos/coreutils
   git clone https://github.com/coreutils/gnulib.git coreutils/repos/coreutils/gnulib
 
+  git clone https://github.com/FFmpeg/FFmpeg.git ffmpeg/repos/ffmpeg
+
   git clone https://github.com/jasper-software/jasper.git jasper/repos/jasper
 
   git clone https://github.com/libarchive/libarchive.git libarchive/repos/libarchive
@@ -24,6 +26,12 @@ pushd docker
 
   git clone https://gitlab.gnome.org/GNOME/libxml2.git libxml2/repos/libxml2
 
+  pushd potrace
+    unzip source.zip
+    mkdir -p repos
+    mv source repos/potrace
+  popd
+  
   git clone https://github.com/gdraheim/zziplib.git zziplib/repos/zziplib
   pushd zziplib/repos/zziplib/docs
     wget https://github.com/LuaDist/libzzip/raw/master/docs/zziplib-manpages.tar

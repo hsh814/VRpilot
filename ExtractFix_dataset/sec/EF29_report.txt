@@ -1,36 +1,36 @@
 INFO: Seed: 1686665828
 INFO: Loaded 1 modules   (89406 guards): 89406 [0xdac178, 0xe03670), 
 ./tools/target_dec_dfa_fuzzer: Running 1 inputs 1 time(s) each.
-Running: /dataset/EF29/clusterfuzz-testcase-minimized-ffmpeg_AV_CODEC_ID_DFA_fuzzer-6062963045695488
+Running: /dataset/cve_2017_9992/clusterfuzz-testcase-minimized-ffmpeg_AV_CODEC_ID_DFA_fuzzer-6062963045695488
 =================================================================
 ==7==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60e000000280 at pc 0x00000054dd76 bp 0x7fffb4a394b0 sp 0x7fffb4a394a8
 WRITE of size 1 at 0x60e000000280 thread T0
-    #0 0x54dd75 in decode_dds1 /root/build_EF29/src/libavcodec/dfa.c:184:45
-    #1 0x53ecea in dfa_decode_frame /root/build_EF29/src/libavcodec/dfa.c:368:17
-    #2 0x53181c in decode_simple_internal /root/build_EF29/src/libavcodec/decode.c:414:15
-    #3 0x530e15 in decode_simple_receive_frame /root/build_EF29/src/libavcodec/decode.c:617:15
-    #4 0x51801e in decode_receive_frame_internal /root/build_EF29/src/libavcodec/decode.c:635:15
-    #5 0x5154bb in avcodec_send_packet /root/build_EF29/src/libavcodec/decode.c:675:15
-    #6 0x519843 in compat_decode /root/build_EF29/src/libavcodec/decode.c:730:15
-    #7 0x50072f in LLVMFuzzerTestOneInput /root/build_EF29/src/tools/target_dec_fuzzer.c:213:23
-    #8 0x963423 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) (/root/build_EF29/tools/target_dec_dfa_fuzzer+0x963423)
-    #9 0x9532a7 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long) (/root/build_EF29/tools/target_dec_dfa_fuzzer+0x9532a7)
-    #10 0x958212 in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned long)) (/root/build_EF29/tools/target_dec_dfa_fuzzer+0x958212)
-    #11 0x952fcb in main (/root/build_EF29/tools/target_dec_dfa_fuzzer+0x952fcb)
+    #0 0x54dd75 in decode_dds1 /root/build_cve_2017_9992/src/libavcodec/dfa.c:184:45
+    #1 0x53ecea in dfa_decode_frame /root/build_cve_2017_9992/src/libavcodec/dfa.c:368:17
+    #2 0x53181c in decode_simple_internal /root/build_cve_2017_9992/src/libavcodec/decode.c:414:15
+    #3 0x530e15 in decode_simple_receive_frame /root/build_cve_2017_9992/src/libavcodec/decode.c:617:15
+    #4 0x51801e in decode_receive_frame_internal /root/build_cve_2017_9992/src/libavcodec/decode.c:635:15
+    #5 0x5154bb in avcodec_send_packet /root/build_cve_2017_9992/src/libavcodec/decode.c:675:15
+    #6 0x519843 in compat_decode /root/build_cve_2017_9992/src/libavcodec/decode.c:730:15
+    #7 0x50072f in LLVMFuzzerTestOneInput /root/build_cve_2017_9992/src/tools/target_dec_fuzzer.c:213:23
+    #8 0x963423 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) (/root/build_cve_2017_9992/tools/target_dec_dfa_fuzzer+0x963423)
+    #9 0x9532a7 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long) (/root/build_cve_2017_9992/tools/target_dec_dfa_fuzzer+0x9532a7)
+    #10 0x958212 in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned long)) (/root/build_cve_2017_9992/tools/target_dec_dfa_fuzzer+0x958212)
+    #11 0x952fcb in main (/root/build_cve_2017_9992/tools/target_dec_dfa_fuzzer+0x952fcb)
     #12 0x7f1b5470683f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2083f)
-    #13 0x41f118 in _start (/root/build_EF29/tools/target_dec_dfa_fuzzer+0x41f118)
+    #13 0x41f118 in _start (/root/build_cve_2017_9992/tools/target_dec_dfa_fuzzer+0x41f118)
 
 0x60e000000280 is located 0 bytes to the right of 128-byte region [0x60e000000200,0x60e000000280)
 allocated by thread T0 here:
-    #0 0x4cbda9 in posix_memalign (/root/build_EF29/tools/target_dec_dfa_fuzzer+0x4cbda9)
-    #1 0x8d391a in av_malloc /root/build_EF29/src/libavutil/mem.c:87:9
-    #2 0x8d42cb in av_mallocz /root/build_EF29/src/libavutil/mem.c:224:17
-    #3 0x53dd29 in dfa_decode_init /root/build_EF29/src/libavcodec/dfa.c:49:20
-    #4 0x579c8f in avcodec_open2 /root/build_EF29/src/libavcodec/utils.c:1020:15
-    #5 0x500370 in LLVMFuzzerTestOneInput /root/build_EF29/src/tools/target_dec_fuzzer.c:182:15
-    #6 0x963423 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) (/root/build_EF29/tools/target_dec_dfa_fuzzer+0x963423)
+    #0 0x4cbda9 in posix_memalign (/root/build_cve_2017_9992/tools/target_dec_dfa_fuzzer+0x4cbda9)
+    #1 0x8d391a in av_malloc /root/build_cve_2017_9992/src/libavutil/mem.c:87:9
+    #2 0x8d42cb in av_mallocz /root/build_cve_2017_9992/src/libavutil/mem.c:224:17
+    #3 0x53dd29 in dfa_decode_init /root/build_cve_2017_9992/src/libavcodec/dfa.c:49:20
+    #4 0x579c8f in avcodec_open2 /root/build_cve_2017_9992/src/libavcodec/utils.c:1020:15
+    #5 0x500370 in LLVMFuzzerTestOneInput /root/build_cve_2017_9992/src/tools/target_dec_fuzzer.c:182:15
+    #6 0x963423 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) (/root/build_cve_2017_9992/tools/target_dec_dfa_fuzzer+0x963423)
 
-SUMMARY: AddressSanitizer: heap-buffer-overflow /root/build_EF29/src/libavcodec/dfa.c:184:45 in decode_dds1
+SUMMARY: AddressSanitizer: heap-buffer-overflow /root/build_cve_2017_9992/src/libavcodec/dfa.c:184:45 in decode_dds1
 Shadow bytes around the buggy address:
   0x0c1c7fff8000: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
   0x0c1c7fff8010: 00 00 00 00 00 00 00 00 00 00 00 fa fa fa fa fa

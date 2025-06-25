@@ -14,3 +14,5 @@ result/
 openai_api.key
 docker-image-build.log
 *-bak
+
+!ExtractFix_dataset/docker/potrace/source.zip

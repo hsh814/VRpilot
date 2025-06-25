@@ -1,7 +1,7 @@
 INFO: Seed: 2669284644
 INFO: Loaded 1 modules   (89406 guards): 89406 [0xdac178, 0xe03670), 
 tools/target_dec_dfa_fuzzer: Running 1 inputs 1 time(s) each.
-Running: /dataset/testcases/EF29/clusterfuzz-testcase-minimized-ffmpeg_AV_CODEC_ID_DFA_fuzzer-6062963045695488
+Running: /dataset/testcases/cve_2017_9992/clusterfuzz-testcase-minimized-ffmpeg_AV_CODEC_ID_DFA_fuzzer-6062963045695488
 =================================================================
 ==23543==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60e000000280 at pc 0x00000054dd76 bp 0x7ffdf1bd3830 sp 0x7ffdf1bd3828
 WRITE of size 1 at 0x60e000000280 thread T0

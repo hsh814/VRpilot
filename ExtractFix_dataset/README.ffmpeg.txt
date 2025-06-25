@@ -1,4 +1,4 @@
-Bugs: EF29, EF30
+Bugs: cve_2017_9992, bugzilla_1404
 
 Build:
 
@@ -8,10 +8,10 @@ mkdir build; cd build
 make -j $(nproc)
 mkdir tools
 
-EF29:
+cve_2017_9992:
 make tools/target_dec_dfa_fuzzer
 
-EF30:
+bugzilla_1404:
 make tools/target_dec_cavs_fuzzer
 
 Test:
@@ -28,11 +28,11 @@ make -j $(nproc) fate SAMPLES=/root/fate-suite
 
 How well each patch matches our repair system:
 
-========== EF29 ========== 
+========== cve_2017_9992 ========== 
  *  libavcodec/dfa.c: 1 lines added, 1 lines removed, spans 0 lines
 SUMMARY: AddressSanitizer: heap-buffer-overflow /root/src/libavcodec/dfa.c:184:45 in decode_dds1
 ASAN report: 1/1 source files match, 1/1 hunks match
-========== EF30 ========== 
+========== bugzilla_1404 ========== 
  *  libavcodec/cavsdec.c: 4 lines added, 0 lines removed, spans 3 lines
 SUMMARY: runtime error: signed integer overflow: 25984 * 130560 cannot be represented in type 'int' in libavcodec/cavsdec.c:489
 UBSAN report: 1/1 source files match, 0/1 hunks match

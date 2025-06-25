@@ -1,0 +1,44 @@
+{
+    "configurations": [
+        {
+            "vul_id": "cve_2017_9992",
+            "project_name": "ffmpeg",
+            "fix_commit": "f52fbf4f3ed02a7d872d8a102006f29b4421f360",
+            "language": "c",
+            "vul_code_file_rel_path": "libavcodec/dfa.c",
+            "vul_code_block_start_line": 144,
+            "vul_code_block_end_line": 191,
+            "vul_description": "heap buffer overflow",
+            "asan_scenario_buginfo": {
+                "real_patchinfo": [
+                    {
+                        "filename": "dfa.c",
+                        "edit_lines": [
+                            178
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "vul_id": "bugzilla_1404",
+            "project_name": "ffmpeg",
+            "fix_commit": "279420b5a63b3f254e4932a4afb91759fb50186a",
+            "language": "c",
+            "vul_code_file_rel_path": "libavcodec/cavsdec.c",
+            "vul_code_block_start_line": 968,
+            "vul_code_block_end_line": 1114,
+            "vul_description": "integer overflow",
+            "asan_scenario_buginfo": {
+                "real_patchinfo": [
+                    {
+                        "filename": "cavsdec.c",
+                        "edit_lines": [
+                            1033
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}
