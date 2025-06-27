@@ -1,0 +1,8 @@
+9823a9824
+> 
+9836c9837,9839
+<     if ((tlen > 0) && (xmlStrncmp(ctxt->input->cur, ctxt->name, tlen) == 0)) {
+---
+>     int avail = ctxt->input->end - ctxt->input->cur;
+>     if ((tlen > 0) && (avail > tlen) &&
+>         (xmlStrncmp(ctxt->input->cur, ctxt->name, tlen) == 0)) {

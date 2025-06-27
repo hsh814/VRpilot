@@ -1,0 +1,16 @@
+950a951
+> 
+967a969,977
+>   /* Prevent stack buffer overflow */
+>   if (spp > MAX_SAMPLES)
+>     {
+>     TIFFError("readSeparateTilesIntoBuffer",
+>               "Samples per pixel (%u) exceed supported maximum (%u)",
+>               spp, (unsigned)MAX_SAMPLES);
+>     return 0;
+>     }
+> 
+1050c1060
+<       	            }
+---
+>        	            }

@@ -1,0 +1,56 @@
+1575a1576
+> 
+1584,1585c1585,1586
+<         if( tif->tif_dir.td_bitspersample == 12 )
+<             return TIFFReInitJPEG_12( tif, COMPRESSION_JPEG, 1 );
+---
+> 	if( tif->tif_dir.td_bitspersample == 12 )
+> 		return TIFFReInitJPEG_12( tif, COMPRESSION_JPEG, 1 );
+1588c1589
+<         JPEGInitializeLibJPEG( tif, FALSE );
+---
+> 	JPEGInitializeLibJPEG( tif, FALSE );
+1628a1630,1642
+> 		/* Validate subsampling factors to avoid divide by zero */
+> 		if (sp->h_sampling <= 0) {
+> 			TIFFWarningExt(tif->tif_clientdata, module,
+> 			               "Horizontal YCbCrSubSampling value (%d) is invalid; using 1.",
+> 			               sp->h_sampling);
+> 			sp->h_sampling = 1;
+> 		}
+> 		if (sp->v_sampling <= 0) {
+> 			TIFFWarningExt(tif->tif_clientdata, module,
+> 			               "Vertical YCbCrSubSampling value (%d) is invalid; using 1.",
+> 			               sp->v_sampling);
+> 			sp->v_sampling = 1;
+> 		}
+1672c1686
+<         /* BITS_IN_JSAMPLE now permits 8 and 12 --- dgilbert */
+---
+> 	/* BITS_IN_JSAMPLE now permits 8 and 12 --- dgilbert */
+1684c1698
+<         sp->cinfo.c.bits_in_jsample = td->td_bitspersample;
+---
+> 	sp->cinfo.c.bits_in_jsample = td->td_bitspersample;
+1711,1720c1725,1734
+<                 if( sp->jpegtables == NULL
+<                     || memcmp(sp->jpegtables,"\0\0\0\0\0\0\0\0\0",8) == 0 )
+<                 {
+<                         if (!prepare_JPEGTables(tif))
+<                                 return (0);
+<                         /* Mark the field present */
+<                         /* Can't use TIFFSetField since BEENWRITING is already set! */
+<                         tif->tif_flags |= TIFF_DIRTYDIRECT;
+<                         TIFFSetFieldBit(tif, FIELD_JPEGTABLES);
+<                 }
+---
+> 		if( sp->jpegtables == NULL
+> 		    || memcmp(sp->jpegtables,"\0\0\0\0\0\0\0\0\0",8) == 0 )
+> 		{
+> 			if (!prepare_JPEGTables(tif))
+> 				return (0);
+> 			/* Mark the field present */
+> 			/* Can't use TIFFSetField since BEENWRITING is already set! */
+> 			tif->tif_flags |= TIFF_DIRTYDIRECT;
+> 			TIFFSetFieldBit(tif, FIELD_JPEGTABLES);
+> 		}

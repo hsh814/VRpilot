@@ -1,0 +1,33 @@
+143a144
+> 
+164c165
+<             if (frame - frame_start < offset || frame_end - frame < count*2 + width)
+---
+>             if (frame - frame_start < offset || frame_end - frame < count * 2 + width)
+167,169c168,169
+<                 frame[0] = frame[1] =
+<                 frame[width] = frame[width + 1] = frame[-offset];
+< 
+---
+>                 frame[0]          = frame[1] =
+>                 frame[width]      = frame[width + 1] = frame[-offset];
+173c173
+<             v = bytestream2_get_le16(gb)*2;
+---
+>             v = bytestream2_get_le16(gb) * 2;
+178c178
+<             if (frame_end - frame < width + 3)
+---
+>             if (frame_end - frame <= width + 3)
+180,181c180,181
+<             frame[0] = frame[1] =
+<             frame[width] = frame[width + 1] =  bytestream2_get_byte(gb);
+---
+>             frame[0]          = frame[1] =
+>             frame[width]      = frame[width + 1] = bytestream2_get_byte(gb);
+183,184c183,184
+<             frame[0] = frame[1] =
+<             frame[width] = frame[width + 1] =  bytestream2_get_byte(gb);
+---
+>             frame[0]          = frame[1] =
+>             frame[width]      = frame[width + 1] = bytestream2_get_byte(gb);

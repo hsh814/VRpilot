@@ -1,0 +1,12 @@
+1187a1188
+> 
+1234c1235,1241
+< 	dec->numtiles = dec->numhtiles * dec->numvtiles;
+---
+> 	{
+> 		size_t tmp_numtiles = (size_t)dec->numhtiles * (size_t)dec->numvtiles;
+> 		if (tmp_numtiles > INT_MAX) {
+> 			return -1;
+> 		}
+> 		dec->numtiles = (int)tmp_numtiles;
+> 	}

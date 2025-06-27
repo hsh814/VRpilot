@@ -1,0 +1,21 @@
+972a973
+> 
+985c986
+<   if (initial_read != SIZE_MAX || start < initial_read)
+---
+>   if (initial_read != SIZE_MAX && start < (off_t) initial_read)
+987,988c988,991
+<       memmove (buf, buf + start, initial_read - start);
+<       initial_read -= start;
+---
+>       size_t move_len = initial_read - (size_t) start;
+>       if (move_len)
+>         memmove (buf, buf + start, move_len);
+>       initial_read = move_len;
+992c995,998
+<       if (lseek (STDIN_FILENO, start, SEEK_CUR) < 0)
+---
+>       off_t skip = start;
+>       if (initial_read != SIZE_MAX)
+>         skip -= (off_t) initial_read;
+>       if (skip > 0 && lseek (STDIN_FILENO, skip, SEEK_CUR) < 0)

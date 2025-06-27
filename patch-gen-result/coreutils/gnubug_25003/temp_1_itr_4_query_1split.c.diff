@@ -1,0 +1,13 @@
+972a973
+> 
+985c986
+<   if (initial_read != SIZE_MAX || start < initial_read)
+---
+>   if (initial_read != SIZE_MAX && start < (off_t) initial_read)
+987,988c988,990
+<       memmove (buf, buf + start, initial_read - start);
+<       initial_read -= start;
+---
+>       size_t bytes_to_move = initial_read - (size_t) start;
+>       memmove (buf, buf + start, bytes_to_move);
+>       initial_read = bytes_to_move;

@@ -1,0 +1,28 @@
+131a132
+> 
+161,165c162,178
+< 	rawsize = 0;
+< 	for (cmptno = 0, cmptparm = cmptparms; cmptno < numcmpts; ++cmptno,
+< 	  ++cmptparm) {
+< 		rawsize += cmptparm->width * cmptparm->height *
+< 		  (cmptparm->prec + 7) / 8;
+---
+> 	{
+> 		uint_fast64_t rawsize64 = 0;
+> 		uint_fast64_t cmptsize;
+> 		for (cmptno = 0, cmptparm = cmptparms; cmptno < numcmpts; ++cmptno,
+> 		  ++cmptparm) {
+> 			cmptsize = (uint_fast64_t)cmptparm->width;
+> 			cmptsize *= (uint_fast64_t)cmptparm->height;
+> 			cmptsize *= (uint_fast64_t)(cmptparm->prec + 7);
+> 			cmptsize /= 8;
+> 			if (cmptsize > 0xFFFFFFFFU ||
+> 			    rawsize64 > 0xFFFFFFFFU - cmptsize) {
+> 				jas_image_destroy(image);
+> 				return 0;
+> 			}
+> 			rawsize64 += cmptsize;
+> 		}
+> 		rawsize = (uint_fast32_t)rawsize64;
+166a180
+> 

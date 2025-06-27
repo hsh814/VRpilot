@@ -1,0 +1,20 @@
+2432a2433
+> 
+2440a2442
+> 	tsize_t bufsize;
+2443c2445,2453
+< 	tf_buf = (unsigned char *) _TIFFmalloc(tf_bytesperrow);
+---
+> 
+> 	/* Allocate enough space for safe look-ahead */
+> 	if (tf_bytesperrow > (tsize_t)~(tsize_t)0 - samplesperpixel) {
+> 		TIFFError(filename, "Scanline buffer size overflow");
+> 		return;
+> 	}
+> 	bufsize = tf_bytesperrow + samplesperpixel;
+> 
+> 	tf_buf = (unsigned char *) _TIFFmalloc(bufsize);
+2470c2480
+< 				adjust = 255 - cp[nc];
+---
+> 				adjust = 255 - cp[samplesperpixel - 1];

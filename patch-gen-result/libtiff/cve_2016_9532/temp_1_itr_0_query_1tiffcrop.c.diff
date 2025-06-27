@@ -1,0 +1,8 @@
+1147a1148
+> 
+1168c1169,1171
+<   rowstripsize = rowsperstrip * bytes_per_sample * (width + 1); 
+---
+>   rowstripsize = TIFFVStripSize(out, rowsperstrip);
+>   if (rowstripsize == 0)
+>     return 1;

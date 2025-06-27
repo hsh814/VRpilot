@@ -1,0 +1,25 @@
+447a448
+> 
+455c456
+< 	return(NULL);
+---
+>         return(NULL);
+460c461,476
+<     ret = (xmlChar *) xmlRealloc(cur, (size + len + 1) * sizeof(xmlChar));
+---
+> 
+>     /* overflow-safe size calculation */
+>     {
+>         size_t cur_sz = (size_t)size;
+>         size_t add_sz = (size_t)len;
+>         size_t total;
+> 
+>         if (add_sz > ((size_t)-1) - cur_sz - 1) {
+>             xmlErrMemory(NULL, NULL);
+>             return(cur);
+>         }
+> 
+>         total = cur_sz + add_sz + 1;
+>         ret = (xmlChar *)xmlRealloc(cur, total * sizeof(xmlChar));
+>     }
+> 

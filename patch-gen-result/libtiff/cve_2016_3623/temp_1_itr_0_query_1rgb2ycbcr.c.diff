@@ -1,0 +1,8 @@
+69a70
+> 
+97a99,100
+> 			if (horizSubSampling == 0)
+> 				horizSubSampling = 1;
+100a104,105
+> 			if (vertSubSampling == 0)
+> 				vertSubSampling = 1;

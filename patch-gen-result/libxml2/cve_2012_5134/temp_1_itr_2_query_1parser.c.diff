@@ -1,0 +1,9 @@
+3892a3893
+> 
+4078,4079c4079,4081
+<     if ((in_space) && (normalize)) {
+<         while (buf[len - 1] == 0x20) len--;
+---
+>     if ((in_space) && (normalize) && (len > 0)) {
+>         while ((len > 0) && (buf[len - 1] == 0x20))
+>             len--;

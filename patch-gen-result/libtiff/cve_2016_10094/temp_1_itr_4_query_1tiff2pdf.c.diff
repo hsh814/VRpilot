@@ -1,0 +1,93 @@
+2760a2761
+> 
+2887c2888,2901
+< 			buffer= (unsigned char*) _TIFFmalloc(t2p->tiff_datasize);
+---
+> 			tsize_t alloc_size = 0;
+> 			tsize_t needed_after_tables = 0;
+> 
+> 			if (TIFFGetField(input, TIFFTAG_JPEGTABLES, &count, &jpt) == 0) {
+> 				count = 0;
+> 				jpt = NULL;
+> 			}
+> 
+> 			if (count >= 4)
+> 				alloc_size = (tsize_t) t2p->tiff_datasize + (tsize_t)(count - 2) + 2;
+> 			else
+> 				alloc_size = (tsize_t) t2p->tiff_datasize + 2;
+> 
+> 			buffer= (unsigned char*) _TIFFmalloc(alloc_size);
+2892c2906
+<                                           (TIFF_SIZE_T) t2p->tiff_datasize, 
+---
+>                                           (TIFF_SIZE_T) alloc_size, 
+2897,2908c2911,2941
+< 			if(TIFFGetField(input, TIFFTAG_JPEGTABLES, &count, &jpt) != 0) {
+< 				if (count >= 4) {
+<                                         int retTIFFReadRawTile;
+<                     /* Ignore EOI marker of JpegTables */
+< 					_TIFFmemcpy(buffer, jpt, count - 2);
+< 					bufferoffset += count - 2;
+<                     /* Store last 2 bytes of the JpegTables */
+< 					table_end[0] = buffer[bufferoffset-2];
+< 					table_end[1] = buffer[bufferoffset-1];
+< 					xuint32 = bufferoffset;
+<                                         bufferoffset -= 2;
+<                                         retTIFFReadRawTile= TIFFReadRawTile(
+---
+> 
+> 			bufferoffset = 0;
+> 
+> 			if ((count >= 4) && jpt != NULL) {
+> 				_TIFFmemcpy(buffer, jpt, count - 2);
+> 				bufferoffset += count - 2;
+> 
+> 				table_end[0] = buffer[bufferoffset-2];
+> 				table_end[1] = buffer[bufferoffset-1];
+> 				xuint32 = bufferoffset;
+> 				bufferoffset -= 2;
+> 
+> 				needed_after_tables = bufferoffset + t2p->tiff_datasize + 2;
+> 				if (needed_after_tables > alloc_size) {
+> 					unsigned char* tmp_buf = (unsigned char*) _TIFFrealloc(buffer, needed_after_tables);
+> 					if (tmp_buf == NULL) {
+> 						_TIFFfree(buffer);
+> 						TIFFError(TIFF2PDF_MODULE, 
+> 							"Can't allocate " TIFF_SIZE_FORMAT " bytes of memory "
+> 							"for t2p_readwrite_pdf_image_tile, %s", 
+> 							(TIFF_SIZE_T) needed_after_tables, 
+> 							TIFFFileName(input));
+> 						t2p->t2p_error = T2P_ERR_ERROR;
+> 						return(0);
+> 					}
+> 					buffer = tmp_buf;
+> 					alloc_size = needed_after_tables;
+> 				}
+> 
+> 				{
+> 					int retTIFFReadRawTile = TIFFReadRawTile(
+2913,2918c2946,2951
+<                                         if( retTIFFReadRawTile < 0 )
+<                                         {
+<                                             _TIFFfree(buffer);
+<                                             t2p->t2p_error = T2P_ERR_ERROR;
+<                                             return(0);
+<                                         }
+---
+> 					if( retTIFFReadRawTile < 0 )
+> 					{
+> 						_TIFFfree(buffer);
+> 						t2p->t2p_error = T2P_ERR_ERROR;
+> 						return(0);
+> 					}
+2920,2923d2952
+<                     /* Overwrite SOI marker of image scan with previously */
+<                     /* saved end of JpegTables */
+< 					buffer[xuint32-2]=table_end[0];
+< 					buffer[xuint32-1]=table_end[1];
+2924a2954,2956
+> 
+> 				buffer[xuint32-2]=table_end[0];
+> 				buffer[xuint32-1]=table_end[1];
+2925a2958
+> 

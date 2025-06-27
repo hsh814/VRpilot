@@ -1,0 +1,16 @@
+1575a1576
+> 
+1646c1647,1651
+< 				long top = 1L << td->td_bitspersample;
+---
+> 				unsigned long top;
+> 				if (td->td_bitspersample >= (int)(sizeof(unsigned long) * 8))
+> 					top = ~0UL;
+> 				else
+> 					top = 1UL << td->td_bitspersample;
+1648,1649c1653,1654
+< 				refbw[1] = (float)(top-1L);
+< 				refbw[2] = (float)(top>>1);
+---
+> 				refbw[1] = (float)(top - 1UL);
+> 				refbw[2] = (float)(top >> 1);

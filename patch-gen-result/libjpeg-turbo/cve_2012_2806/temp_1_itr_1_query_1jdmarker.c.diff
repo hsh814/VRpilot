@@ -1,0 +1,46 @@
+300a301
+> 
+306c307
+<   int i, ci, n, c, cc;
+---
+>   int i, ci, ci2, n, c, cc;
+326c327
+<   for (i = 0; i < cinfo->num_components; i++)
+---
+>   for (i = 0; i < MAX_COMPS_IN_SCAN; i++)
+332c333
+<     
+---
+> 
+334,336c335,337
+< 	 ci++, compptr++) {
+<       if (cc == compptr->component_id && !cinfo->cur_comp_info[ci])
+< 	goto id_found;
+---
+>          ci++, compptr++) {
+>       if (cc == compptr->component_id)
+>         break;
+339c340,341
+<     ERREXIT1(cinfo, JERR_BAD_COMPONENT_ID, cc);
+---
+>     if (ci >= cinfo->num_components)
+>       ERREXIT1(cinfo, JERR_BAD_COMPONENT_ID, cc);
+341c343,346
+<   id_found:
+---
+>     for (ci2 = 0; ci2 < i; ci2++) {
+>       if (cinfo->cur_comp_info[ci2] == compptr)
+>         ERREXIT1(cinfo, JERR_BAD_COMPONENT_ID, cc);
+>     }
+346c351
+<     
+---
+> 
+348c353
+< 	     compptr->dc_tbl_no, compptr->ac_tbl_no);
+---
+>              compptr->dc_tbl_no, compptr->ac_tbl_no);
+361c366
+< 	   cinfo->Ah, cinfo->Al);
+---
+>            cinfo->Ah, cinfo->Al);

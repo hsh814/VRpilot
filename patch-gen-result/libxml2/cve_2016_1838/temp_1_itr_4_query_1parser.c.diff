@@ -1,0 +1,85 @@
+9823a9824
+> 
+9831,9832c9832,9833
+< 	xmlFatalErr(ctxt, XML_ERR_LTSLASH_REQUIRED, NULL);
+< 	return;
+---
+>         xmlFatalErr(ctxt, XML_ERR_LTSLASH_REQUIRED, NULL);
+>         return;
+9835a9837,9847
+>     if (tlen > 0) {
+>         size_t avail = (size_t)(ctxt->input->end - ctxt->input->cur);
+>         if (avail < (size_t)tlen + 1) {
+>             GROW;
+>             avail = (size_t)(ctxt->input->end - ctxt->input->cur);
+>             if (avail < (size_t)tlen + 1) {
+>                 tlen = 0;
+>             }
+>         }
+>     }
+> 
+9838,9844c9850,9856
+< 	    ctxt->input->cur += tlen + 1;
+< 	    ctxt->input->col += tlen + 1;
+< 	    goto done;
+< 	}
+< 	ctxt->input->cur += tlen;
+< 	ctxt->input->col += tlen;
+< 	name = (xmlChar*)1;
+---
+>             ctxt->input->cur += tlen + 1;
+>             ctxt->input->col += tlen + 1;
+>             goto done;
+>         }
+>         ctxt->input->cur += tlen;
+>         ctxt->input->col += tlen;
+>         name = (xmlChar*)1;
+9846,9849c9858,9861
+< 	if (prefix == NULL)
+< 	    name = xmlParseNameAndCompare(ctxt, ctxt->name);
+< 	else
+< 	    name = xmlParseQNameAndCompare(ctxt, ctxt->name, prefix);
+---
+>         if (prefix == NULL)
+>             name = xmlParseNameAndCompare(ctxt, ctxt->name);
+>         else
+>             name = xmlParseQNameAndCompare(ctxt, ctxt->name, prefix);
+9852,9854d9863
+<     /*
+<      * We should definitely be at the ending "S? '>'" part
+<      */
+9860c9869
+< 	xmlFatalErr(ctxt, XML_ERR_GT_REQUIRED, NULL);
+---
+>         xmlFatalErr(ctxt, XML_ERR_GT_REQUIRED, NULL);
+9862c9871
+< 	NEXT1;
+---
+>         NEXT1;
+9864,9869d9872
+<     /*
+<      * [ WFC: Element Type Match ]
+<      * The Name in an element's end-tag must match the element type in the
+<      * start-tag.
+<      *
+<      */
+9875,9876c9878,9879
+< 		     "Opening and ending tag mismatch: %s line %d and %s\n",
+< 		                ctxt->name, line, name);
+---
+>                      "Opening and ending tag mismatch: %s line %d and %s\n",
+>                                     ctxt->name, line, name);
+9879,9881d9881
+<     /*
+<      * SAX: End of Tag
+<      */
+9884,9885c9884,9885
+< 	(!ctxt->disableSAX))
+< 	ctxt->sax->endElementNs(ctxt->userData, ctxt->name, prefix, URI);
+---
+>         (!ctxt->disableSAX))
+>         ctxt->sax->endElementNs(ctxt->userData, ctxt->name, prefix, URI);
+9889c9889
+< 	nsPop(ctxt, nsNr);
+---
+>         nsPop(ctxt, nsNr);

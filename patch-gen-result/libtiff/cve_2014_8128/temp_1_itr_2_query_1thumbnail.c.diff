@@ -1,0 +1,33 @@
+550a551
+> 
+562,574c563,578
+< 	const uint8* rows[256];
+< 	uint32 nrows = 1;
+< 	fprintf(stderr, "bpr=%d, sy=%d, bpr*sy=%d\n", bpr, sy, bpr*sy);
+< 	rows[0] = br + bpr*sy;
+< 	err += step;
+< 	while (err >= limit) {
+< 	    err -= limit;
+< 	    sy++;
+< 	    if (err >= limit)
+< 		rows[nrows++] = br + bpr*sy;
+< 	}
+< 	setrow(row, nrows, rows);
+< 	row += tnw;
+---
+>         const uint8* rows[256];
+>         uint32 nrows = 1;
+>         fprintf(stderr, "bpr=%d, sy=%d, bpr*sy=%d\n", bpr, sy, bpr*sy);
+>         rows[0] = br + bpr * sy;
+>         err += step;
+>         while (err >= limit) {
+>             err -= limit;
+>             sy++;
+>             if (err >= limit) {
+>                 if (nrows < 256) {
+>                     rows[nrows++] = br + bpr * sy;
+>                 }
+>             }
+>         }
+>         setrow(row, nrows, rows);
+>         row += tnw;

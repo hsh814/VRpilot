@@ -1,0 +1,14 @@
+972a973
+> 
+985c986,989
+<   if (initial_read != SIZE_MAX || start < initial_read)
+---
+>   /* Ensure that we copy from the buffer only when data is available and the
+>      requested offset lies within the already-read region.  This prevents a
+>      negative size from being passed to memmove.  */
+>   if (initial_read != SIZE_MAX && start < (off_t) initial_read)
+987c991,992
+<       memmove (buf, buf + start, initial_read - start);
+---
+>       size_t copy_size = initial_read - (size_t) start;
+>       memmove (buf, buf + start, copy_size);

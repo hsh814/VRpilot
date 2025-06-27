@@ -1,0 +1,22 @@
+434a435
+> 
+487a489,497
+> 
+>     /* sanity check for bitmap dimensions to avoid overflow */
+>     if (bmpinfo.w == 0 || bmpinfo.h == 0 ||
+>         bmpinfo.w > 16777216U || bmpinfo.h > 16777216U ||
+>         bmpinfo.w > ((unsigned int)-1) / bmpinfo.h) {
+>       bm_read_error = "bmp dimensions out of range";
+>       goto format_error;
+>     }
+> 
+497a508,516
+> 
+>     /* sanity check for bitmap dimensions to avoid overflow */
+>     if (bmpinfo.w == 0 || bmpinfo.h == 0 ||
+>         bmpinfo.w > 16777216U || bmpinfo.h > 16777216U ||
+>         bmpinfo.w > ((unsigned int)-1) / bmpinfo.h) {
+>       bm_read_error = "bmp dimensions out of range";
+>       goto format_error;
+>     }
+> 

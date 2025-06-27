@@ -1,0 +1,32 @@
+739a740
+> 
+774a776,796
+> 
+> 	/* -------------------------------------------------------------------- */
+> 	/* Check that nsamples fits into sp->tbuf and into a 32-bit uInt value. */
+> 	/* -------------------------------------------------------------------- */
+> 	if (nsamples > llen)
+> 	{
+> 		TIFFWarningExt(tif->tif_clientdata, module,
+> 		               "Requested %" TIFF_SSIZE_FORMAT " samples, but buffer "
+> 		               "only holds %u.  Truncating to prevent overflow.",
+> 		               (TIFF_SSIZE_T) nsamples, (unsigned int) llen);
+> 		nsamples = llen;
+> 	}
+> 
+> 	if (nsamples > (tmsize_t)(UINT_MAX / sizeof(uint16)))
+> 	{
+> 		TIFFErrorExt(tif->tif_clientdata, module,
+> 		             "ZLib cannot deal with buffers this size");
+> 		return 0;
+> 	}
+> 	/* -------------------------------------------------------------------- */
+> 
+781c803
+< 	if (sp->stream.avail_out != nsamples * sizeof(uint16))
+---
+> 	if ((tmsize_t)sp->stream.avail_out != nsamples * (tmsize_t)sizeof(uint16))
+824c846
+< 	if (nsamples % llen) { 
+---
+> 	if (nsamples % llen) {

@@ -1,0 +1,30 @@
+2432a2433
+> 
+2442a2444,2451
+> 
+> 	/* Validate scanline size and component count */
+> 	if (tf_bytesperrow <= 0 || tf_bytesperrow > ((tsize_t)1 << 30) ||
+> 	    nc <= 0 || nc > samplesperpixel) {
+> 		TIFFError(filename, "Invalid scanline parameters");
+> 		return;
+> 	}
+> 
+2447a2457
+> 
+2460d2469
+< 			int adjust;
+2462c2471
+< 			for (; cc < tf_bytesperrow; cc += samplesperpixel) {
+---
+> 			for (; cc + nc <= tf_bytesperrow; cc += samplesperpixel) {
+2470c2479,2482
+< 				adjust = 255 - cp[nc];
+---
+> 				int adjust = 0;
+> 				if ((samplesperpixel > nc) && ((cc + nc) < tf_bytesperrow)) {
+> 					adjust = 255 - cp[nc];
+> 				}
+2481c2493
+< 			for (; cc < tf_bytesperrow; cc += samplesperpixel) {
+---
+> 			for (; cc + nc <= tf_bytesperrow; cc += samplesperpixel) {

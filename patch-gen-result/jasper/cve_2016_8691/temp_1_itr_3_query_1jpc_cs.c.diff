@@ -1,0 +1,8 @@
+478a479
+> 
+511a513,517
+> 			jas_free(siz->comps);
+> 			return -1;
+> 		}
+> 		/* Ensure sampling factors are non-zero to avoid divide-by-zero later */
+> 		if (!siz->comps[i].hsamp || !siz->comps[i].vsamp) {

@@ -1,0 +1,70 @@
+1575a1576
+> 
+1584,1585c1585,1586
+<         if( tif->tif_dir.td_bitspersample == 12 )
+<             return TIFFReInitJPEG_12( tif, COMPRESSION_JPEG, 1 );
+---
+> 	if( tif->tif_dir.td_bitspersample == 12 )
+> 		return TIFFReInitJPEG_12( tif, COMPRESSION_JPEG, 1 );
+1588c1589
+<         JPEGInitializeLibJPEG( tif, FALSE );
+---
+> 	JPEGInitializeLibJPEG( tif, FALSE );
+1629,1634c1630,1635
+<                 if( sp->h_sampling == 0 || sp->v_sampling == 0 )
+<                 {
+<                     TIFFErrorExt(tif->tif_clientdata, module,
+<                             "Invalig horizontal/vertical sampling value");
+<                     return (0);
+<                 }
+---
+> 		if( sp->h_sampling == 0 || sp->v_sampling == 0 )
+> 		{
+> 			TIFFErrorExt(tif->tif_clientdata, module,
+> 					"Invalig horizontal/vertical sampling value");
+> 			return (0);
+> 		}
+1646c1647,1651
+< 				long top = 1L << td->td_bitspersample;
+---
+> 				unsigned long top;
+> 				if (td->td_bitspersample >= (int)(sizeof(unsigned long) * 8))
+> 					top = ~0UL;
+> 				else
+> 					top = 1UL << td->td_bitspersample;
+1648,1649c1653,1654
+< 				refbw[1] = (float)(top-1L);
+< 				refbw[2] = (float)(top>>1);
+---
+> 				refbw[1] = (float)(top - 1UL);
+> 				refbw[2] = (float)(top >> 1);
+1679c1684
+<         /* BITS_IN_JSAMPLE now permits 8 and 12 --- dgilbert */
+---
+> 	/* BITS_IN_JSAMPLE now permits 8 and 12 --- dgilbert */
+1691c1696
+<         sp->cinfo.c.bits_in_jsample = td->td_bitspersample;
+---
+> 	sp->cinfo.c.bits_in_jsample = td->td_bitspersample;
+1718,1727c1723,1732
+<                 if( sp->jpegtables == NULL
+<                     || memcmp(sp->jpegtables,"\0\0\0\0\0\0\0\0\0",8) == 0 )
+<                 {
+<                         if (!prepare_JPEGTables(tif))
+<                                 return (0);
+<                         /* Mark the field present */
+<                         /* Can't use TIFFSetField since BEENWRITING is already set! */
+<                         tif->tif_flags |= TIFF_DIRTYDIRECT;
+<                         TIFFSetFieldBit(tif, FIELD_JPEGTABLES);
+<                 }
+---
+> 		if( sp->jpegtables == NULL
+> 		    || memcmp(sp->jpegtables,"\0\0\0\0\0\0\0\0\0",8) == 0 )
+> 		{
+> 			if (!prepare_JPEGTables(tif))
+> 				return (0);
+> 			/* Mark the field present */
+> 			/* Can't use TIFFSetField since BEENWRITING is already set! */
+> 			tif->tif_flags |= TIFF_DIRTYDIRECT;
+> 			TIFFSetFieldBit(tif, FIELD_JPEGTABLES);
+> 		}

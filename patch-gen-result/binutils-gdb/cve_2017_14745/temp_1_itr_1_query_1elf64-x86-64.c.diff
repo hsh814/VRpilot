@@ -1,0 +1,14 @@
+6668a6669
+> 
+6720a6722,6728
+>   /* Ensure we have a positive number of relocations before sorting.  */
+>   if (dynrelcount <= 0)
+>     {
+>       free (dynrelbuf);
+>       return -1;
+>     }
+> 
+6722c6730
+<   qsort (dynrelbuf, dynrelcount, sizeof (arelent *), compare_relocs);
+---
+>   qsort (dynrelbuf, (size_t) dynrelcount, sizeof (arelent *), compare_relocs);

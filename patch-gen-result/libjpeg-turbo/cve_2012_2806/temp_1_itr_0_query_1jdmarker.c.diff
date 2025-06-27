@@ -1,0 +1,26 @@
+300a301
+> 
+326c327
+<   for (i = 0; i < cinfo->num_components; i++)
+---
+>   for (i = 0; i < MAX_COMPS_IN_SCAN; i++)
+334,336c335,341
+< 	 ci++, compptr++) {
+<       if (cc == compptr->component_id && !cinfo->cur_comp_info[ci])
+< 	goto id_found;
+---
+>          ci++, compptr++) {
+>       if (cc == compptr->component_id) {
+>         if (ci >= MAX_COMPS_IN_SCAN)
+>           ERREXIT1(cinfo, JERR_BAD_COMPONENT_ID, cc);
+>         if (!cinfo->cur_comp_info[ci])
+>           goto id_found;
+>       }
+348c353
+< 	     compptr->dc_tbl_no, compptr->ac_tbl_no);
+---
+>              compptr->dc_tbl_no, compptr->ac_tbl_no);
+361c366
+< 	   cinfo->Ah, cinfo->Al);
+---
+>            cinfo->Ah, cinfo->Al);

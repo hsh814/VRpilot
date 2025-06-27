@@ -1,0 +1,60 @@
+165a166
+> 
+170c171
+<         { errno=EINVAL; return 0; }
+---
+>         { errno = EINVAL; return 0; }
+180,188c181,189
+<     item->zz_comment = zzip_disk_entry_strdup_comment(disk, entry);
+<     item->zz_name = zzip_disk_entry_strdup_name(disk, entry);
+<     item->zz_data = zzip_file_header_to_data(header);
+<     item->zz_flags = zzip_disk_entry_get_flags(entry);
+<     item->zz_compr = zzip_disk_entry_get_compr(entry);
+<     item->zz_mktime = zzip_disk_entry_get_mktime(entry);
+<     item->zz_crc32 = zzip_disk_entry_get_crc32(entry);
+<     item->zz_csize = zzip_disk_entry_get_csize(entry);
+<     item->zz_usize = zzip_disk_entry_get_usize(entry);
+---
+>     item->zz_comment   = zzip_disk_entry_strdup_comment(disk, entry);
+>     item->zz_name      = zzip_disk_entry_strdup_name(disk, entry);
+>     item->zz_data      = zzip_file_header_to_data(header);
+>     item->zz_flags     = zzip_disk_entry_get_flags(entry);
+>     item->zz_compr     = zzip_disk_entry_get_compr(entry);
+>     item->zz_mktime    = zzip_disk_entry_get_mktime(entry);
+>     item->zz_crc32     = zzip_disk_entry_get_crc32(entry);
+>     item->zz_csize     = zzip_disk_entry_get_csize(entry);
+>     item->zz_usize     = zzip_disk_entry_get_usize(entry);
+190c191
+<     item->zz_filetype = zzip_disk_entry_get_filetype(entry);
+---
+>     item->zz_filetype  = zzip_disk_entry_get_filetype(entry);
+203,204c204,205
+<             ((char *) (mem))[ext1 + 0] = 0;
+<             ((char *) (mem))[ext1 + 1] = 0;
+---
+>             ((char *)(mem))[ext1 + 0] = 0;
+>             ((char *)(mem))[ext1 + 1] = 0;
+211,212c212,213
+<             ((char *) (mem))[ext2 + 0] = 0;
+<             ((char *) (mem))[ext2 + 1] = 0;
+---
+>             ((char *)(mem))[ext2 + 0] = 0;
+>             ((char *)(mem))[ext2 + 1] = 0;
+221,224c222,233
+<             item->zz_usize = ZZIP_GET64(block->z_usize);
+<             item->zz_csize = ZZIP_GET64(block->z_csize);
+<             item->zz_offset = ZZIP_GET64(block->z_offset);
+<             item->zz_diskstart = ZZIP_GET32(block->z_diskstart);
+---
+>             unsigned char *p = (unsigned char *) block;
+>             unsigned short datalen = ZZIP_GET16(p + 2); /* payload size */
+>             unsigned char *payload = p + 4;
+> 
+>             if (datalen >= 8)
+>                 item->zz_usize     = ZZIP_GET64(payload);
+>             if (datalen >= 16)
+>                 item->zz_csize     = ZZIP_GET64(payload + 8);
+>             if (datalen >= 24)
+>                 item->zz_offset    = ZZIP_GET64(payload + 16);
+>             if (datalen >= 28)
+>                 item->zz_diskstart = ZZIP_GET32(payload + 24);

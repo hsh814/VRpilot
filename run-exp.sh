@@ -12,6 +12,7 @@ projects=(
   "libtiff"
   "libxml2"
   "zziplib"
+  "ffmpeg"
 )
 
 mkdir -p tmp/log

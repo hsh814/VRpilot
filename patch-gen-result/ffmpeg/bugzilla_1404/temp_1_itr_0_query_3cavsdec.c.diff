@@ -1,0 +1,12 @@
+967a968
+> 
+1033c1034,1040
+<         h->sym_factor = h->dist[0] * h->scale_den[1];
+---
+>         int64_t tmp = (int64_t)h->dist[0] * h->scale_den[1];
+>         /* clamp to avoid potential overflows in later calculations */
+>         if (tmp > 16000)
+>             tmp = 16000;
+>         else if (tmp < -16000)
+>             tmp = -16000;
+>         h->sym_factor = (int)tmp;

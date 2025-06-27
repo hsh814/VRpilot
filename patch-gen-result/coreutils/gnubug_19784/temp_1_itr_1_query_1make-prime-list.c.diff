@@ -1,0 +1,11 @@
+170a171
+> 
+214,215c215,219
+<       while (i < size && sieve[++i] == 0)
+<         ;
+---
+>       do
+>         {
+>           ++i;
+>         }
+>       while (i < size && sieve[i] == 0);

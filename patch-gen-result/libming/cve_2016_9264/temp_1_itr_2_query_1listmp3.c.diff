@@ -1,0 +1,158 @@
+64a65
+> 
+69c70
+<   int bitrate=0, bitrate_idx, samplerate=0, samplerate_idx;
+---
+>   int bitrate = 0, bitrate_idx, samplerate = 0, samplerate_idx;
+74c75
+<   for(;;)
+---
+>   for (;;)
+77c78
+<     if((flags = fgetc(f)) == EOF)
+---
+>     if ((flags = fgetc(f)) == EOF)
+81c82
+<     if(flags == 'I' && fgetc(f) == 'D' && fgetc(f) == '3')
+---
+>     if (flags == 'I' && fgetc(f) == 'D' && fgetc(f) == '3')
+85,87c86,87
+< 	flags = fgetc(f);
+<       }
+<       while(flags != 0xFF && flags != EOF);
+---
+>         flags = fgetc(f);
+>       } while (flags != 0xFF && flags != EOF);
+90c90
+<     if(flags == EOF)
+---
+>     if (flags == EOF)
+98c98
+<     if((flags & MP3_FRAME_SYNC) != MP3_FRAME_SYNC)
+---
+>     if ((flags & MP3_FRAME_SYNC) != MP3_FRAME_SYNC)
+106a107,113
+>     /* Bounds check to prevent buffer overflow */
+>     if (bitrate_idx >= 15 || samplerate_idx >= 3)
+>     {
+>       error("Corrupted MP3 header (index out of range)!");
+>       break;
+>     }
+> 
+109c116,130
+<     switch(flags & MP3_VERSION)
+---
+>     switch (flags & MP3_VERSION)
+>     {
+>       case MP3_VERSION_1:
+>         version = 1;
+>         break;
+>       case MP3_VERSION_2:
+>         version = 2;
+>         break;
+>       case MP3_VERSION_25:
+>         version = 25;
+>         break;
+>       default:
+>         error("unknown MP3 version!");
+>     }
+>     switch (flags & MP3_LAYER)
+111,121c132,142
+<       case MP3_VERSION_1:  version = 1; break;
+<       case MP3_VERSION_2:  version = 2; break;
+<       case MP3_VERSION_25: version = 25; break;
+<       default: error("unknown MP3 version!");
+<     }
+<     switch(flags & MP3_LAYER)
+<     {
+<       case MP3_LAYER_1: layer = 1; break;
+<       case MP3_LAYER_2: layer = 2; break;
+<       case MP3_LAYER_3: layer = 3; break;
+<       default: error("unknown MP3 layer!");
+---
+>       case MP3_LAYER_1:
+>         layer = 1;
+>         break;
+>       case MP3_LAYER_2:
+>         layer = 2;
+>         break;
+>       case MP3_LAYER_3:
+>         layer = 3;
+>         break;
+>       default:
+>         error("unknown MP3 layer!");
+126c147
+<     if(version == 1)
+---
+>     if (version == 1)
+130,131c151,152
+<       if(layer == 1)
+< 	bitrate = mp1l1_bitrate_table[bitrate_idx];
+---
+>       if (layer == 1)
+>         bitrate = mp1l1_bitrate_table[bitrate_idx];
+133,134c154,155
+<       else if(layer == 2)
+< 	bitrate = mp1l2_bitrate_table[bitrate_idx];
+---
+>       else if (layer == 2)
+>         bitrate = mp1l2_bitrate_table[bitrate_idx];
+136,137c157,158
+<       else if(layer == 3)
+< 	bitrate = mp1l3_bitrate_table[bitrate_idx];
+---
+>       else if (layer == 3)
+>         bitrate = mp1l3_bitrate_table[bitrate_idx];
+141,142c162,163
+<       if(version == 2)
+< 	samplerate = mp2_samplerate_table[samplerate_idx];
+---
+>       if (version == 2)
+>         samplerate = mp2_samplerate_table[samplerate_idx];
+144c165
+< 	samplerate = mp25_samplerate_table[samplerate_idx];
+---
+>         samplerate = mp25_samplerate_table[samplerate_idx];
+146,147c167,168
+<       if(layer == 1)
+< 	bitrate = mp2l1_bitrate_table[bitrate_idx];
+---
+>       if (layer == 1)
+>         bitrate = mp2l1_bitrate_table[bitrate_idx];
+149c170
+< 	bitrate = mp2l23_bitrate_table[bitrate_idx];
+---
+>         bitrate = mp2l23_bitrate_table[bitrate_idx];
+154c175
+<     if(layer == 1)
+---
+>     if (layer == 1)
+157c178
+<     if(version == 1)
+---
+>     if (version == 1)
+163,165c184,186
+< 	   numFrames, version, layer, samplerate, bitrate,
+< 	   (channels==2) ? "stereo" : "mono", frameLen,
+< 	   (flags&MP3_PROTECT) ? "on" : "off");
+---
+>            numFrames, version, layer, samplerate, bitrate,
+>            (channels == 2) ? "stereo" : "mono", frameLen,
+>            (flags & MP3_PROTECT) ? "on" : "off");
+167c188
+<     skipBytes(f, frameLen-4);
+---
+>     skipBytes(f, frameLen - 4);
+172c193,196
+<   length = numFrames*(samplerate > 3200 ? 1152 : 576)/samplerate;
+---
+>   if (numFrames == 0 || samplerate == 0)
+>     return;
+> 
+>   length = numFrames * (samplerate > 3200 ? 1152 : 576) / samplerate;
+175,176c199,200
+<   printf("Average bitrate: %i\n", bitrateSum/numFrames);
+<   printf("Length: %i:%02i\n", length/60, length%60);
+---
+>   printf("Average bitrate: %i\n", bitrateSum / numFrames);
+>   printf("Length: %i:%02i\n", length / 60, length % 60);

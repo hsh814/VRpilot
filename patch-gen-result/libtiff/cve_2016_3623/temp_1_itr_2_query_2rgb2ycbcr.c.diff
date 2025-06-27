@@ -1,0 +1,30 @@
+69a70
+> 
+97c98,108
+< 			horizSubSampling = atoi(optarg);
+---
+> 		{
+> 			int tmp = atoi(optarg);
+> 			if (tmp <= 0) {
+> 				fprintf(stderr,
+> 				        "Invalid horizontal sub-sampling value \"%s\" "
+> 				        "(must be a positive, non-zero integer)\n",
+> 				        optarg);
+> 				usage(-1);
+> 			}
+> 			horizSubSampling = tmp;
+> 		}
+100c111,121
+< 			vertSubSampling = atoi(optarg);
+---
+> 		{
+> 			int tmp = atoi(optarg);
+> 			if (tmp <= 0) {
+> 				fprintf(stderr,
+> 				        "Invalid vertical sub-sampling value \"%s\" "
+> 				        "(must be a positive, non-zero integer)\n",
+> 				        optarg);
+> 				usage(-1);
+> 			}
+> 			vertSubSampling = tmp;
+> 		}

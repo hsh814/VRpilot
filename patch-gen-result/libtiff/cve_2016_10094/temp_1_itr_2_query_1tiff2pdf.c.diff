@@ -1,0 +1,102 @@
+2760a2761
+> 
+2887c2888,2907
+< 			buffer= (unsigned char*) _TIFFmalloc(t2p->tiff_datasize);
+---
+> 			tsize_t buffer_size = 0;
+> 			int retTIFFReadRawTile = 0;
+> 
+> 			/* Retrieve JPEG tables length */
+> 			(void)TIFFGetField(input, TIFFTAG_JPEGTABLES, &count, &jpt);
+> 
+> 			/* Calculate required buffer size (+2 for final EOI) */
+> 			buffer_size = t2p->tiff_datasize + (tsize_t)count + 2;
+> 
+> 			/* Overflow guard */
+> 			if (buffer_size < t2p->tiff_datasize || buffer_size < (tsize_t)count){
+> 				TIFFError(TIFF2PDF_MODULE,
+> 				          "Integer overflow while computing buffer size "
+> 				          "for t2p_readwrite_pdf_image_tile, %s",
+> 				          TIFFFileName(input));
+> 				t2p->t2p_error = T2P_ERR_ERROR;
+> 				return(0);
+> 			}
+> 
+> 			buffer = (unsigned char*) _TIFFmalloc(buffer_size);
+2892c2912
+<                                           (TIFF_SIZE_T) t2p->tiff_datasize, 
+---
+>                                           (TIFF_SIZE_T) buffer_size, 
+2897,2908c2917,2950
+< 			if(TIFFGetField(input, TIFFTAG_JPEGTABLES, &count, &jpt) != 0) {
+< 				if (count >= 4) {
+<                                         int retTIFFReadRawTile;
+<                     /* Ignore EOI marker of JpegTables */
+< 					_TIFFmemcpy(buffer, jpt, count - 2);
+< 					bufferoffset += count - 2;
+<                     /* Store last 2 bytes of the JpegTables */
+< 					table_end[0] = buffer[bufferoffset-2];
+< 					table_end[1] = buffer[bufferoffset-1];
+< 					xuint32 = bufferoffset;
+<                                         bufferoffset -= 2;
+<                                         retTIFFReadRawTile= TIFFReadRawTile(
+---
+> 
+> 			bufferoffset = 0;
+> 
+> 			if(count >= 4){
+> 				/* Copy JPEG tables minus trailing EOI */
+> 				_TIFFmemcpy(buffer, jpt, count - 2);
+> 				bufferoffset += count - 2;
+> 
+> 				/* Save last 2 bytes of tables */
+> 				table_end[0] = buffer[bufferoffset - 2];
+> 				table_end[1] = buffer[bufferoffset - 1];
+> 
+> 				xuint32 = bufferoffset;
+> 				bufferoffset -= 2; /* step back to overwrite SOI */
+> 
+> 				retTIFFReadRawTile = TIFFReadRawTile(
+> 						input, 
+> 						tile, 
+> 						(tdata_t)&buffer[bufferoffset], 
+> 						-1);
+> 				if(retTIFFReadRawTile < 0 || 
+> 				   (tsize_t)retTIFFReadRawTile > (buffer_size - bufferoffset)){
+> 					_TIFFfree(buffer);
+> 					t2p->t2p_error = T2P_ERR_ERROR;
+> 					return(0);
+> 				}
+> 				bufferoffset += retTIFFReadRawTile;
+> 
+> 				/* Restore saved bytes */
+> 				buffer[xuint32 - 2] = table_end[0];
+> 				buffer[xuint32 - 1] = table_end[1];
+> 			} else {
+> 				/* No useful tables, read tile directly */
+> 				retTIFFReadRawTile = TIFFReadRawTile(
+2911c2953
+< 						(tdata_t) &(((unsigned char*)buffer)[bufferoffset]), 
+---
+> 						(tdata_t)buffer, 
+2913,2923c2955,2958
+<                                         if( retTIFFReadRawTile < 0 )
+<                                         {
+<                                             _TIFFfree(buffer);
+<                                             t2p->t2p_error = T2P_ERR_ERROR;
+<                                             return(0);
+<                                         }
+< 					bufferoffset += retTIFFReadRawTile;
+<                     /* Overwrite SOI marker of image scan with previously */
+<                     /* saved end of JpegTables */
+< 					buffer[xuint32-2]=table_end[0];
+< 					buffer[xuint32-1]=table_end[1];
+---
+> 				if(retTIFFReadRawTile < 0){
+> 					_TIFFfree(buffer);
+> 					t2p->t2p_error = T2P_ERR_ERROR;
+> 					return(0);
+2924a2960
+> 				bufferoffset = retTIFFReadRawTile;
+2925a2962
+> 

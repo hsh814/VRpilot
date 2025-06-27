@@ -1,0 +1,30 @@
+1147a1148
+> 
+1168c1169,1189
+<   rowstripsize = rowsperstrip * bytes_per_sample * (width + 1); 
+---
+> 
+>   /* Secure calculation of rowstripsize with overflow checks */
+>   {
+>     const tsize_t max_tsize = (tsize_t)~(tsize_t)0;
+>     tsize_t tmp;
+>     tsize_t w_plus_one = (tsize_t)width + 1;   /* keep original +1 logic */
+> 
+>     if (bytes_per_sample != 0 && w_plus_one > max_tsize / bytes_per_sample)
+>       {
+>         TIFFError(TIFFFileName(out), "Integer overflow when computing strip buffer size");
+>         return 1;
+>       }
+>     tmp = (tsize_t)bytes_per_sample * w_plus_one;
+> 
+>     if (rowsperstrip != 0 && rowsperstrip > max_tsize / tmp)
+>       {
+>         TIFFError(TIFFFileName(out), "Integer overflow when computing strip buffer size");
+>         return 1;
+>       }
+>     rowstripsize = tmp * rowsperstrip;
+>   }
+1205c1226
+< 
+---
+>  

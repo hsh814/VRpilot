@@ -1,0 +1,23 @@
+165a166
+> 
+170c171
+<         { errno=EINVAL; return 0; }
+---
+>         { errno = EINVAL; return 0; }
+221,224c222,232
+<             item->zz_usize = ZZIP_GET64(block->z_usize);
+<             item->zz_csize = ZZIP_GET64(block->z_csize);
+<             item->zz_offset = ZZIP_GET64(block->z_offset);
+<             item->zz_diskstart = ZZIP_GET32(block->z_diskstart);
+---
+>             /* Ensure the extra block is large enough before accessing */
+>             unsigned char *bp = (unsigned char *) block;
+>             size_t payload_size = ((size_t) bp[3] << 8) | bp[2]; /* little-endian length */
+>             const size_t need = 8 + 8 + 8 + 4; /* z_usize + z_csize + z_offset + z_diskstart */
+>             if (payload_size >= need)
+>             {
+>                 item->zz_usize = ZZIP_GET64(block->z_usize);
+>                 item->zz_csize = ZZIP_GET64(block->z_csize);
+>                 item->zz_offset = ZZIP_GET64(block->z_offset);
+>                 item->zz_diskstart = ZZIP_GET32(block->z_diskstart);
+>             }

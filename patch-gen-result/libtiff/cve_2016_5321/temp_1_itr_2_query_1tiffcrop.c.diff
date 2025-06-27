@@ -1,0 +1,46 @@
+950a951
+> 
+965c966,967
+<   unsigned char *srcbuffs[MAX_SAMPLES];
+---
+>   unsigned char *srcbuffs_static[MAX_SAMPLES];
+>   unsigned char **srcbuffs = NULL;
+970c972,985
+<   for (sample = 0; (sample < spp) && (sample < MAX_SAMPLES); sample++)
+---
+>   if (spp > MAX_SAMPLES)
+>     {
+>     srcbuffs = (unsigned char **)_TIFFmalloc((size_t)spp * sizeof(unsigned char *));
+>     if (!srcbuffs)
+>       {
+>       TIFFError("readSeparateTilesIntoBuffer",
+>                 "Unable to allocate source buffer array");
+>       return 0;
+>       }
+>     }
+>   else
+>     srcbuffs = srcbuffs_static;
+> 
+>   for (sample = 0; sample < spp; sample++)
+979a995,996
+>       if ((spp > MAX_SAMPLES) && srcbuffs)
+>         _TIFFfree(srcbuffs);
+1003c1020
+<           for (sample = 0; (sample < spp) && (sample < MAX_SAMPLES); sample++)
+---
+>           for (sample = 0; sample < spp; sample++)
+1008a1026,1027
+>           if ((spp > MAX_SAMPLES) && srcbuffs)
+>             _TIFFfree(srcbuffs);
+1050c1069
+<       	            }
+---
+>        	            }
+1088c1107
+<   for (sample = 0; (sample < spp) && (sample < MAX_SAMPLES); sample++)
+---
+>   for (sample = 0; sample < spp; sample++)
+1093a1113,1115
+> 
+>   if ((spp > MAX_SAMPLES) && srcbuffs)
+>     _TIFFfree(srcbuffs);

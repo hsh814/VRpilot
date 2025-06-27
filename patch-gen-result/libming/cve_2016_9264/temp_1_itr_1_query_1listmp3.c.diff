@@ -1,0 +1,16 @@
+64a65
+> 
+105a107,119
+> 
+>     /* bounds check to prevent buffer overflow */
+>     if (samplerate_idx >= 3)
+>     {
+>       error("invalid samplerate index in MP3 header!");
+>       break;
+>     }
+> 
+>     if (bitrate_idx >= 16)
+>     {
+>       error("invalid bitrate index in MP3 header!");
+>       break;
+>     }

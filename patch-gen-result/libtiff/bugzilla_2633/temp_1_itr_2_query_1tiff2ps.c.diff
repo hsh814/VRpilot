@@ -1,0 +1,16 @@
+2432a2433
+> 
+2437c2438,2439
+< 	int breaklen = MAXLINE, es = samplesperpixel - nc;
+---
+> 	int breaklen = MAXLINE;
+> 	int es;
+2442a2445,2452
+> 
+> 	/* Validate the number of color components */
+> 	if (nc < 0 || nc > samplesperpixel) {
+> 		TIFFError(filename, "Invalid number of colour components");
+> 		return;
+> 	}
+> 	es = samplesperpixel - nc;
+> 

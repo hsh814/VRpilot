@@ -1,0 +1,22 @@
+170a171
+> 
+193c194
+<   if ( !(limit & 1))
+---
+>   if (!(limit & 1))
+196c197
+<   size = (limit-1)/2;
+---
+>   size = (limit - 1) / 2;
+206c207
+<       unsigned p = 3+2*i;
+---
+>       unsigned p = 3 + 2 * i;
+211c212
+<       for (j = (p*p - 3)/2; j < size; j+= p)
+---
+>       for (j = (p * p - 3) / 2; j < size; j += p)
+214c215
+<       while (i < size && sieve[++i] == 0)
+---
+>       while (++i < size && sieve[i] == 0)

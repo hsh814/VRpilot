@@ -1,0 +1,17 @@
+1147a1148
+> 
+1168c1169,1180
+<   rowstripsize = rowsperstrip * bytes_per_sample * (width + 1); 
+---
+>   {
+>     uint64 rowstrip64 = (uint64)rowsperstrip;
+>     rowstrip64 *= (uint64)bytes_per_sample;
+>     rowstrip64 *= ((uint64)width + 1);
+>     if (rowstrip64 == 0 || rowstrip64 > (uint64)((tsize_t)~((tsize_t)0)))
+>       {
+>         TIFFError(TIFFFileName(out),
+>                   "rowstripsize is too large – possible integer overflow");
+>         return 1;
+>       }
+>     rowstripsize = (tsize_t)rowstrip64;
+>   }

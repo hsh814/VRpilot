@@ -1,0 +1,13 @@
+967a968
+> 
+1033c1034,1041
+<         h->sym_factor = h->dist[0] * h->scale_den[1];
+---
+>         /* calculate symmetric scaling factor while avoiding 32-bit overflows */
+>         {
+>             int64_t tmp = (int64_t)h->dist[0] * (int64_t)h->scale_den[1];
+>             const int64_t max_sym = INT_MAX / 32767; /* keep headroom for later multiplications */
+>             if (tmp > max_sym)
+>                 tmp = max_sym;
+>             h->sym_factor = (int)tmp;
+>         }

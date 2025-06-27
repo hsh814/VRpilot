@@ -1,0 +1,35 @@
+300a301
+> 
+326c327
+<   for (i = 0; i < cinfo->num_components; i++)
+---
+>   for (i = 0; i < MAX_COMPS_IN_SCAN; i++)
+331,336c332,340
+<     INPUT_BYTE(cinfo, c, return FALSE);
+<     
+<     for (ci = 0, compptr = cinfo->comp_info; ci < cinfo->num_components;
+< 	 ci++, compptr++) {
+<       if (cc == compptr->component_id && !cinfo->cur_comp_info[ci])
+< 	goto id_found;
+---
+>     INPUT_BYTE(cinfo, c,  return FALSE);
+> 
+>     for (ci = 0, compptr = cinfo->comp_info;
+>          ci < cinfo->num_components;
+>          ci++, compptr++) {
+>       if (cc == compptr->component_id &&
+>           ci < MAX_COMPS_IN_SCAN &&
+>           !cinfo->cur_comp_info[ci])
+>         goto id_found;
+346c350
+<     
+---
+> 
+348c352
+< 	     compptr->dc_tbl_no, compptr->ac_tbl_no);
+---
+>              compptr->dc_tbl_no, compptr->ac_tbl_no);
+361c365
+< 	   cinfo->Ah, cinfo->Al);
+---
+>            cinfo->Ah, cinfo->Al);

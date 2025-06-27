@@ -1,0 +1,16 @@
+131a132
+> 
+164,165c165,174
+< 		rawsize += cmptparm->width * cmptparm->height *
+< 		  (cmptparm->prec + 7) / 8;
+---
+> 		/* Perform the computation in a wider type and check for overflow */
+> 		uint_fast64_t cmpt_rawsize = (uint_fast64_t)cmptparm->width *
+> 			(uint_fast64_t)cmptparm->height;
+> 		cmpt_rawsize *= (uint_fast64_t)(cmptparm->prec + 7);
+> 		cmpt_rawsize /= 8;
+> 		if (cmpt_rawsize > UINT_FAST32_MAX - rawsize) {
+> 			rawsize = UINT_FAST32_MAX;
+> 		} else {
+> 			rawsize += (uint_fast32_t)cmpt_rawsize;
+> 		}

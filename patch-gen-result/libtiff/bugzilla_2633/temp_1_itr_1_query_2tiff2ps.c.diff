@@ -1,0 +1,50 @@
+2432a2433
+> 
+2437c2438,2439
+< 	int breaklen = MAXLINE, es = samplesperpixel - nc;
+---
+> 	int breaklen = MAXLINE;
+> 	int es;
+2438a2441
+> 	tsize_t scanline_size, buf_size;
+2443c2446,2460
+< 	tf_buf = (unsigned char *) _TIFFmalloc(tf_bytesperrow);
+---
+> 
+> 	/* Ensure we never read beyond available samples */
+> 	if (nc > samplesperpixel)
+> 		nc = samplesperpixel;
+> 	es = samplesperpixel - nc;
+> 
+> 	/* Allocate a buffer large enough for any possible scanline */
+> 	scanline_size = TIFFScanlineSize(tif);
+> 	buf_size = (tf_bytesperrow > scanline_size) ? tf_bytesperrow : scanline_size;
+> 	if (buf_size == 0) {
+> 		TIFFError(filename, "Invalid scanline size");
+> 		return;
+> 	}
+> 
+> 	tf_buf = (unsigned char *) _TIFFmalloc(buf_size);
+2447a2465
+> 
+2452,2455c2470,2471
+< 		/*
+< 		 * for 16 bits, the two bytes must be most significant
+< 		 * byte first
+< 		 */
+---
+> 
+> 		/* Flip bytes for 16-bit little-endian data */
+2459c2475,2477
+< 		if (alpha) {
+---
+> 
+> 		/* Use alpha branch only if an extra alpha sample exists */
+> 		if (alpha && (samplesperpixel > nc)) {
+2464,2469d2481
+< 				/*
+< 				 * For images with alpha, matte against
+< 				 * a white background; i.e.
+< 				 *    Cback * (1 - Aimage)
+< 				 * where Cback = 1.
+< 				 */

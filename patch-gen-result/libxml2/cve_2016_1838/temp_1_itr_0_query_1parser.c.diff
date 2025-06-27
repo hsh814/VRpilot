@@ -1,0 +1,66 @@
+9823a9824
+> 
+9827a9829
+>     size_t avail;
+9831,9832c9833,9834
+< 	xmlFatalErr(ctxt, XML_ERR_LTSLASH_REQUIRED, NULL);
+< 	return;
+---
+>         xmlFatalErr(ctxt, XML_ERR_LTSLASH_REQUIRED, NULL);
+>         return;
+9836c9838,9840
+<     if ((tlen > 0) && (xmlStrncmp(ctxt->input->cur, ctxt->name, tlen) == 0)) {
+---
+>     avail = (size_t)(ctxt->input->end - ctxt->input->cur);
+>     if ((tlen > 0) && (avail > (size_t)tlen) &&
+>         (xmlStrncmp(ctxt->input->cur, ctxt->name, tlen) == 0)) {
+9838,9844c9842,9848
+< 	    ctxt->input->cur += tlen + 1;
+< 	    ctxt->input->col += tlen + 1;
+< 	    goto done;
+< 	}
+< 	ctxt->input->cur += tlen;
+< 	ctxt->input->col += tlen;
+< 	name = (xmlChar*)1;
+---
+>             ctxt->input->cur += tlen + 1;
+>             ctxt->input->col += tlen + 1;
+>             goto done;
+>         }
+>         ctxt->input->cur += tlen;
+>         ctxt->input->col += tlen;
+>         name = (xmlChar*)1;
+9846,9849c9850,9853
+< 	if (prefix == NULL)
+< 	    name = xmlParseNameAndCompare(ctxt, ctxt->name);
+< 	else
+< 	    name = xmlParseQNameAndCompare(ctxt, ctxt->name, prefix);
+---
+>         if (prefix == NULL)
+>             name = xmlParseNameAndCompare(ctxt, ctxt->name);
+>         else
+>             name = xmlParseQNameAndCompare(ctxt, ctxt->name, prefix);
+9860c9864
+< 	xmlFatalErr(ctxt, XML_ERR_GT_REQUIRED, NULL);
+---
+>         xmlFatalErr(ctxt, XML_ERR_GT_REQUIRED, NULL);
+9862c9866
+< 	NEXT1;
+---
+>         NEXT1;
+9875,9876c9879,9880
+< 		     "Opening and ending tag mismatch: %s line %d and %s\n",
+< 		                ctxt->name, line, name);
+---
+>                      "Opening and ending tag mismatch: %s line %d and %s\n",
+>                                 ctxt->name, line, name);
+9884,9885c9888,9889
+< 	(!ctxt->disableSAX))
+< 	ctxt->sax->endElementNs(ctxt->userData, ctxt->name, prefix, URI);
+---
+>         (!ctxt->disableSAX))
+>         ctxt->sax->endElementNs(ctxt->userData, ctxt->name, prefix, URI);
+9889c9893
+< 	nsPop(ctxt, nsNr);
+---
+>         nsPop(ctxt, nsNr);

@@ -1,0 +1,118 @@
+1157a1158
+> 
+1166,1179c1167,1186
+< 	    break;
+< 	case XML_ELEMENT_CONTENT_ELEMENT:
+< 	    if (content->prefix != NULL) {
+< 		xmlBufferWriteCHAR(buf, content->prefix);
+< 		xmlBufferWriteChar(buf, ":");
+< 	    }
+< 	    xmlBufferWriteCHAR(buf, content->name);
+< 	    break;
+< 	case XML_ELEMENT_CONTENT_SEQ:
+< 	    if ((content->c1->type == XML_ELEMENT_CONTENT_OR) ||
+< 	        (content->c1->type == XML_ELEMENT_CONTENT_SEQ))
+< 		xmlDumpElementContent(buf, content->c1, 1);
+< 	    else
+< 		xmlDumpElementContent(buf, content->c1, 0);
+---
+>             break;
+>         case XML_ELEMENT_CONTENT_ELEMENT:
+>             if (content->prefix != NULL) {
+>                 xmlBufferWriteCHAR(buf, content->prefix);
+>                 xmlBufferWriteChar(buf, ":");
+>             }
+>             xmlBufferWriteCHAR(buf, content->name);
+>             break;
+>         case XML_ELEMENT_CONTENT_SEQ:
+>             if ((content->c1 == NULL) || (content->c2 == NULL)) {
+>                 xmlErrValid(NULL, XML_ERR_INTERNAL_ERROR,
+>                             "Internal: ELEMENT content child pointer is NULL\n",
+>                             NULL);
+>                 break;
+>             }
+>             if ((content->c1->type == XML_ELEMENT_CONTENT_OR) ||
+>                 (content->c1->type == XML_ELEMENT_CONTENT_SEQ))
+>                 xmlDumpElementContent(buf, content->c1, 1);
+>             else
+>                 xmlDumpElementContent(buf, content->c1, 0);
+1181,1193c1188,1206
+< 	    if ((content->c2->type == XML_ELEMENT_CONTENT_OR) ||
+< 	        ((content->c2->type == XML_ELEMENT_CONTENT_SEQ) &&
+< 		 (content->c2->ocur != XML_ELEMENT_CONTENT_ONCE)))
+< 		xmlDumpElementContent(buf, content->c2, 1);
+< 	    else
+< 		xmlDumpElementContent(buf, content->c2, 0);
+< 	    break;
+< 	case XML_ELEMENT_CONTENT_OR:
+< 	    if ((content->c1->type == XML_ELEMENT_CONTENT_OR) ||
+< 	        (content->c1->type == XML_ELEMENT_CONTENT_SEQ))
+< 		xmlDumpElementContent(buf, content->c1, 1);
+< 	    else
+< 		xmlDumpElementContent(buf, content->c1, 0);
+---
+>             if ((content->c2->type == XML_ELEMENT_CONTENT_OR) ||
+>                 ((content->c2->type == XML_ELEMENT_CONTENT_SEQ) &&
+>                  (content->c2->ocur != XML_ELEMENT_CONTENT_ONCE)))
+>                 xmlDumpElementContent(buf, content->c2, 1);
+>             else
+>                 xmlDumpElementContent(buf, content->c2, 0);
+>             break;
+>         case XML_ELEMENT_CONTENT_OR:
+>             if ((content->c1 == NULL) || (content->c2 == NULL)) {
+>                 xmlErrValid(NULL, XML_ERR_INTERNAL_ERROR,
+>                             "Internal: ELEMENT content child pointer is NULL\n",
+>                             NULL);
+>                 break;
+>             }
+>             if ((content->c1->type == XML_ELEMENT_CONTENT_OR) ||
+>                 (content->c1->type == XML_ELEMENT_CONTENT_SEQ))
+>                 xmlDumpElementContent(buf, content->c1, 1);
+>             else
+>                 xmlDumpElementContent(buf, content->c1, 0);
+1195,1205c1208,1218
+< 	    if ((content->c2->type == XML_ELEMENT_CONTENT_SEQ) ||
+< 	        ((content->c2->type == XML_ELEMENT_CONTENT_OR) &&
+< 		 (content->c2->ocur != XML_ELEMENT_CONTENT_ONCE)))
+< 		xmlDumpElementContent(buf, content->c2, 1);
+< 	    else
+< 		xmlDumpElementContent(buf, content->c2, 0);
+< 	    break;
+< 	default:
+< 	    xmlErrValid(NULL, XML_ERR_INTERNAL_ERROR,
+< 		    "Internal: ELEMENT content corrupted invalid type\n",
+< 		    NULL);
+---
+>             if ((content->c2->type == XML_ELEMENT_CONTENT_SEQ) ||
+>                 ((content->c2->type == XML_ELEMENT_CONTENT_OR) &&
+>                  (content->c2->ocur != XML_ELEMENT_CONTENT_ONCE)))
+>                 xmlDumpElementContent(buf, content->c2, 1);
+>             else
+>                 xmlDumpElementContent(buf, content->c2, 0);
+>             break;
+>         default:
+>             xmlErrValid(NULL, XML_ERR_INTERNAL_ERROR,
+>                         "Internal: ELEMENT content corrupted invalid type\n",
+>                         NULL);
+1211c1224
+< 	    break;
+---
+>             break;
+1213,1214c1226,1227
+< 	    xmlBufferWriteChar(buf, "?");
+< 	    break;
+---
+>             xmlBufferWriteChar(buf, "?");
+>             break;
+1216,1217c1229,1230
+< 	    xmlBufferWriteChar(buf, "*");
+< 	    break;
+---
+>             xmlBufferWriteChar(buf, "*");
+>             break;
+1219,1220c1232,1233
+< 	    xmlBufferWriteChar(buf, "+");
+< 	    break;
+---
+>             xmlBufferWriteChar(buf, "+");
+>             break;

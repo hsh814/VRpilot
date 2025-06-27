@@ -1,0 +1,56 @@
+9089a9090
+> 
+9129,9130c9130,9156
+<   pindex = phash + nslots * 8;
+<   ppool = pindex + nslots * 4;
+---
+>   pindex = phash + (size_t) nslots * 8;
+>   ppool  = pindex + (size_t) nslots * 4;
+> 
+>   /* Additional validation to avoid arithmetic wraparound and
+>      overflow of the hash and index tables.  */
+>   {
+>     size_t hash_bytes  = (size_t) nslots * 8u;
+>     size_t index_bytes = (size_t) nslots * 4u;
+> 
+>     /* Detect multiplication overflow.  */
+>     if ((nslots != 0
+>          && (hash_bytes / 8u != nslots || index_bytes / 4u != nslots)))
+>       {
+> 	warn (_("Section %s contains an overlarge slot count (%u)\n"),
+> 	      section->name, nslots);
+> 	return 0;
+>       }
+> 
+>     /* Ensure calculated ranges are inside the section.  */
+>     if (phash < phdr || phash + hash_bytes > limit
+> 	|| pindex < phdr || pindex + index_bytes > limit)
+>       {
+> 	warn (_("Section %s is too small for %u slot entries\n"),
+> 	      section->name, nslots);
+> 	return 0;
+>       }
+>   }
+9289,9290c9315,9329
+< 	      if (!do_display)
+< 		memcpy (&this_set[row - 1].signature, ph, sizeof (uint64_t));
+---
+> 	      /* Additional safety checks to avoid heap buffer overflow.  */
+> 	      if (this_set == NULL)
+> 		{
+> 		  warn (_("CU/TU set table is uninitialised\n"));
+> 		  return 0;
+> 		}
+> 	      if ((size_t) (row - 1) >= (size_t) nused)
+> 		{
+> 		  warn (_("Computed CU/TU index (%u) is out of range\n"), row - 1);
+> 		  return 0;
+> 		}
+> 
+> 	      memcpy (&this_set[row - 1].signature,
+> 		      ph,
+> 		      sizeof (this_set[row - 1].signature));
+9374c9413
+< 		      this_set [row - 1].section_sizes [dw_sect] = val;
+---
+> 			this_set [row - 1].section_sizes [dw_sect] = val;

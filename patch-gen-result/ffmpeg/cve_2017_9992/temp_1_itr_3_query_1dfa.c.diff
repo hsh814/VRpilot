@@ -1,0 +1,6 @@
+143a144
+> 
+178c179
+<             if (frame_end - frame < width + 3)
+---
+>             if (frame_end - frame < width + 4)

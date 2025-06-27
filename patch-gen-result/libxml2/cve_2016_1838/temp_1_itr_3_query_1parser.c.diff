@@ -1,0 +1,72 @@
+9823a9824
+> 
+9831,9832c9832,9833
+< 	xmlFatalErr(ctxt, XML_ERR_LTSLASH_REQUIRED, NULL);
+< 	return;
+---
+>         xmlFatalErr(ctxt, XML_ERR_LTSLASH_REQUIRED, NULL);
+>         return;
+9836c9837,9845
+<     if ((tlen > 0) && (xmlStrncmp(ctxt->input->cur, ctxt->name, tlen) == 0)) {
+---
+>     /* Ensure that enough data is available for the fast-path comparison */
+>     if (tlen > 0) {
+>         if ((ctxt->input->end - ctxt->input->cur) <= tlen)
+>             GROW;
+>     }
+> 
+>     if ((tlen > 0) &&
+>         ((ctxt->input->end - ctxt->input->cur) > tlen) &&
+>         (xmlStrncmp(ctxt->input->cur, ctxt->name, tlen) == 0)) {
+9838,9844c9847,9853
+< 	    ctxt->input->cur += tlen + 1;
+< 	    ctxt->input->col += tlen + 1;
+< 	    goto done;
+< 	}
+< 	ctxt->input->cur += tlen;
+< 	ctxt->input->col += tlen;
+< 	name = (xmlChar*)1;
+---
+>             ctxt->input->cur += tlen + 1;
+>             ctxt->input->col += tlen + 1;
+>             goto done;
+>         }
+>         ctxt->input->cur += tlen;
+>         ctxt->input->col += tlen;
+>         name = (xmlChar*)1;
+9846,9849c9855,9858
+< 	if (prefix == NULL)
+< 	    name = xmlParseNameAndCompare(ctxt, ctxt->name);
+< 	else
+< 	    name = xmlParseQNameAndCompare(ctxt, ctxt->name, prefix);
+---
+>         if (prefix == NULL)
+>             name = xmlParseNameAndCompare(ctxt, ctxt->name);
+>         else
+>             name = xmlParseQNameAndCompare(ctxt, ctxt->name, prefix);
+9860c9869
+< 	xmlFatalErr(ctxt, XML_ERR_GT_REQUIRED, NULL);
+---
+>         xmlFatalErr(ctxt, XML_ERR_GT_REQUIRED, NULL);
+9862c9871
+< 	NEXT1;
+---
+>         NEXT1;
+9868d9876
+<      *
+9875,9876c9883,9884
+< 		     "Opening and ending tag mismatch: %s line %d and %s\n",
+< 		                ctxt->name, line, name);
+---
+>                      "Opening and ending tag mismatch: %s line %d and %s\n",
+>                      ctxt->name, line, name);
+9884,9885c9892,9893
+< 	(!ctxt->disableSAX))
+< 	ctxt->sax->endElementNs(ctxt->userData, ctxt->name, prefix, URI);
+---
+>         (!ctxt->disableSAX))
+>         ctxt->sax->endElementNs(ctxt->userData, ctxt->name, prefix, URI);
+9889c9897
+< 	nsPop(ctxt, nsNr);
+---
+>         nsPop(ctxt, nsNr);

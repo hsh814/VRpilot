@@ -1,0 +1,16 @@
+1575a1576
+> 
+1628a1630,1642
+>         /* Validate subsampling factors to avoid division by zero */
+>         if( sp->h_sampling == 0 )
+>         {
+>             TIFFWarningExt(tif->tif_clientdata, module,
+>                            "Horizontal YCbCr subsampling factor is 0; adjusting to 1");
+>             sp->h_sampling = 1;
+>         }
+>         if( sp->v_sampling == 0 )
+>         {
+>             TIFFWarningExt(tif->tif_clientdata, module,
+>                            "Vertical YCbCr subsampling factor is 0; adjusting to 1");
+>             sp->v_sampling = 1;
+>         }

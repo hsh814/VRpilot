@@ -1,0 +1,14 @@
+279a280
+> 
+289a291
+> 
+291c293
+<     memcpy (r + i, r, i);
+---
+>     memmove (r + i, r, i);
+293c295
+<     memcpy (r + i, r, size - i);
+---
+>     memmove (r + i, r, size - i);
+295d296
+<   /* Invert the first bit of every sector. */

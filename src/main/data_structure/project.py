@@ -44,8 +44,9 @@ class Project():
         print("Done.")
 
         # reset
-        print("Reseting the repo to {}...".format(self.cur_com))
-        reset_repo(self.working_repo_dir, self.cur_com)
+        if self.project_name != "potrace":
+            print("Reseting the repo to {}...".format(self.cur_com))
+            reset_repo(self.working_repo_dir, self.cur_com)
         print("Done.")
 
     def build(self):

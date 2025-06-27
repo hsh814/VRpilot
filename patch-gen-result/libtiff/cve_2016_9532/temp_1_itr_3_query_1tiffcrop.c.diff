@@ -1,0 +1,34 @@
+1147a1148
+> 
+1168c1169,1197
+<   rowstripsize = rowsperstrip * bytes_per_sample * (width + 1); 
+---
+> 
+>   {
+>     size_t tmp_rows  = (size_t)rowsperstrip;
+>     size_t tmp_bps   = (size_t)bytes_per_sample;
+>     size_t tmp_width = (size_t)width + 1;
+> 
+>     if (tmp_rows == 0 || tmp_bps == 0 ||
+>         tmp_bps > (size_t)-1 / tmp_rows)
+>       {
+>         TIFFError(TIFFFileName(out), "writeBufferToSeparateStrips: integer overflow");
+>         return 1;
+>       }
+> 
+>     size_t prod = tmp_rows * tmp_bps;
+>     if (tmp_width > (size_t)-1 / prod)
+>       {
+>         TIFFError(TIFFFileName(out), "writeBufferToSeparateStrips: integer overflow");
+>         return 1;
+>       }
+> 
+>     size_t calc_size = prod * tmp_width;
+>     if (calc_size > (size_t)((tsize_t)(-1)))
+>       {
+>         TIFFError(TIFFFileName(out), "writeBufferToSeparateStrips: size exceeds limits");
+>         return 1;
+>       }
+> 
+>     rowstripsize = (tsize_t)calc_size;
+>   }

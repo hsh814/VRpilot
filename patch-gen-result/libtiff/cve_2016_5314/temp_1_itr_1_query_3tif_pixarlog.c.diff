@@ -1,0 +1,70 @@
+739a740
+> 
+775c776,807
+< 	sp->stream.next_out = (unsigned char *) sp->tbuf;
+---
+> 
+> 	/* --------------------------------------------------------------------
+> 	 * Securely prepare zlib output buffer and prevent overflows
+> 	 * ------------------------------------------------------------------*/
+> 	{
+> 		const tmsize_t bytes_per_sample = sizeof(uint16);
+> 		tmsize_t bytes_needed;
+> 
+> 		/* Ensure the size fits in zlib's 32-bit uInt */
+> 		if (nsamples > (tmsize_t)(UINT_MAX / bytes_per_sample)) {
+> 			TIFFErrorExt(tif->tif_clientdata, module,
+> 			             "ZLib cannot deal with buffers this size");
+> 			return 0;
+> 		}
+> 
+> 		bytes_needed = nsamples * bytes_per_sample;
+> 
+> 		/* (Re)allocate temporary buffer */
+> 		{
+> 			void* newbuf = _TIFFrealloc(sp->tbuf, bytes_needed ? bytes_needed : 1);
+> 			if (newbuf == NULL) {
+> 				TIFFErrorExt(tif->tif_clientdata, module,
+> 				             "Not enough memory for PixarLog buffer");
+> 				return 0;
+> 			}
+> 			sp->tbuf = (uint16*) newbuf;
+> 		}
+> 
+> 		sp->stream.next_out = (unsigned char *) sp->tbuf;
+> 		sp->stream.avail_out = (uInt) bytes_needed;
+> 	}
+> 
+780,785c812
+< 	sp->stream.avail_out = (uInt) (nsamples * sizeof(uint16));
+< 	if (sp->stream.avail_out != nsamples * sizeof(uint16))
+< 	{
+< 		TIFFErrorExt(tif->tif_clientdata, module, "ZLib cannot deal with buffers this size");
+< 		return (0);
+< 	}
+---
+> 
+796c823
+< 				return (0);
+---
+> 				return 0;
+802c829
+< 			return (0);
+---
+> 			return 0;
+811c838
+< 		return (0);
+---
+> 		return 0;
+824c851
+< 	if (nsamples % llen) { 
+---
+> 	if (nsamples % llen) {
+867c894
+< 			return (0);
+---
+> 			return 0;
+871c898
+< 	return (1);
+---
+> 	return 1;

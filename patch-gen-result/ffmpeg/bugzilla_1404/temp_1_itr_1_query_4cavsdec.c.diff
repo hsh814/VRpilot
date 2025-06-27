@@ -1,0 +1,69 @@
+967a968
+> 
+981c982
+<     skip_bits(&h->gb, 16);//bbv_dwlay
+---
+>     skip_bits(&h->gb, 16); //bbv_dwlay
+995c996
+<             skip_bits(&h->gb, 24);//time_code
+---
+>             skip_bits(&h->gb, 24); //time_code
+1007c1008,1009
+<     ret = ff_get_buffer(h->avctx, h->cur.f, h->cur.f->pict_type == AV_PICTURE_TYPE_B ?
+---
+>     ret = ff_get_buffer(h->avctx, h->cur.f,
+>                         h->cur.f->pict_type == AV_PICTURE_TYPE_B ?
+1027c1029
+<         h->dist[0] = (h->DPB[0].poc  - h->cur.poc) & 511;
+---
+>         h->dist[0] = (h->DPB[0].poc - h->cur.poc) & 511;
+1030,1031c1032,1033
+<     h->scale_den[0] = h->dist[0] ? 512/h->dist[0] : 0;
+<     h->scale_den[1] = h->dist[1] ? 512/h->dist[1] : 0;
+---
+>     h->scale_den[0] = h->dist[0] ? 512 / h->dist[0] : 0;
+>     h->scale_den[1] = h->dist[1] ? 512 / h->dist[1] : 0;
+1033c1035,1037
+<         h->sym_factor = h->dist[0] * h->scale_den[1];
+---
+>         /* do the multiplication in 64-bit to avoid overflow, then down-scale */
+>         int64_t tmp = (int64_t)h->dist[0] * h->scale_den[1] + 128;
+>         h->sym_factor = av_clipl_int32(tmp >> 8);
+1047,1048c1051,1052
+<     skip_bits1(&h->gb);        //top_field_first
+<     skip_bits1(&h->gb);        //repeat_first_field
+---
+>     skip_bits1(&h->gb);         //top_field_first
+>     skip_bits1(&h->gb);         //repeat_first_field
+1050,1051c1054,1055
+<     h->qp_fixed = get_bits1(&h->gb);
+<     h->qp       = get_bits(&h->gb, 6);
+---
+>     h->qp_fixed      = get_bits1(&h->gb);
+>     h->qp            = get_bits(&h->gb, 6);
+1054c1058
+<             skip_bits1(&h->gb);//what is this?
+---
+>             skip_bits1(&h->gb); //what is this?
+1058c1062
+<             h->ref_flag        = get_bits1(&h->gb);
+---
+>             h->ref_flag = get_bits1(&h->gb);
+1060c1064
+<         h->skip_mode_flag      = get_bits1(&h->gb);
+---
+>         h->skip_mode_flag = get_bits1(&h->gb);
+1062c1066
+<     h->loop_filter_disable     = get_bits1(&h->gb);
+---
+>     h->loop_filter_disable = get_bits1(&h->gb);
+1064,1065c1068,1069
+<         h->alpha_offset        = get_se_golomb(&h->gb);
+<         h->beta_offset         = get_se_golomb(&h->gb);
+---
+>         h->alpha_offset = get_se_golomb(&h->gb);
+>         h->beta_offset  = get_se_golomb(&h->gb);
+1067c1071
+<         h->alpha_offset = h->beta_offset  = 0;
+---
+>         h->alpha_offset = h->beta_offset = 0;

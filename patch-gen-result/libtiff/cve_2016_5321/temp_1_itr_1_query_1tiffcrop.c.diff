@@ -1,0 +1,44 @@
+950a951
+> 
+969a971,979
+>   /* FIX: ensure spp does not exceed MAX_SAMPLES */
+>   if (spp > MAX_SAMPLES)
+>     {
+>       TIFFError("readSeparateTilesIntoBuffer",
+>                 "Number of samples per pixel (%u) exceeds limit (%d)",
+>                 spp, MAX_SAMPLES);
+>       return 0;
+>     }
+> 
+984,986d993
+<   /* Each tile contains only the data for a single plane
+<    * arranged in scanlines of tw * bytes_per_sample bytes.
+<    */
+992,993c999,1001
+<       for (s = 0; s < spp; s++)
+<         {  /* Read each plane of a tile set into srcbuffs[s] */
+---
+>       /* FIX on line 42: limit loop to MAX_SAMPLES */
+>       for (s = 0; (s < spp) && (s < MAX_SAMPLES); s++)
+>         {  
+998,1001c1006,1007
+<                  "Error, can't read tile for row %lu col %lu, "
+< 		 "sample %lu",
+< 		 (unsigned long) col, (unsigned long) row,
+< 		 (unsigned long) s);
+---
+>                  "Error, can't read tile for row %lu col %lu, sample %lu",
+> 		 (unsigned long) col, (unsigned long) row, (unsigned long) s);
+1012,1015d1017
+<      /* Tiles on the right edge may be padded out to tw 
+<       * which must be a multiple of 16.
+<       * Ncol represents the visible (non padding) portion.  
+<       */
+1032c1034
+<       	  }
+---
+>        	  }
+1050c1052
+<       	            }
+---
+>        	            }

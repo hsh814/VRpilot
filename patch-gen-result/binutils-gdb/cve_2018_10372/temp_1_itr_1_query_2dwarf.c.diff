@@ -1,0 +1,9 @@
+9089a9090
+> 
+9290c9291,9294
+< 		memcpy (&this_set[row - 1].signature, ph, sizeof (uint64_t));
+---
+> 		{
+> 		  this_set[row - 1].signature =
+> 		    (((uint64_t) signature_high) << 32) | signature_low;
+> 		}

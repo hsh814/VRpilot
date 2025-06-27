@@ -1,0 +1,453 @@
+9089a9090
+> 
+9118c9119
+< 	    section->name);
+---
+>  	    section->name);
+9131a9133,9170
+>   /* Additional sanity checks to ensure that the hash and index tables
+>      fit inside the section and that no arithmetic overflow occurred
+>      when computing their sizes.  */
+>   {
+>     size_t slots        = nslots;
+>     size_t hash_bytes   = slots * 8u;
+>     size_t index_bytes  = slots * 4u;
+>     size_t tables_bytes;
+>     size_t section_size = (size_t) (limit - phdr);
+> 
+>     /* Detect multiplication overflow.  */
+>     if ((slots != 0 && hash_bytes / 8u != slots)
+>         || (slots != 0 && index_bytes / 4u != slots))
+>       {
+>         warn (_("Overlarge number of slots: %u\n"), nslots);
+>         return 0;
+>       }
+> 
+>     tables_bytes = hash_bytes + index_bytes;
+> 
+>     /* Detect addition overflow.  */
+>     if (tables_bytes < hash_bytes)
+>       {
+>         warn (_("Overlarge number of slots: %u\n"), nslots);
+>         return 0;
+>       }
+> 
+>     /* Ensure the combined tables are fully contained in the section.  */
+>     if (section_size < 16 || tables_bytes > section_size - 16)
+>       {
+>         warn (ngettext ("Section %s is too small for %d slot\n",
+>                         "Section %s is too small for %d slots\n",
+>                         nslots),
+>               section->name, nslots);
+>         return 0;
+>       }
+>   }
+> 
+9136,9138c9175,9177
+< 		      "Section %s is too small for %d slots\n",
+< 		      nslots),
+< 	    section->name, nslots);
+---
+>  		      "Section %s is too small for %d slots\n",
+>  		      nslots),
+>  	    section->name, nslots);
+9148c9187
+< 	printf (_("  Number of columns:       %d\n"), ncols);
+---
+>  	printf (_("  Number of columns:       %d\n"), ncols);
+9156c9195
+< 	    section->name, nslots);
+---
+>  	    section->name, nslots);
+9163c9202
+< 	prealloc_cu_tu_list ((limit - ppool) / 4);
+---
+>  	prealloc_cu_tu_list ((limit - ppool) / 4);
+9165,9209c9204,9248
+< 	{
+< 	  unsigned char *shndx_list;
+< 	  unsigned int shndx;
+< 
+< 	  SAFE_BYTE_GET64 (phash, &signature_high, &signature_low, limit);
+< 	  if (signature_high != 0 || signature_low != 0)
+< 	    {
+< 	      SAFE_BYTE_GET (j, pindex, 4, limit);
+< 	      shndx_list = ppool + j * 4;
+< 	      /* PR 17531: file: 705e010d.  */
+< 	      if (shndx_list < ppool)
+< 		{
+< 		  warn (_("Section index pool located before start of section\n"));
+< 		  return 0;
+< 		}
+< 
+< 	      if (do_display)
+< 		printf (_("  [%3d] Signature:  0x%s  Sections: "),
+< 			i, dwarf_vmatoa64 (signature_high, signature_low,
+< 					   buf, sizeof (buf)));
+< 	      for (;;)
+< 		{
+< 		  if (shndx_list >= limit)
+< 		    {
+< 		      warn (_("Section %s too small for shndx pool\n"),
+< 			    section->name);
+< 		      return 0;
+< 		    }
+< 		  SAFE_BYTE_GET (shndx, shndx_list, 4, limit);
+< 		  if (shndx == 0)
+< 		    break;
+< 		  if (do_display)
+< 		    printf (" %d", shndx);
+< 		  else
+< 		    add_shndx_to_cu_tu_entry (shndx);
+< 		  shndx_list += 4;
+< 		}
+< 	      if (do_display)
+< 		printf ("\n");
+< 	      else
+< 		end_cu_tu_entry ();
+< 	    }
+< 	  phash += 8;
+< 	  pindex += 4;
+< 	}
+---
+>  	{
+>  	  unsigned char *shndx_list;
+>  	  unsigned int shndx;
+> 
+>  	  SAFE_BYTE_GET64 (phash, &signature_high, &signature_low, limit);
+>  	  if (signature_high != 0 || signature_low != 0)
+>  	    {
+>  	      SAFE_BYTE_GET (j, pindex, 4, limit);
+>  	      shndx_list = ppool + j * 4;
+>  	      /* PR 17531: file: 705e010d.  */
+>  	      if (shndx_list < ppool)
+>  		{
+>  		  warn (_("Section index pool located before start of section\n"));
+>  		  return 0;
+>  		}
+> 
+>  	      if (do_display)
+>  		printf (_("  [%3d] Signature:  0x%s  Sections: "),
+>  			i, dwarf_vmatoa64 (signature_high, signature_low,
+>  					   buf, sizeof (buf)));
+>  	      for (;;)
+>  		{
+>  		  if (shndx_list >= limit)
+>  		    {
+>  		      warn (_("Section %s too small for shndx pool\n"),
+>  			    section->name);
+>  		      return 0;
+>  		    }
+>  		  SAFE_BYTE_GET (shndx, shndx_list, 4, limit);
+>  		  if (shndx == 0)
+>  		    break;
+>  		  if (do_display)
+>  		    printf (" %d", shndx);
+>  		  else
+>  		    add_shndx_to_cu_tu_entry (shndx);
+>  		  shndx_list += 4;
+>  		}
+>  	      if (do_display)
+>  		printf ("\n");
+>  	      else
+>  		end_cu_tu_entry ();
+>  	    }
+>  	  phash += 8;
+>  	  pindex += 4;
+>  	}
+9228c9267
+< 	 Check for wraparound with an overlarge ncols value.  */
+---
+>  	 Check for wraparound with an overlarge ncols value.  */
+9230,9233c9269,9272
+< 	{
+< 	  warn (_("Overlarge number of columns: %x\n"), ncols);
+< 	  return 0;
+< 	}
+---
+>  	{
+>  	  warn (_("Overlarge number of columns: %x\n"), ncols);
+>  	  return 0;
+>  	}
+9236,9240c9275,9279
+< 	{
+< 	  warn (_("Section %s too small for offset and size tables\n"),
+< 		section->name);
+< 	  return 0;
+< 	}
+---
+>  	{
+>  	  warn (_("Section %s too small for offset and size tables\n"),
+>  		section->name);
+>  	  return 0;
+>  	}
+9243,9247c9282,9286
+< 	{
+< 	  printf (_("  Offset table\n"));
+< 	  printf ("  slot  %-16s  ",
+< 		 is_tu_index ? _("signature") : _("dwo_id"));
+< 	}
+---
+>  	{
+>  	  printf (_("  Offset table\n"));
+>  	  printf ("  slot  %-16s  ",
+>  		 is_tu_index ? _("signature") : _("dwo_id"));
+>  	}
+9249,9262c9288,9301
+< 	{
+< 	  if (is_tu_index)
+< 	    {
+< 	      tu_count = nused;
+< 	      tu_sets = xcalloc2 (nused, sizeof (struct cu_tu_set));
+< 	      this_set = tu_sets;
+< 	    }
+< 	  else
+< 	    {
+< 	      cu_count = nused;
+< 	      cu_sets = xcalloc2 (nused, sizeof (struct cu_tu_set));
+< 	      this_set = cu_sets;
+< 	    }
+< 	}
+---
+>  	{
+>  	  if (is_tu_index)
+>  	    {
+>  	      tu_count = nused;
+>  	      tu_sets = xcalloc2 (nused, sizeof (struct cu_tu_set));
+>  	      this_set = tu_sets;
+>  	    }
+>  	  else
+>  	    {
+>  	      cu_count = nused;
+>  	      cu_sets = xcalloc2 (nused, sizeof (struct cu_tu_set));
+>  	      this_set = cu_sets;
+>  	    }
+>  	}
+9265,9272c9304,9311
+< 	{
+< 	  for (j = 0; j < ncols; j++)
+< 	    {
+< 	      SAFE_BYTE_GET (dw_sect, ppool + j * 4, 4, limit);
+< 	      printf (" %8s", get_DW_SECT_short_name (dw_sect));
+< 	    }
+< 	  printf ("\n");
+< 	}
+---
+>  	{
+>  	  for (j = 0; j < ncols; j++)
+>  	    {
+>  	      SAFE_BYTE_GET (dw_sect, ppool + j * 4, 4, limit);
+>  	      printf (" %8s", get_DW_SECT_short_name (dw_sect));
+>  	    }
+>  	  printf ("\n");
+>  	}
+9275,9276c9314,9315
+< 	{
+< 	  SAFE_BYTE_GET64 (ph, &signature_high, &signature_low, limit);
+---
+>  	{
+>  	  SAFE_BYTE_GET64 (ph, &signature_high, &signature_low, limit);
+9278,9327c9317,9366
+< 	  SAFE_BYTE_GET (row, pi, 4, limit);
+< 	  if (row != 0)
+< 	    {
+< 	      /* PR 17531: file: a05f6ab3.  */
+< 	      if (row > nused)
+< 		{
+< 		  warn (_("Row index (%u) is larger than number of used entries (%u)\n"),
+< 			row, nused);
+< 		  return 0;
+< 		}
+< 
+< 	      if (!do_display)
+< 		memcpy (&this_set[row - 1].signature, ph, sizeof (uint64_t));
+< 
+< 	      prow = poffsets + (row - 1) * ncols * 4;
+< 	      /* PR 17531: file: b8ce60a8.  */
+< 	      if (prow < poffsets || prow > limit)
+< 		{
+< 		  warn (_("Row index (%u) * num columns (%u) > space remaining in section\n"),
+< 			row, ncols);
+< 		  return 0;
+< 		}
+< 
+< 	      if (do_display)
+< 		printf (_("  [%3d] 0x%s"),
+< 			i, dwarf_vmatoa64 (signature_high, signature_low,
+< 					   buf, sizeof (buf)));
+< 	      for (j = 0; j < ncols; j++)
+< 		{
+< 		  SAFE_BYTE_GET (val, prow + j * 4, 4, limit);
+< 		  if (do_display)
+< 		    printf (" %8d", val);
+< 		  else
+< 		    {
+< 		      SAFE_BYTE_GET (dw_sect, ppool + j * 4, 4, limit);
+< 
+< 		      /* PR 17531: file: 10796eb3.  */
+< 		      if (dw_sect >= DW_SECT_MAX)
+< 			warn (_("Overlarge Dwarf section index detected: %u\n"), dw_sect);
+< 		      else
+< 			this_set [row - 1].section_offsets [dw_sect] = val;
+< 		    }
+< 		}
+< 
+< 	      if (do_display)
+< 		printf ("\n");
+< 	    }
+< 	  ph += 8;
+< 	  pi += 4;
+< 	}
+---
+>  	  SAFE_BYTE_GET (row, pi, 4, limit);
+>  	  if (row != 0)
+>  	    {
+>  	      /* PR 17531: file: a05f6ab3.  */
+>  	      if (row > nused)
+>  		{
+>  		  warn (_("Row index (%u) is larger than number of used entries (%u)\n"),
+>  			row, nused);
+>  		  return 0;
+>  		}
+> 
+>  	      if (!do_display)
+>  		memcpy (&this_set[row - 1].signature, ph, sizeof (uint64_t));
+> 
+>  	      prow = poffsets + (row - 1) * ncols * 4;
+>  	      /* PR 17531: file: b8ce60a8.  */
+>  	      if (prow < poffsets || prow > limit)
+>  		{
+>  		  warn (_("Row index (%u) * num columns (%u) > space remaining in section\n"),
+>  			row, ncols);
+>  		  return 0;
+>  		}
+> 
+>  	      if (do_display)
+>  		printf (_("  [%3d] 0x%s"),
+>  			i, dwarf_vmatoa64 (signature_high, signature_low,
+>  					   buf, sizeof (buf)));
+>  	      for (j = 0; j < ncols; j++)
+>  		{
+>  		  SAFE_BYTE_GET (val, prow + j * 4, 4, limit);
+>  		  if (do_display)
+>  		    printf (" %8d", val);
+>  		  else
+>  		    {
+>  		      SAFE_BYTE_GET (dw_sect, ppool + j * 4, 4, limit);
+> 
+>  		      /* PR 17531: file: 10796eb3.  */
+>  		      if (dw_sect >= DW_SECT_MAX)
+>  			warn (_("Overlarge Dwarf section index detected: %u\n"), dw_sect);
+>  		      else
+>  			this_set [row - 1].section_offsets [dw_sect] = val;
+>  		    }
+>  		}
+> 
+>  	      if (do_display)
+>  		printf ("\n");
+>  	    }
+>  	  ph += 8;
+>  	  pi += 4;
+>  	}
+9332,9337c9371,9376
+< 	{
+< 	  printf ("\n");
+< 	  printf (_("  Size table\n"));
+< 	  printf ("  slot  %-16s  ",
+< 		 is_tu_index ? _("signature") : _("dwo_id"));
+< 	}
+---
+>  	{
+>  	  printf ("\n");
+>  	  printf (_("  Size table\n"));
+>  	  printf ("  slot  %-16s  ",
+>  		 is_tu_index ? _("signature") : _("dwo_id"));
+>  	}
+9340,9344c9379,9383
+< 	{
+< 	  SAFE_BYTE_GET (val, ppool + j * 4, 4, limit);
+< 	  if (do_display)
+< 	    printf (" %8s", get_DW_SECT_short_name (val));
+< 	}
+---
+>  	{
+>  	  SAFE_BYTE_GET (val, ppool + j * 4, 4, limit);
+>  	  if (do_display)
+>  	    printf (" %8s", get_DW_SECT_short_name (val));
+>  	}
+9347c9386
+< 	printf ("\n");
+---
+>  	printf ("\n");
+9350,9351c9389,9390
+< 	{
+< 	  SAFE_BYTE_GET64 (ph, &signature_high, &signature_low, limit);
+---
+>  	{
+>  	  SAFE_BYTE_GET64 (ph, &signature_high, &signature_low, limit);
+9353,9384c9392,9423
+< 	  SAFE_BYTE_GET (row, pi, 4, limit);
+< 	  if (row != 0)
+< 	    {
+< 	      prow = psizes + (row - 1) * ncols * 4;
+< 
+< 	      if (do_display)
+< 		printf (_("  [%3d] 0x%s"),
+< 			i, dwarf_vmatoa64 (signature_high, signature_low,
+< 					   buf, sizeof (buf)));
+< 
+< 	      for (j = 0; j < ncols; j++)
+< 		{
+< 		  SAFE_BYTE_GET (val, prow + j * 4, 4, limit);
+< 		  if (do_display)
+< 		    printf (" %8d", val);
+< 		  else
+< 		    {
+< 		      SAFE_BYTE_GET (dw_sect, ppool + j * 4, 4, limit);
+< 		      if (dw_sect >= DW_SECT_MAX)
+< 			warn (_("Overlarge Dwarf section index detected: %u\n"), dw_sect);
+< 		      else
+< 		      this_set [row - 1].section_sizes [dw_sect] = val;
+< 		    }
+< 		}
+< 
+< 	      if (do_display)
+< 		printf ("\n");
+< 	    }
+< 
+< 	  ph += 8;
+< 	  pi += 4;
+< 	}
+---
+>  	  SAFE_BYTE_GET (row, pi, 4, limit);
+>  	  if (row != 0)
+>  	    {
+>  	      prow = psizes + (row - 1) * ncols * 4;
+> 
+>  	      if (do_display)
+>  		printf (_("  [%3d] 0x%s"),
+>  			i, dwarf_vmatoa64 (signature_high, signature_low,
+>  					   buf, sizeof (buf)));
+> 
+>  	      for (j = 0; j < ncols; j++)
+>  		{
+>  		  SAFE_BYTE_GET (val, prow + j * 4, 4, limit);
+>  		  if (do_display)
+>  		    printf (" %8d", val);
+>  		  else
+>  		    {
+>  		      SAFE_BYTE_GET (dw_sect, ppool + j * 4, 4, limit);
+>  		      if (dw_sect >= DW_SECT_MAX)
+>  			warn (_("Overlarge Dwarf section index detected: %u\n"), dw_sect);
+>  		      else
+>  		      this_set [row - 1].section_sizes [dw_sect] = val;
+>  		    }
+>  		}
+> 
+>  	      if (do_display)
+>  		printf ("\n");
+>  	    }
+> 
+>  	  ph += 8;
+>  	  pi += 4;
+>  	}

@@ -1,0 +1,10 @@
+1187a1188
+> 
+1233a1235,1241
+> 
+> 	/* Prevent potential integer overflow when calculating total number of tiles */
+> 	if (dec->numhtiles <= 0 || dec->numvtiles <= 0 ||
+> 	    dec->numhtiles > INT_MAX / dec->numvtiles) {
+> 		return -1;
+> 	}
+> 

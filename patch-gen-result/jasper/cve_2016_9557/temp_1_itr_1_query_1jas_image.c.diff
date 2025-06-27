@@ -1,0 +1,27 @@
+131a132
+> 
+161,165c162,177
+< 	rawsize = 0;
+< 	for (cmptno = 0, cmptparm = cmptparms; cmptno < numcmpts; ++cmptno,
+< 	  ++cmptparm) {
+< 		rawsize += cmptparm->width * cmptparm->height *
+< 		  (cmptparm->prec + 7) / 8;
+---
+> 	{
+> 		uint_fast64_t rawsize_tmp = 0;
+> 		for (cmptno = 0, cmptparm = cmptparms; cmptno < numcmpts;
+> 		     ++cmptno, ++cmptparm) {
+> 			uint_fast64_t comp_sz =
+> 			    (uint_fast64_t)cmptparm->width *
+> 			    (uint_fast64_t)cmptparm->height *
+> 			    (uint_fast64_t)(cmptparm->prec + 7);
+> 			comp_sz /= 8;
+> 			rawsize_tmp += comp_sz;
+> 		}
+> 		if (rawsize_tmp > (uint_fast64_t)((uint_fast32_t)-1)) {
+> 			rawsize = (uint_fast32_t)-1;
+> 		} else {
+> 			rawsize = (uint_fast32_t)rawsize_tmp;
+> 		}
+166a179
+> 

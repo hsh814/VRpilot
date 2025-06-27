@@ -1,0 +1,10 @@
+279a280
+> 
+291c292
+<     memcpy (r + i, r, i);
+---
+>     memmove (r + i, r, i);
+293c294
+<     memcpy (r + i, r, size - i);
+---
+>     memmove (r + i, r, size - i);

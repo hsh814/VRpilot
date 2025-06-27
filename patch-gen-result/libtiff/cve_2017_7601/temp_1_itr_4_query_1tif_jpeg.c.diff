@@ -1,0 +1,13 @@
+1575a1576
+> 
+1646c1647,1654
+< 				long top = 1L << td->td_bitspersample;
+---
+> 				long top;
+> 				if (td->td_bitspersample >= (int)(sizeof(long) * 8)) {
+> 					TIFFErrorExt(tif->tif_clientdata, module,
+> 					             "BitsPerSample %d too large for type 'long'",
+> 					             (int) td->td_bitspersample);
+> 					return (0);
+> 				}
+> 				top = 1L << td->td_bitspersample;

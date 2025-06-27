@@ -1,0 +1,17 @@
+1187a1188
+> 
+1207a1209,1214
+> 
+> 	/* Reject invalid tile dimensions early. */
+> 	if (dec->tilewidth <= 0 || dec->tileheight <= 0) {
+> 		return -1;
+> 	}
+> 
+1233a1241,1247
+> 
+> 	/* Validate tile counters and prevent integer overflows. */
+> 	if (dec->numhtiles <= 0 || dec->numvtiles <= 0 ||
+> 	    dec->numhtiles > INT_MAX / dec->numvtiles) {
+> 		return -1;
+> 	}
+> 

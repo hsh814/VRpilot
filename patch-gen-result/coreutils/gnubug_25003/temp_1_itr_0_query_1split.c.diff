@@ -1,0 +1,14 @@
+972a973
+> 
+985c986
+<   if (initial_read != SIZE_MAX || start < initial_read)
+---
+>   if (initial_read != SIZE_MAX && start < initial_read)
+992c993,997
+<       if (lseek (STDIN_FILENO, start, SEEK_CUR) < 0)
+---
+>       off_t skip = start;
+>       if (initial_read != SIZE_MAX)
+>         skip -= (off_t) initial_read;
+> 
+>       if (skip && lseek (STDIN_FILENO, skip, SEEK_CUR) < 0)

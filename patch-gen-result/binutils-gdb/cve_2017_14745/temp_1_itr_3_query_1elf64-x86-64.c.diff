@@ -1,0 +1,14 @@
+6668a6669
+> 
+6720a6722,6728
+>   /* Validate relocation count to prevent invalid qsort parameters.  */
+>   if (dynrelcount <= 0)
+>     {
+>       free (dynrelbuf);
+>       return dynrelcount;
+>     }
+> 
+6984c6992
+<   if (s == NULL)
+---
+>   if (names == NULL)

@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "vul_id": "cve_2013_7437",
+            "project_name": "potrace",
+            "fix_commit": "",
+            "language": "c",
+            "vul_code_file_rel_path": "src/bitmap_io.c",
+            "vul_code_block_start_line": 435,
+            "vul_code_block_end_line": 778,
+            "vul_description": "heap buffer overflow",
+            "asan_scenario_buginfo": {
+                "real_patchinfo": [
+                    {
+                        "filename": "bitmap_io.c",
+                        "edit_lines": [
+                            482
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

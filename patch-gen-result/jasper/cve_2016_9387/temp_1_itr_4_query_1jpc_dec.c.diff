@@ -1,0 +1,26 @@
+1187a1188
+> 
+1234c1235,1255
+< 	dec->numtiles = dec->numhtiles * dec->numvtiles;
+---
+> 	/* Securely compute number of tiles while checking for overflow */
+> 	{
+> 		size_t htiles = dec->numhtiles;
+> 		size_t vtiles = dec->numvtiles;
+> 		size_t totaltiles;
+> 
+> 		if (htiles == 0 || vtiles == 0) {
+> 			return -1;
+> 		}
+> 		if (vtiles > ((size_t)-1) / htiles) {
+> 			return -1;
+> 		}
+> 		totaltiles = htiles * vtiles;
+> 		if (totaltiles > ((size_t)-1) / sizeof(jpc_dec_tile_t)) {
+> 			return -1;
+> 		}
+> 		if (totaltiles > (size_t)INT_MAX) {
+> 			return -1;
+> 		}
+> 		dec->numtiles = (int)totaltiles;
+> 	}

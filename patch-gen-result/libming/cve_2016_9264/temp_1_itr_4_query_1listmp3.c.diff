@@ -1,0 +1,13 @@
+64a65
+> 
+106a108,113
+>     /* Validate indices to prevent buffer overflow */
+>     if (samplerate_idx >= 3)
+>       error("invalid MP3 samplerate index!");
+>     if (bitrate_idx >= 16)
+>       error("invalid MP3 bitrate index!");
+> 
+175c182
+<   printf("Average bitrate: %i\n", bitrateSum/numFrames);
+---
+>   printf("Average bitrate: %i\n", numFrames ? bitrateSum/numFrames : 0);

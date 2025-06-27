@@ -1,0 +1,18 @@
+69a70
+> 
+97a99,105
+> 			if (horizSubSampling <= 0) {
+> 				fprintf(stderr,
+> 				        "Invalid horizontal subsampling (%d). "
+> 				        "Value must be greater than zero.\n",
+> 				        horizSubSampling);
+> 				usage(-1);
+> 			}
+100a109,115
+> 			if (vertSubSampling <= 0) {
+> 				fprintf(stderr,
+> 				        "Invalid vertical subsampling (%d). "
+> 				        "Value must be greater than zero.\n",
+> 				        vertSubSampling);
+> 				usage(-1);
+> 			}

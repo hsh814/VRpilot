@@ -1,0 +1,13 @@
+64a65
+> 
+104c105
+<     bitrate_idx = (flags & MP3_BITRATE) >> MP3_BITRATE_SHIFT;
+---
+>     bitrate_idx    = (flags & MP3_BITRATE)    >> MP3_BITRATE_SHIFT;
+105a107,112
+> 
+>     /* Validate indices to prevent out-of-bounds table access */
+>     if (bitrate_idx >= 16)
+>       error("invalid MP3 bitrate index!");
+>     if (samplerate_idx >= 3)
+>       error("invalid MP3 samplerate index!");

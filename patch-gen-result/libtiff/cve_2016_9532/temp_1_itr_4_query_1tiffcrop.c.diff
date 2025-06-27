@@ -1,0 +1,53 @@
+1147a1148
+> 
+1168d1168
+<   rowstripsize = rowsperstrip * bytes_per_sample * (width + 1); 
+1170c1170,1183
+<   obuf = _TIFFmalloc (rowstripsize);
+---
+>   {
+>     uint64 tmp = (uint64) rowsperstrip *
+>                  (uint64) bytes_per_sample *
+>                  (uint64) (width + 1);
+>     if (tmp == 0 || tmp > (uint64)((tsize_t)(~((tsize_t)0))))
+>       {
+>         TIFFError(TIFFFileName(out),
+>                   "Requested strip buffer is too large – aborting.");
+>         return 1;
+>       }
+>     rowstripsize = (tsize_t) tmp;
+>   }
+> 
+>   obuf = _TIFFmalloc(rowstripsize);
+1183c1196
+<       memset (obuf, '\0', rowstripsize);
+---
+>       memset(obuf, '\0', rowstripsize);
+1188c1201
+< 	}
+---
+>         }
+1191,1192c1204,1205
+<         dump_info(dump->outfile, dump->format,"", 
+<                   "Sample %2d, Strip: %2d, bytes: %4d, Row %4d, bytes: %4d, Input offset: %6d", 
+---
+>         dump_info(dump->outfile, dump->format, "",
+>                   "Sample %2d, Strip: %2d, bytes: %4d, Row %4d, bytes: %4d, Input offset: %6d",
+1195c1208
+< 	}
+---
+>         }
+1199,1202c1212,1215
+< 	TIFFError(TIFFFileName(out), "Error, can't write strip %u", strip - 1);
+< 	_TIFFfree(obuf);
+< 	return 1;
+< 	}
+---
+>         TIFFError(TIFFFileName(out), "Error, can't write strip %u", strip - 1);
+>         _TIFFfree(obuf);
+>         return 1;
+>         }
+1205c1218
+< 
+---
+>  

@@ -1,0 +1,56 @@
+950a951
+> 
+958a960
+>   uint16  samples_to_process;
+968a971
+>   samples_to_process = (spp > MAX_SAMPLES) ? MAX_SAMPLES : spp;
+970c973
+<   for (sample = 0; (sample < spp) && (sample < MAX_SAMPLES); sample++)
+---
+>   for (sample = 0; sample < samples_to_process; sample++)
+992c995
+<       for (s = 0; s < spp; s++)
+---
+>       for (s = 0; s < samples_to_process; s++)
+1003c1006
+<           for (sample = 0; (sample < spp) && (sample < MAX_SAMPLES); sample++)
+---
+>           for (sample = 0; sample < samples_to_process; sample++)
+1021,1022c1024,1025
+<       row_offset = row * (((imagewidth * spp * bps) + 7) / 8);
+<       col_offset = ((col * spp * bps) + 7) / 8;
+---
+>       row_offset = row * (((imagewidth * samples_to_process * bps) + 7) / 8);
+>       col_offset = ((col * samples_to_process * bps) + 7) / 8;
+1028c1031
+< 					    tw, spp, bps, NULL, 0, 0))
+---
+> 					    tw, samples_to_process, bps, NULL, 0, 0))
+1045c1048
+<                                                        imagewidth, tw, spp, bps, 
+---
+>                                                        imagewidth, tw, samples_to_process, bps, 
+1050c1053
+<       	            }
+---
+>        	            }
+1053c1056
+<                                                        imagewidth, tw, spp, bps, 
+---
+>                                                        imagewidth, tw, samples_to_process, bps, 
+1061c1064
+<                                                        imagewidth, tw, spp, bps, 
+---
+>                                                        imagewidth, tw, samples_to_process, bps, 
+1066c1069
+<        	            }
+---
+>         	            }
+1073c1076
+<                                                        imagewidth, tw, spp, bps, 
+---
+>                                                        imagewidth, tw, samples_to_process, bps, 
+1088c1091
+<   for (sample = 0; (sample < spp) && (sample < MAX_SAMPLES); sample++)
+---
+>   for (sample = 0; sample < samples_to_process; sample++)

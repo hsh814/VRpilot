@@ -1,0 +1,13 @@
+1187a1188
+> 
+1233a1235,1239
+> 
+> 	if (dec->numhtiles < 0 || dec->numvtiles < 0 ||
+> 	    (dec->numhtiles != 0 && dec->numvtiles > INT_MAX / dec->numhtiles)) {
+> 		return -1;
+> 	}
+1234a1241
+> 
+1281,1282d1287
+< 	/* We should expect to encounter other main header marker segments
+< 	  or an SOT marker segment next. */

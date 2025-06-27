@@ -1,0 +1,152 @@
+1157a1158
+> 
+1160c1161,1165
+<     if (content == NULL) return;
+---
+>     if (content == NULL)
+>         return;
+> 
+>     if (glob)
+>         xmlBufferWriteChar(buf, "(");
+1162d1166
+<     if (glob) xmlBufferWriteChar(buf, "(");
+1166,1179c1170,1192
+< 	    break;
+< 	case XML_ELEMENT_CONTENT_ELEMENT:
+< 	    if (content->prefix != NULL) {
+< 		xmlBufferWriteCHAR(buf, content->prefix);
+< 		xmlBufferWriteChar(buf, ":");
+< 	    }
+< 	    xmlBufferWriteCHAR(buf, content->name);
+< 	    break;
+< 	case XML_ELEMENT_CONTENT_SEQ:
+< 	    if ((content->c1->type == XML_ELEMENT_CONTENT_OR) ||
+< 	        (content->c1->type == XML_ELEMENT_CONTENT_SEQ))
+< 		xmlDumpElementContent(buf, content->c1, 1);
+< 	    else
+< 		xmlDumpElementContent(buf, content->c1, 0);
+---
+>             break;
+> 
+>         case XML_ELEMENT_CONTENT_ELEMENT:
+>             if (content->prefix != NULL) {
+>                 xmlBufferWriteCHAR(buf, content->prefix);
+>                 xmlBufferWriteChar(buf, ":");
+>             }
+>             xmlBufferWriteCHAR(buf, content->name);
+>             break;
+> 
+>         case XML_ELEMENT_CONTENT_SEQ:
+>             if (content->c1 != NULL) {
+>                 if ((content->c1->type == XML_ELEMENT_CONTENT_OR) ||
+>                     (content->c1->type == XML_ELEMENT_CONTENT_SEQ))
+>                     xmlDumpElementContent(buf, content->c1, 1);
+>                 else
+>                     xmlDumpElementContent(buf, content->c1, 0);
+>             } else {
+>                 xmlErrValid(NULL, XML_ERR_INTERNAL_ERROR,
+>                             "Internal: ELEMENT content corrupted (NULL c1)\n",
+>                             NULL);
+>             }
+> 
+1181,1193c1194,1221
+< 	    if ((content->c2->type == XML_ELEMENT_CONTENT_OR) ||
+< 	        ((content->c2->type == XML_ELEMENT_CONTENT_SEQ) &&
+< 		 (content->c2->ocur != XML_ELEMENT_CONTENT_ONCE)))
+< 		xmlDumpElementContent(buf, content->c2, 1);
+< 	    else
+< 		xmlDumpElementContent(buf, content->c2, 0);
+< 	    break;
+< 	case XML_ELEMENT_CONTENT_OR:
+< 	    if ((content->c1->type == XML_ELEMENT_CONTENT_OR) ||
+< 	        (content->c1->type == XML_ELEMENT_CONTENT_SEQ))
+< 		xmlDumpElementContent(buf, content->c1, 1);
+< 	    else
+< 		xmlDumpElementContent(buf, content->c1, 0);
+---
+> 
+>             if (content->c2 != NULL) {
+>                 if ((content->c2->type == XML_ELEMENT_CONTENT_OR) ||
+>                     ((content->c2->type == XML_ELEMENT_CONTENT_SEQ) &&
+>                      (content->c2->ocur != XML_ELEMENT_CONTENT_ONCE)))
+>                     xmlDumpElementContent(buf, content->c2, 1);
+>                 else
+>                     xmlDumpElementContent(buf, content->c2, 0);
+>             } else {
+>                 xmlErrValid(NULL, XML_ERR_INTERNAL_ERROR,
+>                             "Internal: ELEMENT content corrupted (NULL c2)\n",
+>                             NULL);
+>             }
+>             break;
+> 
+>         case XML_ELEMENT_CONTENT_OR:
+>             if (content->c1 != NULL) {
+>                 if ((content->c1->type == XML_ELEMENT_CONTENT_OR) ||
+>                     (content->c1->type == XML_ELEMENT_CONTENT_SEQ))
+>                     xmlDumpElementContent(buf, content->c1, 1);
+>                 else
+>                     xmlDumpElementContent(buf, content->c1, 0);
+>             } else {
+>                 xmlErrValid(NULL, XML_ERR_INTERNAL_ERROR,
+>                             "Internal: ELEMENT content corrupted (NULL c1)\n",
+>                             NULL);
+>             }
+> 
+1195,1205c1223,1241
+< 	    if ((content->c2->type == XML_ELEMENT_CONTENT_SEQ) ||
+< 	        ((content->c2->type == XML_ELEMENT_CONTENT_OR) &&
+< 		 (content->c2->ocur != XML_ELEMENT_CONTENT_ONCE)))
+< 		xmlDumpElementContent(buf, content->c2, 1);
+< 	    else
+< 		xmlDumpElementContent(buf, content->c2, 0);
+< 	    break;
+< 	default:
+< 	    xmlErrValid(NULL, XML_ERR_INTERNAL_ERROR,
+< 		    "Internal: ELEMENT content corrupted invalid type\n",
+< 		    NULL);
+---
+> 
+>             if (content->c2 != NULL) {
+>                 if ((content->c2->type == XML_ELEMENT_CONTENT_SEQ) ||
+>                     ((content->c2->type == XML_ELEMENT_CONTENT_OR) &&
+>                      (content->c2->ocur != XML_ELEMENT_CONTENT_ONCE)))
+>                     xmlDumpElementContent(buf, content->c2, 1);
+>                 else
+>                     xmlDumpElementContent(buf, content->c2, 0);
+>             } else {
+>                 xmlErrValid(NULL, XML_ERR_INTERNAL_ERROR,
+>                             "Internal: ELEMENT content corrupted (NULL c2)\n",
+>                             NULL);
+>             }
+>             break;
+> 
+>         default:
+>             xmlErrValid(NULL, XML_ERR_INTERNAL_ERROR,
+>                         "Internal: ELEMENT content corrupted invalid type\n",
+>                         NULL);
+1206a1243
+> 
+1208a1246
+> 
+1211c1249
+< 	    break;
+---
+>             break;
+1213,1214c1251,1252
+< 	    xmlBufferWriteChar(buf, "?");
+< 	    break;
+---
+>             xmlBufferWriteChar(buf, "?");
+>             break;
+1216,1217c1254,1255
+< 	    xmlBufferWriteChar(buf, "*");
+< 	    break;
+---
+>             xmlBufferWriteChar(buf, "*");
+>             break;
+1219,1220c1257,1258
+< 	    xmlBufferWriteChar(buf, "+");
+< 	    break;
+---
+>             xmlBufferWriteChar(buf, "+");
+>             break;

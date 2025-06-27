@@ -1,0 +1,240 @@
+434a435
+> 
+483c484,488
+<       bmpinfo.h = -bmpinfo.h;
+---
+>       if (bmpinfo.h == 0x80000000u) {
+>         bm_read_error = "invalid bmp height";
+>         goto format_error;
+>       }
+>       bmpinfo.h = (unsigned int)(-(signed int)bmpinfo.h);
+506a512,528
+>   /* sanity check dimensions and prevent overflow in allocation */
+>   {
+>     if ((int)bmpinfo.w <= 0 || (int)bmpinfo.h <= 0) {
+>       bm_read_error = "invalid bmp dimensions";
+>       goto format_error;
+>     }
+>     unsigned long long words_per_row =
+>         ((unsigned long long)bmpinfo.w + BM_WORDSIZE - 1) / BM_WORDSIZE;
+>     unsigned long long total_words =
+>         words_per_row * (unsigned long long)bmpinfo.h;
+>     if (total_words == 0 ||
+>         total_words > ((unsigned long long)(size_t)-1) / sizeof(potrace_word)) {
+>       bm_read_error = "bmp dimensions too large";
+>       goto format_error;
+>     }
+>   }
+> 
+532c554
+< 	col1[i] = c;
+---
+>         col1[i] = c;
+568,570c590,592
+< 	TRY_EOF(bmp_readint(f, 1, &b));
+< 	b ^= mask;
+< 	*bm_index(bm, i*8, ycorr(y)) |= ((potrace_word)b) << (8*(BM_WORDSIZE-1-(i % BM_WORDSIZE)));
+---
+>         TRY_EOF(bmp_readint(f, 1, &b));
+>         b ^= mask;
+>         *bm_index(bm, i*8, ycorr(y)) |= ((potrace_word)b) << (8*(BM_WORDSIZE-1-(i % BM_WORDSIZE)));
+588,596c610,618
+< 	if (n < bmpinfo.bits) {
+< 	  TRY_EOF(bmp_readint(f, 1, &b));
+< 	  bitbuf |= b << (INTBITS - 8 - n);
+< 	  n += 8;
+< 	}
+< 	b = bitbuf >> (INTBITS - bmpinfo.bits);
+< 	bitbuf <<= bmpinfo.bits;
+< 	n -= bmpinfo.bits;
+< 	BM_UPUT(bm, x, ycorr(y), coltable[b]);
+---
+>         if (n < bmpinfo.bits) {
+>           TRY_EOF(bmp_readint(f, 1, &b));
+>           bitbuf |= b << (INTBITS - 8 - n);
+>           n += 8;
+>         }
+>         b = bitbuf >> (INTBITS - bmpinfo.bits);
+>         bitbuf <<= bmpinfo.bits;
+>         n -= bmpinfo.bits;
+>         BM_UPUT(bm, x, ycorr(y), coltable[b]);
+615c637
+< 	c = ((c>>16) & 0xff) + ((c>>8) & 0xff) + (c & 0xff);
+---
+>         c = ((c>>16) & 0xff) + ((c>>8) & 0xff) + (c & 0xff);
+631c653
+< 	c = ((c & bmpinfo.RedMask) >> redshift) + ((c & bmpinfo.GreenMask) >> greenshift) + ((c & bmpinfo.BlueMask) >> blueshift);
+---
+>         c = ((c & bmpinfo.RedMask) >> redshift) + ((c & bmpinfo.GreenMask) >> greenshift) + ((c & bmpinfo.BlueMask) >> blueshift);
+645,658c667,680
+< 	/* repeat count */
+< 	col[0] = coltable[(c>>4) & 0xf];
+< 	col[1] = coltable[c & 0xf];
+< 	for (i=0; i<b && x<bmpinfo.w; i++) {
+< 	  if (x>=bmpinfo.w) {
+< 	    x=0;
+< 	    y++;
+< 	  }
+< 	  if (y>=bmpinfo.h) {
+< 	    break;
+< 	  }
+< 	  BM_UPUT(bm, x, ycorr(y), col[i&1]);
+< 	  x++;
+< 	}
+---
+>         /* repeat count */
+>         col[0] = coltable[(c>>4) & 0xf];
+>         col[1] = coltable[c & 0xf];
+>         for (i=0; i<b && x<bmpinfo.w; i++) {
+>           if (x>=bmpinfo.w) {
+>             x=0;
+>             y++;
+>           }
+>           if (y>=bmpinfo.h) {
+>             break;
+>           }
+>           BM_UPUT(bm, x, ycorr(y), col[i&1]);
+>           x++;
+>         }
+660,662c682,684
+< 	/* end of line */
+< 	y++;
+< 	x = 0;
+---
+>         /* end of line */
+>         y++;
+>         x = 0;
+664,665c686,687
+< 	/* end of bitmap */
+< 	break;
+---
+>         /* end of bitmap */
+>         break;
+667,671c689,693
+< 	/* "delta": skip pixels in x and y directions */
+< 	TRY_EOF(bmp_readint(f, 1, &b)); /* x offset */
+< 	TRY_EOF(bmp_readint(f, 1, &c)); /* y offset */
+< 	x += b;
+< 	y += c;
+---
+>         /* "delta": skip pixels in x and y directions */
+>         TRY_EOF(bmp_readint(f, 1, &b)); /* x offset */
+>         TRY_EOF(bmp_readint(f, 1, &c)); /* y offset */
+>         x += b;
+>         y += c;
+673,691c695,713
+< 	/* verbatim segment */
+< 	for (i=0; i<c; i++) {
+< 	  if ((i&1)==0) {
+< 	    TRY_EOF(bmp_readint(f, 1, &b));
+< 	  }
+< 	  if (x>=bmpinfo.w) {
+< 	    x=0;
+< 	    y++;
+< 	  }
+< 	  if (y>=bmpinfo.h) {
+< 	    break;
+< 	  }
+< 	  BM_PUT(bm, x, ycorr(y), coltable[(b>>(4-4*(i&1))) & 0xf]);
+< 	  x++;
+< 	}
+< 	if ((c+1) & 2) {
+< 	  /* pad to 16-bit boundary */
+< 	  TRY_EOF(bmp_readint(f, 1, &b));
+< 	}
+---
+>         /* verbatim segment */
+>         for (i=0; i<c; i++) {
+>           if ((i&1)==0) {
+>             TRY_EOF(bmp_readint(f, 1, &b));
+>           }
+>           if (x>=bmpinfo.w) {
+>             x=0;
+>             y++;
+>           }
+>           if (y>=bmpinfo.h) {
+>             break;
+>           }
+>           BM_PUT(bm, x, ycorr(y), coltable[(b>>(4-4*(i&1))) & 0xf]);
+>           x++;
+>         }
+>         if ((c+1) & 2) {
+>           /* pad to 16-bit boundary */
+>           TRY_EOF(bmp_readint(f, 1, &b));
+>         }
+703,714c725,736
+< 	/* repeat count */
+< 	for (i=0; i<b; i++) {
+< 	  if (x>=bmpinfo.w) {
+< 	    x=0;
+< 	    y++;
+< 	  }
+< 	  if (y>=bmpinfo.h) {
+< 	    break;
+< 	  }
+< 	  BM_UPUT(bm, x, ycorr(y), coltable[c]);
+< 	  x++;
+< 	}
+---
+>         /* repeat count */
+>         for (i=0; i<b; i++) {
+>           if (x>=bmpinfo.w) {
+>             x=0;
+>             y++;
+>           }
+>           if (y>=bmpinfo.h) {
+>             break;
+>           }
+>           BM_UPUT(bm, x, ycorr(y), coltable[c]);
+>           x++;
+>         }
+716,718c738,740
+< 	/* end of line */
+< 	y++;
+< 	x = 0;
+---
+>         /* end of line */
+>         y++;
+>         x = 0;
+720,721c742,743
+< 	/* end of bitmap */
+< 	break;
+---
+>         /* end of bitmap */
+>         break;
+723,727c745,749
+< 	/* "delta": skip pixels in x and y directions */
+< 	TRY_EOF(bmp_readint(f, 1, &b)); /* x offset */
+< 	TRY_EOF(bmp_readint(f, 1, &c)); /* y offset */
+< 	x += b;
+< 	y += c;
+---
+>         /* "delta": skip pixels in x and y directions */
+>         TRY_EOF(bmp_readint(f, 1, &b)); /* x offset */
+>         TRY_EOF(bmp_readint(f, 1, &c)); /* y offset */
+>         x += b;
+>         y += c;
+729,731c751,753
+< 	/* verbatim segment */
+< 	for (i=0; i<c; i++) {
+< 	  TRY_EOF(bmp_readint(f, 1, &b));
+---
+>         /* verbatim segment */
+>         for (i=0; i<c; i++) {
+>           TRY_EOF(bmp_readint(f, 1, &b));
+739,745c761,767
+< 	  BM_PUT(bm, x, ycorr(y), coltable[b]);
+< 	  x++;
+< 	}
+< 	if (c & 1) {
+< 	  /* pad input to 16-bit boundary */
+< 	  TRY_EOF(bmp_readint(f, 1, &b));
+< 	}
+---
+>           BM_PUT(bm, x, ycorr(y), coltable[b]);
+>           x++;
+>         }
+>         if (c & 1) {
+>           /* pad input to 16-bit boundary */
+>           TRY_EOF(bmp_readint(f, 1, &b));
+>         }

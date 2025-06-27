@@ -5,17 +5,18 @@ import main.utils.json_util
 import os
 import re
 
-projects = ["binutils-gdb", "coreutils", "jasper", "libjpeg-turbo", "libming", "libtiff", "libxml2", "zziplib"]
+projects = ["binutils-gdb", "coreutils", "ffmpeg", "jasper", "libjpeg-turbo", "libming", "libtiff", "libxml2", "potrace", "zziplib"]
 for project in projects:
   project_dir = os.path.join(path_config.DATA_DIR, "docker", project)
   repo_dir = os.path.join(project_dir, "repos", project)
-  configs = main.utils.json_util.read_json_from_file(os.path.join("/home/shhan/code/VRpilot/configurations", project, "configuration.json"))
+  configs = main.utils.json_util.read_json_from_file(os.path.join("configurations", project, "configuration.json"))
   for config in configs["configurations"]:
     vul_id = config["vul_id"]
     fix_commit = config["fix_commit"]
-    target_commit = get_parent_commit(repo_dir, fix_commit)
-    print(f"{project} - {vul_id}: found commit {fix_commit} - {target_commit}")
-    # reset_repo(repo_dir, target_commit)
+    if project != "potrace":
+      target_commit = get_parent_commit(repo_dir, fix_commit)
+      print(f"{project} - {vul_id}: found commit {fix_commit} - {target_commit}")
+      # reset_repo(repo_dir, target_commit)
     result_dir = os.path.join(path_config.DATA_DIR, "buggy", project, vul_id)
     os.makedirs(result_dir, exist_ok=True)
     # os.system(f"cp {repo_dir}/{config['vul_code_file_rel_path']} {result_dir}")

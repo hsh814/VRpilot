@@ -1,0 +1,12 @@
+9089a9090
+> 
+9290c9291,9293
+< 		memcpy (&this_set[row - 1].signature, ph, sizeof (uint64_t));
+---
+> 		{
+> 		  this_set[row - 1].signature = (uint64_t) signature_low;
+> 		}
+9374c9377
+< 		      this_set [row - 1].section_sizes [dw_sect] = val;
+---
+> 			this_set [row - 1].section_sizes [dw_sect] = val;

@@ -1,0 +1,30 @@
+447a448
+> 
+450a452
+>     size_t newlen;
+455c457
+< 	return(NULL);
+---
+>         return(NULL);
+460c462,475
+<     ret = (xmlChar *) xmlRealloc(cur, (size + len + 1) * sizeof(xmlChar));
+---
+> 
+>     if ((size_t)len > (size_t)-1 - (size_t)size - 1) {
+>         xmlErrMemory(NULL, NULL);
+>         return(cur);
+>     }
+> 
+>     newlen = (size_t)size + (size_t)len + 1;
+> 
+>     if (newlen > (size_t)-1 / sizeof(xmlChar)) {
+>         xmlErrMemory(NULL, NULL);
+>         return(cur);
+>     }
+> 
+>     ret = (xmlChar *) xmlRealloc(cur, newlen * sizeof(xmlChar));
+465c480,481
+<     memcpy(&ret[size], add, len * sizeof(xmlChar));
+---
+> 
+>     memcpy(&ret[size], add, (size_t)len * sizeof(xmlChar));

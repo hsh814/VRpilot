@@ -1,0 +1,10 @@
+6668a6669
+> 
+6719a6721,6727
+> 
+>   /* Ensure we have at least one relocation before proceeding.  */
+>   if (dynrelcount <= 0)
+>     {
+>       free (dynrelbuf);
+>       return -1;
+>     }

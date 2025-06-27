@@ -1,0 +1,62 @@
+2761d2760
+< tsize_t t2p_readwrite_pdf_image_tile(T2P* t2p, TIFF* input, TIFF* output, ttile_t tile){
+2762a2762
+> tsize_t t2p_readwrite_pdf_image_tile(T2P* t2p, TIFF* input, TIFF* output, ttile_t tile){
+2766a2767
+> 	tsize_t buffercapacity=0;
+2896a2898
+> 			buffercapacity = t2p->tiff_datasize;
+2899,2900c2901,2918
+<                                         int retTIFFReadRawTile;
+<                     /* Ignore EOI marker of JpegTables */
+---
+> 					int retTIFFReadRawTile;
+> 					tsize_t needed = (tsize_t)count + t2p->tiff_datasize;
+> 					if(needed > buffercapacity){
+> 						unsigned char* tmp = (unsigned char*)_TIFFrealloc(buffer, needed);
+> 						if(tmp == NULL){
+> 							TIFFError(TIFF2PDF_MODULE, 
+> 								"Can't re-allocate " TIFF_SIZE_FORMAT " bytes of memory "
+> 								"for t2p_readwrite_pdf_image_tile, %s", 
+> 								(TIFF_SIZE_T)needed, 
+> 								TIFFFileName(input));
+> 							_TIFFfree(buffer);
+> 							t2p->t2p_error = T2P_ERR_ERROR;
+> 							return(0);
+> 						}
+> 						buffer = tmp;
+> 						buffercapacity = needed;
+> 					}
+> 					/* Ignore EOI marker of JpegTables */
+2903c2921
+<                     /* Store last 2 bytes of the JpegTables */
+---
+> 					/* Store last 2 bytes of the JpegTables */
+2907,2908c2925,2926
+<                                         bufferoffset -= 2;
+<                                         retTIFFReadRawTile= TIFFReadRawTile(
+---
+> 					bufferoffset -= 2;
+> 					retTIFFReadRawTile= TIFFReadRawTile(
+2913,2918c2931,2936
+<                                         if( retTIFFReadRawTile < 0 )
+<                                         {
+<                                             _TIFFfree(buffer);
+<                                             t2p->t2p_error = T2P_ERR_ERROR;
+<                                             return(0);
+<                                         }
+---
+> 					if( retTIFFReadRawTile < 0 )
+> 					{
+> 						_TIFFfree(buffer);
+> 						t2p->t2p_error = T2P_ERR_ERROR;
+> 						return(0);
+> 					}
+2920,2921c2938,2939
+<                     /* Overwrite SOI marker of image scan with previously */
+<                     /* saved end of JpegTables */
+---
+> 					/* Overwrite SOI marker of image scan with previously */
+> 					/* saved end of JpegTables */
+3082d3099
+< 

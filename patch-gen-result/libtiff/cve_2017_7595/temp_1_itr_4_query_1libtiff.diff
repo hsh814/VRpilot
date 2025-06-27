@@ -1,0 +1,14 @@
+1575a1576
+> 
+1628a1630,1640
+>         /* Prevent division by zero with invalid subsampling factors */
+>         if( sp->h_sampling == 0 ) {
+>             TIFFWarningExt(tif->tif_clientdata, module,
+>                            "Invalid horizontal YCbCr subsampling value 0; forcing to 1");
+>             sp->h_sampling = 1;
+>         }
+>         if( sp->v_sampling == 0 ) {
+>             TIFFWarningExt(tif->tif_clientdata, module,
+>                            "Invalid vertical YCbCr subsampling value 0; forcing to 1");
+>             sp->v_sampling = 1;
+>         }

@@ -48,7 +48,7 @@ if __name__ == "__main__":
 
     # parameter setting
     parser = argparse.ArgumentParser(description="VRpilot run script")
-    parser.add_argument("project", help="Project name", choices=["binutils-gdb", "coreutils", "ffmpeg", "jasper", "libarchive", "libjpeg-turbo", "libming", "libtiff", "libxml2", "zziplib"])
+    parser.add_argument("project", help="Project name", choices=["binutils-gdb", "coreutils", "ffmpeg", "jasper", "libarchive", "libjpeg-turbo", "libming", "libtiff", "libxml2", "potrace", "zziplib"])
     parser.add_argument("--model", help="OpenAI model", default="gpt-4o-mini", choices=["gpt-4o-mini", "gpt-4o", "gpt-o1-pro-2025-03-19", "o3-2025-04-16"])
     args = parser.parse_args()
     CUR_RQ = "RQ2"
@@ -82,13 +82,14 @@ if __name__ == "__main__":
 
         vul = Vulnerability()
         vul.init_from_config(config)
+        target_commit = ""
+        if PROJECT_NAME != "potrace":
+            target_commit = get_parent_commit(
+                repo_dir, vul.fix_commit)  # vulernable version
+            if vul.vul_id == "cve_2016_3186":
+                target_commit = vul.fix_commit
 
-        target_commit = get_parent_commit(
-            repo_dir, vul.fix_commit)  # vulernable version
-        if vul.vul_id == "cve_2016_3186":
-            target_commit = vul.fix_commit
-
-        reset_repo(repo_dir, target_commit)
+            reset_repo(repo_dir, target_commit)
         # init
         # run the test for the original (vulnerable) version
         project = Project(vul.vul_id, PROJECT_NAME,
