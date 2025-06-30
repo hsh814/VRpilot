@@ -144,8 +144,8 @@
             "fix_commit": "bd024f0",
             "language":"c",
             "vul_code_file_rel_path": "tools/rgb2ycbcr.c",
-            "vul_code_block_start_line": 70,
-            "vul_code_block_end_line": 138,
+            "vul_code_block_start_line": 249,
+            "vul_code_block_end_line": 278,
             "CVE_id": "CVE-2016-3623",
             "vul_description": "division by zero",
             "asan_scenario_buginfo": {
@@ -153,7 +153,7 @@
                 "real_patchinfo": [
                     {
                         "filename": "rgb2ycbcr.c",
-                        "edit_lines": [96,97,98,99,100,101],
+                        "edit_lines": [256],
                         "function_name": "main",
                         "existing_function": true
                     }
