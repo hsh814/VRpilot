@@ -1,0 +1,31 @@
+248a249
+> 
+255a257,260
+> 
+> 	if (horizSubSampling == 0 || vertSubSampling == 0)
+> 		return (0);
+> 
+259c264
+<         uint32 rnrows = roundup(nrows,vertSubSampling);
+---
+> 	uint32 rnrows = roundup(nrows, vertSubSampling);
+261,262c266,267
+< 	cc = rnrows*rwidth +
+< 	    2*((rnrows*rwidth) / (horizSubSampling*vertSubSampling));
+---
+> 	cc = rnrows * rwidth +
+> 	     2 * ((rnrows * rwidth) / (horizSubSampling * vertSubSampling));
+264c269
+< 	// FIXME unchecked malloc
+---
+> 	/* FIXME unchecked malloc */
+267c272
+< 		cvtStrip(buf, raster + (y-1)*width, nr, width);
+---
+> 		cvtStrip(buf, raster + (y - 1) * width, nr, width);
+269,270c274,275
+< 		acc = nr*rwidth +
+< 			2*((nr*rwidth)/(horizSubSampling*vertSubSampling));
+---
+> 		acc = nr * rwidth +
+> 		      2 * ((nr * rwidth) / (horizSubSampling * vertSubSampling));

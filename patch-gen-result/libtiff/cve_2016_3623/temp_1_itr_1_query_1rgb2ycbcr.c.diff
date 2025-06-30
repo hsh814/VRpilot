@@ -1,0 +1,38 @@
+248a249
+> 
+256c257,265
+< 	uint32 rwidth = roundup(width, horizSubSampling);
+---
+> 
+> 	/* Guard against invalid subsampling values that could lead to
+> 	 * division-by-zero in the roundup() calculations below. */
+> 	if (horizSubSampling == 0)
+> 		horizSubSampling = 1;
+> 	if (vertSubSampling == 0)
+> 		vertSubSampling = 1;
+> 
+> 	uint32 rwidth  = roundup(width,  horizSubSampling);
+258,259c267,268
+< 	uint32 nrows = (rowsperstrip > rheight ? rheight : rowsperstrip);
+<         uint32 rnrows = roundup(nrows,vertSubSampling);
+---
+> 	uint32 nrows   = (rowsperstrip > rheight ? rheight : rowsperstrip);
+> 	uint32 rnrows  = roundup(nrows, vertSubSampling);
+261,263c270,272
+< 	cc = rnrows*rwidth +
+< 	    2*((rnrows*rwidth) / (horizSubSampling*vertSubSampling));
+< 	buf = (unsigned char*)_TIFFmalloc(cc);
+---
+> 	cc = rnrows * rwidth +
+> 	     2 * ((rnrows * rwidth) / (horizSubSampling * vertSubSampling));
+> 	buf = (unsigned char*) _TIFFmalloc(cc);
+267c276
+< 		cvtStrip(buf, raster + (y-1)*width, nr, width);
+---
+> 		cvtStrip(buf, raster + (y - 1) * width, nr, width);
+269,270c278,279
+< 		acc = nr*rwidth +
+< 			2*((nr*rwidth)/(horizSubSampling*vertSubSampling));
+---
+> 		acc = nr * rwidth +
+> 		      2 * ((nr * rwidth) / (horizSubSampling * vertSubSampling));

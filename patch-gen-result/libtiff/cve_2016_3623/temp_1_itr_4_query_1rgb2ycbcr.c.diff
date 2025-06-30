@@ -1,0 +1,30 @@
+248a249
+> 
+256,257c257,262
+< 	uint32 rwidth = roundup(width, horizSubSampling);
+< 	uint32 rheight = roundup(height, vertSubSampling);
+---
+> 
+> 	const uint32 hSub = (horizSubSampling == 0) ? 1 : horizSubSampling;
+> 	const uint32 vSub = (vertSubSampling == 0) ? 1 : vertSubSampling;
+> 
+> 	uint32 rwidth = roundup(width, hSub);
+> 	uint32 rheight = roundup(height, vSub);
+259c264
+<         uint32 rnrows = roundup(nrows,vertSubSampling);
+---
+> 	uint32 rnrows = roundup(nrows, vSub);
+261,262c266,267
+< 	cc = rnrows*rwidth +
+< 	    2*((rnrows*rwidth) / (horizSubSampling*vertSubSampling));
+---
+> 	cc = rnrows * rwidth +
+> 	     2 * ((rnrows * rwidth) / (hSub * vSub));
+268,270c273,275
+< 		nr = roundup(nr, vertSubSampling);
+< 		acc = nr*rwidth +
+< 			2*((nr*rwidth)/(horizSubSampling*vertSubSampling));
+---
+> 		nr = roundup(nr, vSub);
+> 		acc = nr * rwidth +
+> 		      2 * ((nr * rwidth) / (hSub * vSub));

@@ -1,8 +1,14 @@
-69a70
+248a249
 > 
-97a99,100
-> 			if (horizSubSampling == 0)
-> 				horizSubSampling = 1;
-100a104,105
-> 			if (vertSubSampling == 0)
-> 				vertSubSampling = 1;
+255a257,259
+> 	/* Prevent division by zero when subsampling factors are invalid */
+> 	if (horizSubSampling == 0 || vertSubSampling == 0)
+> 		return (0);
+259c263
+<         uint32 rnrows = roundup(nrows,vertSubSampling);
+---
+> 	uint32 rnrows = roundup(nrows, vertSubSampling);
+264c268
+< 	// FIXME unchecked malloc
+---
+> 	/* FIXME unchecked malloc */

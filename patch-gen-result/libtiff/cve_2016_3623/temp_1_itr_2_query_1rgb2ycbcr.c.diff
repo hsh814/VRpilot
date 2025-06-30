@@ -1,0 +1,32 @@
+248a249
+> 
+255a257,261
+> 
+> 	/* Prevent division by zero */
+> 	if (horizSubSampling == 0 || vertSubSampling == 0)
+> 		return (0);
+> 
+259c265
+<         uint32 rnrows = roundup(nrows,vertSubSampling);
+---
+> 	uint32 rnrows = roundup(nrows, vertSubSampling);
+261,262c267,268
+< 	cc = rnrows*rwidth +
+< 	    2*((rnrows*rwidth) / (horizSubSampling*vertSubSampling));
+---
+> 	cc = rnrows * rwidth +
+> 	     2 * ((rnrows * rwidth) / (horizSubSampling * vertSubSampling));
+264c270
+< 	// FIXME unchecked malloc
+---
+> 	/* FIXME unchecked malloc */
+267c273
+< 		cvtStrip(buf, raster + (y-1)*width, nr, width);
+---
+> 		cvtStrip(buf, raster + (y - 1) * width, nr, width);
+269,270c275,276
+< 		acc = nr*rwidth +
+< 			2*((nr*rwidth)/(horizSubSampling*vertSubSampling));
+---
+> 		acc = nr * rwidth +
+> 		      2 * ((nr * rwidth) / (horizSubSampling * vertSubSampling));
